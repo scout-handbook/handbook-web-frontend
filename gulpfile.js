@@ -40,20 +40,12 @@ gulp.task('stylelint', function() {
 gulp.task('npm-check-updates', shell.task(['npm outdated'], {ignoreErrors: true}));
 
 gulp.task('build:html', function() {
-	function bundle(name, sources) {
-		return gulp.src(sources)
-			.pipe(sourcemaps.init())
-			.pipe(concat(name + '.min.html'))
-			//.pipe(gulp.dest('dist/'));
-			.pipe(htmlmin({collapseWhitespace: true}))
-			.pipe(sourcemaps.write('./'))
-			.pipe(gulp.dest('dist/'));
-	}
-	return merge(
-		bundle('frontend', [
-			'src/html/index.html'
-		])
-	);
+	return gulp.src(['src/html/*'])
+		.pipe(sourcemaps.init())
+		//.pipe(gulp.dest('dist/'));
+		.pipe(htmlmin({collapseWhitespace: true}))
+		.pipe(sourcemaps.write('./'))
+		.pipe(gulp.dest('dist/'));
 });
 
 gulp.task('build:js', function() {
