@@ -1,22 +1,23 @@
 {
-  "name": "OdyMaterialy",
+  "name": "skaut-handbook-web-frontend",
   "version": "0.1.0",
-  "description": "A web interface for OdyMaterialy",
+  "description": "A web interface for a Scout handbook",
   "keywords": [
     "education",
-    "skaut",
+    "handbook",
     "odymaterialy",
-    "education"
+    "scout",
+    "skaut"
   ],
-  "homepage": "https://github.com/GenaBitu/OdyMaterialy#readme",
+  "homepage": "https://gitlab.com/skaut-handbook/handbook-web-frontend",
   "bugs": {
-    "url": "https://github.com/GenaBitu/OdyMaterialy/issues"
+    "url": "https://gitlab.com/skaut-handbook/handbook-web-frontend/issues"
   },
   "license": "MIT",
   "author": "GenaBitu",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/GenaBitu/OdyMaterialy.git"
+    "url": "git+https://gitlab.com/skaut-handbook/handbook-web-frontend.git"
   },
   "dependencies": {
     "showdown": "^1.9.0",
@@ -32,7 +33,6 @@
     "gulp-htmlmin": "^5.0.1",
     "gulp-inject-string": "^1.1.2",
     "gulp-postcss": "^8.0.0",
-    "gulp-shell": "^0.6.5",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-stylelint": "^8.0.0",
     "gulp-uglify": "^3.0.1",
@@ -43,8 +43,8 @@
     "uglify-js": "^3.4.9"
   },
   "browserslist": [
-    "cover 99%",
-    "cover 99% in CZ",
+    "cover 95%",
+    "cover 95% in CZ",
     "not < 0.1%"
   ]
 }
