@@ -162,6 +162,11 @@ gulp.task('build:json', function() {
 		.pipe(gulp.dest('dist/'));
 });
 
+gulp.task('build:deps', function() {
+	return gulp.src(['node_modules/showdown/dist/showdown.min.js', 'node_modules/xss/dist/xss.min.js'])
+		.pipe(gulp.dest('dist/'));
+});
+
 gulp.task('lint', gulp.series('eslint', 'stylelint'));
 
-gulp.task('build', gulp.parallel('build:html', 'build:css', 'build:js', 'build:php', 'build:txt', 'build:png', 'build:font', 'build:php', 'build:icon', 'build:json'));
+gulp.task('build', gulp.parallel('build:html', 'build:css', 'build:js', 'build:php', 'build:txt', 'build:png', 'build:font', 'build:php', 'build:icon', 'build:json', 'build:deps'));
