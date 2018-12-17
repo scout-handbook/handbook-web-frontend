@@ -120,6 +120,9 @@ gulp.task('build:css', function() {
 		bundle('frontend', [
 			'src/css/competenceBubble.css',
 			'src/css/offlineSwitch.css'
+		]),
+		bundle('error', [
+			'src/css/error.css'
 		])
 	);
 });
