@@ -2,7 +2,6 @@
 /* eslint-env node */
 
 var gulp = require('gulp');
-var shell = require('gulp-shell');
 var eslint = require('gulp-eslint');
 var uglify = require('uglify-js');
 var composer = require('gulp-uglify/composer');
@@ -36,8 +35,6 @@ gulp.task('stylelint', function() {
 			]
 		}));
 });
-
-gulp.task('npm-check-updates', shell.task(['npm outdated'], {ignoreErrors: true}));
 
 gulp.task('build:html', function() {
 	return gulp.src(['src/html/*'])
