@@ -152,6 +152,11 @@ gulp.task('build:php', function() {
 		.pipe(gulp.dest('dist/'));
 });
 
+gulp.task('build:icon', function() {
+	return gulp.src('src/icon/*')
+		.pipe(gulp.dest('dist/'));
+});
+
 gulp.task('lint', gulp.series('eslint', 'stylelint'));
 
-gulp.task('build', gulp.parallel('build:html', 'build:css', 'build:js', 'build:php', 'build:txt', 'build:png', 'build:font', 'build:php'));
+gulp.task('build', gulp.parallel('build:html', 'build:css', 'build:js', 'build:php', 'build:txt', 'build:png', 'build:font', 'build:php', 'build:icon'));
