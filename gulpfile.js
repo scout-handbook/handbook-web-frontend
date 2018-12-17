@@ -21,14 +21,14 @@ var pkg = require('./package.json');
 var minify = composer(uglify, console);
 
 gulp.task('eslint', function() {
-	return gulp.src(['**/*.js', '!node_modules/**', '!API/**', '!dist/**'])
+	return gulp.src(['**/*.js', '!node_modules/**', '!dist/**'])
 		.pipe(eslint())
 		.pipe(eslint.format())
 		.pipe(eslint.failAfterError());
 });
 
 gulp.task('stylelint', function() {
-	return gulp.src(['**/*.css', '!node_modules/**', '!API/**', '!dist/**', '!src/shared/fontello?(-ie7).css'])
+	return gulp.src(['**/*.css', '!node_modules/**', '!dist/**', '!src/css/fontello.css'])
 		.pipe(stylelint({
 			failAfterError: true,
 			reporters: [
@@ -151,5 +151,7 @@ gulp.task('build:font', function() {
 	return gulp.src('src/font/*')
 		.pipe(gulp.dest('dist/'));
 });
+
+gulp.task('lint', gulp.series('eslint', 'stylelint'));
 
 gulp.task('build', gulp.parallel('build:html', 'build:css', 'build:js', 'build:php', 'build:txt', 'build:png', 'build:font'));
