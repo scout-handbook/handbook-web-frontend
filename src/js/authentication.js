@@ -26,11 +26,11 @@ function renderUserAccount()
 	document.getElementById("userName").innerHTML = LOGINSTATE.name;
 	if(LOGINSTATE.role === "editor" || LOGINSTATE.role === "administrator" || LOGINSTATE.role === "superuser")
 	{
-		document.getElementById("logLink").innerHTML = "<a href=\"/error/enableJS.html\">Odhlásit</a><a href=\"/admin\" id=\"adminLink\">Administrace</a>";
+		document.getElementById("logLink").innerHTML = "<a href=\"/enableJS.html\">Odhlásit</a><a href=\"/admin\" id=\"adminLink\">Administrace</a>";
 	}
 	else
 	{
-		document.getElementById("logLink").innerHTML = "<a href=\"/error/enableJS.html\">Odhlásit</a>";
+		document.getElementById("logLink").innerHTML = "<a href=\"/enableJS.html\">Odhlásit</a>";
 	}
 	document.getElementById("logLink").firstChild.onclick = logoutRedirect;
 	if(LOGINSTATE.hasOwnProperty("avatar"))
@@ -46,7 +46,7 @@ function renderUserAccount()
 function renderLoginForm()
 {
 	document.getElementById("userName").innerHTML = "Uživatel nepřihlášen";
-	document.getElementById("logLink").innerHTML = "<a href=\"/error/enableJS.html\">Přihlásit</a>";
+	document.getElementById("logLink").innerHTML = "<a href=\"/enableJS.html\">Přihlásit</a>";
 	document.getElementById("logLink").firstChild.onclick = loginRedirect;
 	document.getElementById("userAvatar").src = "/avatar.png";
 }
