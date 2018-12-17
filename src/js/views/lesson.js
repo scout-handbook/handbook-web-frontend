@@ -63,7 +63,7 @@ function renderLessonView(id, markdown, noHistory, second)
 	activeCompetence = null;
 	for(var l = 0; l < competences.length; l++)
 	{
-		html += "<span class=\"competenceBubble\"><span class=\"competenceBubbleNumber\"><p>" + competences[l].number + "</p></span><span class=\"competenceBubbleText\">" + competences[l].name + "</span><span class=\"competenceBubbleLessons\"><a title=\"Detail kompetence\" href=\"/error/enableJS.html\" data-id=\"" + competences[l].id + "\">Detail kompetence</a></span></span>";
+		html += "<span class=\"competenceBubble\"><span class=\"competenceBubbleNumber\"><p>" + competences[l].number + "</p></span><span class=\"competenceBubbleText\">" + competences[l].name + "</span><span class=\"competenceBubbleLessons\"><a title=\"Detail kompetence\" href=\"/enableJS.html\" data-id=\"" + competences[l].id + "\">Detail kompetence</a></span></span>";
 	}
 	html += filterXSS(converter.makeHtml(markdown), xssOptions());
 	document.getElementById("content").innerHTML = html;
