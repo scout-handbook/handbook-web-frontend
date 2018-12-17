@@ -149,9 +149,14 @@ gulp.task('build:png', function() {
 
 gulp.task('build:font', function() {
 	return gulp.src('src/font/*')
+		.pipe(gulp.dest('dist/font/'));
+});
+
+gulp.task('build:php', function() {
+	return gulp.src('src/php/*')
 		.pipe(gulp.dest('dist/'));
 });
 
 gulp.task('lint', gulp.series('eslint', 'stylelint'));
 
-gulp.task('build', gulp.parallel('build:html', 'build:css', 'build:js', 'build:php', 'build:txt', 'build:png', 'build:font'));
+gulp.task('build', gulp.parallel('build:html', 'build:css', 'build:js', 'build:php', 'build:txt', 'build:png', 'build:font', 'build:php'));
