@@ -147,4 +147,9 @@ gulp.task('build:png', function() {
 		.pipe(gulp.dest('dist/'));
 });
 
-gulp.task('build', gulp.parallel('build:html', 'build:css', 'build:js', 'build:php', 'build:txt', 'build:png'));
+gulp.task('build:font', function() {
+	return gulp.src('src/font/*')
+		.pipe(gulp.dest('dist/'));
+});
+
+gulp.task('build', gulp.parallel('build:html', 'build:css', 'build:js', 'build:php', 'build:txt', 'build:png', 'build:font'));
