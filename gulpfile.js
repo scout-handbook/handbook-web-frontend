@@ -95,7 +95,7 @@ gulp.task('build:js', function() {
 			'src/js/getLessonById.js',
 			'src/js/OdyMarkdown.js',
 			'src/js/xssOptions.js'
-		]),
+		])
 	);
 });
 
@@ -128,15 +128,18 @@ gulp.task('build:css', function() {
 		bundle('frontend', [
 			'src/css/competenceBubble.css',
 			'src/css/offlineSwitch.css'
-		]),
+		])
 	);
 });
 
 gulp.task('build:php', function() {
-	return merge(
-		gulp.src('src/php/*')
-			.pipe(gulp.dest('dist/'))
-	);
+	return gulp.src('src/php/*')
+		.pipe(gulp.dest('dist/'));
 });
 
-gulp.task('build', gulp.parallel('build:html', 'build:css', 'build:js', 'build:php'));
+gulp.task('build:txt', function() {
+	return gulp.src('src/txt/*')
+		.pipe(gulp.dest('dist/'));
+});
+
+gulp.task('build', gulp.parallel('build:html', 'build:css', 'build:js', 'build:php', 'build:txt'));
