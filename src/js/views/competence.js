@@ -65,7 +65,7 @@ function renderCompetenceLessonList(lessonList)
 	var html = "";
 	for(var n = 0; n < lessonList.length; n++)
 	{
-		html += "<h3 class=\"mainPage\"><a title=\"" + lessonList[n].name + "\" href=\"/enableJS.html\" data-id=\"" + lessonList[n].id + "\">" + lessonList[n].name + "</a></h3>";
+		html += "<h3 class=\"mainPage\"><a title=\"" + lessonList[n].name + "\" href=\"enableJS.html\" data-id=\"" + lessonList[n].id + "\">" + lessonList[n].name + "</a></h3>";
 		if(lessonList[n].competences.length > 0)
 		{
 			var competences = [];

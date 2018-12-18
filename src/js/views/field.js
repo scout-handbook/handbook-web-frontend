@@ -49,7 +49,7 @@ function renderFieldLessonList(field)
 	var html = "";
 	for(var i = 0; i < field.lessons.length; i++)
 	{
-		html += "<h3 class=\"mainPage\"><a title=\"" + field.lessons[i].name + "\" href=\"/enableJS.html\" data-id=\"" + field.lessons[i].id + "\">" + field.lessons[i].name + "</a></h3>";
+		html += "<h3 class=\"mainPage\"><a title=\"" + field.lessons[i].name + "\" href=\"enableJS.html\" data-id=\"" + field.lessons[i].id + "\">" + field.lessons[i].name + "</a></h3>";
 		if(field.lessons[i].competences.length > 0)
 		{
 			var competences = [];
