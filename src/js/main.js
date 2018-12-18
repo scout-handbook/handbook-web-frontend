@@ -17,7 +17,7 @@ function main()
 	TOCSetup();
 	if("serviceWorker" in navigator)
 	{
-		navigator.serviceWorker.register("/serviceworker.min.js"); // eslint-disable-line compat/compat
+		navigator.serviceWorker.register("serviceworker.min.js"); // eslint-disable-line compat/compat
 	}
 	WebFont.load({
 		google: {
