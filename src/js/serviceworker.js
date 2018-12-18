@@ -5,20 +5,18 @@ var CACHE = "odymaterialy-" + ""/*INJECTED-VERSION*/;
 var APIPATH = "/API/v0.9"
 var cacheBlocking = [
 	"/",
-	"/index.html",
-	"/dist/frontend-computer.min.css",
-	"/dist/frontend-handheld.min.css",
-	"/dist/frontend.min.css",
-	"/dist/frontend.min.js",
-	"/dist/frontend-pushed.min.css",
-	"/dist/frontend-pushed.min.js",
-	"/dist/shared.min.css",
-	"/dist/shared-pushed.min.css",
+	"/frontend-computer.min.css",
+	"/frontend-handheld.min.css",
+	"/frontend.min.css",
+	"/frontend.min.js",
+	"/frontend-pushed.min.css",
+	"/frontend-pushed.min.js",
+	"/index.html"
 ];
 var cacheNonBlocking = [
-	"/node_modules/showdown/dist/showdown.min.js",
-	"/node_modules/xss/dist/xss.min.js",
-	"/font/fontello.woff"
+	"/font/fontello.woff",
+	"/showdown.min.js",
+	"/xss.min.js"
 ];
 
 var cacheUpdating = [
