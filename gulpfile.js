@@ -1,6 +1,8 @@
 "use strict";
 /* eslint-env node */
 
+var argv = require('yargs').string('config').default('config', 'client-config.json').argv
+
 var gulp = require('gulp');
 var eslint = require('gulp-eslint');
 var uglify = require('uglify-js');
@@ -62,7 +64,7 @@ gulp.task('build:js', function() {
 			'src/js/serviceworker.js'
 		])),
 		bundle('frontend-pushed', merge(
-			gulp.src('client-config.json')
+			gulp.src(argv.config)
 				.pipe(inject.replace('\n', ''))
 				.pipe(inject.prepend('"use strict";\nvar CONFIG = \''))
 				.pipe(inject.append('\';')),
