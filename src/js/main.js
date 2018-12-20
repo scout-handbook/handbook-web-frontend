@@ -7,7 +7,6 @@ var LOGINSTATE;
 
 function main()
 {
-	configSetup();
 	navigationSetup();
 	headerSetup();
 	historySetup();
