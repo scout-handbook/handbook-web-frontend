@@ -49,8 +49,8 @@ function toggleCompetenceBubble(event)
 		}
 		window.activeCompetence = element;
 		reflowCompetenceBubbles();
-		element.firstChild.style.color = "#6534ad";
-		element.style.borderColor = "#6534ad";
+		element.firstChild.style.color = CONFIG['custom-properties']['--accent-color'];
+		element.style.borderColor = CONFIG['custom-properties']['--accent-color'];
 		element.style.backgroundColor = "#f5f5f5";
 	}
 }

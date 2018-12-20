@@ -19,6 +19,7 @@ var inject = require('gulp-inject-string');
 var htmlmin = require('gulp-htmlmin');
 
 var pkg = require('./package.json');
+var config = require('./' + argv.config);
 
 var minify = composer(uglify, console);
 
@@ -158,6 +159,7 @@ gulp.task('build:php', function() {
 
 gulp.task('build:icon', function() {
 	return gulp.src('src/icon/*')
+		.pipe(inject.replace('<!--ACCENT-COLOR-->', config['custom-properties']['--accent-color']))
 		.pipe(gulp.dest('dist/'));
 });
 

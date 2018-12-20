@@ -6,7 +6,7 @@
 }
 
 .topButton:hover {
-	color: #6534ad;
+	color: var(--accent-color);
 }
 
 #fontDecrease {
