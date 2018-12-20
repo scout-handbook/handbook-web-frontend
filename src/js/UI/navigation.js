@@ -37,7 +37,7 @@ function reflowNavigation()
 		navBar.marginLeft = "0px"
 		if(screen.width > 700)
 		{
-			main.marginLeft = "300px"
+			main.marginLeft = CONFIG['custom-properties']['--nav-width'];
 			overlay.display = "none";
 		}
 		else
@@ -48,7 +48,7 @@ function reflowNavigation()
 	}
 	else
 	{
-		navBar.marginLeft = "-300px"
+		navBar.marginLeft = "-" + CONFIG['custom-properties']['--nav-width'];
 		main.marginLeft = "0px"
 		overlay.display = "none";
 	}

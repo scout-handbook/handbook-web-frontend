@@ -1,5 +1,5 @@
 main {
-	margin-left: 300px;
+	margin-left: var(--nav-width);
 	padding-left: 40px;
 }
 
