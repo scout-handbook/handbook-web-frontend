@@ -3,6 +3,7 @@
 
 var yargs = require('yargs');
 var fs = require("fs")
+var nestedObjectAssign = require('nested-object-assign');
 
 var gulp = require('gulp');
 var eslint = require('gulp-eslint');
@@ -24,10 +25,10 @@ var pkg = require('./package.json');
 var minify = composer(uglify, console);
 
 function getConfig() {
-	var config = Object.assign(JSON.parse(fs.readFileSync("src/json/config.json", "utf8")), {cache: 'handbook-' + pkg.version});
+	var config = nestedObjectAssign(JSON.parse(fs.readFileSync("src/json/config.json", "utf8")), {cache: 'handbook-' + pkg.version});
 	var overrideLocation = yargs.string('config').argv.config
 	if(overrideLocation) {
-		config = Object.assign(config, JSON.parse(fs.readFileSync(overrideLocation, "utf8")));
+		config = nestedObjectAssign(config, JSON.parse(fs.readFileSync(overrideLocation, "utf8")));
 	}
 	return config;
 }
