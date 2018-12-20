@@ -94,7 +94,7 @@ gulp.task('build:css', function() {
 		return gulp.src(sources)
 			.pipe(sourcemaps.init())
 			.pipe(concat(name + '.min.css'))
-			.pipe(postcss([postcssCustomProperties(), autoprefixer()]))
+			.pipe(postcss([postcssCustomProperties({importFrom: 'config.json', preserve: false}), autoprefixer()]))
 			//.pipe(gulp.dest('dist/'));
 			.pipe(cleanCSS({compatibility: 'ie8'}))
 			.pipe(sourcemaps.write('./'))
