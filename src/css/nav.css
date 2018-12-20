@@ -9,7 +9,7 @@ nav {
 }
 
 nav a {
-	color: #6534ad;
+	color: var(--accent-color);
 	text-decoration: none;
 }
 

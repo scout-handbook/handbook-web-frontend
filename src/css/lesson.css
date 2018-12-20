@@ -1,5 +1,5 @@
 main a {
-	color: #6534ad;
+	color: var(--accent-color);
 	text-decoration: none;
 }
 
@@ -46,7 +46,7 @@ main .notes {
 	animation: spin 2s linear infinite;
 	border: 16px solid var(--border-color);
 	border-radius: 50%;
-	border-top: 16px solid #6534ad;
+	border-top: 16px solid var(--accent-color);
 	height: 120px;
 	left: 50%;
 	position: absolute;
