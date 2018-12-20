@@ -1,7 +1,8 @@
 "use strict";
 /* eslint-env node */
 
-var argv = require('yargs').string('config').default('config', 'client-config.json').argv
+var yargs = require('yargs');
+var fs = require("fs")
 
 var gulp = require('gulp');
 var eslint = require('gulp-eslint');
@@ -19,9 +20,17 @@ var inject = require('gulp-inject-string');
 var htmlmin = require('gulp-htmlmin');
 
 var pkg = require('./package.json');
-var config = require('./' + argv.config);
 
 var minify = composer(uglify, console);
+
+function getConfig() {
+	var config = Object.assign(JSON.parse(fs.readFileSync("src/json/config.json", "utf8")), {cache: 'handbook-' + pkg.version});
+	var overrideLocation = yargs.string('config').argv.config
+	if(overrideLocation) {
+		config = Object.assign(config, JSON.parse(fs.readFileSync(overrideLocation, "utf8")));
+	}
+	return config;
+}
 
 gulp.task('eslint', function() {
 	return gulp.src(['**/*.js', '!node_modules/**', '!dist/**'])
@@ -50,11 +59,14 @@ gulp.task('build:html', function() {
 });
 
 gulp.task('build:js', function() {
-	function bundle(name, sources) {
-		return sources
+	function bundle(name, sources, addConfig) {
+		var ret = sources
 			.pipe(sourcemaps.init())
-			.pipe(concat(name + '.min.js'))
-			.pipe(inject.replace('\\"\\"\\/\\*INJECTED\\-VERSION\\*\\/', '"' + pkg.version + '"'))
+			.pipe(concat(name + '.min.js'));
+		if(addConfig) {
+			ret = ret.pipe(inject.prepend('"use strict";\nvar CONFIG = JSON.parse(\'' + JSON.stringify(getConfig()) + '\');\n'))
+		}
+		return ret.pipe(inject.replace('\\"\\"\\/\\*INJECTED\\-VERSION\\*\\/', '"' + pkg.version + '"'))
 			//.pipe(gulp.dest('dist/'));
 			.pipe(minify({ie8: true}))
 			.pipe(sourcemaps.write('./'))
@@ -64,24 +76,19 @@ gulp.task('build:js', function() {
 		bundle('serviceworker', gulp.src([
 			'src/js/serviceworker.js'
 		])),
-		bundle('frontend-pushed', merge(
-			gulp.src(argv.config)
-				.pipe(inject.replace('\n|\t| ', ''))
-				.pipe(inject.prepend('"use strict";\nvar CONFIG = JSON.parse(\''))
-				.pipe(inject.append('\');\nCONFIG.cache = "handbook-' + pkg.version + '";\n')),
-			gulp.src([
-				'src/js/tools/cacheThenNetworkRequest.js',
-				'src/js/tools/request.js',
-				'src/js/UI/header.js',
-				'src/js/UI/navigation.js',
-				'src/js/UI/TOC.js',
-				'src/js/views/lesson.js',
-				'src/js/AfterLoadEvent.js',
-				'src/js/authentication.js',
-				'src/js/history.js',
-				'src/js/main.js',
-				'src/js/metadata.js'
-		]))),
+		bundle('frontend-pushed', gulp.src([
+			'src/js/tools/cacheThenNetworkRequest.js',
+			'src/js/tools/request.js',
+			'src/js/UI/header.js',
+			'src/js/UI/navigation.js',
+			'src/js/UI/TOC.js',
+			'src/js/views/lesson.js',
+			'src/js/AfterLoadEvent.js',
+			'src/js/authentication.js',
+			'src/js/history.js',
+			'src/js/main.js',
+			'src/js/metadata.js'
+		]), true),
 		bundle('frontend', gulp.src([
 			'src/js/tools/urlEscape.js',
 			'src/js/UI/lessonView.js',
@@ -101,7 +108,7 @@ gulp.task('build:css', function() {
 		return gulp.src(sources)
 			.pipe(sourcemaps.init())
 			.pipe(concat(name + '.min.css'))
-			.pipe(postcss([postcssCustomProperties({importFrom: argv.config, preserve: false}), autoprefixer()]))
+			.pipe(postcss([postcssCustomProperties({importFrom: getConfig(), preserve: false}), autoprefixer()]))
 			//.pipe(gulp.dest('dist/'));
 			.pipe(cleanCSS({compatibility: 'ie8'}))
 			.pipe(sourcemaps.write('./'))
@@ -159,7 +166,7 @@ gulp.task('build:php', function() {
 
 gulp.task('build:icon', function() {
 	return gulp.src('src/icon/*')
-		.pipe(inject.replace('<!--ACCENT-COLOR-->', config['custom-properties']['--accent-color']))
+		.pipe(inject.replace('<!--ACCENT-COLOR-->', getConfig()['custom-properties']['--accent-color']))
 		.pipe(gulp.dest('dist/'));
 });
 
