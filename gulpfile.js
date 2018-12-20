@@ -65,9 +65,9 @@ gulp.task('build:js', function() {
 		])),
 		bundle('frontend-pushed', merge(
 			gulp.src(argv.config)
-				.pipe(inject.replace('\n', ''))
+				.pipe(inject.replace('\n|\t| ', ''))
 				.pipe(inject.prepend('"use strict";\nvar CONFIG = \''))
-				.pipe(inject.append('\';')),
+				.pipe(inject.append('\';\nCONFIG.cache = "odymaterialy-' + pkg.version + '";\n')),
 			gulp.src([
 				'src/js/tools/cacheThenNetworkRequest.js',
 				'src/js/tools/request.js',
@@ -77,7 +77,6 @@ gulp.task('build:js', function() {
 				'src/js/views/lesson.js',
 				'src/js/AfterLoadEvent.js',
 				'src/js/authentication.js',
-				'src/js/config.js',
 				'src/js/history.js',
 				'src/js/main.js',
 				'src/js/metadata.js'
