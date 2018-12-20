@@ -1,6 +1,6 @@
 nav {
-	background: #fafafa;
-	border-right: 1px solid #bfbfbf;
+	background: var(--background-darker);
+	border-right: 1px solid var(--border-color);
 	height: 100%;
 	overflow-y: auto;
 	position: absolute;
@@ -18,7 +18,7 @@ nav a:hover {
 }
 
 #userAccount {
-	border-bottom: 1px solid #bfbfbf;
+	border-bottom: 1px solid var(--border-color);
 	height: 80px;
 }
 

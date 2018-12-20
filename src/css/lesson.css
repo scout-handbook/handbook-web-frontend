@@ -44,7 +44,7 @@ main .notes {
 
 #embeddedSpinner {
 	animation: spin 2s linear infinite;
-	border: 16px solid #bfbfbf;
+	border: 16px solid var(--border-color);
 	border-radius: 50%;
 	border-top: 16px solid #6534ad;
 	height: 120px;
