@@ -1,7 +1,7 @@
 "use strict";
 /* eslint-env serviceworker */
 
-var CACHE = "odymaterialy-" + ""/*INJECTED-VERSION*/;
+var CACHE = "handbook-" + ""/*INJECTED-VERSION*/;
 var APIPATH = "/API/v0.9"
 var cacheBlocking = [
 	"/",
