@@ -4,7 +4,7 @@ h2.mainPage {
 }
 
 h2.mainPage a {
-	color: #364149;
+	color: var(--non-accented-link-color);
 }
 
 h3.mainPage {

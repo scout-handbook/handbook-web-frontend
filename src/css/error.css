@@ -6,7 +6,7 @@ html {
 
 body {
 	background: #eaeaea;
-	color: #364149;
+	color: var(--non-accented-link-color);
 	display: table-cell;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 40px;
