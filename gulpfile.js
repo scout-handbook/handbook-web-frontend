@@ -68,7 +68,7 @@ gulp.task('build:js', function() {
 			gulp.src(argv.config)
 				.pipe(inject.replace('\n|\t| ', ''))
 				.pipe(inject.prepend('"use strict";\nvar CONFIG = JSON.parse(\''))
-				.pipe(inject.append('\');\nCONFIG.cache = "odymaterialy-' + pkg.version + '";\n')),
+				.pipe(inject.append('\');\nCONFIG.cache = "handbook-' + pkg.version + '";\n')),
 			gulp.src([
 				'src/js/tools/cacheThenNetworkRequest.js',
 				'src/js/tools/request.js',
