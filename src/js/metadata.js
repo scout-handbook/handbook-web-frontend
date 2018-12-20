@@ -6,11 +6,6 @@ var loginstateEvent = new AfterLoadEvent(1);
 
 function metadataSetup()
 {
-	configEvent.addCallback(refreshMetadata);
-}
-
-function refreshMetadata()
-{
 	cacheThenNetworkRequest(CONFIG.apiuri + "/lesson", undefined, function(response, second)
 		{
 			window.FIELDS = response;

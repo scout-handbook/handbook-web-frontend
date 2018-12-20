@@ -78,7 +78,6 @@
 		"reflowCompetenceBubbles": false,
 		"reflowNavigation": false,
 		"refreshLogin": false,
-		"refreshMetadata": false,
 		"refreshPreview": false,
 		"refreshPreviewSetup": false,
 		"renderPagination": false,
