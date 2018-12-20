@@ -48,7 +48,7 @@ gulp.task('build:html', function() {
 
 gulp.task('build:js', function() {
 	function bundle(name, sources) {
-		return gulp.src(sources)
+		return sources
 			.pipe(sourcemaps.init())
 			.pipe(concat(name + '.min.js'))
 			.pipe(inject.replace('\\"\\"\\/\\*INJECTED\\-VERSION\\*\\/', '"' + pkg.version + '"'))
@@ -58,24 +58,29 @@ gulp.task('build:js', function() {
 			.pipe(gulp.dest('dist/'));
 	}
 	return merge(
-		bundle('serviceworker', [
+		bundle('serviceworker', gulp.src([
 			'src/js/serviceworker.js'
-		]),
-		bundle('frontend-pushed', [
-			'src/js/tools/cacheThenNetworkRequest.js',
-			'src/js/tools/request.js',
-			'src/js/UI/header.js',
-			'src/js/UI/navigation.js',
-			'src/js/UI/TOC.js',
-			'src/js/views/lesson.js',
-			'src/js/AfterLoadEvent.js',
-			'src/js/authentication.js',
-			'src/js/config.js',
-			'src/js/history.js',
-			'src/js/main.js',
-			'src/js/metadata.js'
-		]),
-		bundle('frontend', [
+		])),
+		bundle('frontend-pushed', merge(
+			gulp.src('client-config.json')
+				.pipe(inject.replace('\n', ''))
+				.pipe(inject.prepend('"use strict";\nvar CONFIG = \''))
+				.pipe(inject.append('\';')),
+			gulp.src([
+				'src/js/tools/cacheThenNetworkRequest.js',
+				'src/js/tools/request.js',
+				'src/js/UI/header.js',
+				'src/js/UI/navigation.js',
+				'src/js/UI/TOC.js',
+				'src/js/views/lesson.js',
+				'src/js/AfterLoadEvent.js',
+				'src/js/authentication.js',
+				'src/js/config.js',
+				'src/js/history.js',
+				'src/js/main.js',
+				'src/js/metadata.js'
+		]))),
+		bundle('frontend', gulp.src([
 			'src/js/tools/urlEscape.js',
 			'src/js/UI/lessonView.js',
 			'src/js/views/competence.js',
@@ -85,7 +90,7 @@ gulp.task('build:js', function() {
 			'src/js/getLessonById.js',
 			'src/js/OdyMarkdown.js',
 			'src/js/xssOptions.js'
-		])
+		]))
 	);
 });
 
