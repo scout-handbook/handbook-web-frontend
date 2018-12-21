@@ -41,8 +41,6 @@
 		"changeUserRoleOnClick": false,
 		"changeUserGroupsOnClick": false,
 		"competenceBubbleDetailOnClick": false,
-		"configEvent": false,
-		"configSetup": false,
 		"defaultBody": false,
 		"defaultName": false,
 		"deleteCompetenceOnClick": false,
