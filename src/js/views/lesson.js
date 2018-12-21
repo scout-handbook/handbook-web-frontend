@@ -7,7 +7,7 @@ var activeCompetence = null;
 
 function lessonViewSetup()
 {
-	converter = new showdown.Converter({extensions: ["OdyMarkdown"]});
+	converter = new showdown.Converter({extensions: ["HandbookMarkdown"]});
 	converter.setOption("noHeaderId", "true");
 	converter.setOption("tables", "true");
 	window.addEventListener("resize", reflowCompetenceBubbles)

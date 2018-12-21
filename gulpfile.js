@@ -180,7 +180,7 @@ gulp.task('build:js', function() {
 			'src/js/views/field.js',
 			'src/js/views/lessonList.js',
 			'src/js/getLessonById.js',
-			'src/js/OdyMarkdown.js',
+			'src/js/HandbookMarkdown.js',
 			'src/js/xssOptions.js'
 		]))
 	);
