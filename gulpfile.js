@@ -114,6 +114,7 @@ gulp.task('build:html', function() {
 		'src/html/index.html'
 	])
 		.pipe(sourcemaps.init())
+		.pipe(inject.replace('<!--SITE-NAME-->', getConfig()['site-name']))
 		//.pipe(gulp.dest('dist/'));
 		.pipe(htmlmin({collapseWhitespace: true}))
 		.pipe(sourcemaps.write('./'))
