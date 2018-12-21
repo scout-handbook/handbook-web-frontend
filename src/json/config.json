@@ -7,6 +7,7 @@
 		"--non-accented-link-color": "#364149",
 		"--overlay-color": "rgba(0, 0, 0, 0.4)",
 		"--overlay-fallback-color": "#999",
-		"--table-border": "#ddd"
+		"--table-border": "#ddd",
+		"--table-odd-row-background": "#f9f9f9"
 	}
 }
