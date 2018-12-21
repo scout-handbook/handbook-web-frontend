@@ -8,7 +8,7 @@ body {
 }
 
 main {
-	color: #222;
+	color: var(--background);
 	height: 100%;
 	left: 0;
 	overflow-y: auto;
