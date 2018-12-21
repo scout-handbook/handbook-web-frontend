@@ -17,7 +17,7 @@ function showLessonListView(noHistory)
 
 function renderLessonListView(noHistory)
 {
-	var html = "<h1>OdyMateriály</h1>";
+	var html = "<h1>" + CONFIG["site-name"] + "</h1>";
 	html += renderFieldList();
 	document.getElementById("content").innerHTML = html;
 

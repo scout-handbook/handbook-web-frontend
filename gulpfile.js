@@ -190,6 +190,7 @@ gulp.task('build:json', function() {
 	return gulp.src([
 		'src/json/manifest.json'
 	])
+		.pipe(inject.replace('SITE-NAME', getConfig()['site-name']))
 		.pipe(gulp.dest('dist/'));
 });
 
