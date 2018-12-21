@@ -1,8 +1,5 @@
 {
-	"baseuri": "https://handbook.example",
 	"apiuri": "https://handbook.example/API/v0.9",
-	"custom-properties": {
-		"--background-darker": "#fafafa",
-		"--border-color": "#bfbfbf"
-	}
+	"baseuri": "https://handbook.example",
+	"site-name": "Skaut handbook"
 }
