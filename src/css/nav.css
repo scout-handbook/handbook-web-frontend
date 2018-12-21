@@ -77,8 +77,8 @@ nav a:hover {
 }
 
 #overlay {
-	background-color: #999;
-	background-color: rgba(0, 0, 0, 0.4);
+	background-color: var(--overlay-fallback-color);
+	background-color: var(--overlay-color);
 	height: 100%;
 	position: fixed;
 	width: 100%;
