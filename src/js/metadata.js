@@ -1,11 +1,23 @@
 "use strict";
 /* exported metadataSetup */
 
-var metadataEvent = new AfterLoadEvent(2);
+var metadataEvent = new AfterLoadEvent(3);
 var loginstateEvent = new AfterLoadEvent(1);
 
 function metadataSetup()
 {
+	cacheThenNetworkRequest(CONFIG.apiuri + "/field", undefined, function(response, second)
+		{
+			window.FULLFIELDS = response;
+			if(second)
+			{
+				metadataEvent.retrigger();
+			}
+			else
+			{
+				metadataEvent.trigger();
+			}
+		});
 	cacheThenNetworkRequest(CONFIG.apiuri + "/lesson", undefined, function(response, second)
 		{
 			window.FIELDS = response;
