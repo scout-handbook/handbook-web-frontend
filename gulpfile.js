@@ -183,6 +183,7 @@ gulp.task('build:js', function() {
 			'src/js/views/competence.js',
 			'src/js/views/competenceList.js',
 			'src/js/views/field.js',
+			'src/js/views/fieldList.js',
 			'src/js/views/lessonList.js',
 			'src/js/getLessonById.js',
 			'src/js/HandbookMarkdown.js',
