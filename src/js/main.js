@@ -1,7 +1,6 @@
 "use strict";
-/* exported FULLFIELDS, FIELDS, COMPETENCES, LOGINSTATE */
+/* exported FIELDS, COMPETENCES, LOGINSTATE */
 
-var FULLFIELDS;
 var FIELDS;
 var COMPETENCES;
 var LOGINSTATE;
@@ -17,7 +16,7 @@ function main()
 	TOCSetup();
 	if("serviceWorker" in navigator)
 	{
-		navigator.serviceWorker.register("serviceworker.min.js"); // eslint-disable-line compat/compat
+		navigator.serviceWorker.register(CONFIG['frontend-uri'] + "/serviceworker.min.js"); // eslint-disable-line compat/compat
 	}
 	WebFont.load({
 		google: {

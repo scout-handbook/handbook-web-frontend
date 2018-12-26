@@ -39,7 +39,7 @@ function renderUserAccount()
 	}
 	else
 	{
-		document.getElementById("userAvatar").src = "avatar.png";
+		document.getElementById("userAvatar").src = CONFIG['frontend-uri'] + "/avatar.png";
 	}
 }
 
@@ -48,7 +48,7 @@ function renderLoginForm()
 	document.getElementById("userName").innerHTML = "Uživatel nepřihlášen";
 	document.getElementById("logLink").innerHTML = "<a href=\"enableJS.html\">Přihlásit</a>";
 	document.getElementById("logLink").firstChild.onclick = loginRedirect;
-	document.getElementById("userAvatar").src = "avatar.png";
+	document.getElementById("userAvatar").src = CONFIG['frontend-uri'] + "/avatar.png";
 }
 
 function loginRedirect()
