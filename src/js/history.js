@@ -28,7 +28,7 @@ function historySetup()
 	}
 	else
 	{
-		showFieldListView();
+		showLessonListView();
 	}
 }
 
