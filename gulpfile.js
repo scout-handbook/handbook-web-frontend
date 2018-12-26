@@ -106,13 +106,18 @@ gulp.task('build:font', function() {
 });
 
 gulp.task('build:html', function() {
-	return gulp.src([
-		'src/html/403.html',
-		'src/html/404.html',
-		'src/html/500.html',
-		'src/html/enableJS.html',
-		'src/html/index.html'
-	])
+	return merge(
+		gulp.src([
+			'src/html/403.html',
+			'src/html/404.html',
+			'src/html/500.html',
+			'src/html/enableJS.html'
+		]),
+		gulp.src([
+			'src/html/index.html'
+		])
+			.pipe(inject.replace('<!--FRONTEND-URI-->', getConfig()['frontend-uri']))
+	)
 		.pipe(sourcemaps.init())
 		.pipe(inject.replace('<!--SITE-NAME-->', getConfig()['site-name']))
 		//.pipe(gulp.dest('dist/'));
@@ -178,7 +183,6 @@ gulp.task('build:js', function() {
 			'src/js/views/competence.js',
 			'src/js/views/competenceList.js',
 			'src/js/views/field.js',
-			'src/js/views/fieldList.js',
 			'src/js/views/lessonList.js',
 			'src/js/getLessonById.js',
 			'src/js/HandbookMarkdown.js',

@@ -27,7 +27,7 @@ function showLessonView(id, noHistory)
 			{
 				if(window.LOGINSTATE)
 				{
-					window.location = CONFIG.baseuri + "/404.html";
+					window.location = CONFIG['frontend-uri'] + "/404.html";
 				}
 				else
 				{
