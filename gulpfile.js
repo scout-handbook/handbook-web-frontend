@@ -89,6 +89,7 @@ gulp.task('build:css', function() {
 gulp.task('build:deps', function() {
 	return gulp.src([
 		'node_modules/showdown/dist/showdown.min.js',
+		'node_modules/showdown/dist/showdown.min.js.map',
 		'node_modules/xss/dist/xss.min.js'
 	])
 		.pipe(gulp.dest('dist/'));
