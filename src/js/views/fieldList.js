@@ -25,6 +25,12 @@ function renderFieldListView(noHistory)
 	{
 		nodes[l].onclick = fieldListOnClick;
 	}
+	document.getElementsByTagName("main")[0].scrollTop = 0;
+	if(!noHistory)
+	{
+		history.pushState({}, "title", "/");
+	}
+	document.getElementById("offlineSwitch").style.display = "none";
 }
 
 function fieldListOnClick(event) {
