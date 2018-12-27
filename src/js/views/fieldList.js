@@ -19,6 +19,22 @@ function renderFieldListView(noHistory)
 	var html = "<h1>" + CONFIG["site-name"] + "</h1>";
 	html += renderFullFieldList();
 	document.getElementById("content").innerHTML = html;
+
+	var nodes = document.getElementById("content").getElementsByClassName("field-card");
+	for(var l = 0; l < nodes.length; l++)
+	{
+		nodes[l].onclick = fieldListOnClick;
+	}
+}
+
+function fieldListOnClick(event) {
+	var el = event.target;
+	while(!el.dataset.hasOwnProperty('id'))
+	{
+		el = el.parentElement;
+	}
+	showFieldView(el.dataset.id);
+	return false;
 }
 
 function renderFullFieldList()
@@ -26,7 +42,7 @@ function renderFullFieldList()
 	var html = "";
 	for(var i = 0; i < FULLFIELDS.length; i++)
 	{
-		html += "<div class=\"field-card\">"
+		html += "<div class=\"field-card\" data-id=\"" + FULLFIELDS[i].id + "\">"
 		html += "<img class=\"field-card-image\" src=\"" + CONFIG.apiuri + "/image/" + FULLFIELDS[i].image + "\">";
 		html += "<svg width=\"360\" height=\"290\" viewBox=\"0 190 360 290\" class=\"field-card-svg\">";
 		html += "<defs>";
