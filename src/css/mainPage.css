@@ -22,29 +22,29 @@ h3.mainPage {
 	box-shadow: 5px 5px 15px 0 rgba(0, 0, 0, 0.5);
 	cursor: pointer;
 	display: inline-block;
-	height: 290px;
-	margin-bottom: 23px;
-	margin-right: 23px;
+	height: var(--field-card-height)px;
+	margin-bottom: 43px;
+	margin-right: 43px;
 	overflow: hidden;
-	width: 360px;
+	width: var(--field-card-width)px;
 }
 
 .field-card-image {
-	height: 290px;
-	width: 360px;
+	height: var(--field-card-height)px;
+	width: var(--field-card-width)px;
 }
 
 .field-card-svg {
-	margin-top: -107px;
+	margin-top: calc(var(--field-card-overlay-height)px * -1 - 7px);
 }
 
 .field-card-overlay {
 	background-color: rgba(255, 255, 255, 0.4);
 	font-size: 25px;
 	font-weight: bold;
-	height: 100px;
+	height: var(--field-card-overlay-height)px;
 	line-height: 140%;
-	margin-top: -296px;
+	margin-top: calc(var(--field-card-height)px * -1 - 6px);
 	padding: 15px 25px;
 	position: relative;
 }
