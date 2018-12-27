@@ -50,13 +50,13 @@ function renderFullFieldList()
 	{
 		html += "<div class=\"field-card\" data-id=\"" + FULLFIELDS[i].id + "\">"
 		html += "<img class=\"field-card-image\" src=\"" + CONFIG.apiuri + "/image/" + FULLFIELDS[i].image + "\">";
-		html += "<svg width=\"360\" height=\"290\" viewBox=\"0 190 360 290\" class=\"field-card-svg\">";
+		html += "<svg width=\"" + CONFIG['custom-properties']['--field-card-width'] + "\" height=\"" + CONFIG['custom-properties']['--field-card-height'] + "\" viewBox=\"0 " + (CONFIG['custom-properties']['--field-card-height'] - CONFIG['custom-properties']['--field-card-overlay-height']) + " " + CONFIG['custom-properties']['--field-card-width'] + " " + CONFIG['custom-properties']['--field-card-height'] + "\" class=\"field-card-svg\">";
 		html += "<defs>";
 		html += "<filter id=\"blur\">";
 		html += "<feGaussianBlur in=\"SourceGraphic\" stdDeviation=\"3\" />";
 		html += "</filter>";
 		html += "</defs>";
-		html += "<image filter=\"url(#blur)\" xlink:href=\"" + CONFIG.apiuri + "/image/" + FULLFIELDS[i].image + "\" x=\"0\" y=\"0\" height=\"290px\" width=\"360px\" preserveAspectRatio=\"none\" />";
+		html += "<image filter=\"url(#blur)\" xlink:href=\"" + CONFIG.apiuri + "/image/" + FULLFIELDS[i].image + "\" x=\"0\" y=\"0\" height=\"" + CONFIG['custom-properties']['--field-card-height'] + "px\" width=\"" + CONFIG['custom-properties']['--field-card-width'] + "px\" preserveAspectRatio=\"none\" />";
 		html += "</svg>";
 		html += "<div class=\"field-card-overlay\">";
 		html += FULLFIELDS[i].name;
