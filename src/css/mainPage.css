@@ -20,6 +20,7 @@ h3.mainPage {
 	border: 1px solid var(--border-color);
 	border-radius: 5px;
 	box-shadow: 5px 5px 15px 0 rgba(0, 0, 0, 0.5);
+	cursor: pointer;
 	display: inline-block;
 	height: 290px;
 	margin-bottom: 23px;
