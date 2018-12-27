@@ -15,6 +15,7 @@ var sourcemaps = require('gulp-sourcemaps');
 var concat = require('gulp-concat');
 var cleanCSS = require('gulp-clean-css');
 var postcss = require('gulp-postcss');
+var postcssCalc = require("postcss-calc");
 var postcssCustomProperties = require('postcss-custom-properties');
 var autoprefixer = require('autoprefixer');
 var inject = require('gulp-inject-string');
@@ -55,7 +56,7 @@ gulp.task('build:css', function() {
 		return gulp.src(sources)
 			.pipe(sourcemaps.init())
 			.pipe(concat(name + '.min.css'))
-			.pipe(postcss([postcssCustomProperties({importFrom: getConfig(), preserve: false}), autoprefixer()]))
+			.pipe(postcss([postcssCustomProperties({importFrom: getConfig(), preserve: false}), postcssCalc({warnWhenCannotResolve: true}), autoprefixer()]))
 			//.pipe(gulp.dest('dist/'));
 			.pipe(cleanCSS({compatibility: 'ie8'}))
 			.pipe(sourcemaps.write('./'))
