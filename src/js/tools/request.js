@@ -16,7 +16,7 @@ function request(url, query, headers)
 				}
 				else if(this.status === 403 && body.type === "RoleException")
 				{
-					showLessonListView();
+					showFieldListView();
 				}
 			}
 		}

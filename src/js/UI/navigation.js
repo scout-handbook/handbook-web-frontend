@@ -10,7 +10,7 @@ function navigationSetup()
 	document.getElementById("overlay").onclick = toggleNavigation;
 	document.getElementById("lessonOverview").onclick = function()
 		{
-			showLessonListView();
+			showFieldListView();
 			return false;
 		}
 	document.getElementById("competenceOverview").onclick = function()
