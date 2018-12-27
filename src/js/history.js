@@ -54,7 +54,7 @@ function historyPopback()
 		}
 		else
 		{
-			showLessonListView(true);
+			showFieldListView(true);
 		}
 	}
 }
