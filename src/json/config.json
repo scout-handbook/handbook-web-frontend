@@ -5,7 +5,7 @@
 		"--background": "#222",
 		"--background-darker": "#fafafa",
 		"--border-color": "#bfbfbf",
-		"--field-card-height": "250",
+		"--field-card-height": "240",
 		"--field-card-overlay-height": "100",
 		"--field-card-width": "340",
 		"--nav-width": "300px",
