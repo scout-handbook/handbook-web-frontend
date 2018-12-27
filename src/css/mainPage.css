@@ -23,8 +23,8 @@ h3.mainPage {
 	cursor: pointer;
 	display: inline-block;
 	height: var(--field-card-height)px;
-	margin-bottom: 43px;
-	margin-right: 43px;
+	margin-bottom: calc(383px - var(--field-card-width)px);
+	margin-right: calc(383px - var(--field-card-width)px);
 	overflow: hidden;
 	width: var(--field-card-width)px;
 }
