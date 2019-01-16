@@ -1,7 +1,7 @@
 "use strict";
 /* exported showCompetenceView */
 
-function showCompetenceView(id, noHistory)
+function showCompetenceView(id, noHistory: boolean = false)
 {
 	if(screen.width < 700)
 	{
@@ -17,7 +17,7 @@ function showCompetenceView(id, noHistory)
 
 function renderCompetenceView(id, noHistory)
 {
-	var competence = {};
+	var competence = {number: undefined, name: undefined, description: undefined, id: undefined};
 	for(var i = 0; i < COMPETENCES.length; i++)
 	{
 		if(COMPETENCES[i].id === id)
@@ -49,7 +49,7 @@ function renderCompetenceView(id, noHistory)
 	var nodes = document.getElementById("content").getElementsByTagName("h3");
 	for(var l = 0; l < nodes.length; l++)
 	{
-		nodes[l].firstChild.onclick = TOCLessonOnClick;
+		(nodes[l].firstChild as HTMLElement).onclick = TOCLessonOnClick;
 	}
 
 	document.getElementsByTagName("main")[0].scrollTop = 0;

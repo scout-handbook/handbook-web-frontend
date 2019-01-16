@@ -1,0 +1,15 @@
+{
+  "extends": "../tsconfig.json",
+  "files": [
+    "../global.d.ts",
+    "../src/ts/tools/urlEscape.ts",
+    "../src/ts/UI/lessonView.ts",
+    "../src/ts/views/competence.ts",
+    "../src/ts/views/competenceList.ts",
+    "../src/ts/views/field.ts",
+    "../src/ts/views/lessonList.ts",
+    "../src/ts/getLessonById.ts",
+    "../src/ts/HandbookMarkdown.ts",
+    "../src/ts/xssOptions.ts"
+  ]
+}

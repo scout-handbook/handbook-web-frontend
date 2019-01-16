@@ -3,7 +3,7 @@
 
 function toggleLessonOffline()
 {
-	var checked = document.getElementById("cacheOffline").checked;
+	var checked = (document.getElementById("cacheOffline") as HTMLInputElement).checked;
 	if (window.location.pathname.substring(0, 8) === "/lesson/")
 	{
 		var id = window.location.pathname.substring(8).split("/")[0];
@@ -40,12 +40,12 @@ function toggleCompetenceBubble(event)
 		var nodes = document.getElementById("content").getElementsByClassName("competenceBubble");
 		for(var i = 0; i < nodes.length; i++)
 		{
-			nodes[i].childNodes[1].style.width = "";
-			nodes[i].style.width = "";
-			nodes[i].style.height = "";
-			nodes[i].firstChild.style.color = "";
-			nodes[i].style.borderColor = "";
-			nodes[i].style.backgroundColor = "";
+			(nodes[i].childNodes[1] as HTMLElement).style.width = "";
+			(nodes[i] as HTMLElement).style.width = "";
+			(nodes[i] as HTMLElement).style.height = "";
+			(nodes[i].firstChild as HTMLElement).style.color = "";
+			(nodes[i] as HTMLElement).style.borderColor = "";
+			(nodes[i] as HTMLElement).style.backgroundColor = "";
 		}
 		window.activeCompetence = element;
 		reflowCompetenceBubbles();
