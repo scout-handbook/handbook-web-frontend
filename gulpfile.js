@@ -19,6 +19,7 @@ var postcssCustomProperties = require('postcss-custom-properties');
 var autoprefixer = require('autoprefixer');
 var inject = require('gulp-inject-string');
 var htmlmin = require('gulp-htmlmin');
+var ts = require("gulp-typescript");
 
 var pkg = require('./package.json');
 
