@@ -162,6 +162,21 @@ gulp.task('build:js', function() {
 			.pipe(sourcemaps.write('./'))
 			.pipe(gulp.dest('dist/'));
 	}
+	function tsBundle(name, addConfig) {
+		var tsProject = ts.createProject("tsconfig/" + name + ".json");
+		var ret = tsProject.src()
+			.pipe(sourcemaps.init())
+			.pipe(tsProject())
+			.pipe(concat(name + '.min.js'));
+		if(addConfig) {
+			ret = ret.pipe(inject.prepend('"use strict";\nvar CONFIG = JSON.parse(\'' + JSON.stringify(getConfig()) + '\');\n'))
+		}
+		return ret.pipe(inject.replace('\\"\\"\\/\\*INJECTED\\-VERSION\\*\\/', '"' + pkg.version + '"'))
+			//.pipe(gulp.dest('dist/'));
+			.pipe(minify({ie8: true}))
+			.pipe(sourcemaps.write('./'))
+			.pipe(gulp.dest('dist/'));
+	}
 	return merge(
 		bundle('serviceworker', gulp.src([
 			'src/js/serviceworker.js'
@@ -179,17 +194,7 @@ gulp.task('build:js', function() {
 			'src/js/main.js',
 			'src/js/metadata.js'
 		]), true),
-		bundle('frontend', gulp.src([
-			'src/js/tools/urlEscape.js',
-			'src/js/UI/lessonView.js',
-			'src/js/views/competence.js',
-			'src/js/views/competenceList.js',
-			'src/js/views/field.js',
-			'src/js/views/lessonList.js',
-			'src/js/getLessonById.js',
-			'src/js/HandbookMarkdown.js',
-			'src/js/xssOptions.js'
-		]))
+		tsBundle('frontend')
 	);
 });
 

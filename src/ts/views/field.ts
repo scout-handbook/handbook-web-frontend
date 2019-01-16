@@ -17,7 +17,7 @@ function showFieldView(id, noHistory)
 
 function renderFieldView(id, noHistory)
 {
-	var field = {};
+	var field = {name: undefined};
 	for(var i = 0; i < FIELDS.length; i++)
 	{
 		if(FIELDS[i].id === id)
@@ -33,7 +33,7 @@ function renderFieldView(id, noHistory)
 	var nodes = document.getElementById("content").getElementsByTagName("h3");
 	for(var l = 0; l < nodes.length; l++)
 	{
-		nodes[l].firstChild.onclick = TOCLessonOnClick;
+		(nodes[l].firstChild as HTMLElement).onclick = TOCLessonOnClick;
 	}
 
 	document.getElementsByTagName("main")[0].scrollTop = 0;
