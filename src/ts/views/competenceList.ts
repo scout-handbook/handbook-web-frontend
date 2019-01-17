@@ -1,7 +1,7 @@
 "use strict";
 /* exported showCompetenceListView */
 
-function showCompetenceListView(noHistory)
+function showCompetenceListView(noHistory: boolean)
 {
 	if(screen.width < 700)
 	{
@@ -15,13 +15,13 @@ function showCompetenceListView(noHistory)
 	refreshLogin();
 }
 
-function renderCompetenceListView(noHistory)
+function renderCompetenceListView(noHistory: boolean)
 {
 	var html = "<h1>Přehled kompetencí</h1>";
 	html += renderCompetenceList();
-	document.getElementById("content").innerHTML = html;
+	document.getElementById("content")!.innerHTML = html;
 
-	var nodes = document.getElementById("content").getElementsByTagName("a");
+	var nodes = document.getElementById("content")!.getElementsByTagName("a");
 	for(var l = 0; l < nodes.length; l++)
 	{
 		nodes[l].onclick = competenceBubbleDetailOnClick;
@@ -32,7 +32,7 @@ function renderCompetenceListView(noHistory)
 	{
 		history.pushState({}, "title", "/competence");
 	}
-	document.getElementById("offlineSwitch").style.display = "none";
+	document.getElementById("offlineSwitch")!.style.display = "none";
 }
 
 function renderCompetenceList()

@@ -1,7 +1,7 @@
 "use strict";
 /* exported showCompetenceView */
 
-function showCompetenceView(id, noHistory: boolean = false)
+function showCompetenceView(id: string, noHistory: boolean)
 {
 	if(screen.width < 700)
 	{
@@ -15,9 +15,9 @@ function showCompetenceView(id, noHistory: boolean = false)
 	refreshLogin();
 }
 
-function renderCompetenceView(id, noHistory)
+function renderCompetenceView(id: string, noHistory: boolean)
 {
-	var competence = {number: undefined, name: undefined, description: undefined, id: undefined};
+	var competence: FullCompetence = {name: "", number: 0, description: "", id: ""};
 	for(var i = 0; i < COMPETENCES.length; i++)
 	{
 		if(COMPETENCES[i].id === id)
@@ -44,9 +44,9 @@ function renderCompetenceView(id, noHistory)
 		}
 	}
 	html += renderCompetenceLessonList(lessonList);
-	document.getElementById("content").innerHTML = html;
+	document.getElementById("content")!.innerHTML = html;
 
-	var nodes = document.getElementById("content").getElementsByTagName("h3");
+	var nodes = document.getElementById("content")!.getElementsByTagName("h3");
 	for(var l = 0; l < nodes.length; l++)
 	{
 		(nodes[l].firstChild as HTMLElement).onclick = TOCLessonOnClick;
@@ -57,10 +57,10 @@ function renderCompetenceView(id, noHistory)
 	{
 		history.pushState({"id": id}, "title", "/competence/" + id + "/" + urlEscape(competence.number + "-" + competence.name));
 	}
-	document.getElementById("offlineSwitch").style.display = "none";
+	document.getElementById("offlineSwitch")!.style.display = "none";
 }
 
-function renderCompetenceLessonList(lessonList)
+function renderCompetenceLessonList(lessonList: Array<Lesson>)
 {
 	var html = "";
 	for(var n = 0; n < lessonList.length; n++)

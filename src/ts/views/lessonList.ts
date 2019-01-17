@@ -1,30 +1,30 @@
 "use strict";
 /* exported showLessonListView */
 
-function showLessonListView(noHistory)
+function showLessonListView(noHistory: boolean): void
 {
 	if(screen.width < 700)
 	{
 		window.navigationOpen = false;
 		reflowNavigation();
 	}
-	metadataEvent.addCallback(function()
+	metadataEvent.addCallback(function(): void
 		{
 			renderLessonListView(noHistory);
 		});
 	refreshLogin();
 }
 
-function renderLessonListView(noHistory)
+function renderLessonListView(noHistory: boolean): void
 {
 	var html = "<h1>" + CONFIG["site-name"] + "</h1>";
 	html += renderFieldList();
-	document.getElementById("content").innerHTML = html;
+	document.getElementById("content")!.innerHTML = html;
 
-	var nodes = document.getElementById("content").getElementsByTagName("a");
+	var nodes = document.getElementById("content")!.getElementsByTagName("a");
 	for(var l = 0; l < nodes.length; l++)
 	{
-		if(nodes[l].parentElement.tagName === "H2")
+		if(nodes[l].parentElement!.tagName === "H2")
 		{
 			nodes[l].onclick = TOCFieldOnClick;
 		}
@@ -39,10 +39,10 @@ function renderLessonListView(noHistory)
 	{
 		history.pushState({}, "title", "/");
 	}
-	document.getElementById("offlineSwitch").style.display = "none";
+	document.getElementById("offlineSwitch")!.style.display = "none";
 }
 
-function renderFieldList()
+function renderFieldList(): string
 {
 	var html = "";
 	for(var i = 0; i < FIELDS.length; i++)
@@ -62,7 +62,7 @@ function renderFieldList()
 	return html;
 }
 
-function renderLessonCompetences(lesson, secondLevel)
+function renderLessonCompetences(lesson: Lesson, secondLevel: string): string
 {
 	var html = "";
 	if(lesson.competences.length > 0)

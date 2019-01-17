@@ -21,23 +21,23 @@ function toggleLessonOffline()
 	}
 }
 
-function toggleCompetenceBubble(event)
+function toggleCompetenceBubble(event: MouseEvent)
 {
-	var element = event.target;
-	while(!element.classList.contains("competenceBubble") && (element = element.parentElement)) { /* Empty */ }
+	var element = event.target as HTMLElement;
+	while(!element.classList.contains("competenceBubble") && (element = element.parentElement!)) { /* Empty */ }
 	if(element.style.width !== "")
 	{
 		window.activeCompetence = null;
-		element.childNodes[1].style.width = "";
+		(element.childNodes[1] as HTMLElement).style.width = "";
 		element.style.width = "";
 		element.style.height = "";
-		element.firstChild.style.color = "";
+		(element.firstChild as HTMLElement).style.color = "";
 		element.style.borderColor = "";
 		element.style.backgroundColor = "";
 	}
 	else
 	{
-		var nodes = document.getElementById("content").getElementsByClassName("competenceBubble");
+		var nodes = document.getElementById("content")!.getElementsByClassName("competenceBubble");
 		for(var i = 0; i < nodes.length; i++)
 		{
 			(nodes[i].childNodes[1] as HTMLElement).style.width = "";
@@ -49,7 +49,7 @@ function toggleCompetenceBubble(event)
 		}
 		window.activeCompetence = element;
 		reflowCompetenceBubbles();
-		element.firstChild.style.color = CONFIG['custom-properties']['--accent-color'];
+		(element.firstChild as HTMLElement).style.color = CONFIG['custom-properties']['--accent-color'];
 		element.style.borderColor = CONFIG['custom-properties']['--accent-color'];
 		element.style.backgroundColor = "#f5f5f5";
 	}
@@ -67,8 +67,8 @@ function reflowCompetenceBubbles()
 	}
 }
 
-function competenceBubbleDetailOnClick(event)
+function competenceBubbleDetailOnClick(event: MouseEvent)
 {
-	showCompetenceView(event.target.dataset.id)
+	showCompetenceView((event.target as HTMLElement).dataset.id!, false)
 	return false;
 }

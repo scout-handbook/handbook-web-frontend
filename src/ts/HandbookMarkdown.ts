@@ -1,7 +1,7 @@
 "use strict";
 
 // Showdown extensions definitions
-var HandbookMarkdown = function()
+var HandbookMarkdown = function(): Array<object>
 {
 	var responsiveTablesBegin = {
 		type: "output",
@@ -25,11 +25,11 @@ var HandbookMarkdown = function()
 	};
 	var notes = {
 		type: "lang",
-		filter: function(text) {return filterCommand(text, "linky", notesCommand);}
+		filter: function(text: string): string {return filterCommand(text, "linky", notesCommand);}
 	};
 	var pagebreak = {
 		type: "lang",
-		filter: function(text) {return filterCommand(text, "novastrana", pagebreakCommand);}
+		filter: function(text: string): string {return filterCommand(text, "novastrana", pagebreakCommand);}
 	};
 	return [responsiveTablesBegin, responsiveTablesEnd, fullLinks, blankLinks, notes, pagebreak];
 }
@@ -38,11 +38,11 @@ var HandbookMarkdown = function()
 showdown.extension("HandbookMarkdown", HandbookMarkdown);
 
 // Generic command processing functions
-function filterCommand(text, commandName, command)
+function filterCommand(text: string, commandName: string, command: (args: Arguments) => string): string
 {
 	var lines = text.split("\n")
 	var ret = "";
-	for(var i = 0; i < lines.length; i++)
+	for(var i: number = 0; i < lines.length; i++)
 	{
 		if(lines[i].trim().substring(0, commandName.length + 1) === "!" + commandName)
 		{
@@ -58,7 +58,7 @@ function filterCommand(text, commandName, command)
 	return ret;
 }
 
-function getArgumentString(lines, current, commandName)
+function getArgumentString(lines: Array<string>, current: number, commandName: string): [string, number]
 {
 	var line = lines[current].trim();
 	var next = current;
@@ -94,17 +94,17 @@ function getArgumentString(lines, current, commandName)
 	return [argumentString, next];
 }
 
-function parseArgumentString(argumentString)
+function parseArgumentString(argumentString: string): Arguments
 {
-	var output = {};
-	var list = argumentString.split(",");
+	var output: Arguments = {};
+	var list: Array<string> = argumentString.split(",");
 	for(var i = 0; i < list.length; ++i)
 	{
 		if(list[i] === "")
 		{
 			continue;
 		}
-		var tuple = list[i].split("=");
+		var tuple: Array<string> = list[i].split("=");
 		if(tuple.length !== 2)
 		{
 			output[tuple[0]] = true;
@@ -118,13 +118,13 @@ function parseArgumentString(argumentString)
 }
 
 // Specific commands
-function notesCommand()
+function notesCommand(): string
 {
 	//return "<textarea class=\"notes\" placeholder=\"Tvoje poznámky\"></textarea>";
 	return "";
 }
 
-function pagebreakCommand()
+function pagebreakCommand(): string
 {
 	return "";
 }
