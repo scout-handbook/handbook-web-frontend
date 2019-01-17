@@ -1,21 +1,22 @@
 "use strict";
+/* global navigationOpen:true */
 /* exported showCompetenceListView */
 
-function showCompetenceListView(noHistory: boolean)
+function showCompetenceListView(noHistory: boolean): void
 {
 	if(screen.width < 700)
 	{
-		window.navigationOpen = false;
+		navigationOpen = false;
 		reflowNavigation();
 	}
-	metadataEvent.addCallback(function()
+	metadataEvent.addCallback(function(): void
 		{
 			renderCompetenceListView(noHistory);
 		});
 	refreshLogin();
 }
 
-function renderCompetenceListView(noHistory: boolean)
+function renderCompetenceListView(noHistory: boolean): void
 {
 	var html = "<h1>Přehled kompetencí</h1>";
 	html += renderCompetenceList();
@@ -35,7 +36,7 @@ function renderCompetenceListView(noHistory: boolean)
 	document.getElementById("offlineSwitch")!.style.display = "none";
 }
 
-function renderCompetenceList()
+function renderCompetenceList(): string
 {
 	var html = "";
 	for(var i = 0; i < COMPETENCES.length; i++)

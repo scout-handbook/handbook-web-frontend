@@ -3,5 +3,5 @@
 interface Lesson {
 	id: string;
 	name: string;
-	competences: Array<Competence>;
+	competences: Array<string>;
 }

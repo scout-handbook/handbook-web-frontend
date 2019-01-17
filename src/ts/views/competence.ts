@@ -1,23 +1,24 @@
 "use strict";
+/* global navigationOpen:true */
 /* exported showCompetenceView */
 
-function showCompetenceView(id: string, noHistory: boolean)
+function showCompetenceView(id: string, noHistory: boolean): void
 {
 	if(screen.width < 700)
 	{
-		window.navigationOpen = false;
+		navigationOpen = false;
 		reflowNavigation();
 	}
-	metadataEvent.addCallback(function()
+	metadataEvent.addCallback(function(): void
 		{
 			renderCompetenceView(id, noHistory);
 		});
 	refreshLogin();
 }
 
-function renderCompetenceView(id: string, noHistory: boolean)
+function renderCompetenceView(id: string, noHistory: boolean): void
 {
-	var competence: FullCompetence = {name: "", number: 0, description: "", id: ""};
+	var competence: Competence = {name: "", number: 0, description: "", id: ""};
 	for(var i = 0; i < COMPETENCES.length; i++)
 	{
 		if(COMPETENCES[i].id === id)
@@ -60,7 +61,7 @@ function renderCompetenceView(id: string, noHistory: boolean)
 	document.getElementById("offlineSwitch")!.style.display = "none";
 }
 
-function renderCompetenceLessonList(lessonList: Array<Lesson>)
+function renderCompetenceLessonList(lessonList: Array<Lesson>): string
 {
 	var html = "";
 	for(var n = 0; n < lessonList.length; n++)

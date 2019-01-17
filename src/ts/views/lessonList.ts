@@ -1,11 +1,12 @@
 "use strict";
+/* global navigationOpen:true */
 /* exported showLessonListView */
 
 function showLessonListView(noHistory: boolean): void
 {
 	if(screen.width < 700)
 	{
-		window.navigationOpen = false;
+		navigationOpen = false;
 		reflowNavigation();
 	}
 	metadataEvent.addCallback(function(): void

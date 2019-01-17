@@ -1,11 +1,12 @@
 "use strict";
+/* global navigationOpen:true */
 /* exported showFieldView */
 
 function showFieldView(id: string, noHistory: boolean): void
 {
 	if(screen.width < 700)
 	{
-		window.navigationOpen = false;
+		navigationOpen = false;
 		reflowNavigation();
 	}
 	metadataEvent.addCallback(function(): void
@@ -17,7 +18,7 @@ function showFieldView(id: string, noHistory: boolean): void
 
 function renderFieldView(id: string, noHistory: boolean): void
 {
-	var field: Field = {name: "", lessons: []};
+	var field: Field = {id: "", name: "", lessons: []};
 	for(var i = 0; i < FIELDS.length; i++)
 	{
 		if(FIELDS[i].id === id)
@@ -44,7 +45,7 @@ function renderFieldView(id: string, noHistory: boolean): void
 	document.getElementById("offlineSwitch")!.style.display = "none";
 }
 
-function renderFieldLessonList(field: Field)
+function renderFieldLessonList(field: Field): string
 {
 	var html = "";
 	for(var i = 0; i < field.lessons.length; i++)

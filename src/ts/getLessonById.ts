@@ -1,7 +1,7 @@
 "use strict";
 /* exported getLessonById */
 
-function getLessonById(id: string)
+function getLessonById(id: string): Lesson | undefined
 {
 	for(var i = 0; i < FIELDS.length; i++)
 	{

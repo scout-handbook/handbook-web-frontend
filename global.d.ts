@@ -1,14 +1,11 @@
-declare var FIELDS: any;
-declare var COMPETENCES: any;
-declare var CONFIG: any;
-declare var activeCompetence: any;
-declare var showdown: any;
-declare interface Window {
-	activeCompetence: any;
-	navigationOpen: any;
-}
-declare var metadataEvent: any;
-declare function refreshLogin(...a: any): any;
-declare function TOCLessonOnClick(...a: any): any;
-declare function TOCFieldOnClick(...a: any): any;
-declare function reflowNavigation(...a: any): any;
+declare var COMPETENCES: Array<Competence>;
+declare var CONFIG: Config;
+declare var FIELDS: Array<Field>;
+declare var activeCompetence: HTMLElement | undefined;
+declare var metadataEvent: AfterLoadEvent;
+declare var navigationOpen: boolean;
+declare var showdown: Showdown;
+declare function reflowNavigation(): void;
+declare function refreshLogin(): void;
+declare function TOCFieldOnClick(event: MouseEvent): boolean;
+declare function TOCLessonOnClick(event: MouseEvent): boolean;
