@@ -2,6 +2,11 @@
   "extends": "../tsconfig.json",
   "files": [
     "../global.d.ts",
+    "../src/ts/interfaces/Arguments.ts",
+    "../src/ts/interfaces/Competence.ts",
+    "../src/ts/interfaces/Field.ts",
+    "../src/ts/interfaces/FullCompetence.ts",
+    "../src/ts/interfaces/Lesson.ts",
     "../src/ts/tools/urlEscape.ts",
     "../src/ts/UI/lessonView.ts",
     "../src/ts/views/competence.ts",
