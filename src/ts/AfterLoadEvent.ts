@@ -2,12 +2,12 @@
 /* exported AfterLoadEvent */
 
 class AfterLoadEvent {
-	triggered: boolean;
-	threshold: number;
-	count: number;
-	callbacks: Array<(...args: Array<string>) => void>;
+	private triggered: boolean;
+	private threshold: number;
+	private count: number;
+	private callbacks: Array<(...args: Array<string>) => void>;
 
-	constructor(threshold: number)
+	public constructor(threshold: number)
 	{
 		this.triggered = false;
 		this.threshold = threshold;
@@ -15,7 +15,7 @@ class AfterLoadEvent {
 		this.callbacks = [];
 	}
 
-	addCallback(callback: (...args: Array<string>) => void): void
+	public addCallback(callback: (...args: Array<string>) => void): void
 		{
 			this.callbacks.push(callback);
 			if(this.triggered)
@@ -23,12 +23,12 @@ class AfterLoadEvent {
 				callback();
 			}
 		}
-	trigger(...args: Array<string>): void
+	public trigger(...args: Array<string>): void
 		{
 			this.count++;
 			this.retrigger.apply(this, args);
 		}
-	retrigger(...args: Array<string>): void
+	public retrigger(...args: Array<string>): void
 		{
 			if(this.count >= this.threshold)
 			{
