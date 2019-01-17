@@ -1,9 +1,9 @@
 "use strict";
 /* exported FIELDS, COMPETENCES, LOGINSTATE */
 
-var FIELDS;
-var COMPETENCES;
-var LOGINSTATE;
+var FIELDS: Array<Field>;
+var COMPETENCES: Array<Competence>;
+var LOGINSTATE: Loginstate;
 
 function main()
 {

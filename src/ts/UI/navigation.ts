@@ -7,14 +7,14 @@ var navigationOpen = true;
 function navigationSetup()
 {
 	window.addEventListener("resize", reflowNavigation)
-	document.getElementById("navCloseButton").onclick = toggleNavigation;
-	document.getElementById("overlay").onclick = toggleNavigation;
-	document.getElementById("lessonOverview").onclick = function()
+	document.getElementById("navCloseButton")!.onclick = toggleNavigation;
+	document.getElementById("overlay")!.onclick = toggleNavigation;
+	document.getElementById("lessonOverview")!.onclick = function()
 		{
 			showLessonListView();
 			return false;
 		}
-	document.getElementById("competenceOverview").onclick = function()
+	document.getElementById("competenceOverview")!.onclick = function()
 		{
 			showCompetenceListView();
 			return false;
@@ -32,7 +32,7 @@ function reflowNavigation()
 {
 	var main = (document.getElementsByTagName("main")[0] as HTMLElement).style;
 	var navBar = document.getElementsByTagName("nav")[0].style;
-	var overlay = document.getElementById("overlay").style;
+	var overlay = document.getElementById("overlay")!.style;
 	if(navigationOpen)
 	{
 		navBar.marginLeft = "0px"

@@ -1,5 +1,5 @@
 "use strict";
 
 interface AfterLoadEvent {
-	addCallback: (callback: () => void) => void;
+	addCallback: (callback: (response: string) => void) => void;
 }

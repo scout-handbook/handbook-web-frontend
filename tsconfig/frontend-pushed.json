@@ -2,6 +2,12 @@
   "extends": "../tsconfig.json",
   "files": [
     "../global2.d.ts",
+    "../src/ts/interfaces/Competence.ts",
+    "../src/ts/interfaces/Field.ts",
+    "../src/ts/interfaces/Lesson.ts",
+    "../src/ts/interfaces/Loginstate.ts",
+    "../src/ts/interfaces/RequestHeaders.ts",
+    "../src/ts/interfaces/ShowdownConverter.ts",
     "../src/ts/tools/cacheThenNetworkRequest.ts",
     "../src/ts/tools/request.ts",
     "../src/ts/UI/header.ts",
