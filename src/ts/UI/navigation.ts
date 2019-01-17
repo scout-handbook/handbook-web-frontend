@@ -4,17 +4,17 @@
 
 var navigationOpen = true;
 
-function navigationSetup()
+function navigationSetup(): void
 {
 	window.addEventListener("resize", reflowNavigation)
 	document.getElementById("navCloseButton")!.onclick = toggleNavigation;
 	document.getElementById("overlay")!.onclick = toggleNavigation;
-	document.getElementById("lessonOverview")!.onclick = function()
+	document.getElementById("lessonOverview")!.onclick = function(): boolean
 		{
 			showLessonListView();
 			return false;
 		}
-	document.getElementById("competenceOverview")!.onclick = function()
+	document.getElementById("competenceOverview")!.onclick = function(): boolean
 		{
 			showCompetenceListView();
 			return false;
@@ -22,13 +22,13 @@ function navigationSetup()
 	reflowNavigation();
 }
 
-function toggleNavigation()
+function toggleNavigation(): void
 {
 	navigationOpen = !navigationOpen;
 	reflowNavigation();
 }
 
-function reflowNavigation()
+function reflowNavigation(): void
 {
 	var main = (document.getElementsByTagName("main")[0] as HTMLElement).style;
 	var navBar = document.getElementsByTagName("nav")[0].style;

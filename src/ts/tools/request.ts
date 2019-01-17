@@ -1,11 +1,11 @@
 "use strict";
 /* exported request */
 
-function request(url: string, query: string, headers: RequestHeaders)
+function request(url: string, query: string, headers: RequestHeaders): AfterLoadEvent
 {
 	var ret = new AfterLoadEvent(1);
 	var xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = function()
+	xhttp.onreadystatechange = function(): void
 		{
 			if(this.readyState === 4)
 			{

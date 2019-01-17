@@ -1,7 +1,7 @@
 "use strict";
 /* exported historySetup */
 
-function historySetup()
+function historySetup(): void
 {
 	window.onpopstate = historyPopback;
 	if(window.location.pathname === "/competence")
@@ -21,7 +21,7 @@ function historySetup()
 	else if(window.location.pathname.substring(0, 8) === "/lesson/")
 	{
 		var lessonId = window.location.pathname.substring(8).split("/")[0];
-		metadataEvent.addCallback(function()
+		metadataEvent.addCallback(function(): void
 			{
 				showLessonView(lessonId, false);
 			});
@@ -32,7 +32,7 @@ function historySetup()
 	}
 }
 
-function historyPopback()
+function historyPopback(): void
 {
 	if(history.state)
 	{

@@ -1,17 +1,17 @@
 "use strict";
 /* exported cacheThenNetworkRequest */
 
-function cacheThenNetworkRequest(url: string, query: string, callback: (response: string, cacheDataReceived: boolean) => void)
+function cacheThenNetworkRequest(url: string, query: string, callback: (response: string, cacheDataReceived: boolean) => void): void
 {
 	query = typeof query !== 'undefined' ? query : "";
 	var networkDataReceived = false;
 	var cacheDataReceived = false;
-	request(url, query, {}).addCallback(function(response: string)
+	request(url, query, {}).addCallback(function(response: string): void
 		{
 			networkDataReceived = true;
 			callback(response, cacheDataReceived);
 		});
-	request(url, query, {"Accept": "x-cache/only"}).addCallback(function(response: string)
+	request(url, query, {"Accept": "x-cache/only"}).addCallback(function(response: string): void
 		{
 			if(!networkDataReceived)
 			{
