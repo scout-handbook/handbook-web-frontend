@@ -23,7 +23,7 @@ function historySetup()
 		var lessonId = window.location.pathname.substring(8).split("/")[0];
 		metadataEvent.addCallback(function()
 			{
-				showLessonView(lessonId);
+				showLessonView(lessonId, false);
 			});
 	}
 	else

@@ -181,19 +181,7 @@ gulp.task('build:js', function() {
 		bundle('serviceworker', gulp.src([
 			'src/js/serviceworker.js'
 		])),
-		bundle('frontend-pushed', gulp.src([
-			'src/js/tools/cacheThenNetworkRequest.js',
-			'src/js/tools/request.js',
-			'src/js/UI/header.js',
-			'src/js/UI/navigation.js',
-			'src/js/UI/TOC.js',
-			'src/js/views/lesson.js',
-			'src/js/AfterLoadEvent.js',
-			'src/js/authentication.js',
-			'src/js/history.js',
-			'src/js/main.js',
-			'src/js/metadata.js'
-		]), true),
+		tsBundle('frontend-pushed', true),
 		tsBundle('frontend')
 	);
 });

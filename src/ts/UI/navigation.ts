@@ -30,7 +30,7 @@ function toggleNavigation()
 
 function reflowNavigation()
 {
-	var main = document.getElementsByTagName("main")[0].style;
+	var main = (document.getElementsByTagName("main")[0] as HTMLElement).style;
 	var navBar = document.getElementsByTagName("nav")[0].style;
 	var overlay = document.getElementById("overlay").style;
 	if(navigationOpen)
