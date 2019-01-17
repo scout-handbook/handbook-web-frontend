@@ -6,7 +6,7 @@ var loginstateEvent = new AfterLoadEvent(1);
 
 function metadataSetup()
 {
-	cacheThenNetworkRequest(CONFIG.apiuri + "/lesson", undefined, function(response, second)
+	cacheThenNetworkRequest(CONFIG.apiuri + "/lesson", "", function(response, second)
 		{
 			window.FIELDS = response;
 			if(second)
@@ -18,7 +18,7 @@ function metadataSetup()
 				metadataEvent.trigger();
 			}
 		});
-	cacheThenNetworkRequest(CONFIG.apiuri + "/competence", undefined, function(response, second)
+	cacheThenNetworkRequest(CONFIG.apiuri + "/competence", "", function(response, second)
 		{
 			window.COMPETENCES = response;
 			if(second)

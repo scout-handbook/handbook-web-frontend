@@ -1,7 +1,7 @@
 "use strict";
 /* exported request */
 
-function request(url, query, headers)
+function request(url: string, query: string, headers: RequestHeaders)
 {
 	var ret = new AfterLoadEvent(1);
 	var xhttp = new XMLHttpRequest();

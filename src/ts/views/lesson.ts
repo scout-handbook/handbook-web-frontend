@@ -2,8 +2,8 @@
 /* global activeCompetence:true */
 /* exported activeCompetence, lessonViewSetup, showLessonView */
 
-var converter;
-var activeCompetence = null;
+var converter: ShowdownConverter;
+var activeCompetence: HTMLElement | null = null;
 
 function lessonViewSetup()
 {
@@ -13,9 +13,9 @@ function lessonViewSetup()
 	window.addEventListener("resize", reflowCompetenceBubbles)
 }
 
-function showLessonView(id, noHistory)
+function showLessonView(id: string, noHistory: boolean)
 {
-	document.getElementById("content").innerHTML = "<div id=\"embeddedSpinner\"></div>";
+	document.getElementById("content")!.innerHTML = "<div id=\"embeddedSpinner\"></div>";
 	if(screen.width < 700)
 	{
 		window.navigationOpen = false;
@@ -37,7 +37,7 @@ function showLessonView(id, noHistory)
 	}
 	else
 	{
-		cacheThenNetworkRequest(CONFIG.apiuri + "/lesson/" + id, undefined, function(response, second)
+		cacheThenNetworkRequest(CONFIG.apiuri + "/lesson/" + id, "", function(response: string, second: boolean)
 			{
 				metadataEvent.addCallback(function()
 					{
@@ -48,7 +48,7 @@ function showLessonView(id, noHistory)
 	refreshLogin();
 }
 
-function renderLessonView(id, markdown, noHistory, second)
+function renderLessonView(id: string, markdown: string, noHistory: boolean, second: boolean)
 {
 	var lesson = getLessonById(id);
 	var competences = [];
@@ -66,13 +66,13 @@ function renderLessonView(id, markdown, noHistory, second)
 		html += "<span class=\"competenceBubble\"><span class=\"competenceBubbleNumber\"><p>" + competences[l].number + "</p></span><span class=\"competenceBubbleText\">" + competences[l].name + "</span><span class=\"competenceBubbleLessons\"><a title=\"Detail kompetence\" href=\"enableJS.html\" data-id=\"" + competences[l].id + "\">Detail kompetence</a></span></span>";
 	}
 	html += filterXSS(converter.makeHtml(markdown), xssOptions());
-	document.getElementById("content").innerHTML = html;
-	var nodes = document.getElementById("content").getElementsByClassName("competenceBubble");
+	document.getElementById("content")!.innerHTML = html;
+	var nodes = document.getElementById("content")!.getElementsByClassName("competenceBubble");
 	for(var m = 0; m < nodes.length; m++)
 	{
 		(nodes[m] as HTMLElement).onclick = toggleCompetenceBubble;
 	}
-	nodes = document.getElementById("content").getElementsByClassName("competenceBubbleLessons");
+	nodes = document.getElementById("content")!.getElementsByClassName("competenceBubbleLessons");
 	for(var n = 0; n < nodes.length; n++)
 	{
 		(nodes[n].firstChild as HTMLElement).onclick = competenceBubbleDetailOnClick;
@@ -102,6 +102,6 @@ function renderLessonView(id, markdown, noHistory, second)
 						}
 					});
 			});
-		document.getElementById("offlineSwitch").style.display = "block";
+		document.getElementById("offlineSwitch")!.style.display = "block";
 	}
 }

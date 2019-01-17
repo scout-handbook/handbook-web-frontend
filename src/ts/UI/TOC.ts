@@ -27,11 +27,11 @@ function renderTOC()
 			}
 		}
 	}
-	document.getElementById("navigation").innerHTML = html;
-	var nodes = document.getElementById("navigation").getElementsByTagName("a");
+	document.getElementById("navigation")!.innerHTML = html;
+	var nodes = document.getElementById("navigation")!.getElementsByTagName("a");
 	for(var l = 0; l < nodes.length; l++)
 	{
-		if(nodes[l].parentElement.tagName === "H1")
+		if(nodes[l].parentElement!.tagName === "H1")
 		{
 			nodes[l].onclick = TOCFieldOnClick;
 		}
@@ -43,14 +43,14 @@ function renderTOC()
 	document.getElementsByTagName("nav")[0].style.transition = "margin-left 0.3s ease";
 }
 
-function TOCFieldOnClick(event)
+function TOCFieldOnClick(event: MouseEvent)
 {
-	showFieldView(event.target.dataset.id);
+	showFieldView((event.target as HTMLElement).dataset.id);
 	return false;
 }
 
-function TOCLessonOnClick(event)
+function TOCLessonOnClick(event: MouseEvent)
 {
-	showLessonView(event.target.dataset.id, false);
+	showLessonView((event.target as HTMLElement).dataset.id!, false);
 	return false;
 }
