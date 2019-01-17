@@ -1,3 +1,5 @@
+/* eslint strict: "off", no-unused-vars: "off" */
+
 declare var CONFIG: Config;
 declare var showdown: Showdown;
 declare var WebFont: WebFont;
