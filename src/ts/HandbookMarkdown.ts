@@ -42,7 +42,7 @@ function filterCommand(text: string, commandName: string, command: (args: Argume
 {
 	var lines = text.split("\n")
 	var ret = "";
-	for(var i: number = 0; i < lines.length; i++)
+	for(var i = 0; i < lines.length; i++)
 	{
 		if(lines[i].trim().substring(0, commandName.length + 1) === "!" + commandName)
 		{
