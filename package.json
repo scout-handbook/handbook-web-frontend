@@ -44,6 +44,7 @@
     "stylelint-config-standard": "^18.2.0",
     "stylelint-no-unsupported-browser-features": "^3.0.2",
     "typescript": "^3.2.2",
+    "typescript-eslint-parser": "^21.0.2",
     "uglify-js": "^3.4.9",
     "yargs": "^12.0.5"
   },
