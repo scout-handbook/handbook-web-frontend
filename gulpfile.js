@@ -35,7 +35,7 @@ function getConfig() {
 }
 
 gulp.task('eslint', function() {
-	return gulp.src(['**/*.js', '!node_modules/**', '!dist/**'])
+	return gulp.src(['**/*.js', '**/*.ts', '!node_modules/**', '!dist/**'])
 		.pipe(eslint())
 		.pipe(eslint.format())
 		.pipe(eslint.failAfterError());
