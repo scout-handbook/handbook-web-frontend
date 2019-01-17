@@ -3,7 +3,7 @@
 
 var FIELDS: Array<Field>;
 var COMPETENCES: Array<Competence>;
-var LOGINSTATE: Loginstate;
+var LOGINSTATE: Loginstate | null;
 
 function main(): void
 {

@@ -10,7 +10,7 @@ function showAccountInfo(): void
 {
 	loginstateEvent.addCallback(function(): void
 		{
-			if(window.LOGINSTATE)
+			if(LOGINSTATE)
 			{
 				renderUserAccount();
 			}
@@ -23,8 +23,8 @@ function showAccountInfo(): void
 
 function renderUserAccount(): void
 {
-	document.getElementById("userName")!.innerHTML = LOGINSTATE.name;
-	if(LOGINSTATE.role === "editor" || LOGINSTATE.role === "administrator" || LOGINSTATE.role === "superuser")
+	document.getElementById("userName")!.innerHTML = LOGINSTATE!.name;
+	if(LOGINSTATE!.role === "editor" || LOGINSTATE!.role === "administrator" || LOGINSTATE!.role === "superuser")
 	{
 		document.getElementById("logLink")!.innerHTML = "<a href=\"enableJS.html\">Odhlásit</a><a href=\"/admin\" id=\"adminLink\">Administrace</a>";
 	}
@@ -33,9 +33,9 @@ function renderUserAccount(): void
 		document.getElementById("logLink")!.innerHTML = "<a href=\"enableJS.html\">Odhlásit</a>";
 	}
 	(document.getElementById("logLink")!.firstChild as HTMLElement).onclick = logoutRedirect;
-	if(LOGINSTATE.hasOwnProperty("avatar"))
+	if(LOGINSTATE!.hasOwnProperty("avatar"))
 	{
-		(document.getElementById("userAvatar") as HTMLImageElement).src = "data:image/png;base64," + LOGINSTATE.avatar;
+		(document.getElementById("userAvatar") as HTMLImageElement).src = "data:image/png;base64," + LOGINSTATE!.avatar;
 	}
 	else
 	{
@@ -65,7 +65,7 @@ function logoutRedirect(): boolean
 
 function refreshLogin(): void
 {
-	if(window.LOGINSTATE)
+	if(LOGINSTATE)
 	{
 		var allCookies = "; " + document.cookie;
 		var parts = allCookies.split("; skautis_timeout=");

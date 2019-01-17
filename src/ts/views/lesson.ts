@@ -2,7 +2,7 @@
 /* global activeCompetence:true */
 /* exported activeCompetence, lessonViewSetup, showLessonView */
 
-var converter: ShowdownConverter;
+var converter: Converter;
 var activeCompetence: HTMLElement | null = null;
 
 function lessonViewSetup(): void
@@ -18,14 +18,14 @@ function showLessonView(id: string, noHistory: boolean): void
 	document.getElementById("content")!.innerHTML = "<div id=\"embeddedSpinner\"></div>";
 	if(screen.width < 700)
 	{
-		window.navigationOpen = false;
+		navigationOpen = false;
 		reflowNavigation();
 	}
 	if(!getLessonById(id))
 	{
 		loginstateEvent.addCallback(function(): void
 			{
-				if(window.LOGINSTATE)
+				if(LOGINSTATE)
 				{
 					window.location.href = CONFIG['frontend-uri'] + "/404.html";
 				}
@@ -50,7 +50,7 @@ function showLessonView(id: string, noHistory: boolean): void
 
 function renderLessonView(id: string, markdown: string, noHistory: boolean, second: boolean): void
 {
-	var lesson = getLessonById(id);
+	var lesson = getLessonById(id)!;
 	var competences = [];
 	for(var k = 0; k < COMPETENCES.length; k++)
 	{
