@@ -1,4 +1,5 @@
 "use strict";
+/* global COMPETENCES:true FIELDS:true LOGINSTATE:true */
 /* exported metadataSetup */
 
 var metadataEvent = new AfterLoadEvent(2);
