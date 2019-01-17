@@ -29,7 +29,7 @@ function startsWith(haystack, needle)
 	return haystack.substr(0, needle.length) === needle;
 }
 
-self.addEventListener("install", function(event)
+self.addEventListener("install", function(event: ExtendableEvent)
 	{
 		event.waitUntil(
 			caches.open(CACHE).then(function(cache)
@@ -40,7 +40,7 @@ self.addEventListener("install", function(event)
 		);
 	});
 
-self.addEventListener("fetch", function(event)
+self.addEventListener("fetch", function(event: FetchEvent)
 	{
 		var url = new URL(event.request.url); // eslint-disable-line compat/compat
 		if(cacheUpdating.indexOf(url.pathname) !== -1)

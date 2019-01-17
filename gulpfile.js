@@ -165,22 +165,21 @@ gulp.task('build:js', function() {
 	function tsBundle(name, addConfig) {
 		var tsProject = ts.createProject("tsconfig/" + name + ".json");
 		var ret = tsProject.src()
+			.pipe(inject.replace('\\"\\"\\/\\*INJECTED\\-VERSION\\*\\/', '"' + pkg.version + '"'))
 			.pipe(sourcemaps.init())
 			.pipe(tsProject())
 			.pipe(concat(name + '.min.js'));
 		if(addConfig) {
 			ret = ret.pipe(inject.prepend('"use strict";\nvar CONFIG = JSON.parse(\'' + JSON.stringify(getConfig()) + '\');\n'))
 		}
-		return ret.pipe(inject.replace('\\"\\"\\/\\*INJECTED\\-VERSION\\*\\/', '"' + pkg.version + '"'))
+		return ret
 			//.pipe(gulp.dest('dist/'));
 			.pipe(minify({ie8: true}))
 			.pipe(sourcemaps.write('./'))
 			.pipe(gulp.dest('dist/'));
 	}
 	return merge(
-		bundle('serviceworker', gulp.src([
-			'src/js/serviceworker.js'
-		])),
+		tsBundle('serviceworker'),
 		tsBundle('frontend-pushed', true),
 		tsBundle('frontend')
 	);
