@@ -15,7 +15,7 @@ class AfterLoadEvent {
 		this.callbacks = [];
 	}
 
-	addCallback(callback: (...args: Array<any>) => void): void
+	addCallback(callback: (...args: Array<string>) => void): void
 		{
 			this.callbacks.push(callback);
 			if(this.triggered)

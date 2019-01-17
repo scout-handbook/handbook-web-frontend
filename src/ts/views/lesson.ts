@@ -37,11 +37,11 @@ function showLessonView(id: string, noHistory: boolean): void
 	}
 	else
 	{
-		cacheThenNetworkRequest(CONFIG.apiuri + "/lesson/" + id, "", function(response: string, second: boolean): void
+		cacheThenNetworkRequest(CONFIG.apiuri + "/lesson/" + id, "", function(response: string|object, second: boolean): void
 			{
 				metadataEvent.addCallback(function(): void
 					{
-						renderLessonView(id, response, noHistory, second);
+						renderLessonView(id, response as string, noHistory, second);
 					});
 			});
 	}
