@@ -1,5 +1,5 @@
 "use strict";
-/* global activeCompetence:true */
+/* global activeCompetence:true, navigationOpen:true */
 /* exported activeCompetence, lessonViewSetup, showLessonView */
 
 var converter: Converter;
