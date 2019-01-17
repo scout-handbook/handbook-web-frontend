@@ -6,12 +6,25 @@
 	"env": {
 		"browser": true
 	},
-	"plugins": ["compat"],
+	"plugins": [
+		"compat",
+		"typescript"
+	],
 	"extends": "eslint:recommended",
 	"rules": {
 		"compat/compat": "warn",
 		"no-warning-comments": "warn",
-		"strict": ["error", "global"]
+		"strict": ["error", "global"],
+		"typescript/class-name-casing": "error",
+		"typescript/explicit-function-return-type": "error",
+		"typescript/member-delimiter-style": "error",
+		"typescript/no-angle-bracket-type-assertion": "error",
+		"typescript/no-array-constructor": "error",
+		"typescript/no-empty-interface": "error",
+		"typescript/no-explicit-any": "error",
+		"typescript/no-non-null-assertion": "error",
+		"typescript/no-unused-vars": "error",
+		"typescript/type-annotation-spacing": "error"
 	},
 	"globals": {
 		"COMPETENCES": false,
