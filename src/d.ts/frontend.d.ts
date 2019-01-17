@@ -1,3 +1,5 @@
+/* eslint strict: "off", no-unused-vars: "off" */
+
 declare var COMPETENCES: Array<Competence>;
 declare var CONFIG: Config;
 declare var FIELDS: Array<Field>;

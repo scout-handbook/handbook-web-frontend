@@ -1,7 +1,7 @@
 {
   "extends": "../tsconfig.json",
   "files": [
-    "../global2.d.ts",
+    "../src/d.ts/frontend-pushed.d.ts",
     "../src/ts/interfaces/Competence.ts",
     "../src/ts/interfaces/Config.ts",
     "../src/ts/interfaces/Converter.ts",

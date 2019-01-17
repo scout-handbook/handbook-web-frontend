@@ -1,7 +1,7 @@
 {
   "extends": "../tsconfig.json",
   "files": [
-    "../global.d.ts",
+    "../src/d.ts/frontend.d.ts",
     "../src/ts/interfaces/AfterLoadEvent.ts",
     "../src/ts/interfaces/Arguments.ts",
     "../src/ts/interfaces/Competence.ts",
