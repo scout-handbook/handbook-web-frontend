@@ -1,21 +1,15 @@
-declare var CONFIG: any;
-declare var showdown: any;
-declare var WebFont: any;
-declare function competenceBubbleDetailOnClick(...a: any): any;
-declare function filterXSS(...a: any): any;
-declare function getLessonById(...a: any): any;
-declare function reflowCompetenceBubbles(...a: any): any;
-declare function showCompetenceListView(...a: any): any;
-declare function showCompetenceView(...a: any): any;
-declare function showFieldView(...a: any): any;
-declare function showLessonListView(...a: any): any;
-declare function toggleCompetenceBubble(...a: any): any;
-declare function toggleLessonOffline(...a: any): any;
-declare function urlEscape(...a: any): any;
-declare function xssOptions(...a: any): any;
-declare interface Window {
-	COMPETENCES: any;
-	FIELDS: any;
-	LOGINSTATE: any;
-	navigationOpen: any;
-}
+declare var CONFIG: Config;
+declare var showdown: Showdown;
+declare var WebFont: WebFont;
+declare function competenceBubbleDetailOnClick(event: MouseEvent): boolean;
+declare function filterXSS(html: string, options: XSSOptions): string;
+declare function getLessonById(id: string): Lesson | null;
+declare function reflowCompetenceBubbles(): void;
+declare function showCompetenceListView(noHistory: boolean): void;
+declare function showCompetenceView(id: string, noHistory: boolean): void;
+declare function showFieldView(id: string, noHistory: boolean): void;
+declare function showLessonListView(noHistory: boolean): void;
+declare function toggleCompetenceBubble(event: MouseEvent): void;
+declare function toggleLessonOffline(): void;
+declare function urlEscape(str: string): string;
+declare function xssOptions(): XSSOptions;

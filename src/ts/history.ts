@@ -6,17 +6,17 @@ function historySetup(): void
 	window.onpopstate = historyPopback;
 	if(window.location.pathname === "/competence")
 	{
-		showCompetenceListView();
+		showCompetenceListView(false);
 	}
 	else if(window.location.pathname.substring(0, 12) === "/competence/")
 	{
 		var competenceId = window.location.pathname.substring(12).split("/")[0];
-		showCompetenceView(competenceId);
+		showCompetenceView(competenceId, false);
 	}
 	else if(window.location.pathname.substring(0, 7) === "/field/")
 	{
 		var fieldId = window.location.pathname.substring(7).split("/")[0];
-		showFieldView(fieldId);
+		showFieldView(fieldId, false);
 	}
 	else if(window.location.pathname.substring(0, 8) === "/lesson/")
 	{
@@ -28,7 +28,7 @@ function historySetup(): void
 	}
 	else
 	{
-		showLessonListView();
+		showLessonListView(false);
 	}
 }
 

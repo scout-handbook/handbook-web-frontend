@@ -45,7 +45,7 @@ function renderTOC(): void
 
 function TOCFieldOnClick(event: MouseEvent): boolean
 {
-	showFieldView((event.target as HTMLElement).dataset.id);
+	showFieldView((event.target as HTMLElement).dataset.id!, false);
 	return false;
 }
 

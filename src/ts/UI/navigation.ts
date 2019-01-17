@@ -11,12 +11,12 @@ function navigationSetup(): void
 	document.getElementById("overlay")!.onclick = toggleNavigation;
 	document.getElementById("lessonOverview")!.onclick = function(): boolean
 		{
-			showLessonListView();
+			showLessonListView(false);
 			return false;
 		}
 	document.getElementById("competenceOverview")!.onclick = function(): boolean
 		{
-			showCompetenceListView();
+			showCompetenceListView(false);
 			return false;
 		}
 	reflowNavigation();

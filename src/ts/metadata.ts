@@ -8,7 +8,7 @@ function metadataSetup(): void
 {
 	cacheThenNetworkRequest(CONFIG.apiuri + "/lesson", "", function(response, second): void
 		{
-			window.FIELDS = response;
+			FIELDS = response as Array<Field>;
 			if(second)
 			{
 				metadataEvent.retrigger();
@@ -20,7 +20,7 @@ function metadataSetup(): void
 		});
 	cacheThenNetworkRequest(CONFIG.apiuri + "/competence", "", function(response, second): void
 		{
-			window.COMPETENCES = response;
+			COMPETENCES = response as Array<Competence>;
 			if(second)
 			{
 				metadataEvent.retrigger();
@@ -35,19 +35,19 @@ function metadataSetup(): void
 		{
 			if(this.readyState === 4)
 			{
-				var response = {status: undefined, response: undefined};
+				var response = {status: undefined, response: null};
 				if(this.responseText)
 				{
 					response = JSON.parse(this.responseText);
 				}
 				if(response.status === 200)
 				{
-					window.LOGINSTATE = response.response;
+					LOGINSTATE = response.response;
 					loginstateEvent.trigger();
 				}
 				else if(response.status === 401)
 				{
-					window.LOGINSTATE = undefined;
+					LOGINSTATE = null;
 					loginstateEvent.trigger();
 				}
 			}
