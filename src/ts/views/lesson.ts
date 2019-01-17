@@ -5,7 +5,7 @@
 var converter: ShowdownConverter;
 var activeCompetence: HTMLElement | null = null;
 
-function lessonViewSetup()
+function lessonViewSetup(): void
 {
 	converter = new showdown.Converter({extensions: ["HandbookMarkdown"]});
 	converter.setOption("noHeaderId", "true");
@@ -13,7 +13,7 @@ function lessonViewSetup()
 	window.addEventListener("resize", reflowCompetenceBubbles)
 }
 
-function showLessonView(id: string, noHistory: boolean)
+function showLessonView(id: string, noHistory: boolean): void
 {
 	document.getElementById("content")!.innerHTML = "<div id=\"embeddedSpinner\"></div>";
 	if(screen.width < 700)
@@ -23,7 +23,7 @@ function showLessonView(id: string, noHistory: boolean)
 	}
 	if(!getLessonById(id))
 	{
-		loginstateEvent.addCallback(function()
+		loginstateEvent.addCallback(function(): void
 			{
 				if(window.LOGINSTATE)
 				{
@@ -37,9 +37,9 @@ function showLessonView(id: string, noHistory: boolean)
 	}
 	else
 	{
-		cacheThenNetworkRequest(CONFIG.apiuri + "/lesson/" + id, "", function(response: string, second: boolean)
+		cacheThenNetworkRequest(CONFIG.apiuri + "/lesson/" + id, "", function(response: string, second: boolean): void
 			{
-				metadataEvent.addCallback(function()
+				metadataEvent.addCallback(function(): void
 					{
 						renderLessonView(id, response, noHistory, second);
 					});
@@ -48,7 +48,7 @@ function showLessonView(id: string, noHistory: boolean)
 	refreshLogin();
 }
 
-function renderLessonView(id: string, markdown: string, noHistory: boolean, second: boolean)
+function renderLessonView(id: string, markdown: string, noHistory: boolean, second: boolean): void
 {
 	var lesson = getLessonById(id);
 	var competences = [];
@@ -88,9 +88,9 @@ function renderLessonView(id: string, markdown: string, noHistory: boolean, seco
 	}
 	if("serviceWorker" in navigator)
 	{
-		caches.open(CONFIG.cache).then(function(cache)
+		caches.open(CONFIG.cache).then(function(cache): void
 			{
-				cache.match(CONFIG.apiuri + "/lesson/" + id).then(function(response)
+				cache.match(CONFIG.apiuri + "/lesson/" + id).then(function(response): void
 					{
 						if(response === undefined)
 						{

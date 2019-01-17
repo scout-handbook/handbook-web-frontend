@@ -1,14 +1,14 @@
 "use strict";
 /* exported authenticationSetup, refreshLogin */
 
-function authenticationSetup()
+function authenticationSetup(): void
 {
 	showAccountInfo();
 }
 
-function showAccountInfo()
+function showAccountInfo(): void
 {
-	loginstateEvent.addCallback(function()
+	loginstateEvent.addCallback(function(): void
 		{
 			if(window.LOGINSTATE)
 			{
@@ -21,7 +21,7 @@ function showAccountInfo()
 		});
 }
 
-function renderUserAccount()
+function renderUserAccount(): void
 {
 	document.getElementById("userName")!.innerHTML = LOGINSTATE.name;
 	if(LOGINSTATE.role === "editor" || LOGINSTATE.role === "administrator" || LOGINSTATE.role === "superuser")
@@ -43,7 +43,7 @@ function renderUserAccount()
 	}
 }
 
-function renderLoginForm()
+function renderLoginForm(): void
 {
 	document.getElementById("userName")!.innerHTML = "Uživatel nepřihlášen";
 	document.getElementById("logLink")!.innerHTML = "<a href=\"enableJS.html\">Přihlásit</a>";
@@ -51,19 +51,19 @@ function renderLoginForm()
 	(document.getElementById("userAvatar") as HTMLImageElement).src = CONFIG['frontend-uri'] + "/avatar.png";
 }
 
-function loginRedirect()
+function loginRedirect(): boolean
 {
 	window.location.href = CONFIG.apiuri + "/login?return-uri=" + encodeURIComponent(window.location.href);
 	return false;
 }
 
-function logoutRedirect()
+function logoutRedirect(): boolean
 {
 	window.location.href = CONFIG.apiuri + "/logout";
 	return false;
 }
 
-function refreshLogin()
+function refreshLogin(): void
 {
 	if(window.LOGINSTATE)
 	{

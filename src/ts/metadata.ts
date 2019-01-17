@@ -4,9 +4,9 @@
 var metadataEvent = new AfterLoadEvent(2);
 var loginstateEvent = new AfterLoadEvent(1);
 
-function metadataSetup()
+function metadataSetup(): void
 {
-	cacheThenNetworkRequest(CONFIG.apiuri + "/lesson", "", function(response, second)
+	cacheThenNetworkRequest(CONFIG.apiuri + "/lesson", "", function(response, second): void
 		{
 			window.FIELDS = response;
 			if(second)
@@ -18,7 +18,7 @@ function metadataSetup()
 				metadataEvent.trigger();
 			}
 		});
-	cacheThenNetworkRequest(CONFIG.apiuri + "/competence", "", function(response, second)
+	cacheThenNetworkRequest(CONFIG.apiuri + "/competence", "", function(response, second): void
 		{
 			window.COMPETENCES = response;
 			if(second)
@@ -31,7 +31,7 @@ function metadataSetup()
 			}
 		});
 	var xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = function()
+	xhttp.onreadystatechange = function(): void
 		{
 			if(this.readyState === 4)
 			{

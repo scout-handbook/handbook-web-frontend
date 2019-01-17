@@ -5,7 +5,7 @@ var FIELDS: Array<Field>;
 var COMPETENCES: Array<Competence>;
 var LOGINSTATE: Loginstate;
 
-function main()
+function main(): void
 {
 	navigationSetup();
 	headerSetup();
