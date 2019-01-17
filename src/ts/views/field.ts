@@ -1,23 +1,23 @@
 "use strict";
 /* exported showFieldView */
 
-function showFieldView(id, noHistory)
+function showFieldView(id: string, noHistory: boolean): void
 {
 	if(screen.width < 700)
 	{
 		window.navigationOpen = false;
 		reflowNavigation();
 	}
-	metadataEvent.addCallback(function()
+	metadataEvent.addCallback(function(): void
 		{
 			renderFieldView(id, noHistory);
 		});
 	refreshLogin();
 }
 
-function renderFieldView(id, noHistory)
+function renderFieldView(id: string, noHistory: boolean): void
 {
-	var field = {name: undefined};
+	var field: Field = {name: "", lessons: []};
 	for(var i = 0; i < FIELDS.length; i++)
 	{
 		if(FIELDS[i].id === id)
@@ -28,23 +28,23 @@ function renderFieldView(id, noHistory)
 	}
 	var html = "<h1>" + field.name + "</h1>";
 	html += renderFieldLessonList(field);
-	document.getElementById("content").innerHTML = html;
+	document.getElementById("content")!.innerHTML = html;
 
-	var nodes = document.getElementById("content").getElementsByTagName("h3");
+	var nodes = document.getElementById("content")!.getElementsByTagName("h3");
 	for(var l = 0; l < nodes.length; l++)
 	{
 		(nodes[l].firstChild as HTMLElement).onclick = TOCLessonOnClick;
 	}
 
 	document.getElementsByTagName("main")[0].scrollTop = 0;
-	if(!noHistory)
+	if(!noHistory)0
 	{
 		history.pushState({"id": id}, "title", "/field/" + id + "/" + urlEscape(field.name));
 	}
-	document.getElementById("offlineSwitch").style.display = "none";
+	document.getElementById("offlineSwitch")!.style.display = "none";
 }
 
-function renderFieldLessonList(field)
+function renderFieldLessonList(field: Field)
 {
 	var html = "";
 	for(var i = 0; i < field.lessons.length; i++)
