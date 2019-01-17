@@ -22,7 +22,6 @@
 		"typescript/no-array-constructor": "error",
 		"typescript/no-empty-interface": "error",
 		"typescript/no-explicit-any": "error",
-		"typescript/no-non-null-assertion": "error",
 		"typescript/no-unused-vars": "error",
 		"typescript/type-annotation-spacing": "error"
 	},
@@ -81,6 +80,7 @@
 		"mainPageTab": false,
 		"metadataEvent": false,
 		"metadataSetup": false,
+		"navigationOpen": false,
 		"navigationSetup": false,
 		"parseBoolForm": false,
 		"parseVersion": false,

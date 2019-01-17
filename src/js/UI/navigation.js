@@ -1,4 +1,5 @@
 "use strict";
+/* global navigationOpen:true */
 /* exported navigationSetup */
 
 var navigationOpen = true;

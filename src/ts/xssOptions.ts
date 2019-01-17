@@ -3,7 +3,7 @@
 
 function xssOptions(): {onIgnoreTagAttr: (tag: string, name: string, value: string, isWhiteAttr: boolean) => string}
 {
-	return {onIgnoreTagAttr: function(tag, name, value, isWhiteAttr)
+	return {onIgnoreTagAttr: function(tag, name, value, isWhiteAttr): string
 		{
 			if(!isWhiteAttr)
 			{
