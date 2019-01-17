@@ -24,14 +24,14 @@ var cacheUpdating = [
 	APIPATH + "/competence"
 ];
 
-function startsWith(haystack, needle)
+function startsWith(haystack: string, needle: string)
 {
 	return haystack.substr(0, needle.length) === needle;
 }
 
-self.addEventListener("install", function(event: ExtendableEvent)
+self.addEventListener("install", function(event: Event)
 	{
-		event.waitUntil(
+		(event as ExtendableEvent).waitUntil(
 			caches.open(CACHE).then(function(cache)
 				{
 					cache.addAll(cacheNonBlocking);
@@ -40,24 +40,24 @@ self.addEventListener("install", function(event: ExtendableEvent)
 		);
 	});
 
-self.addEventListener("fetch", function(event: FetchEvent)
+self.addEventListener("fetch", function(event: Event)
 	{
-		var url = new URL(event.request.url); // eslint-disable-line compat/compat
+		var url = new URL((event as FetchEvent).request.url); // eslint-disable-line compat/compat
 		if(cacheUpdating.indexOf(url.pathname) !== -1)
 		{
-			event.respondWith(cacheUpdatingResponse(event.request));
+			(event as FetchEvent).respondWith(cacheUpdatingResponse((event as FetchEvent).request));
 		}
 		else if(startsWith(url.pathname, APIPATH + "/lesson"))
 		{
-			event.respondWith(cacheOnDemandResponse(event.request));
+			(event as FetchEvent).respondWith(cacheOnDemandResponse((event as FetchEvent).request));
 		}
 		else
 		{
-			event.respondWith(genericResponse(event.request));
+			(event as FetchEvent).respondWith(genericResponse((event as FetchEvent).request));
 		}
 	});
 
-function cacheUpdatingResponse(request)
+function cacheUpdatingResponse(request: Request) : Promise<Response>
 {
 	if(request.headers.get("Accept") === "x-cache/only")
 	{
@@ -84,13 +84,13 @@ function cacheUpdatingResponse(request)
 	}
 }
 
-function cacheOnDemandResponse(request)
+function cacheOnDemandResponse(request: Request)
 {
 	if(request.headers.get("Accept") === "x-cache/only")
 	{
 		return caches.open(CACHE).then(function(cache)
 			{
-				return cache.match(request);
+				return cache.match(request) as Promise<Response>;
 			});
 	}
 	else
@@ -112,7 +112,7 @@ function cacheOnDemandResponse(request)
 	}
 }
 
-function genericResponse(request)
+function genericResponse(request: Request)
 {
 	return caches.open(CACHE).then(function(cache)
 		{
@@ -127,7 +127,7 @@ function genericResponse(request)
 		});
 }
 
-function cacheClone(request, response)
+function cacheClone(request: Request, response: Response)
 {
 	return caches.open(CACHE).then(function(cache)
 		{
