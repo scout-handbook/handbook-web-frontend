@@ -35,7 +35,7 @@ function metadataSetup()
 		{
 			if(this.readyState === 4)
 			{
-				var response = {};
+				var response = {status: undefined, response: undefined};
 				if(this.responseText)
 				{
 					response = JSON.parse(this.responseText);

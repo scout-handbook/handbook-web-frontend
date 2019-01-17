@@ -27,7 +27,7 @@ function showLessonView(id, noHistory)
 			{
 				if(window.LOGINSTATE)
 				{
-					window.location = CONFIG['frontend-uri'] + "/404.html";
+					window.location.href = CONFIG['frontend-uri'] + "/404.html";
 				}
 				else
 				{
@@ -70,12 +70,12 @@ function renderLessonView(id, markdown, noHistory, second)
 	var nodes = document.getElementById("content").getElementsByClassName("competenceBubble");
 	for(var m = 0; m < nodes.length; m++)
 	{
-		nodes[m].onclick = toggleCompetenceBubble;
+		(nodes[m] as HTMLElement).onclick = toggleCompetenceBubble;
 	}
 	nodes = document.getElementById("content").getElementsByClassName("competenceBubbleLessons");
 	for(var n = 0; n < nodes.length; n++)
 	{
-		nodes[n].firstChild.onclick = competenceBubbleDetailOnClick;
+		(nodes[n].firstChild as HTMLElement).onclick = competenceBubbleDetailOnClick;
 	}
 	document.getElementsByTagName("main")[0].scrollTop = 0;
 	if(!second)
@@ -94,11 +94,11 @@ function renderLessonView(id, markdown, noHistory, second)
 					{
 						if(response === undefined)
 						{
-							document.getElementById("cacheOffline").checked = false;
+							(document.getElementById("cacheOffline") as HTMLInputElement).checked = false;
 						}
 						else
 						{
-							document.getElementById("cacheOffline").checked = true;
+							(document.getElementById("cacheOffline") as HTMLInputElement).checked = true;
 						}
 					});
 			});

@@ -32,14 +32,14 @@ function renderUserAccount()
 	{
 		document.getElementById("logLink").innerHTML = "<a href=\"enableJS.html\">Odhlásit</a>";
 	}
-	document.getElementById("logLink").firstChild.onclick = logoutRedirect;
+	(document.getElementById("logLink").firstChild as HTMLElement).onclick = logoutRedirect;
 	if(LOGINSTATE.hasOwnProperty("avatar"))
 	{
-		document.getElementById("userAvatar").src = "data:image/png;base64," + LOGINSTATE.avatar;
+		(document.getElementById("userAvatar") as HTMLImageElement).src = "data:image/png;base64," + LOGINSTATE.avatar;
 	}
 	else
 	{
-		document.getElementById("userAvatar").src = CONFIG['frontend-uri'] + "/avatar.png";
+		(document.getElementById("userAvatar") as HTMLImageElement).src = CONFIG['frontend-uri'] + "/avatar.png";
 	}
 }
 
@@ -47,19 +47,19 @@ function renderLoginForm()
 {
 	document.getElementById("userName").innerHTML = "Uživatel nepřihlášen";
 	document.getElementById("logLink").innerHTML = "<a href=\"enableJS.html\">Přihlásit</a>";
-	document.getElementById("logLink").firstChild.onclick = loginRedirect;
-	document.getElementById("userAvatar").src = CONFIG['frontend-uri'] + "/avatar.png";
+	(document.getElementById("logLink").firstChild as HTMLElement).onclick = loginRedirect;
+	(document.getElementById("userAvatar") as HTMLImageElement).src = CONFIG['frontend-uri'] + "/avatar.png";
 }
 
 function loginRedirect()
 {
-	window.location = CONFIG.apiuri + "/login?return-uri=" + encodeURIComponent(window.location.href);
+	window.location.href = CONFIG.apiuri + "/login?return-uri=" + encodeURIComponent(window.location.href);
 	return false;
 }
 
 function logoutRedirect()
 {
-	window.location = CONFIG.apiuri + "/logout";
+	window.location.href = CONFIG.apiuri + "/logout";
 	return false;
 }
 
@@ -71,10 +71,10 @@ function refreshLogin()
 		var parts = allCookies.split("; skautis_timeout=");
 		if(parts.length === 2)
 		{
-			var timeout = parts.pop().split(";").shift();
+			var timeout = parseInt(parts.pop().split(";").shift());
 			if((timeout - Math.round(new Date().getTime() / 1000)) < 1500)
 			{
-				request(CONFIG.apiuri + "/refresh");
+				request(CONFIG.apiuri + "/refresh", undefined, undefined);
 			}
 		}
 	}

@@ -1,0 +1,17 @@
+{
+  "extends": "../tsconfig.json",
+  "files": [
+    "../global2.d.ts",
+    "../src/ts/tools/cacheThenNetworkRequest.ts",
+    "../src/ts/tools/request.ts",
+    "../src/ts/UI/header.ts",
+    "../src/ts/UI/navigation.ts",
+    "../src/ts/UI/TOC.ts",
+    "../src/ts/views/lesson.ts",
+    "../src/ts/AfterLoadEvent.ts",
+    "../src/ts/authentication.ts",
+    "../src/ts/history.ts",
+    "../src/ts/main.ts",
+    "../src/ts/metadata.ts"
+  ]
+}

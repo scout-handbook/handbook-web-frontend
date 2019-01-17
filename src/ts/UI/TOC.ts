@@ -51,6 +51,6 @@ function TOCFieldOnClick(event)
 
 function TOCLessonOnClick(event)
 {
-	showLessonView(event.target.dataset.id);
+	showLessonView(event.target.dataset.id, false);
 	return false;
 }
