@@ -28,7 +28,7 @@ function toggleCompetenceBubble(event: MouseEvent): void
 	while(!element.classList.contains("competenceBubble") && (element = element.parentElement!)) { /* Empty */ }
 	if(element.style.width !== "")
 	{
-		activeCompetence = undefined;
+		activeCompetence = null;
 		(element.childNodes[1] as HTMLElement).style.width = "";
 		element.style.width = "";
 		element.style.height = "";
