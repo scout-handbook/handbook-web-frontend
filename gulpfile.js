@@ -149,20 +149,7 @@ gulp.task('build:icon', function() {
 });
 
 gulp.task('build:js', function() {
-	function bundle(name, sources, addConfig) {
-		var ret = sources
-			.pipe(sourcemaps.init())
-			.pipe(concat(name + '.min.js'));
-		if(addConfig) {
-			ret = ret.pipe(inject.prepend('"use strict";\nvar CONFIG = JSON.parse(\'' + JSON.stringify(getConfig()) + '\');\n'))
-		}
-		return ret.pipe(inject.replace('\\"\\"\\/\\*INJECTED\\-VERSION\\*\\/', '"' + pkg.version + '"'))
-			//.pipe(gulp.dest('dist/'));
-			.pipe(minify({ie8: true}))
-			.pipe(sourcemaps.write('./'))
-			.pipe(gulp.dest('dist/'));
-	}
-	function tsBundle(name, addConfig) {
+	function bundle(name, addConfig) {
 		var tsProject = ts.createProject("tsconfig/" + name + ".json");
 		var ret = tsProject.src()
 			.pipe(inject.replace('\\"\\"\\/\\*INJECTED\\-VERSION\\*\\/', '"' + pkg.version + '"'))
@@ -179,9 +166,9 @@ gulp.task('build:js', function() {
 			.pipe(gulp.dest('dist/'));
 	}
 	return merge(
-		tsBundle('serviceworker'),
-		tsBundle('frontend-pushed', true),
-		tsBundle('frontend')
+		bundle('serviceworker'),
+		bundle('frontend-pushed', true),
+		bundle('frontend')
 	);
 });
 
