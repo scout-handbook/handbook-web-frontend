@@ -1,0 +1,25 @@
+{
+  "extends": "../tsconfig.json",
+  "files": [
+    "../src/d.ts/frontend.d.ts",
+    "../src/ts/interfaces/AfterLoadEvent.ts",
+    "../src/ts/interfaces/Arguments.ts",
+    "../src/ts/interfaces/Competence.ts",
+    "../src/ts/interfaces/Config.ts",
+    "../src/ts/interfaces/Converter.ts",
+    "../src/ts/interfaces/CustomProperties.ts",
+    "../src/ts/interfaces/Field.ts",
+    "../src/ts/interfaces/Lesson.ts",
+    "../src/ts/interfaces/Showdown.ts",
+    "../src/ts/interfaces/XSSOptions.ts",
+    "../src/ts/tools/urlEscape.ts",
+    "../src/ts/UI/lessonView.ts",
+    "../src/ts/views/competence.ts",
+    "../src/ts/views/competenceList.ts",
+    "../src/ts/views/field.ts",
+    "../src/ts/views/lessonList.ts",
+    "../src/ts/getLessonById.ts",
+    "../src/ts/HandbookMarkdown.ts",
+    "../src/ts/xssOptions.ts"
+  ]
+}
