@@ -1,21 +1,38 @@
 {
+	"parser": "typescript-eslint-parser",
 	"parserOptions": {
 		"ecmaVersion": 3
 	},
 	"env": {
 		"browser": true
 	},
-	"plugins": ["compat"],
+	"plugins": [
+		"compat",
+		"typescript"
+	],
 	"extends": "eslint:recommended",
 	"rules": {
 		"compat/compat": "warn",
 		"no-warning-comments": "warn",
-		"strict": ["error", "global"]
+		"strict": ["error", "global"],
+		"typescript/class-name-casing": "error",
+		"typescript/explicit-function-return-type": "error",
+		"typescript/explicit-member-accessibility": "error",
+		"typescript/member-delimiter-style": "error",
+		"typescript/member-ordering": "error",
+		"typescript/no-angle-bracket-type-assertion": "error",
+		"typescript/no-array-constructor": "error",
+		"typescript/no-empty-interface": "error",
+		"typescript/no-explicit-any": "error",
+		"typescript/no-inferrable-types": "error",
+		"typescript/no-unused-vars": "error",
+		"typescript/type-annotation-spacing": "error"
 	},
 	"globals": {
 		"COMPETENCES": false,
 		"CONFIG": false,
 		"FIELDS": false,
+		"FULLFIELDS": false,
 		"GROUPS": false,
 		"LOGINSTATE": false,
 		"Action": false,
@@ -67,6 +84,7 @@
 		"mainPageTab": false,
 		"metadataEvent": false,
 		"metadataSetup": false,
+		"navigationOpen": false,
 		"navigationSetup": false,
 		"parseBoolForm": false,
 		"parseVersion": false,
@@ -89,6 +107,7 @@
 		"showCompetenceListView": false,
 		"showCompetenceSubview": false,
 		"showCompetenceView": false,
+		"showFieldListView": false,
 		"showFieldSubview": false,
 		"showFieldView": false,
 		"showGroupSubview": false,
@@ -96,7 +115,6 @@
 		"showLessonAddView": false,
 		"showLessonEditor": false,
 		"showLessonEditView": false,
-		"showLessonListView": false,
 		"showLessonRestoreView": false,
 		"showLessonSubview": false,
 		"showLessonView": false,
