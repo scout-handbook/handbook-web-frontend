@@ -42,7 +42,7 @@
     "merge-stream": "^1.0.1",
     "nested-object-assign": "^1.0.3",
     "postcss-custom-properties": "^8.0.9",
-    "stylelint": "^9.10.0",
+    "stylelint": "^9.10.1",
     "stylelint-config-standard": "^18.2.0",
     "stylelint-no-unsupported-browser-features": "^3.0.2",
     "typescript": "^3.2.4",
