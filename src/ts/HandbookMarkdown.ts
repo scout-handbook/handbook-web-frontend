@@ -1,63 +1,3 @@
-"use strict";
-
-// Showdown extensions definitions
-var HandbookMarkdown = function(): Array<object>
-{
-	var responsiveTablesBegin = {
-		type: "output",
-		regex: "<table>",
-		replace: "<div class=\"tableContainer\"><table>"
-	};
-	var responsiveTablesEnd = {
-		type: "output",
-		regex: "</table>",
-		replace: "</table></div>"
-	};
-	var fullLinks = {
-		type: "output",
-		regex: "<a href=\"(?!http://|https://)",
-		replace: "<a href=\"http://"
-	};
-	var blankLinks = {
-		type: "output",
-		regex: "<a href",
-		replace: "<a target=\"_blank\" rel=\"noopener noreferrer\" href"
-	};
-	var notes = {
-		type: "lang",
-		filter: function(text: string): string {return filterCommand(text, "linky", notesCommand);}
-	};
-	var pagebreak = {
-		type: "lang",
-		filter: function(text: string): string {return filterCommand(text, "novastrana", pagebreakCommand);}
-	};
-	return [responsiveTablesBegin, responsiveTablesEnd, fullLinks, blankLinks, notes, pagebreak];
-}
-
-//Register extensions
-showdown.extension("HandbookMarkdown", HandbookMarkdown);
-
-// Generic command processing functions
-function filterCommand(text: string, commandName: string, command: (args: Arguments) => string): string
-{
-	var lines = text.split("\n")
-	var ret = "";
-	for(var i = 0; i < lines.length; i++)
-	{
-		if(lines[i].trim().substring(0, commandName.length + 1) === "!" + commandName)
-		{
-			var arr = getArgumentString(lines, i, commandName);
-			i = arr[1];
-			ret += command(parseArgumentString(arr[0])) + "\n";
-		}
-		else
-		{
-			ret += lines[i] + "\n";
-		}
-	}
-	return ret;
-}
-
 function getArgumentString(lines: Array<string>, current: number, commandName: string): [string, number]
 {
 	var line = lines[current].trim();
@@ -117,6 +57,27 @@ function parseArgumentString(argumentString: string): Arguments
 	return output;
 }
 
+// Generic command processing functions
+function filterCommand(text: string, commandName: string, command: (args: Arguments) => string): string
+{
+	var lines = text.split("\n")
+	var ret = "";
+	for(var i = 0; i < lines.length; i++)
+	{
+		if(lines[i].trim().substring(0, commandName.length + 1) === "!" + commandName)
+		{
+			var arr = getArgumentString(lines, i, commandName);
+			i = arr[1];
+			ret += command(parseArgumentString(arr[0])) + "\n";
+		}
+		else
+		{
+			ret += lines[i] + "\n";
+		}
+	}
+	return ret;
+}
+
 // Specific commands
 function notesCommand(): string
 {
@@ -128,3 +89,40 @@ function pagebreakCommand(): string
 {
 	return "";
 }
+
+// Showdown extensions definitions
+var HandbookMarkdown = function(): Array<object>
+{
+	var responsiveTablesBegin = {
+		type: "output",
+		regex: "<table>",
+		replace: "<div class=\"tableContainer\"><table>"
+	};
+	var responsiveTablesEnd = {
+		type: "output",
+		regex: "</table>",
+		replace: "</table></div>"
+	};
+	var fullLinks = {
+		type: "output",
+		regex: "<a href=\"(?!http://|https://)",
+		replace: "<a href=\"http://"
+	};
+	var blankLinks = {
+		type: "output",
+		regex: "<a href",
+		replace: "<a target=\"_blank\" rel=\"noopener noreferrer\" href"
+	};
+	var notes = {
+		type: "lang",
+		filter: function(text: string): string {return filterCommand(text, "linky", notesCommand);}
+	};
+	var pagebreak = {
+		type: "lang",
+		filter: function(text: string): string {return filterCommand(text, "novastrana", pagebreakCommand);}
+	};
+	return [responsiveTablesBegin, responsiveTablesEnd, fullLinks, blankLinks, notes, pagebreak];
+}
+
+//Register extensions
+showdown.extension("HandbookMarkdown", HandbookMarkdown);

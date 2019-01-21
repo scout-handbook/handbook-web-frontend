@@ -18,9 +18,11 @@
 		"compat/compat": "warn",
 		"no-warning-comments": "warn",
 		"strict": ["error", "global"],
+		"@typescript-eslint/array-type": ["error", "generic"],
 		"@typescript-eslint/indent": ["error", "tab"],
 		"@typescript-eslint/member-ordering": ["error"],
 		"@typescript-eslint/no-extraneous-class": ["error"],
+		"@typescript-eslint/no-namespace": ["error", {"allowDeclarations": true}],
 		"@typescript-eslint/no-non-null-assertion": ["off"],
 		"@typescript-eslint/no-this-alias": ["error"]
 	},

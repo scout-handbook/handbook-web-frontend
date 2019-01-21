@@ -1,4 +1,3 @@
-"use strict";
 /* exported request */
 
 function request(url: string, query: string, headers: RequestHeaders): AfterLoadEvent
@@ -6,20 +5,20 @@ function request(url: string, query: string, headers: RequestHeaders): AfterLoad
 	var ret = new AfterLoadEvent(1);
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function(): void
+	{
+		if(this.readyState === 4)
 		{
-			if(this.readyState === 4)
+			var body = JSON.parse(this.responseText);
+			if(this.status === 200)
 			{
-				var body = JSON.parse(this.responseText);
-				if(this.status === 200)
-				{
-					ret.trigger(body.response);
-				}
-				else if(this.status === 403 && body.type === "RoleException")
-				{
-					showLessonListView(false);
-				}
+				ret.trigger(body.response);
+			}
+			else if(this.status === 403 && body.type === "RoleException")
+			{
+				showLessonListView(false);
 			}
 		}
+	}
 	if(query !== undefined && query !== "")
 	{
 		url += "?" + query;

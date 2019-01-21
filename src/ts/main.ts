@@ -1,4 +1,3 @@
-"use strict";
 /* exported FIELDS, COMPETENCES, LOGINSTATE */
 
 var FIELDS: Array<Field>;

@@ -1,4 +1,3 @@
-"use strict";
 /* global activeCompetence:true */
 /* exported toggleLessonOffline, toggleCompetenceBubble, competenceBubbleDetailOnClick */
 
@@ -9,16 +8,29 @@ function toggleLessonOffline(): void
 	{
 		var id = window.location.pathname.substring(8).split("/")[0];
 		caches.open(CONFIG.cache).then(function(cache): void
+		{
+			if(checked)
 			{
-				if(checked)
-				{
-					cache.add(new Request(CONFIG.apiuri + "/lesson/" + id, {credentials: "same-origin"}));
-				}
-				else
-				{
-					cache.delete(CONFIG.apiuri + "/lesson/" + id);
-				}
+				cache.add(new Request(CONFIG.apiuri + "/lesson/" + id, {credentials: "same-origin"}));
+			}
+			else
+			{
+				cache.delete(CONFIG.apiuri + "/lesson/" + id);
+			}
 		});
+	}
+}
+
+function reflowCompetenceBubbles(): void
+{
+	if(activeCompetence)
+	{
+		var fontSize = parseFloat(window.getComputedStyle(activeCompetence).getPropertyValue("font-size"));
+		var parent = activeCompetence.parentElement as HTMLElement;
+		(activeCompetence.childNodes[1] as HTMLElement).style.width = Math.min(403 - 1.3 * fontSize, ( activeCompetence.parentElement as HTMLElement).clientWidth - 1.3 * fontSize + 3) + "px";
+		(activeCompetence.childNodes[2] as HTMLElement).style.width = Math.min(403 - 1.3 * fontSize, parent.clientWidth - 1.3 * fontSize + 3) + "px";
+		activeCompetence.style.width = Math.min(400, parent.clientWidth) + "px";
+		activeCompetence.style.height = ((activeCompetence.childNodes[1] as HTMLElement).offsetHeight + 1.4 * fontSize - 6) + "px";
 	}
 }
 
@@ -53,19 +65,6 @@ function toggleCompetenceBubble(event: MouseEvent): void
 		(element.firstChild as HTMLElement).style.color = CONFIG['custom-properties']['--accent-color'];
 		element.style.borderColor = CONFIG['custom-properties']['--accent-color'];
 		element.style.backgroundColor = "#f5f5f5";
-	}
-}
-
-function reflowCompetenceBubbles(): void
-{
-	if(activeCompetence)
-	{
-		var fontSize = parseFloat(window.getComputedStyle(activeCompetence).getPropertyValue("font-size"));
-		var parent = activeCompetence.parentElement as HTMLElement;
-		(activeCompetence.childNodes[1] as HTMLElement).style.width = Math.min(403 - 1.3 * fontSize, ( activeCompetence.parentElement as HTMLElement).clientWidth - 1.3 * fontSize + 3) + "px";
-		(activeCompetence.childNodes[2] as HTMLElement).style.width = Math.min(403 - 1.3 * fontSize, parent.clientWidth - 1.3 * fontSize + 3) + "px";
-		activeCompetence.style.width = Math.min(400, parent.clientWidth) + "px";
-		activeCompetence.style.height = ((activeCompetence.childNodes[1] as HTMLElement).offsetHeight + 1.4 * fontSize - 6) + "px";
 	}
 }
 

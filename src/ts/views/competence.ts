@@ -1,19 +1,31 @@
-"use strict";
 /* global navigationOpen:true */
 /* exported showCompetenceView */
 
-function showCompetenceView(id: string, noHistory: boolean): void
+function renderCompetenceLessonList(lessonList: Array<Lesson>): string
 {
-	if(screen.width < 700)
+	var html = "";
+	for(var n = 0; n < lessonList.length; n++)
 	{
-		navigationOpen = false;
-		reflowNavigation();
-	}
-	metadataEvent.addCallback(function(): void
+		html += "<h3 class=\"mainPage\"><a title=\"" + lessonList[n].name + "\" href=\"enableJS.html\" data-id=\"" + lessonList[n].id + "\">" + lessonList[n].name + "</a></h3>";
+		if(lessonList[n].competences.length > 0)
 		{
-			renderCompetenceView(id, noHistory);
-		});
-	refreshLogin();
+			var competences = [];
+			for(var o = 0; o < COMPETENCES.length; o++)
+			{
+				if(lessonList[n].competences.indexOf(COMPETENCES[o].id) >= 0)
+				{
+					competences.push(COMPETENCES[o]);
+				}
+			}
+			html += "<span class=\"mainPage\">Kompetence: " + competences[0].number;
+			for(var p = 1; p < competences.length; p++)
+			{
+				html += ", " + competences[p].number;
+			}
+			html += "</span>";
+		}
+	}
+	return html;
 }
 
 function renderCompetenceView(id: string, noHistory: boolean): void
@@ -61,29 +73,16 @@ function renderCompetenceView(id: string, noHistory: boolean): void
 	document.getElementById("offlineSwitch")!.style.display = "none";
 }
 
-function renderCompetenceLessonList(lessonList: Array<Lesson>): string
+function showCompetenceView(id: string, noHistory: boolean): void
 {
-	var html = "";
-	for(var n = 0; n < lessonList.length; n++)
+	if(screen.width < 700)
 	{
-		html += "<h3 class=\"mainPage\"><a title=\"" + lessonList[n].name + "\" href=\"enableJS.html\" data-id=\"" + lessonList[n].id + "\">" + lessonList[n].name + "</a></h3>";
-		if(lessonList[n].competences.length > 0)
-		{
-			var competences = [];
-			for(var o = 0; o < COMPETENCES.length; o++)
-			{
-				if(lessonList[n].competences.indexOf(COMPETENCES[o].id) >= 0)
-				{
-					competences.push(COMPETENCES[o]);
-				}
-			}
-			html += "<span class=\"mainPage\">Kompetence: " + competences[0].number;
-			for(var p = 1; p < competences.length; p++)
-			{
-				html += ", " + competences[p].number;
-			}
-			html += "</span>";
-		}
+		navigationOpen = false;
+		reflowNavigation();
 	}
-	return html;
+	metadataEvent.addCallback(function(): void
+	{
+		renderCompetenceView(id, noHistory);
+	});
+	refreshLogin();
 }

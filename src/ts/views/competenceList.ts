@@ -1,19 +1,15 @@
-"use strict";
 /* global navigationOpen:true */
 /* exported showCompetenceListView */
 
-function showCompetenceListView(noHistory: boolean): void
+function renderCompetenceList(): string
 {
-	if(screen.width < 700)
+	var html = "";
+	for(var i = 0; i < COMPETENCES.length; i++)
 	{
-		navigationOpen = false;
-		reflowNavigation();
+		html += "<h3 class=\"mainPage\"><a title=\"" + COMPETENCES[i].number + ": " + COMPETENCES[i].name + "\" href=\"enableJS.html\" data-id=\"" + COMPETENCES[i].id + "\">" + COMPETENCES[i].number + ": " + COMPETENCES[i].name + "</a></h3>";
+		html += "<span class=\"mainPage\">" + COMPETENCES[i].description;
 	}
-	metadataEvent.addCallback(function(): void
-		{
-			renderCompetenceListView(noHistory);
-		});
-	refreshLogin();
+	return html;
 }
 
 function renderCompetenceListView(noHistory: boolean): void
@@ -36,13 +32,16 @@ function renderCompetenceListView(noHistory: boolean): void
 	document.getElementById("offlineSwitch")!.style.display = "none";
 }
 
-function renderCompetenceList(): string
+function showCompetenceListView(noHistory: boolean): void
 {
-	var html = "";
-	for(var i = 0; i < COMPETENCES.length; i++)
+	if(screen.width < 700)
 	{
-		html += "<h3 class=\"mainPage\"><a title=\"" + COMPETENCES[i].number + ": " + COMPETENCES[i].name + "\" href=\"enableJS.html\" data-id=\"" + COMPETENCES[i].id + "\">" + COMPETENCES[i].number + ": " + COMPETENCES[i].name + "</a></h3>";
-		html += "<span class=\"mainPage\">" + COMPETENCES[i].description;
+		navigationOpen = false;
+		reflowNavigation();
 	}
-	return html;
+	metadataEvent.addCallback(function(): void
+	{
+		renderCompetenceListView(noHistory);
+	});
+	refreshLogin();
 }

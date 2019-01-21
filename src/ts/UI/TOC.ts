@@ -1,9 +1,15 @@
-"use strict";
 /* exported TOCSetup */
 
-function TOCSetup(): void
+function TOCFieldOnClick(event: MouseEvent): boolean
 {
-	metadataEvent.addCallback(renderTOC);
+	showFieldView((event.target as HTMLElement).dataset.id!, false);
+	return false;
+}
+
+function TOCLessonOnClick(event: MouseEvent): boolean
+{
+	showLessonView((event.target as HTMLElement).dataset.id!, false);
+	return false;
 }
 
 function renderTOC(): void
@@ -43,14 +49,7 @@ function renderTOC(): void
 	document.getElementsByTagName("nav")[0].style.transition = "margin-left 0.3s ease";
 }
 
-function TOCFieldOnClick(event: MouseEvent): boolean
+function TOCSetup(): void
 {
-	showFieldView((event.target as HTMLElement).dataset.id!, false);
-	return false;
-}
-
-function TOCLessonOnClick(event: MouseEvent): boolean
-{
-	showLessonView((event.target as HTMLElement).dataset.id!, false);
-	return false;
+	metadataEvent.addCallback(renderTOC);
 }

@@ -1,24 +1,9 @@
-"use strict";
 /* exported authenticationSetup, refreshLogin */
 
-function authenticationSetup(): void
+function logoutRedirect(): boolean
 {
-	showAccountInfo();
-}
-
-function showAccountInfo(): void
-{
-	loginstateEvent.addCallback(function(): void
-		{
-			if(LOGINSTATE)
-			{
-				renderUserAccount();
-			}
-			else
-			{
-				renderLoginForm();
-			}
-		});
+	window.location.href = CONFIG.apiuri + "/logout";
+	return false;
 }
 
 function renderUserAccount(): void
@@ -43,6 +28,12 @@ function renderUserAccount(): void
 	}
 }
 
+function loginRedirect(): boolean
+{
+	window.location.href = CONFIG.apiuri + "/login?return-uri=" + encodeURIComponent(window.location.href);
+	return false;
+}
+
 function renderLoginForm(): void
 {
 	document.getElementById("userName")!.innerHTML = "Uživatel nepřihlášen";
@@ -51,16 +42,24 @@ function renderLoginForm(): void
 	(document.getElementById("userAvatar") as HTMLImageElement).src = CONFIG['frontend-uri'] + "/avatar.png";
 }
 
-function loginRedirect(): boolean
+function showAccountInfo(): void
 {
-	window.location.href = CONFIG.apiuri + "/login?return-uri=" + encodeURIComponent(window.location.href);
-	return false;
+	loginstateEvent.addCallback(function(): void
+	{
+		if(LOGINSTATE)
+		{
+			renderUserAccount();
+		}
+		else
+		{
+			renderLoginForm();
+		}
+	});
 }
 
-function logoutRedirect(): boolean
+function authenticationSetup(): void
 {
-	window.location.href = CONFIG.apiuri + "/logout";
-	return false;
+	showAccountInfo();
 }
 
 function refreshLogin(): void
