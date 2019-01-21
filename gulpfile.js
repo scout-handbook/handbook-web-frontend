@@ -1,4 +1,3 @@
-"use strict";
 /* eslint-env node */
 
 var yargs = require('yargs');

@@ -1,5 +1,3 @@
-"use strict";
-
 interface Config {
 	cache: string;
 	apiuri: string;

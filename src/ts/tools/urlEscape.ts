@@ -1,4 +1,3 @@
-"use strict";
 /* exported urlEscape */
 
 function urlEscape(str: string): string

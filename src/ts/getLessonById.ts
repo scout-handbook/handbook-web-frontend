@@ -1,4 +1,3 @@
-"use strict";
 /* exported getLessonById */
 
 function getLessonById(id: string): Lesson | null

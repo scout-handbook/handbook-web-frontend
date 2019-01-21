@@ -1,4 +1,3 @@
-"use strict";
 /* exported cacheThenNetworkRequest */
 
 function cacheThenNetworkRequest(url: string, query: string, callback: (response: string|object, cacheDataReceived: boolean) => void): void
@@ -7,16 +6,16 @@ function cacheThenNetworkRequest(url: string, query: string, callback: (response
 	var networkDataReceived = false;
 	var cacheDataReceived = false;
 	request(url, query, {}).addCallback(function(response): void
-		{
-			networkDataReceived = true;
-			callback(response, cacheDataReceived);
-		});
+	{
+		networkDataReceived = true;
+		callback(response, cacheDataReceived);
+	});
 	request(url, query, {"Accept": "x-cache/only"}).addCallback(function(response): void
+	{
+		if(!networkDataReceived)
 		{
-			if(!networkDataReceived)
-			{
-				cacheDataReceived = true;
-				callback(response, false);
-			}
-		});
+			cacheDataReceived = true;
+			callback(response, false);
+		}
+	});
 }

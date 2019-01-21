@@ -1,4 +1,3 @@
-"use strict";
 /* global COMPETENCES:true FIELDS:true LOGINSTATE:true */
 /* exported metadataSetup */
 
@@ -8,51 +7,51 @@ var loginstateEvent = new AfterLoadEvent(1);
 function metadataSetup(): void
 {
 	cacheThenNetworkRequest(CONFIG.apiuri + "/lesson", "", function(response, second): void
+	{
+		FIELDS = response as Array<Field>;
+		if(second)
 		{
-			FIELDS = response as Array<Field>;
-			if(second)
-			{
-				metadataEvent.retrigger();
-			}
-			else
-			{
-				metadataEvent.trigger();
-			}
-		});
+			metadataEvent.retrigger();
+		}
+		else
+		{
+			metadataEvent.trigger();
+		}
+	});
 	cacheThenNetworkRequest(CONFIG.apiuri + "/competence", "", function(response, second): void
+	{
+		COMPETENCES = response as Array<Competence>;
+		if(second)
 		{
-			COMPETENCES = response as Array<Competence>;
-			if(second)
-			{
-				metadataEvent.retrigger();
-			}
-			else
-			{
-				metadataEvent.trigger();
-			}
-		});
+			metadataEvent.retrigger();
+		}
+		else
+		{
+			metadataEvent.trigger();
+		}
+	});
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function(): void
+	{
+		if(this.readyState === 4)
 		{
-			if(this.readyState === 4)
+			var response = {status: undefined, response: null};
+			if(this.responseText)
 			{
-				var response = {status: undefined, response: null};
-				if(this.responseText)
-				{
-					response = JSON.parse(this.responseText);
-				}
-				if(response.status === 200)
-				{
-					LOGINSTATE = response.response;
-					loginstateEvent.trigger();
-				}
-				else if(response.status === 401)
-				{
-					LOGINSTATE = null;
-					loginstateEvent.trigger();
-				}
+				response = JSON.parse(this.responseText);
+			}
+			if(response.status === 200)
+			{
+				LOGINSTATE = response.response;
+				loginstateEvent.trigger();
+			}
+			else if(response.status === 401)
+			{
+				LOGINSTATE = null;
+				loginstateEvent.trigger();
 			}
 		}
+	}
 	xhttp.open("GET", CONFIG.apiuri + "/account", true);
 	xhttp.send();
 }

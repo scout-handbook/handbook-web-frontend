@@ -1,32 +1,7 @@
-"use strict";
 /* global navigationOpen:true */
 /* exported navigationSetup */
 
 var navigationOpen = true;
-
-function navigationSetup(): void
-{
-	window.addEventListener("resize", reflowNavigation)
-	document.getElementById("navCloseButton")!.onclick = toggleNavigation;
-	document.getElementById("overlay")!.onclick = toggleNavigation;
-	document.getElementById("lessonOverview")!.onclick = function(): boolean
-		{
-			showLessonListView(false);
-			return false;
-		}
-	document.getElementById("competenceOverview")!.onclick = function(): boolean
-		{
-			showCompetenceListView(false);
-			return false;
-		}
-	reflowNavigation();
-}
-
-function toggleNavigation(): void
-{
-	navigationOpen = !navigationOpen;
-	reflowNavigation();
-}
 
 function reflowNavigation(): void
 {
@@ -55,3 +30,26 @@ function reflowNavigation(): void
 	}
 }
 
+function toggleNavigation(): void
+{
+	navigationOpen = !navigationOpen;
+	reflowNavigation();
+}
+
+function navigationSetup(): void
+{
+	window.addEventListener("resize", reflowNavigation)
+	document.getElementById("navCloseButton")!.onclick = toggleNavigation;
+	document.getElementById("overlay")!.onclick = toggleNavigation;
+	document.getElementById("lessonOverview")!.onclick = function(): boolean
+	{
+		showLessonListView(false);
+		return false;
+	}
+	document.getElementById("competenceOverview")!.onclick = function(): boolean
+	{
+		showCompetenceListView(false);
+		return false;
+	}
+	reflowNavigation();
+}

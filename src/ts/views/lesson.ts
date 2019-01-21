@@ -1,8 +1,7 @@
-"use strict";
 /* global activeCompetence:true, navigationOpen:true */
 /* exported activeCompetence, lessonViewSetup, showLessonView */
 
-var converter: Converter;
+var converter: showdown.Converter;
 var activeCompetence: HTMLElement | null = null;
 
 function lessonViewSetup(): void
@@ -11,41 +10,6 @@ function lessonViewSetup(): void
 	converter.setOption("noHeaderId", "true");
 	converter.setOption("tables", "true");
 	window.addEventListener("resize", reflowCompetenceBubbles)
-}
-
-function showLessonView(id: string, noHistory: boolean): void
-{
-	document.getElementById("content")!.innerHTML = "<div id=\"embeddedSpinner\"></div>";
-	if(screen.width < 700)
-	{
-		navigationOpen = false;
-		reflowNavigation();
-	}
-	if(!getLessonById(id))
-	{
-		loginstateEvent.addCallback(function(): void
-			{
-				if(LOGINSTATE)
-				{
-					window.location.href = CONFIG['frontend-uri'] + "/404.html";
-				}
-				else
-				{
-					loginRedirect();
-				}
-			});
-	}
-	else
-	{
-		cacheThenNetworkRequest(CONFIG.apiuri + "/lesson/" + id, "", function(response: string|object, second: boolean): void
-			{
-				metadataEvent.addCallback(function(): void
-					{
-						renderLessonView(id, response as string, noHistory, second);
-					});
-			});
-	}
-	refreshLogin();
 }
 
 function renderLessonView(id: string, markdown: string, noHistory: boolean, second: boolean): void
@@ -89,19 +53,54 @@ function renderLessonView(id: string, markdown: string, noHistory: boolean, seco
 	if("serviceWorker" in navigator)
 	{
 		caches.open(CONFIG.cache).then(function(cache): void
+		{
+			cache.match(CONFIG.apiuri + "/lesson/" + id).then(function(response): void
 			{
-				cache.match(CONFIG.apiuri + "/lesson/" + id).then(function(response): void
-					{
-						if(response === undefined)
-						{
-							(document.getElementById("cacheOffline") as HTMLInputElement).checked = false;
-						}
-						else
-						{
-							(document.getElementById("cacheOffline") as HTMLInputElement).checked = true;
-						}
-					});
+				if(response === undefined)
+				{
+					(document.getElementById("cacheOffline") as HTMLInputElement).checked = false;
+				}
+				else
+				{
+					(document.getElementById("cacheOffline") as HTMLInputElement).checked = true;
+				}
 			});
+		});
 		document.getElementById("offlineSwitch")!.style.display = "block";
 	}
+}
+
+function showLessonView(id: string, noHistory: boolean): void
+{
+	document.getElementById("content")!.innerHTML = "<div id=\"embeddedSpinner\"></div>";
+	if(screen.width < 700)
+	{
+		navigationOpen = false;
+		reflowNavigation();
+	}
+	if(!getLessonById(id))
+	{
+		loginstateEvent.addCallback(function(): void
+		{
+			if(LOGINSTATE)
+			{
+				window.location.href = CONFIG['frontend-uri'] + "/404.html";
+			}
+			else
+			{
+				loginRedirect();
+			}
+		});
+	}
+	else
+	{
+		cacheThenNetworkRequest(CONFIG.apiuri + "/lesson/" + id, "", function(response: string|object, second: boolean): void
+		{
+			metadataEvent.addCallback(function(): void
+			{
+				renderLessonView(id, response as string, noHistory, second);
+			});
+		});
+	}
+	refreshLogin();
 }
