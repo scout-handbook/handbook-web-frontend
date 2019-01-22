@@ -1,5 +1,3 @@
-/* eslint strict: "off", no-unused-vars: "off" */
-
 declare var CONFIG: Config;
 declare var WebFont: WebFont;
 declare function competenceBubbleDetailOnClick(event: MouseEvent): boolean;

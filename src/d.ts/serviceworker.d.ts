@@ -1,5 +1,3 @@
-/* eslint strict: "off", no-unused-vars: "off" */
-
 interface ExtendableEvent extends Event {
 	waitUntil(fn: Promise<void|Response>): void;
 }
