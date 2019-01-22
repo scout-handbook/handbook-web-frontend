@@ -91,7 +91,7 @@ function pagebreakCommand(): string
 }
 
 // Showdown extensions definitions
-var HandbookMarkdown = function(): Array<object>
+var HandbookMarkdown = function(): Array<showdown.ShowdownExtension>
 {
 	var responsiveTablesBegin = {
 		type: "output",

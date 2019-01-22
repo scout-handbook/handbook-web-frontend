@@ -2,8 +2,6 @@
   "extends": "../tsconfig.json",
   "files": [
     "../src/d.ts/frontend-pushed.d.ts",
-    "../src/d.ts/showdown.d.ts",
-    "../src/d.ts/WebFont.d.ts",
     "../src/ts/interfaces/Competence.ts",
     "../src/ts/interfaces/Config.ts",
     "../src/ts/interfaces/CustomProperties.ts",

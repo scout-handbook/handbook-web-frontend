@@ -3,7 +3,6 @@
   "files": [
     "../src/d.ts/frontend.d.ts",
     "../src/d.ts/AfterLoadEvent.d.ts",
-    "../src/d.ts/showdown.d.ts",
     "../src/ts/interfaces/Arguments.ts",
     "../src/ts/interfaces/Competence.ts",
     "../src/ts/interfaces/Config.ts",
