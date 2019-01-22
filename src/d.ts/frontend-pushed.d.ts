@@ -1,5 +1,4 @@
 declare var CONFIG: Config;
-declare var WebFont: WebFont;
 declare function competenceBubbleDetailOnClick(event: MouseEvent): boolean;
 declare function filterXSS(html: string, options: XSSOptions): string;
 declare function getLessonById(id: string): Lesson | null;
