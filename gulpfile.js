@@ -27,7 +27,7 @@ const minify = composer(uglify, console);
 
 function getConfig() {
 	let config = nestedObjectAssign(JSON.parse(fs.readFileSync("src/json/config.json", "utf8")), {cache: 'handbook-' + pkg.version});
-	let overrideLocation = yargs.string('config').argv.config
+	const overrideLocation = yargs.string('config').argv.config
 	if(overrideLocation) {
 		config = nestedObjectAssign(config, JSON.parse(fs.readFileSync(overrideLocation, "utf8")));
 	}
@@ -150,7 +150,7 @@ gulp.task('build:icon', function() {
 
 gulp.task('build:js', function() {
 	function bundle(name, addConfig) {
-		let tsProject = ts.createProject("tsconfig/" + name + ".json");
+		const tsProject = ts.createProject("tsconfig/" + name + ".json");
 		let ret = tsProject.src()
 			.pipe(inject.replace('\\"\\"\\/\\*INJECTED\\-VERSION\\*\\/', '"' + pkg.version + '"'))
 			.pipe(sourcemaps.init())
