@@ -1,7 +1,8 @@
 {
 	"parser": "@typescript-eslint/parser",
 	"parserOptions": {
-		"ecmaVersion": 3
+		"ecmaVersion": 3,
+		"sourceType": "script"
 	},
 	"env": {
 		"browser": true
@@ -17,7 +18,7 @@
 	"rules": {
 		"compat/compat": "warn",
 		"no-warning-comments": "warn",
-		"strict": ["error", "global"],
+		"strict": ["error", "never"],
 		"@typescript-eslint/array-type": ["error", "generic"],
 		"@typescript-eslint/indent": ["error", "tab"],
 		"@typescript-eslint/member-ordering": "error",
