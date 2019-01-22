@@ -1,32 +1,33 @@
 /* eslint-env node */
+/* eslint-disable @typescript-eslint/no-var-requires */
 
-var yargs = require('yargs');
-var fs = require("fs")
-var nestedObjectAssign = require('nested-object-assign');
+const yargs = require('yargs');
+const fs = require("fs")
+const nestedObjectAssign = require('nested-object-assign');
 
-var gulp = require('gulp');
-var eslint = require('gulp-eslint');
-var uglify = require('uglify-js');
-var composer = require('gulp-uglify/composer');
-var stylelint = require('gulp-stylelint');
-var merge = require('merge-stream');
-var sourcemaps = require('gulp-sourcemaps');
-var concat = require('gulp-concat');
-var cleanCSS = require('gulp-clean-css');
-var postcss = require('gulp-postcss');
-var postcssCustomProperties = require('postcss-custom-properties');
-var autoprefixer = require('autoprefixer');
-var inject = require('gulp-inject-string');
-var htmlmin = require('gulp-htmlmin');
-var ts = require("gulp-typescript");
+const gulp = require('gulp');
+const eslint = require('gulp-eslint');
+const uglify = require('uglify-js');
+const composer = require('gulp-uglify/composer');
+const stylelint = require('gulp-stylelint');
+const merge = require('merge-stream');
+const sourcemaps = require('gulp-sourcemaps');
+const concat = require('gulp-concat');
+const cleanCSS = require('gulp-clean-css');
+const postcss = require('gulp-postcss');
+const postcssCustomProperties = require('postcss-custom-properties');
+const autoprefixer = require('autoprefixer');
+const inject = require('gulp-inject-string');
+const htmlmin = require('gulp-htmlmin');
+const ts = require("gulp-typescript");
 
-var pkg = require('./package.json');
+const pkg = require('./package.json');
 
-var minify = composer(uglify, console);
+const minify = composer(uglify, console);
 
 function getConfig() {
-	var config = nestedObjectAssign(JSON.parse(fs.readFileSync("src/json/config.json", "utf8")), {cache: 'handbook-' + pkg.version});
-	var overrideLocation = yargs.string('config').argv.config
+	let config = nestedObjectAssign(JSON.parse(fs.readFileSync("src/json/config.json", "utf8")), {cache: 'handbook-' + pkg.version});
+	let overrideLocation = yargs.string('config').argv.config
 	if(overrideLocation) {
 		config = nestedObjectAssign(config, JSON.parse(fs.readFileSync(overrideLocation, "utf8")));
 	}
@@ -149,8 +150,8 @@ gulp.task('build:icon', function() {
 
 gulp.task('build:js', function() {
 	function bundle(name, addConfig) {
-		var tsProject = ts.createProject("tsconfig/" + name + ".json");
-		var ret = tsProject.src()
+		let tsProject = ts.createProject("tsconfig/" + name + ".json");
+		let ret = tsProject.src()
 			.pipe(inject.replace('\\"\\"\\/\\*INJECTED\\-VERSION\\*\\/', '"' + pkg.version + '"'))
 			.pipe(sourcemaps.init())
 			.pipe(tsProject())
