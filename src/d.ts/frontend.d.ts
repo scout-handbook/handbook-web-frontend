@@ -1,6 +1,7 @@
 declare var COMPETENCES: Array<Competence>;
 declare var CONFIG: Config;
 declare var FIELDS: Array<Field>;
+declare var FULLFIELDS: Array<FullField>;
 declare var activeCompetence: HTMLElement | null;
 declare var metadataEvent: AfterLoadEvent;
 declare var navigationOpen: boolean;

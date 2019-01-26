@@ -1,5 +1,32 @@
 /* exported historySetup */
 
+function historyPopback(): void
+{
+	if(history.state)
+	{
+		if(window.location.pathname === "/competence")
+		{
+			showCompetenceListView(true);
+		}
+		else if(window.location.pathname.substring(0, 12) === "/competence/")
+		{
+			showCompetenceView(history.state.id, true);
+		}
+		else if(window.location.pathname.substring(0, 7) === "/field/")
+		{
+			showFieldView(history.state.id, true);
+		}
+		else if(window.location.pathname.substring(0, 8) === "/lesson/")
+		{
+			showLessonView(history.state.id, true);
+		}
+		else
+		{
+			showFieldListView(true);
+		}
+	}
+}
+
 function historySetup(): void
 {
 	window.onpopstate = historyPopback;
@@ -28,31 +55,5 @@ function historySetup(): void
 	else
 	{
 		showFieldListView(false);
-	}
-}
-function historyPopback(): void
-{
-	if(history.state)
-	{
-		if(window.location.pathname === "/competence")
-		{
-			showCompetenceListView(true);
-		}
-		else if(window.location.pathname.substring(0, 12) === "/competence/")
-		{
-			showCompetenceView(history.state.id, true);
-		}
-		else if(window.location.pathname.substring(0, 7) === "/field/")
-		{
-			showFieldView(history.state.id, true);
-		}
-		else if(window.location.pathname.substring(0, 8) === "/lesson/")
-		{
-			showLessonView(history.state.id, true);
-		}
-		else
-		{
-			showFieldListView(true);
-		}
 	}
 }
