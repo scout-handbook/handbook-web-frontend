@@ -1,6 +1,6 @@
 /* exported FULLFIELDS, FIELDS, COMPETENCES, LOGINSTATE */
 
-var FULLFIELDS;
+var FULLFIELDS: Array<FullField>;
 var FIELDS: Array<Field>;
 var COMPETENCES: Array<Competence>;
 var LOGINSTATE: Loginstate | null;
