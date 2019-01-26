@@ -6,7 +6,7 @@ var loginstateEvent = new AfterLoadEvent(1);
 
 function metadataSetup(): void
 {
-	cacheThenNetworkRequest(CONFIG.apiuri + "/field", "", function(response, second)
+	cacheThenNetworkRequest(CONFIG.apiuri + "/field", "", function(response, second): void
 	{
 		FULLFIELDS = response as Array<FullField>;
 		if(second)
