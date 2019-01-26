@@ -1,33 +1,35 @@
-"use strict";
 /* eslint-env node */
 
-var yargs = require('yargs');
-var fs = require("fs")
-var nestedObjectAssign = require('nested-object-assign');
+/* eslint-disable @typescript-eslint/no-var-requires */
 
-var gulp = require('gulp');
-var eslint = require('gulp-eslint');
-var uglify = require('uglify-js');
-var composer = require('gulp-uglify/composer');
-var stylelint = require('gulp-stylelint');
-var merge = require('merge-stream');
-var sourcemaps = require('gulp-sourcemaps');
-var concat = require('gulp-concat');
-var cleanCSS = require('gulp-clean-css');
-var postcss = require('gulp-postcss');
-var postcssCalc = require("postcss-calc");
-var postcssCustomProperties = require('postcss-custom-properties');
-var autoprefixer = require('autoprefixer');
-var inject = require('gulp-inject-string');
-var htmlmin = require('gulp-htmlmin');
+const yargs = require('yargs');
+const fs = require("fs")
+const nestedObjectAssign = require('nested-object-assign');
 
-var pkg = require('./package.json');
+const gulp = require('gulp');
+const eslint = require('gulp-eslint');
+const uglify = require('uglify-js');
+const composer = require('gulp-uglify/composer');
+const stylelint = require('gulp-stylelint');
+const merge = require('merge-stream');
+const sourcemaps = require('gulp-sourcemaps');
+const concat = require('gulp-concat');
+const cleanCSS = require('gulp-clean-css');
+const postcss = require('gulp-postcss');
+const postcssCalc = require("postcss-calc");
+const postcssCustomProperties = require('postcss-custom-properties');
+const autoprefixer = require('autoprefixer');
+const inject = require('gulp-inject-string');
+const htmlmin = require('gulp-htmlmin');
+const ts = require("gulp-typescript");
 
-var minify = composer(uglify, console);
+const pkg = require('./package.json');
+
+const minify = composer(uglify, console);
 
 function getConfig() {
-	var config = nestedObjectAssign(JSON.parse(fs.readFileSync("src/json/config.json", "utf8")), {cache: 'handbook-' + pkg.version});
-	var overrideLocation = yargs.string('config').argv.config
+	let config = nestedObjectAssign(JSON.parse(fs.readFileSync("src/json/config.json", "utf8")), {cache: 'handbook-' + pkg.version});
+	const overrideLocation = yargs.string('config').argv.config
 	if(overrideLocation) {
 		config = nestedObjectAssign(config, JSON.parse(fs.readFileSync(overrideLocation, "utf8")));
 	}
@@ -35,7 +37,7 @@ function getConfig() {
 }
 
 gulp.task('eslint', function() {
-	return gulp.src(['**/*.js', '!node_modules/**', '!dist/**'])
+	return gulp.src(['**/*.js', '**/*.ts', '!node_modules/**', '!dist/**'])
 		.pipe(eslint())
 		.pipe(eslint.format())
 		.pipe(eslint.failAfterError());
@@ -149,47 +151,26 @@ gulp.task('build:icon', function() {
 });
 
 gulp.task('build:js', function() {
-	function bundle(name, sources, addConfig) {
-		var ret = sources
+	function bundle(name, addConfig) {
+		const tsProject = ts.createProject("tsconfig/" + name + ".json");
+		let ret = tsProject.src()
+			.pipe(inject.replace('\\"\\"\\/\\*INJECTED\\-VERSION\\*\\/', '"' + pkg.version + '"'))
 			.pipe(sourcemaps.init())
+			.pipe(tsProject())
 			.pipe(concat(name + '.min.js'));
 		if(addConfig) {
 			ret = ret.pipe(inject.prepend('"use strict";\nvar CONFIG = JSON.parse(\'' + JSON.stringify(getConfig()) + '\');\n'))
 		}
-		return ret.pipe(inject.replace('\\"\\"\\/\\*INJECTED\\-VERSION\\*\\/', '"' + pkg.version + '"'))
+		return ret
 			//.pipe(gulp.dest('dist/'));
 			.pipe(minify({ie8: true}))
 			.pipe(sourcemaps.write('./'))
 			.pipe(gulp.dest('dist/'));
 	}
 	return merge(
-		bundle('serviceworker', gulp.src([
-			'src/js/serviceworker.js'
-		])),
-		bundle('frontend-pushed', gulp.src([
-			'src/js/tools/cacheThenNetworkRequest.js',
-			'src/js/tools/request.js',
-			'src/js/UI/header.js',
-			'src/js/UI/navigation.js',
-			'src/js/UI/TOC.js',
-			'src/js/views/lesson.js',
-			'src/js/AfterLoadEvent.js',
-			'src/js/authentication.js',
-			'src/js/history.js',
-			'src/js/main.js',
-			'src/js/metadata.js'
-		]), true),
-		bundle('frontend', gulp.src([
-			'src/js/tools/urlEscape.js',
-			'src/js/UI/lessonView.js',
-			'src/js/views/competence.js',
-			'src/js/views/competenceList.js',
-			'src/js/views/field.js',
-			'src/js/views/fieldList.js',
-			'src/js/getLessonById.js',
-			'src/js/HandbookMarkdown.js',
-			'src/js/xssOptions.js'
-		]))
+		bundle('serviceworker'),
+		bundle('frontend-pushed', true),
+		bundle('frontend')
 	);
 });
 
