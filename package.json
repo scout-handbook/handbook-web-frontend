@@ -1,6 +1,6 @@
 {
   "name": "skaut-handbook-web-frontend",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "A web interface for a Scout handbook",
   "keywords": [
     "education",
@@ -26,8 +26,8 @@
   "devDependencies": {
     "@types/showdown": "^1.9.2",
     "@types/webfontloader": "^1.6.29",
-    "@typescript-eslint/eslint-plugin": "^1.1.0",
-    "@typescript-eslint/parser": "^1.1.0",
+    "@typescript-eslint/eslint-plugin": "^1.1.1",
+    "@typescript-eslint/parser": "^1.1.1",
     "eslint": "^5.12.1",
     "eslint-plugin-compat": "^2.6.3",
     "gulp": "^4.0.0",
