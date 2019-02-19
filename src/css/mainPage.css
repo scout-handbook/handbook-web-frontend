@@ -16,16 +16,18 @@ h3.mainPage {
 	margin-left: 40px;
 }
 
+.field-list-col {
+	float: left;
+	width: 385px;
+}
+
 .field-card {
-	border: 1px solid var(--border-color);
-	border-radius: 5px;
-	box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.3);
+	border-radius: 4px;
+	box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
 	cursor: pointer;
 	display: inline-block;
-	height: var(--field-card-height)px;
 	margin-bottom: calc(383px - var(--field-card-width)px);
 	margin-right: calc(383px - var(--field-card-width)px);
-	overflow: hidden;
 	width: var(--field-card-width)px;
 }
 
@@ -34,17 +36,10 @@ h3.mainPage {
 	width: var(--field-card-width)px;
 }
 
-.field-card-svg {
-	margin-top: calc(var(--field-card-overlay-height)px * -1 - 7px);
+.field-card-heading {
+	margin: 16px;
 }
 
-.field-card-overlay {
-	background-color: rgba(255, 255, 255, 0.4);
-	font-size: 25px;
-	font-weight: bold;
-	height: var(--field-card-overlay-height)px;
-	line-height: 140%;
-	margin-top: calc(var(--field-card-height)px * -1 - 6px);
-	padding: 15px 25px;
-	position: relative;
+.field-card-description {
+	margin: 16px;
 }
