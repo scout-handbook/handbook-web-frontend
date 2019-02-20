@@ -18,7 +18,7 @@ h3.mainPage {
 
 .field-list-col {
 	float: left;
-	width: 385px;
+	max-width: 385px;
 }
 
 .field-card {
@@ -28,12 +28,11 @@ h3.mainPage {
 	display: inline-block;
 	margin-bottom: calc(383px - var(--field-card-width)px);
 	margin-right: calc(383px - var(--field-card-width)px);
-	width: var(--field-card-width)px;
+	max-width: var(--field-card-width)px;
 }
 
 .field-card-image {
-	height: var(--field-card-height)px;
-	width: var(--field-card-width)px;
+	max-height: var(--field-card-height)px;
 }
 
 .field-card-heading {
