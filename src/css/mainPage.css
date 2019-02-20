@@ -16,9 +16,15 @@ h3.mainPage {
 	margin-left: 40px;
 }
 
+.field-list-container {
+	text-align: center;
+}
+
 .field-list-col {
-	float: left;
+	display: inline-block;
 	max-width: 385px;
+	text-align: left;
+	vertical-align: top;
 }
 
 .field-card {
@@ -26,13 +32,8 @@ h3.mainPage {
 	box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
 	cursor: pointer;
 	display: inline-block;
-	margin-bottom: calc(383px - var(--field-card-width)px);
-	margin-right: calc(383px - var(--field-card-width)px);
+	margin-bottom: calc(385px - var(--field-card-width)px);
 	max-width: var(--field-card-width)px;
-}
-
-.field-card-image {
-	max-height: var(--field-card-height)px;
 }
 
 .field-card-heading {

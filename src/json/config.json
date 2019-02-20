@@ -5,7 +5,6 @@
 		"--background": "#222",
 		"--background-darker": "#fafafa",
 		"--border-color": "#bfbfbf",
-		"--field-card-height": "194",
 		"--field-card-width": "344",
 		"--nav-width": "300px",
 		"--non-accented-link-color": "#364149",
