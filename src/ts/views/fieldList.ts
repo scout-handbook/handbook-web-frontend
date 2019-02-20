@@ -3,18 +3,18 @@
 
 function renderFullFieldList(): string
 {
-	var html = "<div id=\"field-list-col1\" class=\"field-list-col\">";
+	var html = "<div class=\"field-list-container\"><div id=\"field-list-col1\" class=\"field-list-col\">";
 	for(var i = 0; i < FULLFIELDS.length; i++)
 	{
 		html += "<div class=\"field-card\" data-id=\"" + FULLFIELDS[i].id + "\">"
-		html += "<img class=\"field-card-image\" src=\"" + CONFIG.apiuri + "/image/" + FULLFIELDS[i].image + "\">";
+		html += "<img src=\"" + CONFIG.apiuri + "/image/" + FULLFIELDS[i].image + "\">";
 		html += "<h2 class=\"field-card-heading\">";
 		html += FULLFIELDS[i].name;
 		html += "</h2><div class=\"field-card-description\">";
 		html += "Lorem ipsum dolor sit amet consectetur adipiscing elit.";
 		html += "</div></div>";
 	}
-	html += "</div><div id=\"field-list-col2\" class=\"field-list-col\"></div>";
+	html += "</div><div id=\"field-list-col2\" class=\"field-list-col\"></div></div>";
 	return html;
 }
 
