@@ -24,7 +24,7 @@ function renderFullFieldList(): string
 			}
 		}
 		html += "</div><div class=\"field-card-description\">";
-		html += "Lorem ipsum dolor sit amet consectetur adipiscing elit.";
+		html += FULLFIELDS[i].description;
 		html += "</div></div>";
 	}
 	html += "</div><div id=\"field-list-col2\" class=\"field-list-col\"></div></div>";
