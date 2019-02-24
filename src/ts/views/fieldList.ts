@@ -10,7 +10,20 @@ function renderFullFieldList(): string
 		html += "<img src=\"" + CONFIG.apiuri + "/image/" + FULLFIELDS[i].image + "\">";
 		html += "<h2 class=\"field-card-heading\">";
 		html += FULLFIELDS[i].name;
-		html += "</h2><div class=\"field-card-description\">";
+		html += "</h2><div class=\"field-card-lesson-count\">";
+		for(var j = 0; j < FIELDS.length; j++)
+		{
+			if(FULLFIELDS[i].id === FIELDS[j].id)
+			{
+				var count = FIELDS[j].lessons.length;
+				if(count > 0)
+				{
+					html += count + (count < 5 ? " lekce" : " lekcí");
+				}
+				break;
+			}
+		}
+		html += "</div><div class=\"field-card-description\">";
 		html += "Lorem ipsum dolor sit amet consectetur adipiscing elit.";
 		html += "</div></div>";
 	}

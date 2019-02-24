@@ -39,6 +39,12 @@ h3.mainPage {
 .field-card-heading {
 	line-height: 140%;
 	margin: 16px;
+	margin-bottom: 4px;
+}
+
+.field-card-lesson-count {
+	color: #67767a;
+	margin-left: 16px;
 }
 
 .field-card-description {
