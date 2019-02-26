@@ -1,5 +1,5 @@
 /* global navigationOpen:true */
-/* exported showFieldView */
+/* exported navigationOpen, showFieldView */
 
 function renderFieldLessonList(field: Field): string
 {
