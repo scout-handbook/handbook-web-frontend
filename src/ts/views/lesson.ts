@@ -1,5 +1,5 @@
 /* global activeCompetence:true, navigationOpen:true */
-/* exported activeCompetence, lessonViewSetup, showLessonView */
+/* exported activeCompetence, lessonViewSetup, navigationOpen, showLessonView */
 
 var converter: showdown.Converter;
 var activeCompetence: HTMLElement | null = null;
