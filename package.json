@@ -26,10 +26,10 @@
   "devDependencies": {
     "@types/showdown": "^1.9.2",
     "@types/webfontloader": "^1.6.29",
-    "@typescript-eslint/eslint-plugin": "^1.1.1",
-    "@typescript-eslint/parser": "^1.1.1",
-    "eslint": "^5.12.1",
-    "eslint-plugin-compat": "^2.6.3",
+    "@typescript-eslint/eslint-plugin": "^1.4.2",
+    "@typescript-eslint/parser": "^1.4.2",
+    "eslint": "^5.14.1",
+    "eslint-plugin-compat": "^2.7.0",
     "gulp": "^4.0.0",
     "gulp-clean-css": "^4.0.0",
     "gulp-concat": "^2.6.1",
@@ -37,7 +37,7 @@
     "gulp-htmlmin": "^5.0.1",
     "gulp-inject-string": "^1.1.2",
     "gulp-postcss": "^8.0.0",
-    "gulp-sourcemaps": "^2.6.4",
+    "gulp-sourcemaps": "^2.6.5",
     "gulp-stylelint": "^8.0.0",
     "gulp-typescript": "^5.0.0",
     "gulp-uglify": "^3.0.1",
@@ -48,9 +48,9 @@
     "stylelint": "^9.10.1",
     "stylelint-config-standard": "^18.2.0",
     "stylelint-no-unsupported-browser-features": "^3.0.2",
-    "typescript": "^3.2.4",
+    "typescript": "^3.3.3333",
     "uglify-js": "^3.4.9",
-    "yargs": "^12.0.5"
+    "yargs": "^13.2.1"
   },
   "browserslist": [
     "cover 95%",
