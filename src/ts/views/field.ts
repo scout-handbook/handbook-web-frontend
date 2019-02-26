@@ -40,6 +40,14 @@ function renderFieldView(id: string, noHistory: boolean): void
 		}
 	}
 	var html = "<h1>" + field.name + "</h1>";
+	for(var j = 0; j < FULLFIELDS.length; j++)
+	{
+		if(FULLFIELDS[j].id === id)
+		{
+			html += FULLFIELDS[j].description;
+			break;
+		}
+	}
 	html += renderFieldLessonList(field);
 	document.getElementById("content")!.innerHTML = html;
 
