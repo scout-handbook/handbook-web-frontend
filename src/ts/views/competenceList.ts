@@ -1,5 +1,5 @@
 /* global navigationOpen:true */
-/* exported showCompetenceListView */
+/* exported navigationOpen, showCompetenceListView */
 
 function renderCompetenceList(): string
 {
