@@ -1,0 +1,24 @@
+cache:
+  paths:
+    - node_modules/
+stages:
+  - build
+  - lint
+
+.npm:
+  image: node
+  before_script:
+    - npm install -g gulp-cli
+    - npm install
+
+build:
+  extends: .npm
+  stage: build
+  script:
+    - gulp build
+
+lint:
+  extends: .npm
+  stage: lint
+  script:
+    - gulp lint
