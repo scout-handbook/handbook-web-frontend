@@ -28,7 +28,7 @@
     "@types/webfontloader": "^1.6.29",
     "@typescript-eslint/eslint-plugin": "^1.4.2",
     "@typescript-eslint/parser": "^1.4.2",
-    "eslint": "^5.14.1",
+    "eslint": "^5.15.1",
     "eslint-plugin-compat": "^2.7.0",
     "gulp": "^4.0.0",
     "gulp-clean-css": "^4.0.0",
@@ -40,7 +40,7 @@
     "gulp-sourcemaps": "^2.6.5",
     "gulp-stylelint": "^8.0.0",
     "gulp-typescript": "^5.0.0",
-    "gulp-uglify": "^3.0.1",
+    "gulp-uglify": "^3.0.2",
     "merge-stream": "^1.0.1",
     "nested-object-assign": "^1.0.3",
     "postcss-custom-properties": "^8.0.9",
@@ -49,7 +49,7 @@
     "stylelint-no-unsupported-browser-features": "^3.0.2",
     "typescript": "^3.3.3333",
     "uglify-js": "^3.4.9",
-    "yargs": "^13.2.1"
+    "yargs": "^13.2.2"
   },
   "browserslist": [
     "cover 95%",
