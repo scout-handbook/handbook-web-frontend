@@ -1,6 +1,6 @@
+/// <reference types="xss" />
 declare var CONFIG: Config;
 declare function competenceBubbleDetailOnClick(event: MouseEvent): boolean;
-declare function filterXSS(html: string, options: XSSOptions): string;
 declare function getLessonById(id: string): Lesson | null;
 declare function reflowCompetenceBubbles(): void;
 declare function showCompetenceListView(noHistory: boolean): void;
