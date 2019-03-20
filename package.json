@@ -21,14 +21,14 @@
   },
   "dependencies": {
     "showdown": "^1.9.0",
-    "xss": "^1.0.3"
+    "xss": "^1.0.5"
   },
   "devDependencies": {
     "@types/showdown": "^1.9.2",
     "@types/webfontloader": "^1.6.29",
     "@typescript-eslint/eslint-plugin": "^1.4.2",
     "@typescript-eslint/parser": "^1.4.2",
-    "eslint": "^5.15.2",
+    "eslint": "^5.15.3",
     "eslint-plugin-compat": "^3.0.1",
     "gulp": "^4.0.0",
     "gulp-clean-css": "^4.0.0",
@@ -47,7 +47,7 @@
     "stylelint": "^9.10.1",
     "stylelint-config-standard": "^18.2.0",
     "stylelint-no-unsupported-browser-features": "^3.0.2",
-    "typescript": "^3.3.3333",
+    "typescript": "^3.3.4000",
     "uglify-js": "^3.4.10",
     "yargs": "^13.2.2"
   },
