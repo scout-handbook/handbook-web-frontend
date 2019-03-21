@@ -9,7 +9,6 @@
     "../src/ts/interfaces/Lesson.ts",
     "../src/ts/interfaces/Loginstate.ts",
     "../src/ts/interfaces/RequestHeaders.ts",
-    "../src/ts/interfaces/XSSOptions.ts",
     "../src/ts/tools/cacheThenNetworkRequest.ts",
     "../src/ts/tools/request.ts",
     "../src/ts/UI/header.ts",
