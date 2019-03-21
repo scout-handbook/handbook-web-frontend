@@ -10,4 +10,4 @@ declare function showLessonListView(noHistory: boolean): void;
 declare function toggleCompetenceBubble(event: MouseEvent): void;
 declare function toggleLessonOffline(): void;
 declare function urlEscape(str: string): string;
-declare function xssOptions(): XSSOptions;
+declare function xssOptions(): XSS.IFilterXSSOptions;
