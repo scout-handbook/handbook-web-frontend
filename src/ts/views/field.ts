@@ -52,7 +52,7 @@ function renderFieldView(id: string, noHistory: boolean): void
 	document.getElementsByTagName("main")[0].scrollTop = 0;
 	if(!noHistory)0
 	{
-		history.pushState({"id": id}, "title", "/field/" + id + "/" + urlEscape(field.name));
+		history.pushState({"id": id}, "title", "/field/" + id + "/" + urlEscape(field.name)); // eslint-disable-line compat/compat
 	}
 	document.getElementById("offlineSwitch")!.style.display = "none";
 }

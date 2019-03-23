@@ -11,7 +11,7 @@ function toggleLessonOffline(): void
 		{
 			if(checked)
 			{
-				cache.add(new Request(CONFIG.apiuri + "/lesson/" + id, {credentials: "same-origin"}));
+				cache.add(new Request(CONFIG.apiuri + "/lesson/" + id, {credentials: "same-origin"})); // eslint-disable-line compat/compat
 			}
 			else
 			{
