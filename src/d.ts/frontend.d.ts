@@ -1,3 +1,4 @@
+/// <reference types="xss" />
 declare var COMPETENCES: Array<Competence>;
 declare var CONFIG: Config;
 declare var FIELDS: Array<Field>;
