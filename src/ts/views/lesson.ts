@@ -12,6 +12,18 @@ function lessonViewSetup(): void
 	window.addEventListener("resize", reflowCompetenceBubbles)
 }
 
+function emptyFields(): boolean
+{
+	for(var i = 0; i < FIELDS.length; i++)
+	{
+		if(FIELDS[i].lessons.length > 0)
+		{
+			return false;
+		}
+	}
+	return true;
+}
+
 function renderLessonView(id: string, markdown: string, noHistory: boolean, second: boolean): void
 {
 	var lesson = getLessonById(id)!;
@@ -80,11 +92,15 @@ function showLessonView(id: string, noHistory: boolean): void
 	}
 	if(!getLessonById(id))
 	{
+		var emptyFieldsCache = emptyFields();
 		loginstateEvent.addCallback(function(): void
 		{
 			if(LOGINSTATE)
 			{
-				window.location.href = CONFIG['frontend-uri'] + "/404.html";
+				if(!emptyFieldsCache)
+				{
+					window.location.href = CONFIG['frontend-uri'] + "/404.html";
+				}
 			}
 			else
 			{

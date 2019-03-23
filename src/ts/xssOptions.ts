@@ -1,6 +1,6 @@
 /* exported xssOptions */
 
-function xssOptions(): XSSOptions
+function xssOptions(): XSS.IFilterXSSOptions
 {
 	return {onIgnoreTagAttr: function(tag: string, name: string, value: string, isWhiteAttr: boolean): string
 	{
