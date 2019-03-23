@@ -15,7 +15,7 @@ function request(url: string, query: string, headers: RequestHeaders): AfterLoad
 			}
 			else if(this.status === 403 && body.type === "RoleException")
 			{
-				showLessonListView(false);
+				loginRedirect();
 			}
 		}
 	}
