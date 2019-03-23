@@ -68,7 +68,7 @@ function renderCompetenceView(id: string, noHistory: boolean): void
 	document.getElementsByTagName("main")[0].scrollTop = 0;
 	if(!noHistory)
 	{
-		history.pushState({"id": id}, "title", "/competence/" + id + "/" + urlEscape(competence.number + "-" + competence.name));
+		history.pushState({"id": id}, "title", "/competence/" + id + "/" + urlEscape(competence.number + "-" + competence.name)); // eslint-disable-line compat/compat
 	}
 	document.getElementById("offlineSwitch")!.style.display = "none";
 }

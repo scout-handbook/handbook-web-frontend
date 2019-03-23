@@ -66,7 +66,7 @@ function renderLessonListView(noHistory: boolean): void
 	document.getElementsByTagName("main")[0].scrollTop = 0;
 	if(!noHistory)
 	{
-		history.pushState({}, "title", "/");
+		history.pushState({}, "title", "/"); // eslint-disable-line compat/compat
 	}
 	document.getElementById("offlineSwitch")!.style.display = "none";
 }
