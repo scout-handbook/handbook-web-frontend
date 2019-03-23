@@ -19,6 +19,7 @@ var cacheNonBlocking = [
 ];
 
 var cacheUpdating = [
+	APIPATH + "/field",
 	APIPATH + "/lesson",
 	APIPATH + "/competence"
 ];
