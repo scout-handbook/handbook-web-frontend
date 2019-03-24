@@ -1,8 +1,8 @@
-/* exported FULLFIELDS, FIELDS, COMPETENCES, LOGINSTATE */
+/* exported FULLFIELDS, COMPETENCES, LOGINSTATE */
 
-var FULLFIELDS: Array<FullField>;
-var FIELDS: Array<Field>;
+var FULLFIELDS: IDList<FullField>;
 var COMPETENCES: Array<Competence>;
+var LESSONS: IDList<Lesson>;
 var LOGINSTATE: Loginstate | null;
 
 function main(): void

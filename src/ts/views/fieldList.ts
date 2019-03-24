@@ -4,29 +4,22 @@
 function renderFullFieldList(): string
 {
 	var html = "<div class=\"field-list-container\"><div id=\"field-list-col1\" class=\"field-list-col\">";
-	for(var i = 0; i < FULLFIELDS.length; i++)
+	FULLFIELDS.iterate(function(id, field)
 	{
-		html += "<div class=\"field-card\" data-id=\"" + FULLFIELDS[i].id + "\">"
-		html += "<img src=\"" + CONFIG.apiuri + "/image/" + FULLFIELDS[i].image + "\">";
+		html += "<div class=\"field-card\" data-id=\"" + id + "\">"
+		html += "<img src=\"" + CONFIG.apiuri + "/image/" + field.image + "\">";
 		html += "<h2 class=\"field-card-heading\">";
-		html += FULLFIELDS[i].name;
+		html += field.name;
 		html += "</h2><div class=\"field-card-lesson-count\">";
-		for(var j = 0; j < FIELDS.length; j++)
+		var count = field.lessons.length;
+		if(count > 0)
 		{
-			if(FULLFIELDS[i].id === FIELDS[j].id)
-			{
-				var count = FIELDS[j].lessons.length;
-				if(count > 0)
-				{
-					html += count + (count < 5 ? " lekce" : " lekcí");
-				}
-				break;
-			}
+			html += count + (count < 5 ? " lekce" : " lekcí");
 		}
 		html += "</div><div class=\"field-card-description\">";
-		html += FULLFIELDS[i].description;
+		html += field.description;
 		html += "</div></div>";
-	}
+	});
 	html += "</div><div id=\"field-list-col2\" class=\"field-list-col\"></div></div>";
 	return html;
 }

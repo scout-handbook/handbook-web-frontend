@@ -1,18 +1,18 @@
 /* global navigationOpen:true */
 /* exported navigationOpen, showCompetenceView */
 
-function renderCompetenceLessonList(lessonList: Array<Lesson>): string
+function renderCompetenceLessonList(lessonList: IDList<Lesson>): string
 {
 	var html = "";
-	for(var n = 0; n < lessonList.length; n++)
+	lessonList.iterate(function(id, lesson)
 	{
-		html += "<h3 class=\"mainPage\"><a title=\"" + lessonList[n].name + "\" href=\"enableJS.html\" data-id=\"" + lessonList[n].id + "\">" + lessonList[n].name + "</a></h3>";
-		if(lessonList[n].competences.length > 0)
+		html += "<h3 class=\"mainPage\"><a title=\"" + lesson.name + "\" href=\"enableJS.html\" data-id=\"" + id + "\">" + lesson.name + "</a></h3>";
+		if(lesson.competences.length > 0)
 		{
 			var competences = [];
 			for(var o = 0; o < COMPETENCES.length; o++)
 			{
-				if(lessonList[n].competences.indexOf(COMPETENCES[o].id) >= 0)
+				if(lesson.competences.indexOf(COMPETENCES[o].id) >= 0)
 				{
 					competences.push(COMPETENCES[o]);
 				}
@@ -24,7 +24,7 @@ function renderCompetenceLessonList(lessonList: Array<Lesson>): string
 			}
 			html += "</span>";
 		}
-	}
+	});
 	return html;
 }
 
@@ -41,21 +41,17 @@ function renderCompetenceView(id: string, noHistory: boolean): void
 	}
 	var html = "<h1>" + competence.number + ": " + competence.name + "</h1>";
 	html += competence.description;
-	var lessonList = [];
-	for(var j = 0; j < FIELDS.length; j++)
-	{
-		for(var k = 0; k < FIELDS[j].lessons.length; k++)
+	var lessonList = new IDList<Lesson>();
+	LESSONS.iterate(function(id, lesson) {
+		for(var i = 0; i < lesson.competences.length; i++)
 		{
-			for(var m = 0; m < FIELDS[j].lessons[k].competences.length; m++)
+			if(lesson.competences[i] === competence.id)
 			{
-				if(FIELDS[j].lessons[k].competences[m] === competence.id)
-				{
-					lessonList.push(FIELDS[j].lessons[k]);
-					break;
-				}
+				lessonList.push(id, lesson);
+				break;
 			}
 		}
-	}
+	});
 	html += renderCompetenceLessonList(lessonList);
 	document.getElementById("content")!.innerHTML = html;
 

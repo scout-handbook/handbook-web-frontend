@@ -1,18 +1,19 @@
 /* global navigationOpen:true */
 /* exported navigationOpen, showFieldView */
 
-function renderFieldLessonList(field: Field): string
+function renderFieldLessonList(field: FullField): string
 {
 	var html = "";
 	for(var i = 0; i < field.lessons.length; i++)
 	{
-		html += "<h3 class=\"mainPage\"><a title=\"" + field.lessons[i].name + "\" href=\"enableJS.html\" data-id=\"" + field.lessons[i].id + "\">" + field.lessons[i].name + "</a></h3>";
-		if(field.lessons[i].competences.length > 0)
+		var lesson = LESSONS.get(field.lessons[i]);
+		html += "<h3 class=\"mainPage\"><a title=\"" + lesson.name + "\" href=\"enableJS.html\" data-id=\"" + field.lessons[i] + "\">" + lesson.name + "</a></h3>";
+		if(lesson.competences.length > 0)
 		{
 			var competences = [];
 			for(var k = 0; k < COMPETENCES.length; k++)
 			{
-				if(field.lessons[i].competences.indexOf(COMPETENCES[k].id) >= 0)
+				if(lesson.competences.indexOf(COMPETENCES[k].id) >= 0)
 				{
 					competences.push(COMPETENCES[k]);
 				}
@@ -30,24 +31,9 @@ function renderFieldLessonList(field: Field): string
 
 function renderFieldView(id: string, noHistory: boolean): void
 {
-	var field: Field = {id: "", name: "", lessons: []};
-	for(var i = 0; i < FIELDS.length; i++)
-	{
-		if(FIELDS[i].id === id)
-		{
-			field = FIELDS[i];
-			break;
-		}
-	}
+	var field = FULLFIELDS.get(id);
 	var html = "<h1>" + field.name + "</h1>";
-	for(var j = 0; j < FULLFIELDS.length; j++)
-	{
-		if(FULLFIELDS[j].id === id)
-		{
-			html += FULLFIELDS[j].description;
-			break;
-		}
-	}
+	html += field.description;
 	html += renderFieldLessonList(field);
 	document.getElementById("content")!.innerHTML = html;
 

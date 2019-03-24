@@ -12,21 +12,9 @@ function lessonViewSetup(): void
 	window.addEventListener("resize", reflowCompetenceBubbles)
 }
 
-function emptyFields(): boolean
-{
-	for(var i = 0; i < FIELDS.length; i++)
-	{
-		if(FIELDS[i].lessons.length > 0)
-		{
-			return false;
-		}
-	}
-	return true;
-}
-
 function renderLessonView(id: string, markdown: string, noHistory: boolean, second: boolean): void
 {
-	var lesson = getLessonById(id)!;
+	var lesson = LESSONS.get(id);
 	var competences = [];
 	for(var k = 0; k < COMPETENCES.length; k++)
 	{
@@ -90,9 +78,9 @@ function showLessonView(id: string, noHistory: boolean): void
 		navigationOpen = false;
 		reflowNavigation();
 	}
-	if(!getLessonById(id))
+	if(!LESSONS.get(id))
 	{
-		var emptyFieldsCache = emptyFields();
+		var emptyFieldsCache = FULLFIELDS.empty();
 		loginstateEvent.addCallback(function(): void
 		{
 			if(LOGINSTATE)
