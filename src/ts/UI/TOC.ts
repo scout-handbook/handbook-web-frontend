@@ -15,24 +15,28 @@ function TOCLessonOnClick(event: MouseEvent): boolean
 function renderTOC(): void
 {
 	var html = "";
+	LESSONS.iterate(function(id, lesson)
+	{
+		var inField = false;
+		FIELDS.iterate(function(_, field)
+		{
+			if(field.lessons.indexOf(id) >= 0)
+			{
+				inField = true;
+			}
+		});
+		if(!inField)
+		{
+			html += "<a title=\"" + lesson.name + "\" href=\"enableJS.html\" data-id=\"" + id + "\">" + lesson.name + "</a><br>";
+		}
+	});
 	FIELDS.iterate(function(id, field)
 	{
-		if(field.name)
+		html += "<h1><a title=\"" + field.name + "\" href=\"enableJS.html\" data-id=\"" + id + "\">" + field.name + "</a></h1>";
+		for(var i = 0; i < field.lessons.length; i++)
 		{
-			html += "<h1><a title=\"" + field.name + "\" href=\"enableJS.html\" data-id=\"" + id + "\">" + field.name + "</a></h1>";
-			for(var i = 0; i < field.lessons.length; i++)
-			{
-				var lesson = LESSONS.get(field.lessons[i]);
-				html += "<a class=\"secondLevel\" title=\"" + lesson.name + "\" href=\"enableJS.html\" data-id=\"" + field.lessons[i] + "\">" + lesson.name + "</a><br>";
-			}
-		}
-		else
-		{
-			for(var j = 0; j < field.lessons.length; j++)
-			{
-				lesson = LESSONS.get(field.lessons[j]);
-				html += "<a title=\"" + lesson.name + "\" href=\"enableJS.html\" data-id=\"" + field.lessons[j] + "\">" + lesson.name + "</a><br>";
-			}
+			var lesson = LESSONS.get(field.lessons[i]);
+			html += "<a class=\"secondLevel\" title=\"" + lesson.name + "\" href=\"enableJS.html\" data-id=\"" + field.lessons[i] + "\">" + lesson.name + "</a><br>";
 		}
 	});
 	document.getElementById("navigation")!.innerHTML = html;
