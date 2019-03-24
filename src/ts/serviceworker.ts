@@ -1,7 +1,7 @@
 /* eslint-env serviceworker */
 
 var CACHE = "handbook-" + ""/*INJECTED-VERSION*/;
-var APIPATH = "/API/v0.9"
+var APIPATH = "/API/v1.0"
 var cacheBlocking = [
 	"/",
 	"frontend-computer.min.css",
