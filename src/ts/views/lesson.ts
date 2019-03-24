@@ -75,7 +75,7 @@ function showLessonView(id: string, noHistory: boolean): void
 	}
 	if(!LESSONS.get(id))
 	{
-		var emptyFieldsCache = FULLFIELDS.empty();
+		var emptyFieldsCache = FIELDS.empty();
 		loginstateEvent.addCallback(function(): void
 		{
 			if(LOGINSTATE)

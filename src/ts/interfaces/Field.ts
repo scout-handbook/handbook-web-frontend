@@ -1,4 +1,4 @@
-interface FullField {
+interface Field {
 	name: string;
 	description: string;
 	image: string;

@@ -1,7 +1,7 @@
 /* global navigationOpen:true */
 /* exported navigationOpen, showFieldView */
 
-function renderFieldLessonList(field: FullField): string
+function renderFieldLessonList(field: Field): string
 {
 	var html = "";
 	for(var i = 0; i < field.lessons.length; i++)
@@ -31,7 +31,7 @@ function renderFieldLessonList(field: FullField): string
 
 function renderFieldView(id: string, noHistory: boolean): void
 {
-	var field = FULLFIELDS.get(id);
+	var field = FIELDS.get(id);
 	var html = "<h1>" + field.name + "</h1>";
 	html += field.description;
 	html += renderFieldLessonList(field);
