@@ -1,10 +1,5 @@
 /* exported IDList */
 
-interface IDListItems<T> // eslint-disable-line @typescript-eslint/interface-name-prefix
-{
-	[key: string]: T;
-}
-
 class IDList<T>
 {
 	private list: IDListItems<T>;
