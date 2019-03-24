@@ -1,7 +1,7 @@
-/* exported COMPETENCES, LOGINSTATE */
+/* exported COMPETENCES, FIELDS, LESSONS, LOGINSTATE */
 
-var FIELDS: IDList<Field>;
 var COMPETENCES: IDList<Competence>;
+var FIELDS: IDList<Field>;
 var LESSONS: IDList<Lesson>;
 var LOGINSTATE: Loginstate | null;
 

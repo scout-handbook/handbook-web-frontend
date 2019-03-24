@@ -16,7 +16,6 @@
     "../src/ts/views/competenceList.ts",
     "../src/ts/views/field.ts",
     "../src/ts/views/fieldList.ts",
-    "../src/ts/getLessonById.ts",
     "../src/ts/HandbookMarkdown.ts",
     "../src/ts/xssOptions.ts"
   ]

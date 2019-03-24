@@ -1,5 +1,5 @@
-/* global COMPETENCES:true LOGINSTATE:true */
-/* exported COMPETENCES, LOGINSTATE, metadataSetup */
+/* global COMPETENCES:true FIELDS:true LESSONS:true LOGINSTATE:true */
+/* exported COMPETENCES, FIELDS, LESSONS, LOGINSTATE, metadataSetup */
 
 var metadataEvent = new AfterLoadEvent(3);
 var loginstateEvent = new AfterLoadEvent(1);
