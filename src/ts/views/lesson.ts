@@ -58,7 +58,7 @@ function renderLessonView(id: string, markdown: string, noHistory: boolean, seco
 	{
 		if(!noHistory)
 		{
-			history.pushState({"id": id}, "title", "/lesson/" + id + "/" + urlEscape(lesson.name));
+			history.pushState({"id": id}, "title", "/lesson/" + id + "/" + urlEscape(lesson.name)); // eslint-disable-line compat/compat
 
 		}
 	}

@@ -62,7 +62,7 @@ function cacheUpdatingResponse(request: Request): Promise<Response>
 				}
 				else
 				{
-					resolve(new Response(new Blob(["{\"status\": 404}"]), {"status": 404, "statusText": "Not Found"}));
+					resolve(new Response(new Blob(["{\"status\": 404}"]), {"status": 404, "statusText": "Not Found"})); // eslint-disable-line compat/compat
 				}
 			});
 		});
