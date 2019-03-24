@@ -27,7 +27,7 @@ function renderCompetenceListView(noHistory: boolean): void
 	document.getElementsByTagName("main")[0].scrollTop = 0;
 	if(!noHistory)
 	{
-		history.pushState({}, "title", "/competence");
+		history.pushState({}, "title", "/competence"); // eslint-disable-line compat/compat
 	}
 	document.getElementById("offlineSwitch")!.style.display = "none";
 }
