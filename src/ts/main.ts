@@ -1,7 +1,7 @@
 /* exported FULLFIELDS, COMPETENCES, LOGINSTATE */
 
 var FULLFIELDS: IDList<FullField>;
-var COMPETENCES: Array<Competence>;
+var COMPETENCES: IDList<Competence>;
 var LESSONS: IDList<Lesson>;
 var LOGINSTATE: Loginstate | null;
 

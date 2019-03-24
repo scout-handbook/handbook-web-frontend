@@ -8,23 +8,23 @@ function renderFieldLessonList(field: FullField): string
 	{
 		var lesson = LESSONS.get(field.lessons[i]);
 		html += "<h3 class=\"mainPage\"><a title=\"" + lesson.name + "\" href=\"enableJS.html\" data-id=\"" + field.lessons[i] + "\">" + lesson.name + "</a></h3>";
-		if(lesson.competences.length > 0)
+		var first = true;
+		COMPETENCES.iterate(function(id, competence)
 		{
-			var competences = [];
-			for(var k = 0; k < COMPETENCES.length; k++)
+			if(lesson.competences.indexOf(id) >= 0)
 			{
-				if(lesson.competences.indexOf(COMPETENCES[k].id) >= 0)
+				if(first)
 				{
-					competences.push(COMPETENCES[k]);
+					html += "<span class=\"mainPage\">Kompetence: " + competence.number;
+					first = false;
+				}
+				else
+				{
+					html += ", " + competence.number;
 				}
 			}
-			html += "<span class=\"mainPage\">Kompetence: " + competences[0].number;
-			for(var m = 1; m < competences.length; m++)
-			{
-				html += ", " + competences[m].number;
-			}
-			html += "</span>";
-		}
+		});
+		html += "</span>";
 	}
 	return html;
 }
