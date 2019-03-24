@@ -21,6 +21,19 @@ class IDList<T>
 		}
 	}
 
+	public filter(filter: (key: string, value: T) => boolean): IDList<T>
+	{
+		var ret = new IDList<T>();
+		this.iterate(function(key, value)
+		{
+			if(filter(key, value))
+			{
+				ret.push(key, value);
+			}
+		});
+		return ret;
+	}
+
 	public empty(): boolean
 	{
 		var ret = true;

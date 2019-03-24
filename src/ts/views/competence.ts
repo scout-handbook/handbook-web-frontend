@@ -41,16 +41,9 @@ function renderCompetenceView(id: string, noHistory: boolean): void
 	}
 	var html = "<h1>" + competence.number + ": " + competence.name + "</h1>";
 	html += competence.description;
-	var lessonList = new IDList<Lesson>();
-	LESSONS.iterate(function(id, lesson) {
-		for(var i = 0; i < lesson.competences.length; i++)
-		{
-			if(lesson.competences[i] === competence.id)
-			{
-				lessonList.push(id, lesson);
-				break;
-			}
-		}
+	var lessonList = LESSONS.filter(function(id, lesson)
+	{
+		return lesson.competences.indexOf(id) >= 0;
 	});
 	html += renderCompetenceLessonList(lessonList);
 	document.getElementById("content")!.innerHTML = html;
