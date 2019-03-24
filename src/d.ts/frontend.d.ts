@@ -1,5 +1,5 @@
 /// <reference types="xss" />
-declare var COMPETENCES: Array<Competence>;
+declare var COMPETENCES: IDList<Competence>;
 declare var CONFIG: Config;
 declare var FULLFIELDS: IDList<FullField>;
 declare var LESSONS: IDList<Lesson>;

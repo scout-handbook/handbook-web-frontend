@@ -7,38 +7,30 @@ function renderCompetenceLessonList(lessonList: IDList<Lesson>): string
 	lessonList.iterate(function(id, lesson)
 	{
 		html += "<h3 class=\"mainPage\"><a title=\"" + lesson.name + "\" href=\"enableJS.html\" data-id=\"" + id + "\">" + lesson.name + "</a></h3>";
-		if(lesson.competences.length > 0)
+		var first = true;
+		COMPETENCES.iterate(function(competenceId, competence)
 		{
-			var competences = [];
-			for(var o = 0; o < COMPETENCES.length; o++)
+			if(lesson.competences.indexOf(competenceId) >= 0)
 			{
-				if(lesson.competences.indexOf(COMPETENCES[o].id) >= 0)
+				if(first)
 				{
-					competences.push(COMPETENCES[o]);
+					html += "<span class=\"mainPage\">Kompetence: " + competence.number;
+					first = false;
+				}
+				else
+				{
+					html += ", " + competence.number;
 				}
 			}
-			html += "<span class=\"mainPage\">Kompetence: " + competences[0].number;
-			for(var p = 1; p < competences.length; p++)
-			{
-				html += ", " + competences[p].number;
-			}
-			html += "</span>";
-		}
+		});
+		html += "</span>";
 	});
 	return html;
 }
 
 function renderCompetenceView(id: string, noHistory: boolean): void
 {
-	var competence: Competence = {name: "", number: 0, description: "", id: ""};
-	for(var i = 0; i < COMPETENCES.length; i++)
-	{
-		if(COMPETENCES[i].id === id)
-		{
-			competence = COMPETENCES[i];
-			break;
-		}
-	}
+	var competence = COMPETENCES.get(id);
 	var html = "<h1>" + competence.number + ": " + competence.name + "</h1>";
 	html += competence.description;
 	var lessonList = LESSONS.filter(function(id, lesson)

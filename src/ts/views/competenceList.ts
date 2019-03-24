@@ -4,11 +4,11 @@
 function renderCompetenceList(): string
 {
 	var html = "";
-	for(var i = 0; i < COMPETENCES.length; i++)
+	COMPETENCES.iterate(function(id, competence)
 	{
-		html += "<h3 class=\"mainPage\"><a title=\"" + COMPETENCES[i].number + ": " + COMPETENCES[i].name + "\" href=\"enableJS.html\" data-id=\"" + COMPETENCES[i].id + "\">" + COMPETENCES[i].number + ": " + COMPETENCES[i].name + "</a></h3>";
-		html += "<span class=\"mainPage\">" + COMPETENCES[i].description;
-	}
+		html += "<h3 class=\"mainPage\"><a title=\"" + competence.number + ": " + competence.name + "\" href=\"enableJS.html\" data-id=\"" + id + "\">" + competence.number + ": " + competence.name + "</a></h3>";
+		html += "<span class=\"mainPage\">" + competence.description;
+	});
 	return html;
 }
 

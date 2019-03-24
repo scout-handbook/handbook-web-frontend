@@ -32,7 +32,7 @@ function metadataSetup(): void
 	});
 	cacheThenNetworkRequest(CONFIG.apiuri + "/competence", "", function(response, second): void
 	{
-		COMPETENCES = response as Array<Competence>;
+		COMPETENCES = new IDList<Competence>(response as IDListItems<Competence>);
 		if(second)
 		{
 			metadataEvent.retrigger();
