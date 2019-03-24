@@ -1,7 +1,7 @@
 /// <reference types="xss" />
 declare var COMPETENCES: IDList<Competence>;
 declare var CONFIG: Config;
-declare var FULLFIELDS: IDList<FullField>;
+declare var FIELDS: IDList<Field>;
 declare var LESSONS: IDList<Lesson>;
 declare var activeCompetence: HTMLElement | null;
 declare var metadataEvent: AfterLoadEvent;

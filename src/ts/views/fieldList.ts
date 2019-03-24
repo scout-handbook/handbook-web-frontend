@@ -1,10 +1,10 @@
 /* global navigationOpen:true */
 /* exported showFieldListView */
 
-function renderFullFieldList(): string
+function renderFieldList(): string
 {
 	var html = "<div class=\"field-list-container\"><div id=\"field-list-col1\" class=\"field-list-col\">";
-	FULLFIELDS.iterate(function(id, field)
+	FIELDS.iterate(function(id, field)
 	{
 		html += "<div class=\"field-card\" data-id=\"" + id + "\">"
 		html += "<img src=\"" + CONFIG.apiuri + "/image/" + field.image + "\">";
@@ -38,7 +38,7 @@ function fieldListOnClick(event: MouseEvent): boolean
 function renderFieldListView(noHistory: boolean): void
 {
 	var html = "<h1>" + CONFIG["site-name"] + "</h1>";
-	html += renderFullFieldList();
+	html += renderFieldList();
 	document.getElementById("content")!.innerHTML = html;
 	var nodes = document.getElementById("content")!.getElementsByClassName("field-card");
 	var height = nodes.length / 2;

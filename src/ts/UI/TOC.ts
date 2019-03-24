@@ -15,7 +15,7 @@ function TOCLessonOnClick(event: MouseEvent): boolean
 function renderTOC(): void
 {
 	var html = "";
-	FULLFIELDS.iterate(function(id, field)
+	FIELDS.iterate(function(id, field)
 	{
 		if(field.name)
 		{

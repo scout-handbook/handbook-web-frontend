@@ -1,4 +1,4 @@
-/* global COMPETENCES:true FULLFIELDS:true LOGINSTATE:true */
+/* global COMPETENCES:true LOGINSTATE:true */
 /* exported COMPETENCES, LOGINSTATE, metadataSetup */
 
 var metadataEvent = new AfterLoadEvent(3);
@@ -8,7 +8,7 @@ function metadataSetup(): void
 {
 	cacheThenNetworkRequest(CONFIG.apiuri + "/field", "", function(response, second): void
 	{
-		FULLFIELDS = new IDList<FullField>(response as IDListItems<FullField>);
+		FIELDS = new IDList<Field>(response as IDListItems<Field>);
 		if(second)
 		{
 			metadataEvent.retrigger();
