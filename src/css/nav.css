@@ -67,7 +67,7 @@ nav a:hover {
 	margin: 0;
 }
 
-.secondLevel {
+#navContainer .secondLevel {
 	margin-left: 40px;
 }
 
