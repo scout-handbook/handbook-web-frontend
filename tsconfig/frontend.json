@@ -3,11 +3,11 @@
   "files": [
     "../src/d.ts/frontend.d.ts",
     "../src/d.ts/AfterLoadEvent.d.ts",
+    "../src/d.ts/IDList.d.ts",
     "../src/ts/interfaces/Arguments.ts",
     "../src/ts/interfaces/Competence.ts",
     "../src/ts/interfaces/Config.ts",
     "../src/ts/interfaces/CustomProperties.ts",
-    "../src/ts/interfaces/Field.ts",
     "../src/ts/interfaces/FullField.ts",
     "../src/ts/interfaces/Lesson.ts",
     "../src/ts/tools/urlEscape.ts",

@@ -1,4 +1,4 @@
 declare class AfterLoadEvent
 {
-	public addCallback: (callback: (response: string) => void) => void;
+	public addCallback(callback: (response: string) => void): void;
 }

@@ -29,8 +29,8 @@
 	"globals": {
 		"COMPETENCES": false,
 		"CONFIG": false,
-		"FIELDS": false,
 		"FULLFIELDS": false,
+		"LESSONS": false,
 		"LOGINSTATE": false,
 		"AfterLoadEvent": false,
 		"authenticationSetup": false,
