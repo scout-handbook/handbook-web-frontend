@@ -33,7 +33,7 @@ function renderCompetenceView(id: string, noHistory: boolean): void
 	var competence = COMPETENCES.get(id);
 	var html = "<h1>" + competence.number + ": " + competence.name + "</h1>";
 	html += competence.description;
-	var lessonList = LESSONS.filter(function(id, lesson)
+	var lessonList = LESSONS.filter(function(_, lesson)
 	{
 		return lesson.competences.indexOf(id) >= 0;
 	});
