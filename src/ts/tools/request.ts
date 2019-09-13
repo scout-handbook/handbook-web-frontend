@@ -27,11 +27,10 @@ function request(url: string, query: string, headers: RequestHeaders): AfterLoad
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	for(var key in headers)
 	{
-		if(!headers.hasOwnProperty(key))
+		if(Object.prototype.hasOwnProperty.call(headers, key))
 		{
-			continue;
+			xhttp.setRequestHeader(key, headers[key]);
 		}
-		xhttp.setRequestHeader(key, headers[key]);
 	}
 	xhttp.send();
 	return ret;

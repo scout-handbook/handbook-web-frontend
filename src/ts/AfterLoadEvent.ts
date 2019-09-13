@@ -25,7 +25,7 @@ class AfterLoadEvent {
 	public trigger(...args: Array<string>): void
 	{
 		this.count++;
-		this.retrigger.apply(this, args);
+		this.retrigger(...args);
 	}
 	public retrigger(...args: Array<string>): void
 	{
