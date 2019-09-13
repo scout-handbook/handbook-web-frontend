@@ -18,7 +18,7 @@ function renderUserAccount(): void
 		document.getElementById("logLink")!.innerHTML = "<a href=\"enableJS.html\">Odhlásit</a>";
 	}
 	(document.getElementById("logLink")!.firstChild as HTMLElement).onclick = logoutRedirect;
-	if(LOGINSTATE!.hasOwnProperty("avatar"))
+	if(Object.prototype.hasOwnProperty.call(LOGINSTATE, "avatar"))
 	{
 		(document.getElementById("userAvatar") as HTMLImageElement).src = "data:image/png;base64," + LOGINSTATE!.avatar;
 	}
