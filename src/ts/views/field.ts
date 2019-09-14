@@ -10,17 +10,17 @@ function renderFieldLessonList(field: Field): string
 		if(field.lessons[i].competences.length > 0)
 		{
 			const competences = [];
-			for(let k = 0; k < COMPETENCES.length; k++)
+			for(let j = 0; j < COMPETENCES.length; j++)
 			{
-				if(field.lessons[i].competences.indexOf(COMPETENCES[k].id) >= 0)
+				if(field.lessons[i].competences.indexOf(COMPETENCES[j].id) >= 0)
 				{
-					competences.push(COMPETENCES[k]);
+					competences.push(COMPETENCES[j]);
 				}
 			}
 			html += "<span class=\"mainPage\">Kompetence: " + competences[0].number;
-			for(let m = 1; m < competences.length; m++)
+			for(let j = 1; j < competences.length; j++)
 			{
-				html += ", " + competences[m].number;
+				html += ", " + competences[j].number;
 			}
 			html += "</span>";
 		}
@@ -44,9 +44,9 @@ function renderFieldView(id: string, noHistory: boolean): void
 	document.getElementById("content")!.innerHTML = html;
 
 	const nodes = document.getElementById("content")!.getElementsByTagName("h3");
-	for(let l = 0; l < nodes.length; l++)
+	for(let i = 0; i < nodes.length; i++)
 	{
-		(nodes[l].firstChild as HTMLElement).onclick = TOCLessonOnClick;
+		(nodes[i].firstChild as HTMLElement).onclick = TOCLessonOnClick;
 	}
 
 	document.getElementsByTagName("main")[0].scrollTop = 0;

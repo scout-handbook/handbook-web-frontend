@@ -19,9 +19,9 @@ function renderCompetenceListView(noHistory: boolean): void
 	document.getElementById("content")!.innerHTML = html;
 
 	const nodes = document.getElementById("content")!.getElementsByTagName("a");
-	for(let l = 0; l < nodes.length; l++)
+	for(let i = 0; i < nodes.length; i++)
 	{
-		nodes[l].onclick = competenceBubbleDetailOnClick;
+		nodes[i].onclick = competenceBubbleDetailOnClick;
 	}
 
 	document.getElementsByTagName("main")[0].scrollTop = 0;

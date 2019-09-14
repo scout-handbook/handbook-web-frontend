@@ -4,23 +4,23 @@
 function renderCompetenceLessonList(lessonList: Array<Lesson>): string
 {
 	let html = "";
-	for(let n = 0; n < lessonList.length; n++)
+	for(let i = 0; i < lessonList.length; i++)
 	{
-		html += "<h3 class=\"mainPage\"><a title=\"" + lessonList[n].name + "\" href=\"enableJS.html\" data-id=\"" + lessonList[n].id + "\">" + lessonList[n].name + "</a></h3>";
-		if(lessonList[n].competences.length > 0)
+		html += "<h3 class=\"mainPage\"><a title=\"" + lessonList[i].name + "\" href=\"enableJS.html\" data-id=\"" + lessonList[i].id + "\">" + lessonList[i].name + "</a></h3>";
+		if(lessonList[i].competences.length > 0)
 		{
 			const competences = [];
-			for(let o = 0; o < COMPETENCES.length; o++)
+			for(let j = 0; j < COMPETENCES.length; j++)
 			{
-				if(lessonList[n].competences.indexOf(COMPETENCES[o].id) >= 0)
+				if(lessonList[i].competences.indexOf(COMPETENCES[j].id) >= 0)
 				{
-					competences.push(COMPETENCES[o]);
+					competences.push(COMPETENCES[j]);
 				}
 			}
 			html += "<span class=\"mainPage\">Kompetence: " + competences[0].number;
-			for(let p = 1; p < competences.length; p++)
+			for(let j = 1; j < competences.length; j++)
 			{
-				html += ", " + competences[p].number;
+				html += ", " + competences[j].number;
 			}
 			html += "</span>";
 		}
@@ -42,15 +42,15 @@ function renderCompetenceView(id: string, noHistory: boolean): void
 	let html = "<h1>" + competence.number + ": " + competence.name + "</h1>";
 	html += competence.description;
 	const lessonList = [];
-	for(let j = 0; j < FIELDS.length; j++)
+	for(let i = 0; i < FIELDS.length; i++)
 	{
-		for(let k = 0; k < FIELDS[j].lessons.length; k++)
+		for(let j = 0; j < FIELDS[i].lessons.length; j++)
 		{
-			for(let m = 0; m < FIELDS[j].lessons[k].competences.length; m++)
+			for(let k = 0; k < FIELDS[i].lessons[j].competences.length; k++)
 			{
-				if(FIELDS[j].lessons[k].competences[m] === competence.id)
+				if(FIELDS[i].lessons[j].competences[k] === competence.id)
 				{
-					lessonList.push(FIELDS[j].lessons[k]);
+					lessonList.push(FIELDS[i].lessons[j]);
 					break;
 				}
 			}
@@ -60,9 +60,9 @@ function renderCompetenceView(id: string, noHistory: boolean): void
 	document.getElementById("content")!.innerHTML = html;
 
 	const nodes = document.getElementById("content")!.getElementsByTagName("h3");
-	for(let l = 0; l < nodes.length; l++)
+	for(let i = 0; i < nodes.length; i++)
 	{
-		(nodes[l].firstChild as HTMLElement).onclick = TOCLessonOnClick;
+		(nodes[i].firstChild as HTMLElement).onclick = TOCLessonOnClick;
 	}
 
 	document.getElementsByTagName("main")[0].scrollTop = 0;

@@ -7,17 +7,17 @@ function renderLessonCompetences(lesson: Lesson, secondLevel: string): string
 	if(lesson.competences.length > 0)
 	{
 		const competences = [];
-		for(let k = 0; k < COMPETENCES.length; k++)
+		for(let i = 0; i < COMPETENCES.length; i++)
 		{
-			if(lesson.competences.indexOf(COMPETENCES[k].id) >= 0)
+			if(lesson.competences.indexOf(COMPETENCES[i].id) >= 0)
 			{
-				competences.push(COMPETENCES[k]);
+				competences.push(COMPETENCES[i]);
 			}
 		}
 		html += "<span class=\"mainPage" + secondLevel + "\">Kompetence: " + competences[0].number;
-		for(let m = 1; m < competences.length; m++)
+		for(let i = 1; i < competences.length; i++)
 		{
-			html += ", " + competences[m].number;
+			html += ", " + competences[i].number;
 		}
 		html += "</span>";
 	}
@@ -51,15 +51,15 @@ function renderLessonListView(noHistory: boolean): void
 	document.getElementById("content")!.innerHTML = html;
 
 	const nodes = document.getElementById("content")!.getElementsByTagName("a");
-	for(let l = 0; l < nodes.length; l++)
+	for(let i = 0; i < nodes.length; i++)
 	{
-		if(nodes[l].parentElement!.tagName === "H2")
+		if(nodes[i].parentElement!.tagName === "H2")
 		{
-			nodes[l].onclick = TOCFieldOnClick;
+			nodes[i].onclick = TOCFieldOnClick;
 		}
 		else
 		{
-			nodes[l].onclick = TOCLessonOnClick;
+			nodes[i].onclick = TOCLessonOnClick;
 		}
 	}
 

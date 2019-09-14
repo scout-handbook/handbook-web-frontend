@@ -27,23 +27,23 @@ function renderTOC(): void
 		}
 		else
 		{
-			for(let k = 0; k < FIELDS[i].lessons.length; k++)
+			for(let j = 0; j < FIELDS[i].lessons.length; j++)
 			{
-				html += "<a title=\"" + FIELDS[i].lessons[k].name + "\" href=\"enableJS.html\" data-id=\"" + FIELDS[i].lessons[k].id + "\">" + FIELDS[i].lessons[k].name + "</a><br>";
+				html += "<a title=\"" + FIELDS[i].lessons[j].name + "\" href=\"enableJS.html\" data-id=\"" + FIELDS[i].lessons[j].id + "\">" + FIELDS[i].lessons[j].name + "</a><br>";
 			}
 		}
 	}
 	document.getElementById("navigation")!.innerHTML = html;
 	const nodes = document.getElementById("navigation")!.getElementsByTagName("a");
-	for(let l = 0; l < nodes.length; l++)
+	for(let i = 0; i < nodes.length; i++)
 	{
-		if(nodes[l].parentElement!.tagName === "H1")
+		if(nodes[i].parentElement!.tagName === "H1")
 		{
-			nodes[l].onclick = TOCFieldOnClick;
+			nodes[i].onclick = TOCFieldOnClick;
 		}
 		else
 		{
-			nodes[l].onclick = TOCLessonOnClick;
+			nodes[i].onclick = TOCLessonOnClick;
 		}
 	}
 	document.getElementsByTagName("nav")[0].style.transition = "margin-left 0.3s ease";
