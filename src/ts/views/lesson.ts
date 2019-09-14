@@ -27,30 +27,30 @@ function renderLessonView(id: string, markdown: string, noHistory: boolean, seco
 {
 	const lesson = getLessonById(id)!;
 	const competences = [];
-	for(let k = 0; k < COMPETENCES.length; k++)
+	for(let i = 0; i < COMPETENCES.length; i++)
 	{
-		if(lesson.competences.indexOf(COMPETENCES[k].id) >=0)
+		if(lesson.competences.indexOf(COMPETENCES[i].id) >=0)
 		{
-			competences.push(COMPETENCES[k]);
+			competences.push(COMPETENCES[i]);
 		}
 	}
 	let html = "<h1>" + lesson.name + "</h1>";
 	activeCompetence = null;
-	for(let l = 0; l < competences.length; l++)
+	for(let i = 0; i < competences.length; i++)
 	{
-		html += "<span class=\"competenceBubble\"><span class=\"competenceBubbleNumber\"><p>" + competences[l].number + "</p></span><span class=\"competenceBubbleText\">" + competences[l].name + "</span><span class=\"competenceBubbleLessons\"><a title=\"Detail kompetence\" href=\"enableJS.html\" data-id=\"" + competences[l].id + "\">Detail kompetence</a></span></span>";
+		html += "<span class=\"competenceBubble\"><span class=\"competenceBubbleNumber\"><p>" + competences[i].number + "</p></span><span class=\"competenceBubbleText\">" + competences[i].name + "</span><span class=\"competenceBubbleLessons\"><a title=\"Detail kompetence\" href=\"enableJS.html\" data-id=\"" + competences[i].id + "\">Detail kompetence</a></span></span>";
 	}
 	html += filterXSS(converter.makeHtml(markdown), xssOptions());
 	document.getElementById("content")!.innerHTML = html;
 	let nodes = document.getElementById("content")!.getElementsByClassName("competenceBubble");
-	for(let m = 0; m < nodes.length; m++)
+	for(let i = 0; i < nodes.length; i++)
 	{
-		(nodes[m] as HTMLElement).onclick = toggleCompetenceBubble;
+		(nodes[i] as HTMLElement).onclick = toggleCompetenceBubble;
 	}
 	nodes = document.getElementById("content")!.getElementsByClassName("competenceBubbleLessons");
-	for(let n = 0; n < nodes.length; n++)
+	for(let i = 0; i < nodes.length; i++)
 	{
-		(nodes[n].firstChild as HTMLElement).onclick = competenceBubbleDetailOnClick;
+		(nodes[i].firstChild as HTMLElement).onclick = competenceBubbleDetailOnClick;
 	}
 	document.getElementsByTagName("main")[0].scrollTop = 0;
 	if(!second)
