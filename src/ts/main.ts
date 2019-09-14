@@ -1,8 +1,8 @@
 /* exported FIELDS, COMPETENCES, LOGINSTATE */
 
-var FIELDS: Array<Field>;
-var COMPETENCES: Array<Competence>;
-var LOGINSTATE: Loginstate | null;
+let FIELDS: Array<Field>;
+let COMPETENCES: Array<Competence>;
+let LOGINSTATE: Loginstate | null;
 
 function main(): void
 {
