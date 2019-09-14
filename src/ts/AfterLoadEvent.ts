@@ -32,7 +32,7 @@ class AfterLoadEvent {
 		if(this.count >= this.threshold)
 		{
 			this.triggered = true;
-			for(var i = 0; i < this.callbacks.length; i++)
+			for(let i = 0; i < this.callbacks.length; i++)
 			{
 				this.callbacks[i].apply(null, args);
 			}

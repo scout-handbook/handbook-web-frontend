@@ -1,8 +1,8 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
-    "lib": ["ES6", "DOM"],
-    "target": "ES6"
+    "lib": ["ES5", "DOM"],
+    "target": "ES5"
   },
   "files": [
     "../src/d.ts/serviceworker.d.ts",
