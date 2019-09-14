@@ -1,10 +1,10 @@
 /// <reference types="xss" />
-declare var COMPETENCES: Array<Competence>;
-declare var CONFIG: Config;
-declare var FIELDS: Array<Field>;
-declare var activeCompetence: HTMLElement | null;
-declare var metadataEvent: AfterLoadEvent;
-declare var navigationOpen: boolean;
+declare const COMPETENCES: Array<Competence>;
+declare const CONFIG: Config;
+declare const FIELDS: Array<Field>;
+declare let activeCompetence: HTMLElement | null;
+declare const metadataEvent: AfterLoadEvent;
+declare let navigationOpen: boolean;
 declare function reflowNavigation(): void;
 declare function refreshLogin(): void;
 declare function TOCFieldOnClick(event: MouseEvent): boolean;
