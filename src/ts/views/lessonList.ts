@@ -3,11 +3,11 @@
 
 function renderLessonCompetences(lesson: Lesson, secondLevel: string): string
 {
-	var html = "";
+	let html = "";
 	if(lesson.competences.length > 0)
 	{
-		var competences = [];
-		for(var k = 0; k < COMPETENCES.length; k++)
+		const competences = [];
+		for(let k = 0; k < COMPETENCES.length; k++)
 		{
 			if(lesson.competences.indexOf(COMPETENCES[k].id) >= 0)
 			{
@@ -15,7 +15,7 @@ function renderLessonCompetences(lesson: Lesson, secondLevel: string): string
 			}
 		}
 		html += "<span class=\"mainPage" + secondLevel + "\">Kompetence: " + competences[0].number;
-		for(var m = 1; m < competences.length; m++)
+		for(let m = 1; m < competences.length; m++)
 		{
 			html += ", " + competences[m].number;
 		}
@@ -26,16 +26,16 @@ function renderLessonCompetences(lesson: Lesson, secondLevel: string): string
 
 function renderFieldList(): string
 {
-	var html = "";
-	for(var i = 0; i < FIELDS.length; i++)
+	let html = "";
+	for(let i = 0; i < FIELDS.length; i++)
 	{
-		var secondLevel = "";
+		let secondLevel = "";
 		if(FIELDS[i].name)
 		{
 			secondLevel = " secondLevel";
 			html += "<h2 class=\"mainPage\"><a title=\"" + FIELDS[i].name + "\" href=\"enableJS.html\" data-id=\"" + FIELDS[i].id + "\">" + FIELDS[i].name + "</a></h2>";
 		}
-		for(var j = 0; j < FIELDS[i].lessons.length; j++)
+		for(let j = 0; j < FIELDS[i].lessons.length; j++)
 		{
 			html += "<h3 class=\"mainPage" + secondLevel + "\"><a title=\"" + FIELDS[i].lessons[j].name + "\" href=\"enableJS.html\" data-id=\"" + FIELDS[i].lessons[j].id + "\">" + FIELDS[i].lessons[j].name + "</a></h3>";
 			html += renderLessonCompetences(FIELDS[i].lessons[j], secondLevel);
@@ -46,12 +46,12 @@ function renderFieldList(): string
 
 function renderLessonListView(noHistory: boolean): void
 {
-	var html = "<h1>" + CONFIG["site-name"] + "</h1>";
+	let html = "<h1>" + CONFIG["site-name"] + "</h1>";
 	html += renderFieldList();
 	document.getElementById("content")!.innerHTML = html;
 
-	var nodes = document.getElementById("content")!.getElementsByTagName("a");
-	for(var l = 0; l < nodes.length; l++)
+	const nodes = document.getElementById("content")!.getElementsByTagName("a");
+	for(let l = 0; l < nodes.length; l++)
 	{
 		if(nodes[l].parentElement!.tagName === "H2")
 		{

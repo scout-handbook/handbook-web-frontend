@@ -66,11 +66,11 @@ function refreshLogin(): void
 {
 	if(LOGINSTATE)
 	{
-		var allCookies = "; " + document.cookie;
-		var parts = allCookies.split("; skautis_timeout=");
+		const allCookies = "; " + document.cookie;
+		const parts = allCookies.split("; skautis_timeout=");
 		if(parts.length === 2)
 		{
-			var timeout = parseInt(parts.pop()!.split(";").shift()!);
+			const timeout = parseInt(parts.pop()!.split(";").shift()!);
 			if((timeout - Math.round(new Date().getTime() / 1000)) < 1500)
 			{
 				request(CONFIG.apiuri + "/refresh", "", {});
