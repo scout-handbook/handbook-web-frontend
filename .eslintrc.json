@@ -28,7 +28,9 @@
 		"@typescript-eslint/member-ordering": "error",
 		"@typescript-eslint/no-extraneous-class": "error",
 		"@typescript-eslint/no-namespace": ["error", {"allowDeclarations": true}],
-		"@typescript-eslint/no-non-null-assertion": "off"
+		"@typescript-eslint/no-non-null-assertion": "off",
+		"@typescript-eslint/prefer-includes": "off",
+		"@typescript-eslint/prefer-string-starts-ends-with": "off"
 	},
 	"globals": {
 		"COMPETENCES": false,
