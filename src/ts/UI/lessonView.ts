@@ -3,10 +3,10 @@
 
 function toggleLessonOffline(): void
 {
-	var checked = (document.getElementById("cacheOffline") as HTMLInputElement).checked;
+	const checked = (document.getElementById("cacheOffline") as HTMLInputElement).checked;
 	if (window.location.pathname.substring(0, 8) === "/lesson/")
 	{
-		var id = window.location.pathname.substring(8).split("/")[0];
+		const id = window.location.pathname.substring(8).split("/")[0];
 		caches.open(CONFIG.cache).then(function(cache): void
 		{
 			if(checked)
@@ -25,8 +25,8 @@ function reflowCompetenceBubbles(): void
 {
 	if(activeCompetence)
 	{
-		var fontSize = parseFloat(window.getComputedStyle(activeCompetence).getPropertyValue("font-size"));
-		var parent = activeCompetence.parentElement as HTMLElement;
+		const fontSize = parseFloat(window.getComputedStyle(activeCompetence).getPropertyValue("font-size"));
+		const parent = activeCompetence.parentElement as HTMLElement;
 		(activeCompetence.childNodes[1] as HTMLElement).style.width = Math.min(403 - 1.3 * fontSize, ( activeCompetence.parentElement as HTMLElement).clientWidth - 1.3 * fontSize + 3) + "px";
 		(activeCompetence.childNodes[2] as HTMLElement).style.width = Math.min(403 - 1.3 * fontSize, parent.clientWidth - 1.3 * fontSize + 3) + "px";
 		activeCompetence.style.width = Math.min(400, parent.clientWidth) + "px";
@@ -36,7 +36,7 @@ function reflowCompetenceBubbles(): void
 
 function toggleCompetenceBubble(event: MouseEvent): void
 {
-	var element = event.target as HTMLElement;
+	let element = event.target as HTMLElement;
 	while(!element.classList.contains("competenceBubble") && (element = element.parentElement!)) { /* Empty */ }
 	if(element.style.width !== "")
 	{
@@ -50,8 +50,8 @@ function toggleCompetenceBubble(event: MouseEvent): void
 	}
 	else
 	{
-		var nodes = document.getElementById("content")!.getElementsByClassName("competenceBubble");
-		for(var i = 0; i < nodes.length; i++)
+		const nodes = document.getElementById("content")!.getElementsByClassName("competenceBubble");
+		for(let i = 0; i < nodes.length; i++)
 		{
 			(nodes[i].childNodes[1] as HTMLElement).style.width = "";
 			(nodes[i] as HTMLElement).style.width = "";
