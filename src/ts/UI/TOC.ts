@@ -14,7 +14,7 @@ function TOCLessonOnClick(event: MouseEvent): boolean
 
 function renderTOC(): void
 {
-	var html = "";
+	let html = "";
 	LESSONS.iterate(function(id, lesson)
 	{
 		var inField = false;
@@ -40,16 +40,16 @@ function renderTOC(): void
 		}
 	});
 	document.getElementById("navigation")!.innerHTML = html;
-	var nodes = document.getElementById("navigation")!.getElementsByTagName("a");
-	for(var l = 0; l < nodes.length; l++)
+	const nodes = document.getElementById("navigation")!.getElementsByTagName("a");
+	for(let i = 0; i < nodes.length; i++)
 	{
-		if(nodes[l].parentElement!.tagName === "H1")
+		if(nodes[i].parentElement!.tagName === "H1")
 		{
-			nodes[l].onclick = TOCFieldOnClick;
+			nodes[i].onclick = TOCFieldOnClick;
 		}
 		else
 		{
-			nodes[l].onclick = TOCLessonOnClick;
+			nodes[i].onclick = TOCLessonOnClick;
 		}
 	}
 	document.getElementsByTagName("nav")[0].style.transition = "margin-left 0.3s ease";

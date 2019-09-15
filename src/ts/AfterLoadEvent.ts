@@ -25,14 +25,14 @@ class AfterLoadEvent {
 	public trigger(...args: Array<string>): void
 	{
 		this.count++;
-		this.retrigger.apply(this, args);
+		this.retrigger(...args);
 	}
 	public retrigger(...args: Array<string>): void
 	{
 		if(this.count >= this.threshold)
 		{
 			this.triggered = true;
-			for(var i = 0; i < this.callbacks.length; i++)
+			for(let i = 0; i < this.callbacks.length; i++)
 			{
 				this.callbacks[i].apply(null, args);
 			}

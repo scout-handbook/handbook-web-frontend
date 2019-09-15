@@ -1,8 +1,8 @@
 /* global COMPETENCES:true FIELDS:true LESSONS:true LOGINSTATE:true */
 /* exported COMPETENCES, FIELDS, LESSONS, LOGINSTATE, metadataSetup */
 
-var metadataEvent = new AfterLoadEvent(3);
-var loginstateEvent = new AfterLoadEvent(1);
+const metadataEvent = new AfterLoadEvent(3);
+const loginstateEvent = new AfterLoadEvent(1);
 
 function metadataSetup(): void
 {
@@ -42,12 +42,12 @@ function metadataSetup(): void
 			metadataEvent.trigger();
 		}
 	});
-	var xhttp = new XMLHttpRequest();
+	const xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function(): void
 	{
 		if(this.readyState === 4)
 		{
-			var response = {status: undefined, response: null};
+			let response = {status: undefined, response: null};
 			if(this.responseText)
 			{
 				response = JSON.parse(this.responseText);

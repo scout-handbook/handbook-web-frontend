@@ -1,8 +1,8 @@
 /* global activeCompetence:true, navigationOpen:true */
 /* exported activeCompetence, lessonViewSetup, navigationOpen, showLessonView */
 
-var converter: showdown.Converter;
-var activeCompetence: HTMLElement | null = null;
+let converter: showdown.Converter;
+let activeCompetence: HTMLElement | null = null;
 
 function lessonViewSetup(): void
 {
@@ -26,15 +26,15 @@ function renderLessonView(id: string, markdown: string, noHistory: boolean, seco
 	});
 	html += filterXSS(converter.makeHtml(markdown), xssOptions());
 	document.getElementById("content")!.innerHTML = html;
-	var nodes = document.getElementById("content")!.getElementsByClassName("competenceBubble");
-	for(var m = 0; m < nodes.length; m++)
+	let nodes = document.getElementById("content")!.getElementsByClassName("competenceBubble");
+	for(let i = 0; i < nodes.length; i++)
 	{
-		(nodes[m] as HTMLElement).onclick = toggleCompetenceBubble;
+		(nodes[i] as HTMLElement).onclick = toggleCompetenceBubble;
 	}
 	nodes = document.getElementById("content")!.getElementsByClassName("competenceBubbleLessons");
-	for(var n = 0; n < nodes.length; n++)
+	for(let i = 0; i < nodes.length; i++)
 	{
-		(nodes[n].firstChild as HTMLElement).onclick = competenceBubbleDetailOnClick;
+		(nodes[i].firstChild as HTMLElement).onclick = competenceBubbleDetailOnClick;
 	}
 	document.getElementsByTagName("main")[0].scrollTop = 0;
 	if(!second)
@@ -75,7 +75,7 @@ function showLessonView(id: string, noHistory: boolean): void
 	}
 	if(!LESSONS.get(id))
 	{
-		var emptyFieldsCache = FIELDS.empty();
+		const emptyFieldsCache = FIELDS.empty();
 		loginstateEvent.addCallback(function(): void
 		{
 			if(LOGINSTATE)

@@ -1,9 +1,9 @@
 /* exported COMPETENCES, FIELDS, LESSONS, LOGINSTATE */
 
-var COMPETENCES: IDList<Competence>;
-var FIELDS: IDList<Field>;
-var LESSONS: IDList<Lesson>;
-var LOGINSTATE: Loginstate | null;
+let COMPETENCES: IDList<Competence>;
+let FIELDS: IDList<Field>;
+let LESSONS: IDList<Lesson>;
+let LOGINSTATE: Loginstate | null;
 
 function main(): void
 {
