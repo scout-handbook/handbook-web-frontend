@@ -1,8 +1,8 @@
 /* eslint-env serviceworker */
 
-var CACHE = "handbook-" + ""/*INJECTED-VERSION*/;
-var APIPATH = "/API/v1.0"
-var cacheBlocking = [
+const CACHE = "handbook-" + ""/*INJECTED-VERSION*/;
+const APIPATH = "/API/v1.0"
+const cacheBlocking = [
 	"/",
 	"frontend-computer.min.css",
 	"frontend-handheld.min.css",
@@ -12,13 +12,13 @@ var cacheBlocking = [
 	"frontend-pushed.min.js",
 	"index.html"
 ];
-var cacheNonBlocking = [
+const cacheNonBlocking = [
 	"font/fontello.woff",
 	"showdown.min.js",
 	"xss.min.js"
 ];
 
-var cacheUpdating = [
+const cacheUpdating = [
 	APIPATH + "/field",
 	APIPATH + "/lesson",
 	APIPATH + "/competence"
@@ -121,7 +121,7 @@ function genericResponse(request: Request): Promise<Response>
 
 self.addEventListener("fetch", function(event: Event): void
 {
-	var url = new URL((event as FetchEvent).request.url); // eslint-disable-line compat/compat
+	const url = new URL((event as FetchEvent).request.url); // eslint-disable-line compat/compat
 	if(cacheUpdating.indexOf(url.pathname) !== -1)
 	{
 		(event as FetchEvent).respondWith(cacheUpdatingResponse((event as FetchEvent).request));

@@ -1,5 +1,6 @@
 {
 	"parserOptions": {
+		"project": "./tsconfig.json",
 		"ecmaVersion": 3,
 		"sourceType": "script"
 	},
@@ -13,18 +14,22 @@
 	],
 	"extends": [
 		"eslint:recommended",
-		"plugin:@typescript-eslint/recommended"
+		"plugin:@typescript-eslint/eslint-recommended",
+		"plugin:@typescript-eslint/recommended",
+		"plugin:@typescript-eslint/recommended-requiring-type-checking"
 	],
 	"rules": {
 		"compat/compat": "warn",
 		"no-warning-comments": "warn",
 		"strict": ["error", "never"],
-		"@typescript-eslint/array-type": ["error", "generic"],
+		"@typescript-eslint/array-type": ["error", {"default": "generic"}],
 		"@typescript-eslint/indent": ["error", "tab"],
 		"@typescript-eslint/member-ordering": "error",
 		"@typescript-eslint/no-extraneous-class": "error",
 		"@typescript-eslint/no-namespace": ["error", {"allowDeclarations": true}],
-		"@typescript-eslint/no-non-null-assertion": "off"
+		"@typescript-eslint/no-non-null-assertion": "off",
+		"@typescript-eslint/prefer-includes": "off",
+		"@typescript-eslint/prefer-string-starts-ends-with": "off"
 	},
 	"globals": {
 		"COMPETENCES": false,

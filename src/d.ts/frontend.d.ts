@@ -1,11 +1,11 @@
 /// <reference types="xss" />
-declare var COMPETENCES: IDList<Competence>;
-declare var CONFIG: Config;
-declare var FIELDS: IDList<Field>;
-declare var LESSONS: IDList<Lesson>;
-declare var activeCompetence: HTMLElement | null;
-declare var metadataEvent: AfterLoadEvent;
-declare var navigationOpen: boolean;
+declare const COMPETENCES: IDList<Competence>;
+declare const CONFIG: Config;
+declare const FIELDS: IDList<Field>;
+declare const LESSONS: IDList<Lesson>;
+declare let activeCompetence: HTMLElement | null;
+declare const metadataEvent: AfterLoadEvent;
+declare let navigationOpen: boolean;
 declare function reflowNavigation(): void;
 declare function refreshLogin(): void;
 declare function TOCFieldOnClick(event: MouseEvent): boolean;

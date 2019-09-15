@@ -2,8 +2,8 @@
 
 function fontResize(delta: number): void
 {
-	var content = document.getElementById("content") as HTMLElement;
-	var current = parseInt(window.getComputedStyle(content, null).getPropertyValue("font-size").replace("px", ""), 10);
+	const content = document.getElementById("content") as HTMLElement;
+	const current = parseInt(window.getComputedStyle(content, null).getPropertyValue("font-size").replace("px", ""), 10);
 	content.style.fontSize = current + delta + "px";
 	content.style.lineHeight = "160%";
 	reflowCompetenceBubbles();

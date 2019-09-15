@@ -18,7 +18,7 @@ function renderUserAccount(): void
 		document.getElementById("logLink")!.innerHTML = "<a href=\"enableJS.html\">Odhlásit</a>";
 	}
 	(document.getElementById("logLink")!.firstChild as HTMLElement).onclick = logoutRedirect;
-	if(LOGINSTATE!.hasOwnProperty("avatar"))
+	if(Object.prototype.hasOwnProperty.call(LOGINSTATE, "avatar"))
 	{
 		(document.getElementById("userAvatar") as HTMLImageElement).src = "data:image/png;base64," + LOGINSTATE!.avatar;
 	}
@@ -66,11 +66,11 @@ function refreshLogin(): void
 {
 	if(LOGINSTATE)
 	{
-		var allCookies = "; " + document.cookie;
-		var parts = allCookies.split("; skautis_timeout=");
+		const allCookies = "; " + document.cookie;
+		const parts = allCookies.split("; skautis_timeout=");
 		if(parts.length === 2)
 		{
-			var timeout = parseInt(parts.pop()!.split(";").shift()!);
+			const timeout = parseInt(parts.pop()!.split(";").shift()!);
 			if((timeout - Math.round(new Date().getTime() / 1000)) < 1500)
 			{
 				request(CONFIG.apiuri + "/refresh", "", {});

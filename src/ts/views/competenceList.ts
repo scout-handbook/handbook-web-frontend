@@ -3,7 +3,7 @@
 
 function renderCompetenceList(): string
 {
-	var html = "";
+	let html = "";
 	COMPETENCES.iterate(function(id, competence)
 	{
 		html += "<h3 class=\"mainPage\"><a title=\"" + competence.number + ": " + competence.name + "\" href=\"enableJS.html\" data-id=\"" + id + "\">" + competence.number + ": " + competence.name + "</a></h3>";
@@ -14,14 +14,14 @@ function renderCompetenceList(): string
 
 function renderCompetenceListView(noHistory: boolean): void
 {
-	var html = "<h1>Přehled kompetencí</h1>";
+	let html = "<h1>Přehled kompetencí</h1>";
 	html += renderCompetenceList();
 	document.getElementById("content")!.innerHTML = html;
 
-	var nodes = document.getElementById("content")!.getElementsByTagName("a");
-	for(var l = 0; l < nodes.length; l++)
+	const nodes = document.getElementById("content")!.getElementsByTagName("a");
+	for(let i = 0; i < nodes.length; i++)
 	{
-		nodes[l].onclick = competenceBubbleDetailOnClick;
+		nodes[i].onclick = competenceBubbleDetailOnClick;
 	}
 
 	document.getElementsByTagName("main")[0].scrollTop = 0;

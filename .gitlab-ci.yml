@@ -2,8 +2,7 @@ cache:
   paths:
     - node_modules/
 stages:
-  - build
-  - lint
+  - test
 
 .npm:
   image: node
@@ -13,12 +12,12 @@ stages:
 
 build:
   extends: .npm
-  stage: build
+  stage: test
   script:
     - gulp build
 
 lint:
   extends: .npm
-  stage: lint
+  stage: test
   script:
     - gulp lint

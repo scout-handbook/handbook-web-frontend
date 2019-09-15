@@ -3,7 +3,7 @@
 
 function renderCompetenceLessonList(lessonList: IDList<Lesson>): string
 {
-	var html = "";
+	let html = "";
 	lessonList.iterate(function(id, lesson)
 	{
 		html += "<h3 class=\"mainPage\"><a title=\"" + lesson.name + "\" href=\"enableJS.html\" data-id=\"" + id + "\">" + lesson.name + "</a></h3>";
@@ -40,10 +40,10 @@ function renderCompetenceView(id: string, noHistory: boolean): void
 	html += renderCompetenceLessonList(lessonList);
 	document.getElementById("content")!.innerHTML = html;
 
-	var nodes = document.getElementById("content")!.getElementsByTagName("h3");
-	for(var l = 0; l < nodes.length; l++)
+	const nodes = document.getElementById("content")!.getElementsByTagName("h3");
+	for(let i = 0; i < nodes.length; i++)
 	{
-		(nodes[l].firstChild as HTMLElement).onclick = TOCLessonOnClick;
+		(nodes[i].firstChild as HTMLElement).onclick = TOCLessonOnClick;
 	}
 
 	document.getElementsByTagName("main")[0].scrollTop = 0;

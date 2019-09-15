@@ -1,5 +1,5 @@
 /// <reference types="xss" />
-declare var CONFIG: Config;
+declare const CONFIG: Config;
 declare function competenceBubbleDetailOnClick(event: MouseEvent): boolean;
 declare function reflowCompetenceBubbles(): void;
 declare function showCompetenceListView(noHistory: boolean): void;
