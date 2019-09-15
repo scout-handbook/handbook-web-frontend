@@ -22,7 +22,7 @@ function historyPopback(): void
 		}
 		else
 		{
-			showLessonListView(true);
+			showFieldListView(true);
 		}
 	}
 }
@@ -54,6 +54,6 @@ function historySetup(): void
 	}
 	else
 	{
-		showLessonListView(false);
+		showFieldListView(false);
 	}
 }

@@ -1,4 +1,5 @@
 /* eslint-env node */
+
 /* eslint-disable @typescript-eslint/no-var-requires */
 
 interface CustomProperties {
@@ -25,6 +26,7 @@ const sourcemaps = require('gulp-sourcemaps');
 const concat = require('gulp-concat');
 const cleanCSS = require('gulp-clean-css');
 const postcss = require('gulp-postcss');
+const postcssCalc = require("postcss-calc");
 const postcssCustomProperties = require('postcss-custom-properties');
 const autoprefixer = require('autoprefixer');
 const inject = require('gulp-inject-string');
@@ -66,7 +68,7 @@ gulp.task('build:css', function() {
 		return gulp.src(sources)
 			.pipe(sourcemaps.init())
 			.pipe(concat(name + '.min.css'))
-			.pipe(postcss([postcssCustomProperties({importFrom: getConfig(), preserve: false}), autoprefixer()]))
+			.pipe(postcss([postcssCustomProperties({importFrom: getConfig(), preserve: false}), postcssCalc({warnWhenCannotResolve: true}), autoprefixer()]))
 			//.pipe(gulp.dest('dist/'));
 			.pipe(cleanCSS({compatibility: 'ie8'}))
 			.pipe(sourcemaps.write('./'))

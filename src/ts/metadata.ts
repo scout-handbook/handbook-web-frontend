@@ -1,11 +1,23 @@
-/* global COMPETENCES:true FIELDS:true LOGINSTATE:true */
-/* exported COMPETENCES, FIELDS, LOGINSTATE, metadataSetup */
+/* global COMPETENCES:true FIELDS:true FULLFIELDS:true LOGINSTATE:true */
+/* exported COMPETENCES, FIELDS, FULLFIELDS, LOGINSTATE, metadataSetup */
 
-const metadataEvent = new AfterLoadEvent(2);
+const metadataEvent = new AfterLoadEvent(3);
 const loginstateEvent = new AfterLoadEvent(1);
 
 function metadataSetup(): void
 {
+	cacheThenNetworkRequest(CONFIG.apiuri + "/field", "", function(response, second): void
+	{
+		FULLFIELDS = response as Array<FullField>;
+		if(second)
+		{
+			metadataEvent.retrigger();
+		}
+		else
+		{
+			metadataEvent.trigger();
+		}
+	});
 	cacheThenNetworkRequest(CONFIG.apiuri + "/lesson", "", function(response, second): void
 	{
 		FIELDS = response as Array<Field>;

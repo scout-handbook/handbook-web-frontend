@@ -1,5 +1,6 @@
-/* exported FIELDS, COMPETENCES, LOGINSTATE */
+/* exported FULLFIELDS, FIELDS, COMPETENCES, LOGINSTATE */
 
+let FULLFIELDS: Array<FullField>;
 let FIELDS: Array<Field>;
 let COMPETENCES: Array<Competence>;
 let LOGINSTATE: Loginstate | null;
