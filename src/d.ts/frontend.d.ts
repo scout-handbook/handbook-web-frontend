@@ -2,6 +2,7 @@
 declare const COMPETENCES: Array<Competence>;
 declare const CONFIG: Config;
 declare const FIELDS: Array<Field>;
+declare const FULLFIELDS: Array<FullField>;
 declare let activeCompetence: HTMLElement | null;
 declare const metadataEvent: AfterLoadEvent;
 declare let navigationOpen: boolean;

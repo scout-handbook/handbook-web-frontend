@@ -43,7 +43,7 @@ function navigationSetup(): void
 	document.getElementById("overlay")!.onclick = toggleNavigation;
 	document.getElementById("lessonOverview")!.onclick = function(): boolean
 	{
-		showLessonListView(false);
+		showFieldListView(false);
 		return false;
 	}
 	document.getElementById("competenceOverview")!.onclick = function(): boolean
