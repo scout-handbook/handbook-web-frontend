@@ -2,6 +2,16 @@
 
 /* eslint-disable @typescript-eslint/no-var-requires */
 
+interface CustomProperties {
+	"--accent-color": string;
+}
+
+interface Config {
+	"frontend-uri": string;
+	"site-name": string;
+	"custom-properties": CustomProperties;
+}
+
 const yargs = require('yargs');
 const fs = require("fs")
 const nestedObjectAssign = require('nested-object-assign');
@@ -27,7 +37,7 @@ const pkg = require('./package.json');
 
 const minify = composer(uglify, console);
 
-function getConfig() {
+function getConfig(): Config {
 	let config = nestedObjectAssign(JSON.parse(fs.readFileSync("src/json/config.json", "utf8")), {cache: 'handbook-' + pkg.version});
 	const overrideLocation = yargs.string('config').argv.config
 	if(overrideLocation) {
@@ -54,7 +64,7 @@ gulp.task('stylelint', function() {
 });
 
 gulp.task('build:css', function() {
-	function bundle(name, sources) {
+	function bundle(name: string, sources: Array<string>): NodeJS.ReadWriteStream {
 		return gulp.src(sources)
 			.pipe(sourcemaps.init())
 			.pipe(concat(name + '.min.css'))
@@ -151,7 +161,7 @@ gulp.task('build:icon', function() {
 });
 
 gulp.task('build:js', function() {
-	function bundle(name, addConfig) {
+	function bundle(name: string, addConfig = false): NodeJS.ReadWriteStream {
 		const tsProject = ts.createProject("tsconfig/" + name + ".json");
 		let ret = tsProject.src()
 			.pipe(inject.replace('\\"\\"\\/\\*INJECTED\\-VERSION\\*\\/', '"' + pkg.version + '"'))

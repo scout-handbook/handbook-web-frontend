@@ -2,13 +2,13 @@
 
 function request(url: string, query: string, headers: RequestHeaders): AfterLoadEvent
 {
-	var ret = new AfterLoadEvent(1);
-	var xhttp = new XMLHttpRequest();
+	const ret = new AfterLoadEvent(1);
+	const xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function(): void
 	{
 		if(this.readyState === 4)
 		{
-			var body = JSON.parse(this.responseText);
+			const body = JSON.parse(this.responseText);
 			if(this.status === 200)
 			{
 				ret.trigger(body.response);
@@ -25,13 +25,12 @@ function request(url: string, query: string, headers: RequestHeaders): AfterLoad
 	}
 	xhttp.open("GET", url, true);
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	for(var key in headers)
+	for(const key in headers)
 	{
-		if(!headers.hasOwnProperty(key))
+		if(Object.prototype.hasOwnProperty.call(headers, key))
 		{
-			continue;
+			xhttp.setRequestHeader(key, headers[key]);
 		}
-		xhttp.setRequestHeader(key, headers[key]);
 	}
 	xhttp.send();
 	return ret;
