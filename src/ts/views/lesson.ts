@@ -1,11 +1,12 @@
 /* global activeCompetence:true, navigationOpen:true */
 /* exported activeCompetence, lessonViewSetup, navigationOpen, showLessonView */
 
-const converter = new showdown.Converter({extensions: ["HandbookMarkdown"]});
+let converter: showdown.Converter;
 let activeCompetence: HTMLElement | null = null;
 
 function lessonViewSetup(): void
 {
+	converter = new showdown.Converter({extensions: ["HandbookMarkdown"]});
 	converter.setOption("noHeaderId", "true");
 	converter.setOption("tables", "true");
 	window.addEventListener("resize", reflowCompetenceBubbles)
