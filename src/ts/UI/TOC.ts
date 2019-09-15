@@ -17,7 +17,7 @@ function renderTOC(): void
 	let html = "";
 	LESSONS.iterate(function(id, lesson)
 	{
-		var inField = false;
+		let inField = false;
 		FIELDS.iterate(function(_, field)
 		{
 			if(field.lessons.indexOf(id) >= 0)
@@ -33,9 +33,9 @@ function renderTOC(): void
 	FIELDS.iterate(function(id, field)
 	{
 		html += "<h1><a title=\"" + field.name + "\" href=\"enableJS.html\" data-id=\"" + id + "\">" + field.name + "</a></h1>";
-		for(var i = 0; i < field.lessons.length; i++)
+		for(let i = 0; i < field.lessons.length; i++)
 		{
-			var lesson = LESSONS.get(field.lessons[i]);
+			const lesson = LESSONS.get(field.lessons[i]);
 			html += "<a class=\"secondLevel\" title=\"" + lesson.name + "\" href=\"enableJS.html\" data-id=\"" + field.lessons[i] + "\">" + lesson.name + "</a><br>";
 		}
 	});

@@ -7,7 +7,7 @@ function renderCompetenceLessonList(lessonList: IDList<Lesson>): string
 	lessonList.iterate(function(id, lesson)
 	{
 		html += "<h3 class=\"mainPage\"><a title=\"" + lesson.name + "\" href=\"enableJS.html\" data-id=\"" + id + "\">" + lesson.name + "</a></h3>";
-		var first = true;
+		let first = true;
 		COMPETENCES.iterate(function(competenceId, competence)
 		{
 			if(lesson.competences.indexOf(competenceId) >= 0)
@@ -30,10 +30,10 @@ function renderCompetenceLessonList(lessonList: IDList<Lesson>): string
 
 function renderCompetenceView(id: string, noHistory: boolean): void
 {
-	var competence = COMPETENCES.get(id);
-	var html = "<h1>" + competence.number + ": " + competence.name + "</h1>";
+	const competence = COMPETENCES.get(id);
+	let html = "<h1>" + competence.number + ": " + competence.name + "</h1>";
 	html += competence.description;
-	var lessonList = LESSONS.filter(function(_, lesson)
+	const lessonList = LESSONS.filter(function(_, lesson)
 	{
 		return lesson.competences.indexOf(id) >= 0;
 	});
