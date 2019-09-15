@@ -3,19 +3,19 @@
 
 function renderFullFieldList(): string
 {
-	var html = "<div class=\"field-list-container\"><div id=\"field-list-col1\" class=\"field-list-col\">";
-	for(var i = 0; i < FULLFIELDS.length; i++)
+	let html = "<div class=\"field-list-container\"><div id=\"field-list-col1\" class=\"field-list-col\">";
+	for(let i = 0; i < FULLFIELDS.length; i++)
 	{
 		html += "<div class=\"field-card\" data-id=\"" + FULLFIELDS[i].id + "\">"
 		html += "<img src=\"" + CONFIG.apiuri + "/image/" + FULLFIELDS[i].image + "\">";
 		html += "<h2 class=\"field-card-heading\">";
 		html += FULLFIELDS[i].name;
 		html += "</h2><div class=\"field-card-lesson-count\">";
-		for(var j = 0; j < FIELDS.length; j++)
+		for(let j = 0; j < FIELDS.length; j++)
 		{
 			if(FULLFIELDS[i].id === FIELDS[j].id)
 			{
-				var count = FIELDS[j].lessons.length;
+				const count = FIELDS[j].lessons.length;
 				if(count > 0)
 				{
 					html += count + (count < 5 ? " lekce" : " lekcí");
@@ -33,8 +33,8 @@ function renderFullFieldList(): string
 
 function fieldListOnClick(event: MouseEvent): boolean
 {
-	var el = event.target as HTMLElement;
-	while(!el.dataset.hasOwnProperty('id'))
+	let el = event.target as HTMLElement;
+	while(!Object.prototype.hasOwnProperty.call(el.dataset, 'id'))
 	{
 		el = el.parentElement!;
 	}
@@ -44,16 +44,16 @@ function fieldListOnClick(event: MouseEvent): boolean
 
 function renderFieldListView(noHistory: boolean): void
 {
-	var html = "<h1>" + CONFIG["site-name"] + "</h1>";
+	let html = "<h1>" + CONFIG["site-name"] + "</h1>";
 	html += renderFullFieldList();
 	document.getElementById("content")!.innerHTML = html;
-	var nodes = document.getElementById("content")!.getElementsByClassName("field-card");
-	var height = nodes.length / 2;
-	for(var l = nodes.length - 1; l >= 0; l--)
+	const nodes = document.getElementById("content")!.getElementsByClassName("field-card");
+	const height = nodes.length / 2;
+	for(let l = nodes.length - 1; l >= 0; l--)
 	{
 		(nodes[l] as HTMLElement).onclick = fieldListOnClick;
 		if(l > height) {
-			var col = document.getElementById("field-list-col2")!;
+			const col = document.getElementById("field-list-col2")!;
 			col.insertBefore(nodes[l], col.firstChild);
 		}
 	}
