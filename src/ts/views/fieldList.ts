@@ -3,7 +3,7 @@
 
 function renderFieldList(): string
 {
-	var html = "<div class=\"field-list-container\"><div id=\"field-list-col1\" class=\"field-list-col\">";
+	let html = "<div class=\"field-list-container\"><div id=\"field-list-col1\" class=\"field-list-col\">";
 	FIELDS.iterate(function(id, field)
 	{
 		html += "<div class=\"field-card\" data-id=\"" + id + "\">"
@@ -11,7 +11,7 @@ function renderFieldList(): string
 		html += "<h2 class=\"field-card-heading\">";
 		html += field.name;
 		html += "</h2><div class=\"field-card-lesson-count\">";
-		var count = field.lessons.length;
+		const count = field.lessons.length;
 		if(count > 0)
 		{
 			html += count + (count < 5 ? " lekce" : " lekcí");
@@ -26,8 +26,8 @@ function renderFieldList(): string
 
 function fieldListOnClick(event: MouseEvent): boolean
 {
-	var el = event.target as HTMLElement;
-	while(!el.dataset.hasOwnProperty('id'))
+	let el = event.target as HTMLElement;
+	while(!Object.prototype.hasOwnProperty.call(el.dataset, 'id'))
 	{
 		el = el.parentElement!;
 	}
@@ -37,17 +37,17 @@ function fieldListOnClick(event: MouseEvent): boolean
 
 function renderFieldListView(noHistory: boolean): void
 {
-	var html = "<h1>" + CONFIG["site-name"] + "</h1>";
+	let html = "<h1>" + CONFIG["site-name"] + "</h1>";
 	html += renderFieldList();
 	document.getElementById("content")!.innerHTML = html;
-	var nodes = document.getElementById("content")!.getElementsByClassName("field-card");
-	var height = nodes.length / 2;
-	for(var l = nodes.length - 1; l >= 0; l--)
+	const nodes = document.getElementById("content")!.getElementsByClassName("field-card");
+	const height = nodes.length / 2;
+	for(let i = nodes.length - 1; i >= 0; i--)
 	{
-		(nodes[l] as HTMLElement).onclick = fieldListOnClick;
-		if(l > height) {
-			var col = document.getElementById("field-list-col2")!;
-			col.insertBefore(nodes[l], col.firstChild);
+		(nodes[i] as HTMLElement).onclick = fieldListOnClick;
+		if(i > height) {
+			const col = document.getElementById("field-list-col2")!;
+			col.insertBefore(nodes[i], col.firstChild);
 		}
 	}
 	document.getElementsByTagName("main")[0].scrollTop = 0;

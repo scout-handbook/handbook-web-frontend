@@ -6,9 +6,9 @@ function renderFieldLessonList(field: Field): string
 	let html = "";
 	for(let i = 0; i < field.lessons.length; i++)
 	{
-		var lesson = LESSONS.get(field.lessons[i]);
+		const lesson = LESSONS.get(field.lessons[i]);
 		html += "<h3 class=\"mainPage\"><a title=\"" + lesson.name + "\" href=\"enableJS.html\" data-id=\"" + field.lessons[i] + "\">" + lesson.name + "</a></h3>";
-		var first = true;
+		let first = true;
 		COMPETENCES.iterate(function(id, competence)
 		{
 			if(lesson.competences.indexOf(id) >= 0)
@@ -31,8 +31,8 @@ function renderFieldLessonList(field: Field): string
 
 function renderFieldView(id: string, noHistory: boolean): void
 {
-	var field = FIELDS.get(id);
-	var html = "<h1>" + field.name + "</h1>";
+	const field = FIELDS.get(id);
+	let html = "<h1>" + field.name + "</h1>";
 	html += field.description;
 	html += renderFieldLessonList(field);
 	document.getElementById("content")!.innerHTML = html;
