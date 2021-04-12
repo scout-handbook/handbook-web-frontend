@@ -1,7 +1,7 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
-    "lib": ["ES5", "DOM"],
+    "lib": ["ES6", "DOM"],
     "target": "ES5"
   },
   "files": [
