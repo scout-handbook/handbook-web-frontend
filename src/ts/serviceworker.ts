@@ -34,7 +34,7 @@ self.addEventListener("install", function(event: Event): void
 	(event as ExtendableEvent).waitUntil(
 		caches.open(CACHE).then(function(cache): Promise<void>
 		{
-			cache.addAll(cacheNonBlocking);
+			void cache.addAll(cacheNonBlocking);
 			return cache.addAll(cacheBlocking);
 		})
 	);
@@ -44,7 +44,7 @@ function cacheClone(request: Request, response: Response): Promise<Response>
 {
 	return caches.open(CACHE).then(function(cache): Response
 	{
-		cache.put(request, response.clone());
+		void cache.put(request, response.clone());
 		return response;
 	});
 }
@@ -53,16 +53,16 @@ function cacheUpdatingResponse(request: Request): Promise<Response>
 {
 	if(request.headers.get("Accept") === "x-cache/only")
 	{
-		return new Promise(function(resolve): void { // eslint-disable-line no-undef, compat/compat
-			caches.match(request).then(function(response): void
+		return new Promise(function(resolve): void { // eslint-disable-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-call, compat/compat
+			void caches.match(request).then(function(response): void
 			{
 				if(response)
 				{
-					resolve(response);
+					resolve(response); // eslint-disable-line @typescript-eslint/no-unsafe-call, compat/compat
 				}
 				else
 				{
-					resolve(new Response(new Blob(["{\"status\": 404}"]), {"status": 404, "statusText": "Not Found"})); // eslint-disable-line compat/compat
+					resolve(new Response(new Blob(["{\"status\": 404}"]), {"status": 404, "statusText": "Not Found"})); // eslint-disable-line @typescript-eslint/no-unsafe-call, compat/compat
 				}
 			});
 		});
@@ -124,14 +124,14 @@ self.addEventListener("fetch", function(event: Event): void
 	const url = new URL((event as FetchEvent).request.url); // eslint-disable-line compat/compat
 	if(cacheUpdating.indexOf(url.pathname) !== -1)
 	{
-		(event as FetchEvent).respondWith(cacheUpdatingResponse((event as FetchEvent).request));
+		void (event as FetchEvent).respondWith(cacheUpdatingResponse((event as FetchEvent).request));
 	}
 	else if(startsWith(url.pathname, APIPATH + "/lesson"))
 	{
-		(event as FetchEvent).respondWith(cacheOnDemandResponse((event as FetchEvent).request));
+		void (event as FetchEvent).respondWith(cacheOnDemandResponse((event as FetchEvent).request));
 	}
 	else
 	{
-		(event as FetchEvent).respondWith(genericResponse((event as FetchEvent).request));
+		void (event as FetchEvent).respondWith(genericResponse((event as FetchEvent).request));
 	}
 });
