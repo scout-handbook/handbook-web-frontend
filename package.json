@@ -37,7 +37,7 @@
     "gulp-htmlmin": "^5.0.1",
     "gulp-inject-string": "^1.1.2",
     "gulp-postcss": "^9.0.0",
-    "gulp-sourcemaps": "^2.6.5",
+    "gulp-sourcemaps": "^3.0.0",
     "gulp-stylelint": "^13.0.0",
     "gulp-typescript": "^5.0.1",
     "gulp-uglify": "^3.0.2",
@@ -51,7 +51,7 @@
     "stylelint-no-unsupported-browser-features": "^4.1.4",
     "typescript": "^3.6.3",
     "uglify-js": "^3.6.0",
-    "yargs": "^14.0.0"
+    "yargs": "^16.2.0"
   },
   "browserslist": [
     "cover 95%",
