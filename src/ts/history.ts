@@ -4,21 +4,22 @@ function historyPopback(): void
 {
 	if(history.state)
 	{
+		const state = history.state as HistoryState;
 		if(window.location.pathname === "/competence")
 		{
 			showCompetenceListView(true);
 		}
 		else if(window.location.pathname.substring(0, 12) === "/competence/")
 		{
-			showCompetenceView(history.state.id, true);
+			showCompetenceView(state.id!, true);
 		}
 		else if(window.location.pathname.substring(0, 7) === "/field/")
 		{
-			showFieldView(history.state.id, true);
+			showFieldView(state.id!, true);
 		}
 		else if(window.location.pathname.substring(0, 8) === "/lesson/")
 		{
-			showLessonView(history.state.id, true);
+			showLessonView(state.id!, true);
 		}
 		else
 		{

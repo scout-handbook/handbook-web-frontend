@@ -17,10 +17,10 @@ function renderCompetenceLessonList(lessonList: Array<Lesson>): string
 					competences.push(COMPETENCES[j]);
 				}
 			}
-			html += "<span class=\"mainPage\">Kompetence: " + competences[0].number;
+			html += "<span class=\"mainPage\">Kompetence: " + competences[0].number.toString();
 			for(let j = 1; j < competences.length; j++)
 			{
-				html += ", " + competences[j].number;
+				html += ", " + competences[j].number.toString();
 			}
 			html += "</span>";
 		}
@@ -39,7 +39,7 @@ function renderCompetenceView(id: string, noHistory: boolean): void
 			break;
 		}
 	}
-	let html = "<h1>" + competence.number + ": " + competence.name + "</h1>";
+	let html = "<h1>" + competence.number.toString() + ": " + competence.name + "</h1>";
 	html += competence.description;
 	const lessonList = [];
 	for(let i = 0; i < FIELDS.length; i++)
@@ -68,7 +68,7 @@ function renderCompetenceView(id: string, noHistory: boolean): void
 	document.getElementsByTagName("main")[0].scrollTop = 0;
 	if(!noHistory)
 	{
-		history.pushState({"id": id}, "title", "/competence/" + id + "/" + urlEscape(competence.number + "-" + competence.name)); // eslint-disable-line compat/compat
+		history.pushState({"id": id}, "title", "/competence/" + id + "/" + urlEscape(competence.number.toString() + "-" + competence.name)); // eslint-disable-line compat/compat
 	}
 	document.getElementById("offlineSwitch")!.style.display = "none";
 }

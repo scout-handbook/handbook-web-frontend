@@ -17,10 +17,10 @@ function renderFieldLessonList(field: Field): string
 					competences.push(COMPETENCES[j]);
 				}
 			}
-			html += "<span class=\"mainPage\">Kompetence: " + competences[0].number;
+			html += "<span class=\"mainPage\">Kompetence: " + competences[0].number.toString();
 			for(let j = 1; j < competences.length; j++)
 			{
-				html += ", " + competences[j].number;
+				html += ", " + competences[j].number.toString();
 			}
 			html += "</span>";
 		}

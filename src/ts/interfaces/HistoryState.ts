@@ -1,0 +1,3 @@
+interface HistoryState {
+	id?: string;
+}

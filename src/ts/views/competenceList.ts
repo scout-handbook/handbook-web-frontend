@@ -6,7 +6,7 @@ function renderCompetenceList(): string
 	let html = "";
 	for(let i = 0; i < COMPETENCES.length; i++)
 	{
-		html += "<h3 class=\"mainPage\"><a title=\"" + COMPETENCES[i].number + ": " + COMPETENCES[i].name + "\" href=\"enableJS.html\" data-id=\"" + COMPETENCES[i].id + "\">" + COMPETENCES[i].number + ": " + COMPETENCES[i].name + "</a></h3>";
+		html += "<h3 class=\"mainPage\"><a title=\"" + COMPETENCES[i].number.toString() + ": " + COMPETENCES[i].name + "\" href=\"enableJS.html\" data-id=\"" + COMPETENCES[i].id + "\">" + COMPETENCES[i].number.toString() + ": " + COMPETENCES[i].name + "</a></h3>";
 		html += "<span class=\"mainPage\">" + COMPETENCES[i].description;
 	}
 	return html;

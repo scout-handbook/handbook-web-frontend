@@ -39,7 +39,7 @@ function renderLessonView(id: string, markdown: string, noHistory: boolean, seco
 	activeCompetence = null;
 	for(let i = 0; i < competences.length; i++)
 	{
-		html += "<span class=\"competenceBubble\"><span class=\"competenceBubbleNumber\"><p>" + competences[i].number + "</p></span><span class=\"competenceBubbleText\">" + competences[i].name + "</span><span class=\"competenceBubbleLessons\"><a title=\"Detail kompetence\" href=\"enableJS.html\" data-id=\"" + competences[i].id + "\">Detail kompetence</a></span></span>";
+		html += "<span class=\"competenceBubble\"><span class=\"competenceBubbleNumber\"><p>" + competences[i].number.toString() + "</p></span><span class=\"competenceBubbleText\">" + competences[i].name + "</span><span class=\"competenceBubbleLessons\"><a title=\"Detail kompetence\" href=\"enableJS.html\" data-id=\"" + competences[i].id + "\">Detail kompetence</a></span></span>";
 	}
 	html += filterXSS(converter.makeHtml(markdown), xssOptions());
 	document.getElementById("content")!.innerHTML = html;
@@ -64,9 +64,9 @@ function renderLessonView(id: string, markdown: string, noHistory: boolean, seco
 	}
 	if("serviceWorker" in navigator)
 	{
-		caches.open(CONFIG.cache).then(function(cache): void
+		void caches.open(CONFIG.cache).then(function(cache): void
 		{
-			cache.match(CONFIG.apiuri + "/lesson/" + id).then(function(response): void
+			void cache.match(CONFIG.apiuri + "/lesson/" + id).then(function(response): void
 			{
 				if(response === undefined)
 				{
@@ -110,7 +110,7 @@ function showLessonView(id: string, noHistory: boolean): void
 	}
 	else
 	{
-		cacheThenNetworkRequest(CONFIG.apiuri + "/lesson/" + id, "", function(response: string|object, second: boolean): void
+		cacheThenNetworkRequest(CONFIG.apiuri + "/lesson/" + id, "", function(response, second: boolean): void
 		{
 			metadataEvent.addCallback(function(): void
 			{

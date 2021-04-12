@@ -18,7 +18,7 @@ function renderFullFieldList(): string
 				const count = FIELDS[j].lessons.length;
 				if(count > 0)
 				{
-					html += count + (count < 5 ? " lekce" : " lekcí");
+					html += count.toString() + (count < 5 ? " lekce" : " lekcí");
 				}
 				break;
 			}
