@@ -30,6 +30,14 @@
 		"@typescript-eslint/prefer-includes": "off",
 		"@typescript-eslint/prefer-string-starts-ends-with": "off"
 	},
+	"overrides": [
+		{
+			"files": ["gulpfile.js"],
+			"rules": {
+				"@typescript-eslint/no-var-requires": "off"
+			}
+		}
+	],
 	"globals": {
 		"COMPETENCES": false,
 		"CONFIG": false,
