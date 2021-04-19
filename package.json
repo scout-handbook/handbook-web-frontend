@@ -20,7 +20,7 @@
     "url": "git+https://gitlab.com/skaut-handbook/handbook-web-frontend.git"
   },
   "dependencies": {
-    "showdown": "^1.9.0",
+    "showdown": "^1.9.1",
     "xss": "^1.0.6"
   },
   "devDependencies": {
