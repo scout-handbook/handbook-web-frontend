@@ -8,10 +8,10 @@ function request(url: string, query: string, headers: RequestHeaders): AfterLoad
 	{
 		if(this.readyState === 4)
 		{
-			const body = JSON.parse(this.responseText);
+			const body = JSON.parse(this.responseText) as APIResponse;
 			if(this.status === 200)
 			{
-				ret.trigger(body.response);
+				ret.trigger(body.response!);
 			}
 			else if(this.status === 403 && body.type === "RoleException")
 			{

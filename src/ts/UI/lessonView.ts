@@ -7,15 +7,15 @@ function toggleLessonOffline(): void
 	if (window.location.pathname.substring(0, 8) === "/lesson/")
 	{
 		const id = window.location.pathname.substring(8).split("/")[0];
-		caches.open(CONFIG.cache).then(function(cache): void
+		void caches.open(CONFIG.cache).then(function(cache): void
 		{
 			if(checked)
 			{
-				cache.add(new Request(CONFIG.apiuri + "/lesson/" + id, {credentials: "same-origin"})); // eslint-disable-line compat/compat
+				void cache.add(new Request(CONFIG.apiuri + "/lesson/" + id, {credentials: "same-origin"})); // eslint-disable-line compat/compat
 			}
 			else
 			{
-				cache.delete(CONFIG.apiuri + "/lesson/" + id);
+				void cache.delete(CONFIG.apiuri + "/lesson/" + id);
 			}
 		});
 	}
@@ -27,10 +27,10 @@ function reflowCompetenceBubbles(): void
 	{
 		const fontSize = parseFloat(window.getComputedStyle(activeCompetence).getPropertyValue("font-size"));
 		const parent = activeCompetence.parentElement as HTMLElement;
-		(activeCompetence.childNodes[1] as HTMLElement).style.width = Math.min(403 - 1.3 * fontSize, ( activeCompetence.parentElement as HTMLElement).clientWidth - 1.3 * fontSize + 3) + "px";
-		(activeCompetence.childNodes[2] as HTMLElement).style.width = Math.min(403 - 1.3 * fontSize, parent.clientWidth - 1.3 * fontSize + 3) + "px";
-		activeCompetence.style.width = Math.min(400, parent.clientWidth) + "px";
-		activeCompetence.style.height = ((activeCompetence.childNodes[1] as HTMLElement).offsetHeight + 1.4 * fontSize - 6) + "px";
+		(activeCompetence.childNodes[1] as HTMLElement).style.width = Math.min(403 - 1.3 * fontSize, ( activeCompetence.parentElement as HTMLElement).clientWidth - 1.3 * fontSize + 3).toString() + "px";
+		(activeCompetence.childNodes[2] as HTMLElement).style.width = Math.min(403 - 1.3 * fontSize, parent.clientWidth - 1.3 * fontSize + 3).toString() + "px";
+		activeCompetence.style.width = Math.min(400, parent.clientWidth).toString() + "px";
+		activeCompetence.style.height = ((activeCompetence.childNodes[1] as HTMLElement).offsetHeight + 1.4 * fontSize - 6).toString() + "px";
 	}
 }
 

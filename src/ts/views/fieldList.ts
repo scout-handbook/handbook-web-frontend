@@ -14,7 +14,7 @@ function renderFieldList(): string
 		const count = field.lessons.length;
 		if(count > 0)
 		{
-			html += count + (count < 5 ? " lekce" : " lekcí");
+			html += count.toString() + (count < 5 ? " lekce" : " lekcí");
 		}
 		html += "</div><div class=\"field-card-description\">";
 		html += field.description;

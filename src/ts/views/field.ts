@@ -15,12 +15,12 @@ function renderFieldLessonList(field: Field): string
 			{
 				if(first)
 				{
-					html += "<span class=\"mainPage\">Kompetence: " + competence.number;
+					html += "<span class=\"mainPage\">Kompetence: " + competence.number.toString();
 					first = false;
 				}
 				else
 				{
-					html += ", " + competence.number;
+					html += ", " + competence.number.toString();
 				}
 			}
 		});

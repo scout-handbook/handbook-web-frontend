@@ -47,14 +47,14 @@ function metadataSetup(): void
 	{
 		if(this.readyState === 4)
 		{
-			let response = {status: undefined, response: null};
-			if(this.responseText)
+			if(!this.responseText)
 			{
-				response = JSON.parse(this.responseText);
+				return;
 			}
+			const response = JSON.parse(this.responseText) as APIResponse;
 			if(response.status === 200)
 			{
-				LOGINSTATE = response.response;
+				LOGINSTATE = response.response! as Loginstate;
 				loginstateEvent.trigger();
 			}
 			else if(response.status === 401)
