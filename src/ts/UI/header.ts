@@ -4,7 +4,7 @@ function fontResize(delta: number): void
 {
 	const content = document.getElementById("content") as HTMLElement;
 	const current = parseInt(window.getComputedStyle(content, null).getPropertyValue("font-size").replace("px", ""), 10);
-	content.style.fontSize = current + delta + "px";
+	content.style.fontSize = current.toString() + delta.toString() + "px";
 	content.style.lineHeight = "160%";
 	reflowCompetenceBubbles();
 }

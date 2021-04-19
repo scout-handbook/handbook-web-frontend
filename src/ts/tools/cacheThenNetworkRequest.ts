@@ -1,6 +1,6 @@
 /* exported cacheThenNetworkRequest */
 
-function cacheThenNetworkRequest(url: string, query: string, callback: (response: string|object, cacheDataReceived: boolean) => void): void
+function cacheThenNetworkRequest(url: string, query: string, callback: (response: RequestResponse|string, cacheDataReceived: boolean) => void): void
 {
 	query = typeof query !== 'undefined' ? query : "";
 	let networkDataReceived = false;

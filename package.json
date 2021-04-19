@@ -1,6 +1,6 @@
 {
   "name": "skaut-handbook-web-frontend",
-  "version": "0.2.5",
+  "version": "0.3.0",
   "description": "A web interface for a Scout handbook",
   "keywords": [
     "education",
@@ -20,15 +20,15 @@
     "url": "git+https://gitlab.com/skaut-handbook/handbook-web-frontend.git"
   },
   "dependencies": {
-    "showdown": "^1.9.0",
+    "showdown": "^1.9.1",
     "xss": "^1.0.6"
   },
   "devDependencies": {
     "@types/showdown": "^1.9.3",
     "@types/webfontloader": "^1.6.29",
-    "@typescript-eslint/eslint-plugin": "^2.2.0",
-    "@typescript-eslint/parser": "^2.2.0",
-    "eslint": "^6.4.0",
+    "@typescript-eslint/eslint-plugin": "^4.21.0",
+    "@typescript-eslint/parser": "^4.21.0",
+    "eslint": "^7.24.0",
     "eslint-plugin-compat": "^3.3.0",
     "gulp": "^4.0.2",
     "gulp-clean-css": "^4.2.0",
@@ -36,22 +36,22 @@
     "gulp-eslint": "^6.0.0",
     "gulp-htmlmin": "^5.0.1",
     "gulp-inject-string": "^1.1.2",
-    "gulp-postcss": "^8.0.0",
-    "gulp-sourcemaps": "^2.6.5",
-    "gulp-stylelint": "^9.0.0",
+    "gulp-postcss": "^9.0.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-stylelint": "^13.0.0",
     "gulp-typescript": "^5.0.1",
     "gulp-uglify": "^3.0.2",
     "merge-stream": "^2.0.0",
     "nested-object-assign": "^1.0.3",
-    "postcss-calc": "^7.0.1",
-    "postcss-custom-properties": "^9.0.2",
-    "stylelint": "^11.0.0",
-    "stylelint-config-standard": "^19.0.0",
-    "stylelint-no-unsupported-browser-features": "^3.0.2",
-    "ts-node": "^8.3.0",
-    "typescript": "^3.6.3",
+    "postcss": "^8.2.10",
+    "postcss-calc": "^8.0.0",
+    "postcss-custom-properties": "^11.0.0",
+    "stylelint": "^13.12.0",
+    "stylelint-config-standard": "^21.0.0",
+    "stylelint-no-unsupported-browser-features": "^4.1.4",
+    "typescript": "^4.2.4",
     "uglify-js": "^3.6.0",
-    "yargs": "^14.0.0"
+    "yargs": "^16.2.0"
   },
   "browserslist": [
     "cover 95%",
