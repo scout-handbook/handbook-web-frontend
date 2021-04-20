@@ -1,4 +1,4 @@
-interface IDListItems<T> // eslint-disable-line @typescript-eslint/interface-name-prefix
+interface IDListItems<T>
 {
 	[key: string]: T;
 }
