@@ -8,7 +8,7 @@ function metadataSetup(): void
 {
 	cacheThenNetworkRequest(CONFIG.apiuri + "/field", "", function(response, second): void
 	{
-		FIELDS = new IDList<Field>(response as IDListItems<Field>);
+		FIELDS = new IDList<Field>(response as Record<string, Field>);
 		if(second)
 		{
 			metadataEvent.retrigger();
@@ -20,7 +20,7 @@ function metadataSetup(): void
 	});
 	cacheThenNetworkRequest(CONFIG.apiuri + "/lesson", "", function(response, second): void
 	{
-		LESSONS = new IDList<Lesson>(response as IDListItems<Lesson>);
+		LESSONS = new IDList<Lesson>(response as Record<string, Lesson>);
 		if(second)
 		{
 			metadataEvent.retrigger();
@@ -32,7 +32,7 @@ function metadataSetup(): void
 	});
 	cacheThenNetworkRequest(CONFIG.apiuri + "/competence", "", function(response, second): void
 	{
-		COMPETENCES = new IDList<Competence>(response as IDListItems<Competence>);
+		COMPETENCES = new IDList<Competence>(response as Record<string, Competence>);
 		if(second)
 		{
 			metadataEvent.retrigger();
