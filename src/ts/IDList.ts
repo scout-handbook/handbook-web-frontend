@@ -2,9 +2,9 @@
 
 class IDList<T>
 {
-	private list: IDListItems<T>;
+	private list: Record<string, T>;
 
-	public constructor(list: IDListItems<T> = {})
+	public constructor(list: Record<string, T> = {})
 	{
 		this.list = list
 	}
