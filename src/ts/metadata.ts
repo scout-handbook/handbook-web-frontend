@@ -52,8 +52,8 @@ function metadataSetup(): void
 			});
 			return value;
 		});
-		metadataEvent.trigger();
 		FIELDS.sort(fieldComparator);
+		metadataEvent.trigger();
 	});
 	cacheThenNetworkRequest(CONFIG["api-uri"] + "/v1.0/field", "", function(response, second): void
 	{
