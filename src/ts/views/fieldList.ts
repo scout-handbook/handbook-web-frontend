@@ -7,7 +7,7 @@ function renderFieldList(): string
 	FIELDS.iterate(function(id, field)
 	{
 		html += "<div class=\"field-card\" data-id=\"" + id + "\">"
-		html += "<img src=\"" + CONFIG.apiuri + "/image/" + field.image + "\">";
+		html += "<img src=\"" + CONFIG["api-uri"] + "/v1.0/image/" + field.image + "\">";
 		html += "<h2 class=\"field-card-heading\">";
 		html += field.name;
 		html += "</h2><div class=\"field-card-lesson-count\">";
