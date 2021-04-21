@@ -15,24 +15,30 @@ function TOCLessonOnClick(event: MouseEvent): boolean
 function renderTOC(): void
 {
 	let html = "";
-	for(let i = 0; i < FIELDS.length; i++)
+	LESSONS.iterate(function(id, lesson)
 	{
-		if(FIELDS[i].name)
+		let inField = false;
+		FIELDS.iterate(function(_, field)
 		{
-			html += "<h1><a title=\"" + FIELDS[i].name + "\" href=\"enableJS.html\" data-id=\"" + FIELDS[i].id + "\">" + FIELDS[i].name + "</a></h1>";
-			for(let j = 0; j < FIELDS[i].lessons.length; j++)
+			if(field.lessons.indexOf(id) >= 0)
 			{
-				html += "<a class=\"secondLevel\" title=\"" + FIELDS[i].lessons[j].name + "\" href=\"enableJS.html\" data-id=\"" + FIELDS[i].lessons[j].id + "\">" + FIELDS[i].lessons[j].name + "</a><br>";
+				inField = true;
 			}
-		}
-		else
+		});
+		if(!inField)
 		{
-			for(let j = 0; j < FIELDS[i].lessons.length; j++)
-			{
-				html += "<a title=\"" + FIELDS[i].lessons[j].name + "\" href=\"enableJS.html\" data-id=\"" + FIELDS[i].lessons[j].id + "\">" + FIELDS[i].lessons[j].name + "</a><br>";
-			}
+			html += "<a title=\"" + lesson.name + "\" href=\"enableJS.html\" data-id=\"" + id + "\">" + lesson.name + "</a><br>";
 		}
-	}
+	});
+	FIELDS.iterate(function(id, field)
+	{
+		html += "<h1><a title=\"" + field.name + "\" href=\"enableJS.html\" data-id=\"" + id + "\">" + field.name + "</a></h1>";
+		for(let i = 0; i < field.lessons.length; i++)
+		{
+			const lesson = LESSONS.get(field.lessons[i])!;
+			html += "<a class=\"secondLevel\" title=\"" + lesson.name + "\" href=\"enableJS.html\" data-id=\"" + field.lessons[i] + "\">" + lesson.name + "</a><br>";
+		}
+	});
 	document.getElementById("navigation")!.innerHTML = html;
 	const nodes = document.getElementById("navigation")!.getElementsByTagName("a");
 	for(let i = 0; i < nodes.length; i++)

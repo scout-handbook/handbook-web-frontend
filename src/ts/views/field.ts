@@ -6,48 +6,33 @@ function renderFieldLessonList(field: Field): string
 	let html = "";
 	for(let i = 0; i < field.lessons.length; i++)
 	{
-		html += "<h3 class=\"mainPage\"><a title=\"" + field.lessons[i].name + "\" href=\"enableJS.html\" data-id=\"" + field.lessons[i].id + "\">" + field.lessons[i].name + "</a></h3>";
-		if(field.lessons[i].competences.length > 0)
+		const lesson = LESSONS.get(field.lessons[i])!;
+		html += "<h3 class=\"mainPage\"><a title=\"" + lesson.name + "\" href=\"enableJS.html\" data-id=\"" + field.lessons[i] + "\">" + lesson.name + "</a></h3>";
+		let first = true;
+		COMPETENCES.filter(function(id) {
+			return lesson.competences.indexOf(id) >= 0;
+		}).iterate(function(_, competence)
 		{
-			const competences = [];
-			for(let j = 0; j < COMPETENCES.length; j++)
+			if(first)
 			{
-				if(field.lessons[i].competences.indexOf(COMPETENCES[j].id) >= 0)
-				{
-					competences.push(COMPETENCES[j]);
-				}
+				html += "<span class=\"mainPage\">Kompetence: " + competence.number.toString();
+				first = false;
 			}
-			html += "<span class=\"mainPage\">Kompetence: " + competences[0].number.toString();
-			for(let j = 1; j < competences.length; j++)
+			else
 			{
-				html += ", " + competences[j].number.toString();
+				html += ", " + competence.number.toString();
 			}
-			html += "</span>";
-		}
+		});
+		html += "</span>";
 	}
 	return html;
 }
 
 function renderFieldView(id: string, noHistory: boolean): void
 {
-	let field: Field = {id: "", name: "", lessons: []};
-	for(let i = 0; i < FIELDS.length; i++)
-	{
-		if(FIELDS[i].id === id)
-		{
-			field = FIELDS[i];
-			break;
-		}
-	}
+	const field = FIELDS.get(id)!;
 	let html = "<h1>" + field.name + "</h1>";
-	for(let j = 0; j < FULLFIELDS.length; j++)
-	{
-		if(FULLFIELDS[j].id === id)
-		{
-			html += FULLFIELDS[j].description;
-			break;
-		}
-	}
+	html += field.description;
 	html += renderFieldLessonList(field);
 	document.getElementById("content")!.innerHTML = html;
 

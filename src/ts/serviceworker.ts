@@ -1,7 +1,7 @@
 /* eslint-env serviceworker */
 
 const CACHE = "handbook-" + ""/*INJECTED-VERSION*/;
-const APIPATH = "/API/v0.9"
+const APIPATH = "/API/v1.0"
 const cacheBlocking = [
 	"/",
 	"frontend-computer.min.css",

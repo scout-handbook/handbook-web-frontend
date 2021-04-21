@@ -1,8 +1,8 @@
-/* exported FULLFIELDS, FIELDS, COMPETENCES, LOGINSTATE */
+/* exported COMPETENCES, FIELDS, LESSONS, LOGINSTATE */
 
-let FULLFIELDS: Array<FullField>;
-let FIELDS: Array<Field>;
-let COMPETENCES: Array<Competence>;
+let COMPETENCES: IDList<Competence>;
+let FIELDS: IDList<Field>;
+let LESSONS: IDList<Lesson>;
 let LOGINSTATE: Loginstate | null;
 
 function main(): void
