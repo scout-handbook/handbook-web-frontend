@@ -9,7 +9,7 @@ function renderFieldLessonList(field: Field): string
 		const lesson = LESSONS.get(field.lessons[i])!;
 		html += "<h3 class=\"mainPage\"><a title=\"" + lesson.name + "\" href=\"enableJS.html\" data-id=\"" + field.lessons[i] + "\">" + lesson.name + "</a></h3>";
 		let first = true;
-		COMPETENCES.filter(function(id, _) {
+		COMPETENCES.filter(function(id) {
 			return lesson.competences.indexOf(id) >= 0;
 		}).iterate(function(_, competence)
 		{
