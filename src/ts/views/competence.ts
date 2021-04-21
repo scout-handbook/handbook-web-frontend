@@ -8,19 +8,18 @@ function renderCompetenceLessonList(lessonList: IDList<Lesson>): string
 	{
 		html += "<h3 class=\"mainPage\"><a title=\"" + lesson.name + "\" href=\"enableJS.html\" data-id=\"" + id + "\">" + lesson.name + "</a></h3>";
 		let first = true;
-		COMPETENCES.iterate(function(competenceId, competence)
+		COMPETENCES.filter(function(id, _) {
+			return lesson.competences.indexOf(id) >= 0
+		}).iterate(function(_, competence)
 		{
-			if(lesson.competences.indexOf(competenceId) >= 0)
+			if(first)
 			{
-				if(first)
-				{
-					html += "<span class=\"mainPage\">Kompetence: " + competence.number.toString();
-					first = false;
-				}
-				else
-				{
-					html += ", " + competence.number.toString();
-				}
+				html += "<span class=\"mainPage\">Kompetence: " + competence.number.toString();
+				first = false;
+			}
+			else
+			{
+				html += ", " + competence.number.toString();
 			}
 		});
 		html += "</span>";
