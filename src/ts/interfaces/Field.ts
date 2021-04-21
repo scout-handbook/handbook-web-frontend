@@ -1,5 +1,7 @@
 interface Field {
-	id: string;
 	name: string;
-	lessons: Array<Lesson>;
+	description: string;
+	image: string;
+	icon: string;
+	lessons: Array<string>;
 }

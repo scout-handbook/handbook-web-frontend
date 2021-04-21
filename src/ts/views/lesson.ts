@@ -12,35 +12,17 @@ function lessonViewSetup(): void
 	window.addEventListener("resize", reflowCompetenceBubbles)
 }
 
-function emptyFields(): boolean
-{
-	for(let i = 0; i < FIELDS.length; i++)
-	{
-		if(FIELDS[i].lessons.length > 0)
-		{
-			return false;
-		}
-	}
-	return true;
-}
-
 function renderLessonView(id: string, markdown: string, noHistory: boolean, second: boolean): void
 {
-	const lesson = getLessonById(id)!;
-	const competences = [];
-	for(let i = 0; i < COMPETENCES.length; i++)
-	{
-		if(lesson.competences.indexOf(COMPETENCES[i].id) >=0)
-		{
-			competences.push(COMPETENCES[i]);
-		}
-	}
+	const lesson = LESSONS.get(id)!;
 	let html = "<h1>" + lesson.name + "</h1>";
 	activeCompetence = null;
-	for(let i = 0; i < competences.length; i++)
+	COMPETENCES.filter(function(id) {
+		return lesson.competences.indexOf(id) >= 0;
+	}).iterate(function(competenceId, competence)
 	{
-		html += "<span class=\"competenceBubble\"><span class=\"competenceBubbleNumber\"><p>" + competences[i].number.toString() + "</p></span><span class=\"competenceBubbleText\">" + competences[i].name + "</span><span class=\"competenceBubbleLessons\"><a title=\"Detail kompetence\" href=\"enableJS.html\" data-id=\"" + competences[i].id + "\">Detail kompetence</a></span></span>";
-	}
+		html += "<span class=\"competenceBubble\"><span class=\"competenceBubbleNumber\"><p>" + competence.number.toString() + "</p></span><span class=\"competenceBubbleText\">" + competence.name + "</span><span class=\"competenceBubbleLessons\"><a title=\"Detail kompetence\" href=\"enableJS.html\" data-id=\"" + competenceId + "\">Detail kompetence</a></span></span>";
+	});
 	html += filterXSS(converter.makeHtml(markdown), xssOptions());
 	document.getElementById("content")!.innerHTML = html;
 	let nodes = document.getElementById("content")!.getElementsByClassName("competenceBubble");
@@ -66,7 +48,7 @@ function renderLessonView(id: string, markdown: string, noHistory: boolean, seco
 	{
 		void caches.open(CONFIG.cache).then(function(cache): void
 		{
-			void cache.match(CONFIG["api-uri"] + "/v0.9/lesson/" + id).then(function(response): void
+			void cache.match(CONFIG["api-uri"] + "/v1.0/lesson/" + id).then(function(response): void
 			{
 				if(response === undefined)
 				{
@@ -90,9 +72,9 @@ function showLessonView(id: string, noHistory: boolean): void
 		navigationOpen = false;
 		reflowNavigation();
 	}
-	if(!getLessonById(id))
+	if(!LESSONS.get(id))
 	{
-		const emptyFieldsCache = emptyFields();
+		const emptyFieldsCache = FIELDS.empty();
 		loginstateEvent.addCallback(function(): void
 		{
 			if(LOGINSTATE)
@@ -110,7 +92,7 @@ function showLessonView(id: string, noHistory: boolean): void
 	}
 	else
 	{
-		cacheThenNetworkRequest(CONFIG["api-uri"] + "/v0.9/lesson/" + id, "", function(response, second: boolean): void
+		cacheThenNetworkRequest(CONFIG["api-uri"] + "/v1.0/lesson/" + id, "", function(response, second: boolean): void
 		{
 			metadataEvent.addCallback(function(): void
 			{

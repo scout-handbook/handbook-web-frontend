@@ -1,61 +1,41 @@
 /* global navigationOpen:true */
 /* exported navigationOpen, showCompetenceView */
 
-function renderCompetenceLessonList(lessonList: Array<Lesson>): string
+function renderCompetenceLessonList(lessonList: IDList<Lesson>): string
 {
 	let html = "";
-	for(let i = 0; i < lessonList.length; i++)
+	lessonList.iterate(function(id, lesson)
 	{
-		html += "<h3 class=\"mainPage\"><a title=\"" + lessonList[i].name + "\" href=\"enableJS.html\" data-id=\"" + lessonList[i].id + "\">" + lessonList[i].name + "</a></h3>";
-		if(lessonList[i].competences.length > 0)
+		html += "<h3 class=\"mainPage\"><a title=\"" + lesson.name + "\" href=\"enableJS.html\" data-id=\"" + id + "\">" + lesson.name + "</a></h3>";
+		let first = true;
+		COMPETENCES.filter(function(id) {
+			return lesson.competences.indexOf(id) >= 0
+		}).iterate(function(_, competence)
 		{
-			const competences = [];
-			for(let j = 0; j < COMPETENCES.length; j++)
+			if(first)
 			{
-				if(lessonList[i].competences.indexOf(COMPETENCES[j].id) >= 0)
-				{
-					competences.push(COMPETENCES[j]);
-				}
+				html += "<span class=\"mainPage\">Kompetence: " + competence.number.toString();
+				first = false;
 			}
-			html += "<span class=\"mainPage\">Kompetence: " + competences[0].number.toString();
-			for(let j = 1; j < competences.length; j++)
+			else
 			{
-				html += ", " + competences[j].number.toString();
+				html += ", " + competence.number.toString();
 			}
-			html += "</span>";
-		}
-	}
+		});
+		html += "</span>";
+	});
 	return html;
 }
 
 function renderCompetenceView(id: string, noHistory: boolean): void
 {
-	let competence: Competence = {name: "", number: 0, description: "", id: ""};
-	for(let i = 0; i < COMPETENCES.length; i++)
-	{
-		if(COMPETENCES[i].id === id)
-		{
-			competence = COMPETENCES[i];
-			break;
-		}
-	}
+	const competence = COMPETENCES.get(id)!;
 	let html = "<h1>" + competence.number.toString() + ": " + competence.name + "</h1>";
 	html += competence.description;
-	const lessonList = [];
-	for(let i = 0; i < FIELDS.length; i++)
+	const lessonList = LESSONS.filter(function(_, lesson)
 	{
-		for(let j = 0; j < FIELDS[i].lessons.length; j++)
-		{
-			for(let k = 0; k < FIELDS[i].lessons[j].competences.length; k++)
-			{
-				if(FIELDS[i].lessons[j].competences[k] === competence.id)
-				{
-					lessonList.push(FIELDS[i].lessons[j]);
-					break;
-				}
-			}
-		}
-	}
+		return lesson.competences.indexOf(id) >= 0;
+	});
 	html += renderCompetenceLessonList(lessonList);
 	document.getElementById("content")!.innerHTML = html;
 

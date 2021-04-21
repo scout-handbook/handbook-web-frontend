@@ -2,7 +2,7 @@
 
 function logoutRedirect(): boolean
 {
-	window.location.href = CONFIG["api-uri"] + "/v0.9/logout";
+	window.location.href = CONFIG["api-uri"] + "/v1.0/logout";
 	return false;
 }
 
@@ -30,7 +30,7 @@ function renderUserAccount(): void
 
 function loginRedirect(): boolean
 {
-	window.location.href = CONFIG["api-uri"] + "/v0.9/login?return-uri=" + encodeURIComponent(window.location.href);
+	window.location.href = CONFIG["api-uri"] + "/v1.0/login?return-uri=" + encodeURIComponent(window.location.href);
 	return false;
 }
 
@@ -73,7 +73,7 @@ function refreshLogin(): void
 			const timeout = parseInt(parts.pop()!.split(";").shift()!);
 			if((timeout - Math.round(new Date().getTime() / 1000)) < 1500)
 			{
-				request(CONFIG["api-uri"] + "/v0.9/refresh", "", {});
+				request(CONFIG["api-uri"] + "/v1.0/refresh", "", {});
 			}
 		}
 	}
