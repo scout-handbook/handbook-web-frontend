@@ -17,7 +17,7 @@ function renderLessonView(id: string, markdown: string, noHistory: boolean, seco
 	const lesson = LESSONS.get(id)!;
 	let html = "<h1>" + lesson.name + "</h1>";
 	activeCompetence = null;
-	COMPETENCES.filter(function(id, _) {
+	COMPETENCES.filter(function(id) {
 		return lesson.competences.indexOf(id) >= 0;
 	}).iterate(function(competenceId, competence)
 	{
