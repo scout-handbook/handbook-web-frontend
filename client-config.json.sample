@@ -1,5 +1,5 @@
 {
-	"apiuri": "https://handbook.example/API/v0.9",
+	"api-uri": "https://handbook.example/API",
 	"frontend-uri": "https://handbook.example",
 	"site-name": "Skaut handbook"
 }
