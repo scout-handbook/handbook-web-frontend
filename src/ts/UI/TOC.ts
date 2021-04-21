@@ -35,7 +35,7 @@ function renderTOC(): void
 		html += "<h1><a title=\"" + field.name + "\" href=\"enableJS.html\" data-id=\"" + id + "\">" + field.name + "</a></h1>";
 		for(let i = 0; i < field.lessons.length; i++)
 		{
-			const lesson = LESSONS.get(field.lessons[i]);
+			const lesson = LESSONS.get(field.lessons[i])!;
 			html += "<a class=\"secondLevel\" title=\"" + lesson.name + "\" href=\"enableJS.html\" data-id=\"" + field.lessons[i] + "\">" + lesson.name + "</a><br>";
 		}
 	});

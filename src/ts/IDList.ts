@@ -2,20 +2,29 @@
 
 class IDList<T>
 {
-	private list: Record<string, T>;
+	private list: Array<{k: string, v: T}>;
 
 	public constructor(list: Record<string, T> = {})
 	{
-		this.list = list
+		this.list = [];
+		for (const key in list) {
+			if (Object.prototype.hasOwnProperty.call(list, key)) {
+				this.push(key, list[key]);
+			}
+		}
 	}
 
 	public iterate(iterator: (key: string, value: T) => void): void
 	{
-		for (const key in this.list) {
-			if (Object.prototype.hasOwnProperty.call(this.list, key)) {
-				iterator(key, this.list[key]);
-			}
+		for(let i = 0; i < this.list.length; i++) {
+			iterator(this.list[i].k, this.list[i].v);
 		}
+	}
+
+	public sort(comparator: (first: T, second: T) => number): void {
+		this.list.sort(function(first, second): number {
+			return comparator(first.v, second.v);
+		});
 	}
 
 	public filter(filter: (key: string, value: T) => boolean): IDList<T>
@@ -41,13 +50,18 @@ class IDList<T>
 		return ret;
 	}
 
-	public get(key: string): T
+	public get(key: string): T|undefined
 	{
-		return this.list[key];
+		for(let i = 0; i < this.list.length; i++) {
+			if(this.list[i].k === key) {
+				return this.list[i].v;
+			}
+		}
+		return undefined;
 	}
 
 	public push(key: string, value: T): void
 	{
-		this.list[key] = value;
+		this.list.push({k: key, v: value});
 	}
 }

@@ -14,7 +14,7 @@ function lessonViewSetup(): void
 
 function renderLessonView(id: string, markdown: string, noHistory: boolean, second: boolean): void
 {
-	const lesson = LESSONS.get(id);
+	const lesson = LESSONS.get(id)!;
 	let html = "<h1>" + lesson.name + "</h1>";
 	activeCompetence = null;
 	COMPETENCES.iterate(function(competenceId, competence)
