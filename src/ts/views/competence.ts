@@ -29,7 +29,7 @@ function renderCompetenceLessonList(lessonList: IDList<Lesson>): string
 
 function renderCompetenceView(id: string, noHistory: boolean): void
 {
-	const competence = COMPETENCES.get(id);
+	const competence = COMPETENCES.get(id)!;
 	let html = "<h1>" + competence.number.toString() + ": " + competence.name + "</h1>";
 	html += competence.description;
 	const lessonList = LESSONS.filter(function(_, lesson)

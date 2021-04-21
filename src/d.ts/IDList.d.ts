@@ -5,6 +5,6 @@ declare class IDList<T>
 	public sort(comparator: (first: T, second: T) => number): void;
 	public filter(filter: (key: string, value: T) => boolean): IDList<T>;
 	public empty(): boolean;
-	public get(key: string): T;
+	public get(key: string): T|undefined;
 	public push(key: string, value: T): void;
 }
