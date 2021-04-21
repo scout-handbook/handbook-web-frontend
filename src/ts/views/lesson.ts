@@ -17,12 +17,11 @@ function renderLessonView(id: string, markdown: string, noHistory: boolean, seco
 	const lesson = LESSONS.get(id)!;
 	let html = "<h1>" + lesson.name + "</h1>";
 	activeCompetence = null;
-	COMPETENCES.iterate(function(competenceId, competence)
+	COMPETENCES.filter(function(id, _) {
+		return lesson.competences.indexOf(id) >= 0;
+	}).iterate(function(competenceId, competence)
 	{
-		if(lesson.competences.indexOf(competenceId) >=0)
-		{
-			html += "<span class=\"competenceBubble\"><span class=\"competenceBubbleNumber\"><p>" + competence.number.toString() + "</p></span><span class=\"competenceBubbleText\">" + competence.name + "</span><span class=\"competenceBubbleLessons\"><a title=\"Detail kompetence\" href=\"enableJS.html\" data-id=\"" + competenceId + "\">Detail kompetence</a></span></span>";
-		}
+		html += "<span class=\"competenceBubble\"><span class=\"competenceBubbleNumber\"><p>" + competence.number.toString() + "</p></span><span class=\"competenceBubbleText\">" + competence.name + "</span><span class=\"competenceBubbleLessons\"><a title=\"Detail kompetence\" href=\"enableJS.html\" data-id=\"" + competenceId + "\">Detail kompetence</a></span></span>";
 	});
 	html += filterXSS(converter.makeHtml(markdown), xssOptions());
 	document.getElementById("content")!.innerHTML = html;
