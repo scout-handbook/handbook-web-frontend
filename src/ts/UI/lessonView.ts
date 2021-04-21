@@ -11,11 +11,11 @@ function toggleLessonOffline(): void
 		{
 			if(checked)
 			{
-				void cache.add(new Request(CONFIG.apiuri + "/lesson/" + id, {credentials: "same-origin"})); // eslint-disable-line compat/compat
+				void cache.add(new Request(CONFIG["api-uri"] + "/v0.9/lesson/" + id, {credentials: "same-origin"})); // eslint-disable-line compat/compat
 			}
 			else
 			{
-				void cache.delete(CONFIG.apiuri + "/lesson/" + id);
+				void cache.delete(CONFIG["api-uri"] + "/v0.9/lesson/" + id);
 			}
 		});
 	}

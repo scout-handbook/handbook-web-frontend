@@ -7,7 +7,7 @@ function renderFullFieldList(): string
 	for(let i = 0; i < FULLFIELDS.length; i++)
 	{
 		html += "<div class=\"field-card\" data-id=\"" + FULLFIELDS[i].id + "\">"
-		html += "<img src=\"" + CONFIG.apiuri + "/image/" + FULLFIELDS[i].image + "\">";
+		html += "<img src=\"" + CONFIG["api-uri"] + "/v0.9/image/" + FULLFIELDS[i].image + "\">";
 		html += "<h2 class=\"field-card-heading\">";
 		html += FULLFIELDS[i].name;
 		html += "</h2><div class=\"field-card-lesson-count\">";

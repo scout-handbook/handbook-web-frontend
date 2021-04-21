@@ -6,7 +6,7 @@ const loginstateEvent = new AfterLoadEvent(1);
 
 function metadataSetup(): void
 {
-	cacheThenNetworkRequest(CONFIG.apiuri + "/field", "", function(response, second): void
+	cacheThenNetworkRequest(CONFIG["api-uri"] + "/v0.9/field", "", function(response, second): void
 	{
 		FULLFIELDS = response as Array<FullField>;
 		if(second)
@@ -18,7 +18,7 @@ function metadataSetup(): void
 			metadataEvent.trigger();
 		}
 	});
-	cacheThenNetworkRequest(CONFIG.apiuri + "/lesson", "", function(response, second): void
+	cacheThenNetworkRequest(CONFIG["api-uri"] + "/v0.9/lesson", "", function(response, second): void
 	{
 		FIELDS = response as Array<Field>;
 		if(second)
@@ -30,7 +30,7 @@ function metadataSetup(): void
 			metadataEvent.trigger();
 		}
 	});
-	cacheThenNetworkRequest(CONFIG.apiuri + "/competence", "", function(response, second): void
+	cacheThenNetworkRequest(CONFIG["api-uri"] + "/v0.9/competence", "", function(response, second): void
 	{
 		COMPETENCES = response as Array<Competence>;
 		if(second)
@@ -64,6 +64,6 @@ function metadataSetup(): void
 			}
 		}
 	}
-	xhttp.open("GET", CONFIG.apiuri + "/account", true);
+	xhttp.open("GET", CONFIG["api-uri"] + "/v0.9/account", true);
 	xhttp.send();
 }
