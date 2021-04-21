@@ -2,8 +2,8 @@
 
 $CONFIG = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/client-config.json'));
 
-$lessonList = json_decode(file_get_contents($CONFIG->apiuri . '/lesson'), true)['response'];
-$competenceList = json_decode(file_get_contents($CONFIG->apiuri . '/competence'), true)['response'];
+$lessonList = json_decode(file_get_contents($CONFIG->{'api-uri'} . '/v1.0/lesson'), true)['response'];
+$competenceList = json_decode(file_get_contents($CONFIG->{'api-uri'} . '/v1.0/competence'), true)['response'];
 
 header('content-type:text/plain; charset=utf-8');
 

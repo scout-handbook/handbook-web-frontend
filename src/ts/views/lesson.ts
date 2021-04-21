@@ -49,7 +49,7 @@ function renderLessonView(id: string, markdown: string, noHistory: boolean, seco
 	{
 		void caches.open(CONFIG.cache).then(function(cache): void
 		{
-			void cache.match(CONFIG.apiuri + "/lesson/" + id).then(function(response): void
+			void cache.match(CONFIG["api-uri"] + "/v1.0/lesson/" + id).then(function(response): void
 			{
 				if(response === undefined)
 				{
@@ -93,7 +93,7 @@ function showLessonView(id: string, noHistory: boolean): void
 	}
 	else
 	{
-		cacheThenNetworkRequest(CONFIG.apiuri + "/lesson/" + id, "", function(response, second: boolean): void
+		cacheThenNetworkRequest(CONFIG["api-uri"] + "/v1.0/lesson/" + id, "", function(response, second: boolean): void
 		{
 			metadataEvent.addCallback(function(): void
 			{

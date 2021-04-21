@@ -6,7 +6,7 @@ const loginstateEvent = new AfterLoadEvent(1);
 
 function metadataSetup(): void
 {
-	cacheThenNetworkRequest(CONFIG.apiuri + "/field", "", function(response, second): void
+	cacheThenNetworkRequest(CONFIG["api-uri"] + "/v1.0/field", "", function(response, second): void
 	{
 		FIELDS = new IDList<Field>(response as Record<string, Field>);
 		if(second)
@@ -18,7 +18,7 @@ function metadataSetup(): void
 			metadataEvent.trigger();
 		}
 	});
-	cacheThenNetworkRequest(CONFIG.apiuri + "/lesson", "", function(response, second): void
+	cacheThenNetworkRequest(CONFIG["api-uri"] + "/v1.0/lesson", "", function(response, second): void
 	{
 		LESSONS = new IDList<Lesson>(response as Record<string, Lesson>);
 		if(second)
@@ -30,7 +30,7 @@ function metadataSetup(): void
 			metadataEvent.trigger();
 		}
 	});
-	cacheThenNetworkRequest(CONFIG.apiuri + "/competence", "", function(response, second): void
+	cacheThenNetworkRequest(CONFIG["api-uri"] + "/v1.0/competence", "", function(response, second): void
 	{
 		COMPETENCES = new IDList<Competence>(response as Record<string, Competence>);
 		if(second)
@@ -64,6 +64,6 @@ function metadataSetup(): void
 			}
 		}
 	}
-	xhttp.open("GET", CONFIG.apiuri + "/account", true);
+	xhttp.open("GET", CONFIG["api-uri"] + "/v1.0/account", true);
 	xhttp.send();
 }
