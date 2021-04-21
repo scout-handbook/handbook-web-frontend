@@ -46,7 +46,6 @@
 		"FIELDS": "readonly",
 		"LESSONS": "readonly",
 		"LOGINSTATE": "readonly",
-		"LOGINSTATE": "readonly",
 		"AfterLoadEvent": "readonly",
 		"authenticationSetup": "readonly",
 		"cacheThenNetworkRequest": "readonly",
