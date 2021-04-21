@@ -6,7 +6,7 @@ function renderFieldLessonList(field: Field): string
 	let html = "";
 	for(let i = 0; i < field.lessons.length; i++)
 	{
-		const lesson = LESSONS.get(field.lessons[i]);
+		const lesson = LESSONS.get(field.lessons[i])!;
 		html += "<h3 class=\"mainPage\"><a title=\"" + lesson.name + "\" href=\"enableJS.html\" data-id=\"" + field.lessons[i] + "\">" + lesson.name + "</a></h3>";
 		let first = true;
 		COMPETENCES.filter(function(id, _) {
@@ -30,7 +30,7 @@ function renderFieldLessonList(field: Field): string
 
 function renderFieldView(id: string, noHistory: boolean): void
 {
-	const field = FIELDS.get(id);
+	const field = FIELDS.get(id)!;
 	let html = "<h1>" + field.name + "</h1>";
 	html += field.description;
 	html += renderFieldLessonList(field);
