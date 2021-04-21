@@ -21,6 +21,13 @@ class IDList<T>
 		}
 	}
 
+	public map(transform: (value: T) => T): void
+	{
+		for(let i = 0; i < this.list.length; i++) {
+			this.list[i].v = transform(this.list[i].v);
+		}
+	}
+
 	public sort(comparator: (first: T, second: T) => number): void {
 		this.list.sort(function(first, second): number {
 			return comparator(first.v, second.v);
