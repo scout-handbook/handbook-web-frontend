@@ -5,10 +5,8 @@ const fs = require("fs")
 const nestedObjectAssign = require('nested-object-assign');
 
 const gulp = require('gulp');
-const eslint = require('gulp-eslint');
 const uglify = require('uglify-js');
 const composer = require('gulp-uglify/composer');
-const stylelint = require('gulp-stylelint');
 const merge = require('merge-stream');
 const sourcemaps = require('gulp-sourcemaps');
 const concat = require('gulp-concat');
@@ -33,23 +31,6 @@ function getConfig() {
 	}
 	return config;
 }
-
-gulp.task('eslint', function() {
-	return gulp.src(['**/*.js', '**/*.ts', '!node_modules/**', '!dist/**'])
-		.pipe(eslint())
-		.pipe(eslint.format())
-		.pipe(eslint.failAfterError());
-});
-
-gulp.task('stylelint', function() {
-	return gulp.src(['**/*.css', '!node_modules/**', '!dist/**', '!src/css/fontello.css'])
-		.pipe(stylelint({
-			failAfterError: true,
-			reporters: [
-				{formatter: 'string', console: true}
-			]
-		}));
-});
 
 gulp.task('build:css', function() {
 	function bundle(name, sources) {
@@ -199,7 +180,5 @@ gulp.task('build:txt', function() {
 	])
 		.pipe(gulp.dest('dist/'));
 });
-
-gulp.task('lint', gulp.series('eslint', 'stylelint'));
 
 gulp.task('build', gulp.parallel('build:css', 'build:deps', 'build:font', 'build:html', 'build:icon', 'build:js', 'build:json', 'build:php', 'build:png', 'build:txt'));
