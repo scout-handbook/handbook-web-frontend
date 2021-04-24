@@ -108,18 +108,15 @@ gulp.task('build:font', function() {
 });
 
 gulp.task('build:html', function() {
-	return merge(
-		gulp.src([
-			'src/html/403.html',
-			'src/html/404.html',
-			'src/html/500.html',
-			'src/html/enableJS.html'
-		]),
-		gulp.src([
-			'src/html/index.html'
-		])
-			.pipe(inject.replace('<!--FRONTEND-URI-->', getConfig()['frontend-uri']))
-	)
+	return gulp.src([
+		'src/html/403.html',
+		'src/html/404.html',
+		'src/html/500.html',
+		'src/html/enableJS.html',
+		'src/html/index.html'
+	])
+		.pipe(inject.replace('<!--FRONTEND-URI-->', getConfig()['frontend-uri']))
+		.pipe(inject.replace('<!--FRONTEND-RESOURCES-PATH-->', getConfig()['frontend-resources-path']))
 		.pipe(sourcemaps.init())
 		.pipe(inject.replace('<!--SITE-NAME-->', getConfig()['site-name']))
 		//.pipe(gulp.dest('dist/'));
@@ -144,6 +141,7 @@ gulp.task('build:icon', function() {
 			'src/icon/browserconfig.xml'
 		])
 			.pipe(inject.replace('<!--ACCENT-COLOR-->', getConfig()['custom-properties']['--accent-color']))
+			.pipe(inject.replace('<!--FRONTEND-RESOURCES-PATH-->', getConfig()['frontend-resources-path']))
 	)
 		.pipe(gulp.dest('dist/'));
 });
@@ -177,6 +175,7 @@ gulp.task('build:json', function() {
 		'src/json/manifest.json'
 	])
 		.pipe(inject.replace('SITE-NAME', getConfig()['site-name']))
+		.pipe(inject.replace('FRONTEND-RESOURCES-PATH', getConfig()['frontend-resources-path']))
 		.pipe(gulp.dest('dist/'));
 });
 

@@ -1,5 +1,6 @@
 {
 	"api-uri": "https://handbook.example/API",
 	"frontend-uri": "https://handbook.example",
+	"frontend-resources-path": "frontend",
 	"site-name": "Skaut handbook"
 }

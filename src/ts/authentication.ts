@@ -24,7 +24,7 @@ function renderUserAccount(): void
 	}
 	else
 	{
-		(document.getElementById("userAvatar") as HTMLImageElement).src = CONFIG['frontend-uri'] + "/avatar.png";
+		(document.getElementById("userAvatar") as HTMLImageElement).src = CONFIG['frontend-uri'] + "/" + CONFIG['frontend-resources-path'] + "/avatar.png";
 	}
 }
 
@@ -39,7 +39,7 @@ function renderLoginForm(): void
 	document.getElementById("userName")!.innerHTML = "Uživatel nepřihlášen";
 	document.getElementById("logLink")!.innerHTML = "<a href=\"enableJS.html\">Přihlásit</a>";
 	(document.getElementById("logLink")!.firstChild as HTMLElement).onclick = loginRedirect;
-	(document.getElementById("userAvatar") as HTMLImageElement).src = CONFIG['frontend-uri'] + "/avatar.png";
+	(document.getElementById("userAvatar") as HTMLImageElement).src = CONFIG['frontend-uri'] + "/" + CONFIG['frontend-resources-path'] + "/avatar.png";
 }
 
 function showAccountInfo(): void
