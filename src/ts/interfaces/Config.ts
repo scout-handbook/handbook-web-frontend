@@ -3,5 +3,6 @@ interface Config {
 	"api-uri": string;
 	"site-name": string;
 	"frontend-uri": string;
+	"frontend-resources-path": string;
 	"custom-properties": CustomProperties;
 }

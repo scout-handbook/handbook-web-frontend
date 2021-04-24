@@ -16,7 +16,7 @@ function main(): void
 	TOCSetup();
 	if("serviceWorker" in navigator)
 	{
-		void navigator.serviceWorker.register(CONFIG['frontend-uri'] + "/serviceworker.min.js"); // eslint-disable-line compat/compat
+		void navigator.serviceWorker.register(CONFIG['frontend-uri'] + '/' + CONFIG['frontend-resources-path'] + "/serviceworker.min.js"); // eslint-disable-line compat/compat
 	}
 	WebFont.load({
 		google: {

@@ -81,7 +81,7 @@ function showLessonView(id: string, noHistory: boolean): void
 			{
 				if(!emptyFieldsCache)
 				{
-					window.location.href = CONFIG['frontend-uri'] + "/404.html";
+					window.location.href = CONFIG['frontend-uri'] + "/" + CONFIG['frontend-resources-path'] + "/404.html";
 				}
 			}
 			else
