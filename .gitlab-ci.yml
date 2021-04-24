@@ -7,17 +7,16 @@ stages:
 .npm:
   image: node
   before_script:
-    - npm install -g gulp-cli
     - npm install
 
 build:
   extends: .npm
   stage: test
   script:
-    - gulp build
+    - npm run build
 
 lint:
   extends: .npm
   stage: test
   script:
-    - gulp lint
+    - npm run lint
