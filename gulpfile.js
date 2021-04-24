@@ -58,7 +58,7 @@ gulp.task('build:css', function() {
 			.pipe(concat(name + '.min.css'))
 			.pipe(postcss([postcssCustomProperties({importFrom: getConfig(), preserve: false}), postcssCalc({warnWhenCannotResolve: true}), autoprefixer()]))
 			//.pipe(gulp.dest('dist/'));
-			.pipe(cleanCSS({compatibility: 'ie8'}))
+			.pipe(cleanCSS())
 			.pipe(sourcemaps.write('./'))
 			.pipe(gulp.dest('dist/'));
 	}
@@ -159,7 +159,7 @@ gulp.task('build:js', function() {
 		}
 		return ret
 			//.pipe(gulp.dest('dist/'));
-			.pipe(minify({ie8: true}))
+			.pipe(minify())
 			.pipe(sourcemaps.write('./'))
 			.pipe(gulp.dest('dist/'));
 	}

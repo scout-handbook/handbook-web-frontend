@@ -55,7 +55,6 @@
   },
   "browserslist": [
     "cover 95%",
-    "cover 95% in CZ",
-    "not < 0.1%"
+    "cover 95% in CZ"
   ]
 }
