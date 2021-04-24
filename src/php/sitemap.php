@@ -2,8 +2,9 @@
 
 $CONFIG = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/client-config.json'));
 
-$lessonList = json_decode(file_get_contents($CONFIG->{'api-uri'} . '/v1.0/lesson'), true)['response'];
 $competenceList = json_decode(file_get_contents($CONFIG->{'api-uri'} . '/v1.0/competence'), true)['response'];
+$fieldList = json_decode(file_get_contents($CONFIG->{'api-uri'} . '/v1.0/field'), true)['response'];
+$lessonList = json_decode(file_get_contents($CONFIG->{'api-uri'} . '/v1.0/lesson'), true)['response'];
 
 header('content-type:text/plain; charset=utf-8');
 
@@ -113,18 +114,15 @@ function urlEscape(string $str) : string
 
 echo($CONFIG->{'frontend-uri'} . "\n");
 echo($CONFIG->{'frontend-uri'} . "/competence\n");
-foreach($lessonList as $field)
+foreach($competenceList as $id => $competence)
 {
-	if(isset($field['id']))
-	{
-		echo($CONFIG->{'frontend-uri'} . '/field/' . $field['id'] . '/' . urlEscape($field['name']) . "\n");
-	}
-	foreach($field['lessons'] as $lesson)
-	{
-		echo($CONFIG->{'frontend-uri'} . '/lesson/' . $lesson['id'] . '/' . urlEscape($lesson['name']) . "\n");
-	}
+	echo($CONFIG->{'frontend-uri'} . '/competence/' . $id . '/' . urlEscape($competence['number'] . '-' . $competence['name']) . "\n");
 }
-foreach($competenceList as $competence)
+foreach($fieldList as $id => $field)
 {
-	echo($CONFIG->{'frontend-uri'} . '/competence/' . $competence['id'] . '/' . urlEscape($competence['number'] . '-' . $competence['name']) . "\n");
+	echo($CONFIG->{'frontend-uri'} . '/field/' . $id . '/' . urlEscape($field['name']) . "\n");
+}
+foreach($lessonList as $id => $lesson)
+{
+	echo($CONFIG->{'frontend-uri'} . '/lesson/' . $id . '/' . urlEscape($lesson['name']) . "\n");
 }
