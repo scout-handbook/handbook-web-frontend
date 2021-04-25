@@ -1,3 +1,3 @@
 interface RequestHeaders {
-	readonly [key: string]: string;
+  readonly [key: string]: string;
 }

@@ -1,3 +1,3 @@
 interface RequestResponse {
-	readonly [key: string]: any;
+  readonly [key: string]: any;
 }
