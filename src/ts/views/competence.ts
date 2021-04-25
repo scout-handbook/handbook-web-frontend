@@ -54,7 +54,7 @@ function renderCompetenceView(id: string, noHistory: boolean): void {
         id +
         "/" +
         urlEscape(competence.number.toString() + "-" + competence.name)
-    ); // eslint-disable-line compat/compat
+    );
   }
   document.getElementById("offlineSwitch")!.style.display = "none";
 }

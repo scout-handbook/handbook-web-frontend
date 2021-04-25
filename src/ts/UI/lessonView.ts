@@ -12,7 +12,7 @@ function toggleLessonOffline(): void {
           new Request(CONFIG["api-uri"] + "/v1.0/lesson/" + id, {
             credentials: "same-origin",
           })
-        ); // eslint-disable-line compat/compat
+        );
       } else {
         void cache.delete(CONFIG["api-uri"] + "/v1.0/lesson/" + id);
       }

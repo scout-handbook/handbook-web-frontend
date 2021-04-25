@@ -19,7 +19,7 @@ function main(): void {
         "/" +
         CONFIG["frontend-resources-path"] +
         "/serviceworker.min.js"
-    ); // eslint-disable-line compat/compat
+    );
   }
   WebFont.load({
     google: {

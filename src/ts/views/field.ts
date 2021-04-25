@@ -49,7 +49,7 @@ function renderFieldView(id: string, noHistory: boolean): void {
       { id: id },
       "title",
       "/field/" + id + "/" + urlEscape(field.name)
-    ); // eslint-disable-line compat/compat
+    );
   }
   document.getElementById("offlineSwitch")!.style.display = "none";
 }
