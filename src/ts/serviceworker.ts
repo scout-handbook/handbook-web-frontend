@@ -50,9 +50,9 @@ function cacheUpdatingResponse(request: Request): Promise<Response> {
     return new Promise(function (resolve): void {
       void caches.match(request).then(function (response): void {
         if (response) {
-          resolve(response); // eslint-disable-line @typescript-eslint/no-unsafe-call, compat/compat
+          resolve(response); // eslint-disable-line @typescript-eslint/no-unsafe-call
         } else {
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-call, compat/compat
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-call
           resolve(
             new Response(new Blob(['{"status": 404}']), {
               status: 404,
@@ -64,7 +64,6 @@ function cacheUpdatingResponse(request: Request): Promise<Response> {
     });
   } else {
     return fetch(request).then(function (response): Promise<Response> {
-      // eslint-disable-line compat/compat
       return cacheClone(request, response);
     });
   }
@@ -77,7 +76,6 @@ function cacheOnDemandResponse(request: Request): Promise<Response> {
     });
   } else {
     return fetch(request).then(function (response): Promise<Response> {
-      // eslint-disable-line compat/compat
       return caches.open(CACHE).then(function (cache): Promise<Response> {
         return cache
           .match(request)
