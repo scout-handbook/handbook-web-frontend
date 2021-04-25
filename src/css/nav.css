@@ -1,86 +1,86 @@
 nav {
-	background: var(--background-darker);
-	border-right: 1px solid var(--border-color);
-	height: 100%;
-	overflow-y: auto;
-	position: absolute;
-	width: var(--nav-width);
-	z-index: 2;
+  background: var(--background-darker);
+  border-right: 1px solid var(--border-color);
+  height: 100%;
+  overflow-y: auto;
+  position: absolute;
+  width: var(--nav-width);
+  z-index: 2;
 }
 
 nav a {
-	color: var(--accent-color);
-	text-decoration: none;
+  color: var(--accent-color);
+  text-decoration: none;
 }
 
 nav a:hover {
-	text-decoration: underline;
+  text-decoration: underline;
 }
 
 #userAccount {
-	border-bottom: 1px solid var(--border-color);
-	height: 80px;
+  border-bottom: 1px solid var(--border-color);
+  height: 80px;
 }
 
 #userAvatar {
-	border: var(--avatar-border);
-	border-radius: 50%;
-	float: left;
-	height: 60px;
-	margin: 5px 15px;
-	overflow: hidden;
-	width: 60px;
+  border: var(--avatar-border);
+  border-radius: 50%;
+  float: left;
+  height: 60px;
+  margin: 5px 15px;
+  overflow: hidden;
+  width: 60px;
 }
 
 #userName {
-	padding-top: 12px;
+  padding-top: 12px;
 }
 
 #logLink {
-	margin-top: 5px;
+  margin-top: 5px;
 }
 
 #adminLink {
-	float: right;
-	margin-right: 20px;
+  float: right;
+  margin-right: 20px;
 }
 
 #navContainer {
-	padding-bottom: 20px;
-	padding-top: 20px;
+  padding-bottom: 20px;
+  padding-top: 20px;
 }
 
 #navContainer h1 {
-	color: var(--non-accented-link-color);
-	font-size: large;
-	margin-left: 20px;
-	margin-right: 20px;
+  color: var(--non-accented-link-color);
+  font-size: large;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 #navContainer a {
-	display: inline-block;
-	margin: 10px 20px 10px 20px;
+  display: inline-block;
+  margin: 10px 20px 10px 20px;
 }
 
 #navContainer h1 a {
-	color: var(--non-accented-link-color);
-	margin: 0;
+  color: var(--non-accented-link-color);
+  margin: 0;
 }
 
 #navContainer .secondLevel {
-	margin-left: 40px;
+  margin-left: 40px;
 }
 
 #navCloseButton {
-	float: right;
-	margin-right: 20px;
+  float: right;
+  margin-right: 20px;
 }
 
 #overlay {
-	background-color: var(--overlay-fallback-color);
-	background-color: var(--overlay-color);
-	height: 100%;
-	position: fixed;
-	width: 100%;
-	z-index: 1;
+  background-color: var(--overlay-fallback-color);
+  background-color: var(--overlay-color);
+  height: 100%;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
 }
