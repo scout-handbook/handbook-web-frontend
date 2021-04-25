@@ -10,7 +10,6 @@
 		"prettier/prettier": true,
 		"plugin/no-unsupported-browser-features": [true, {
 			"severity": "warning"
-		}],
-		"indentation": "tab"
+		}]
 	}
 }
