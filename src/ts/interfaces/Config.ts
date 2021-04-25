@@ -1,3 +1,5 @@
+/* exported Config */
+
 interface Config {
   cache: string;
   "api-uri": string;

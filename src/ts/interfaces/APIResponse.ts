@@ -1,3 +1,5 @@
+/* exported APIResponse */
+
 interface APIResponse {
   status: number;
   response?: RequestResponse | string;
