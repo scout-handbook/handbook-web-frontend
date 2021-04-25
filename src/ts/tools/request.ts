@@ -3,7 +3,7 @@
 function request(
   url: string,
   query: string,
-  headers: RequestHeaders
+  headers: Record<string, string>
 ): AfterLoadEvent {
   const ret = new AfterLoadEvent(1);
   const xhttp = new XMLHttpRequest();

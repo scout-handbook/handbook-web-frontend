@@ -2,7 +2,7 @@
 
 interface APIResponse {
   status: number;
-  response?: RequestResponse | string;
+  response?: RequestResponse;
   type?: string;
   message?: string;
   holder?: string;
