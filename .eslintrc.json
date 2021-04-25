@@ -22,7 +22,6 @@
 		"no-warning-comments": "warn",
 		"strict": ["error", "never"],
 		"@typescript-eslint/array-type": ["error", {"default": "generic"}],
-		"@typescript-eslint/indent": ["error", "tab"],
 		"@typescript-eslint/member-ordering": "error",
 		"@typescript-eslint/no-extraneous-class": "error",
 		"@typescript-eslint/no-namespace": ["error", {"allowDeclarations": true}],

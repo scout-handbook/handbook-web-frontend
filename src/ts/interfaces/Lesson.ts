@@ -1,4 +1,4 @@
 interface Lesson {
-	name: string;
-	competences: Array<string>;
+  name: string;
+  competences: Array<string>;
 }

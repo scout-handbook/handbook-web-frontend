@@ -1,3 +1,3 @@
 interface HistoryState {
-	id?: string;
+  id?: string;
 }
