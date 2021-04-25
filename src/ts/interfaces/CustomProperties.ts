@@ -1,3 +1,5 @@
+/* exported CustomProperties */
+
 interface CustomProperties {
   "--accent-color": string;
   "--field-card-width": string;

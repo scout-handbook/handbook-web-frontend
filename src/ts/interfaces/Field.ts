@@ -1,3 +1,5 @@
+/* exported Field */
+
 interface Field {
   name: string;
   description: string;
