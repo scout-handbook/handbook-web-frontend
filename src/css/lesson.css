@@ -1,61 +1,65 @@
 main a {
-	color: var(--accent-color);
-	text-decoration: none;
+  color: var(--accent-color);
+  text-decoration: none;
 }
 
 main a:hover {
-	text-decoration: underline;
+  text-decoration: underline;
 }
 
 main h1 {
-	line-height: 140%;
+  line-height: 140%;
 }
 
 main img {
-	max-width: 100%;
+  max-width: 100%;
 }
 
 main .tableContainer {
-	overflow-x: auto;
+  overflow-x: auto;
 }
 
 main table {
-	border: 1px solid var(--table-border);
-	border-collapse: collapse;
+  border: 1px solid var(--table-border);
+  border-collapse: collapse;
 }
 
 main td,
 main th {
-	border: 1px solid var(--table-border);
-	padding: 8px 20px;
+  border: 1px solid var(--table-border);
+  padding: 8px 20px;
 }
 
 main th {
-	border-bottom-width: 2px;
+  border-bottom-width: 2px;
 }
 
-main tbody tr:nth-child(2n+1) {
-	background-color: var(--table-odd-row-background);
+main tbody tr:nth-child(2n + 1) {
+  background-color: var(--table-odd-row-background);
 }
 
 main .notes {
-	display: block;
+  display: block;
 }
 
 #embeddedSpinner {
-	animation: spin 2s linear infinite;
-	border: 16px solid var(--border-color);
-	border-radius: 50%;
-	border-top: 16px solid var(--accent-color);
-	height: 120px;
-	left: 50%;
-	position: absolute;
-	top: 50%;
-	transform: translate(-50%, -50%);
-	width: 120px;
+  animation: spin 2s linear infinite;
+  border: 16px solid var(--border-color);
+  border-radius: 50%;
+  border-top: 16px solid var(--accent-color);
+  height: 120px;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px;
 }
 
 @keyframes spin {
-	0% { transform: translate(-50%, -50%) rotate(0deg); }
-	100% { transform: translate(-50%, -50%) rotate(360deg); }
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
 }

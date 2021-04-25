@@ -1,12 +1,12 @@
 main {
-	margin-left: var(--nav-width);
-	padding-left: 40px;
+  margin-left: var(--nav-width);
+  padding-left: 40px;
 }
 
 #navCloseButton {
-	display: none;
+  display: none;
 }
 
 #overlay {
-	display: none;
+  display: none;
 }
