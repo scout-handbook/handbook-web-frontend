@@ -1,9 +1,13 @@
 {
-	"extends": "stylelint-config-standard",
+	"extends": [
+		"stylelint-config-standard",
+		"stylelint-prettier/recommended"
+	],
 	"plugins": [
 		"stylelint-no-unsupported-browser-features"
 	],
 	"rules": {
+		"prettier/prettier": true,
 		"plugin/no-unsupported-browser-features": [true, {
 			"severity": "warning"
 		}],
