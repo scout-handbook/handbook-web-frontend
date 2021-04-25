@@ -3,10 +3,7 @@
 function cacheThenNetworkRequest(
   url: string,
   query: string,
-  callback: (
-    response: RequestResponse | string,
-    cacheDataReceived: boolean
-  ) => void
+  callback: (response: RequestResponse, cacheDataReceived: boolean) => void
 ): void {
   query = typeof query !== "undefined" ? query : "";
   let networkDataReceived = false;

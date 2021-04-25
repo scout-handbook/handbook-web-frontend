@@ -4,7 +4,7 @@ class AfterLoadEvent {
   private triggered: boolean;
   private threshold: number;
   private count: number;
-  private callbacks: Array<(...args: Array<RequestResponse | string>) => void>;
+  private callbacks: Array<(...args: Array<RequestResponse>) => void>;
 
   public constructor(threshold: number) {
     this.triggered = false;
@@ -14,18 +14,18 @@ class AfterLoadEvent {
   }
 
   public addCallback(
-    callback: (...args: Array<RequestResponse | string>) => void
+    callback: (...args: Array<RequestResponse>) => void
   ): void {
     this.callbacks.push(callback);
     if (this.triggered) {
       callback();
     }
   }
-  public trigger(...args: Array<RequestResponse | string>): void {
+  public trigger(...args: Array<RequestResponse>): void {
     this.count++;
     this.retrigger(...args);
   }
-  public retrigger(...args: Array<RequestResponse | string>): void {
+  public retrigger(...args: Array<RequestResponse>): void {
     if (this.count >= this.threshold) {
       this.triggered = true;
       for (let i = 0; i < this.callbacks.length; i++) {

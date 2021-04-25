@@ -1,5 +1,8 @@
 /* exported RequestResponse */
 
-interface RequestResponse {
-  readonly [key: string]: any;
-}
+type RequestResponse =
+  | string
+  | Loginstate
+  | Record<string, Competence>
+  | Record<string, Field>
+  | Record<string, Lesson>;
