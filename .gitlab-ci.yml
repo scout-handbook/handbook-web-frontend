@@ -12,12 +12,16 @@ stages:
 build:
   extends: .npm
   stage: test
+  except:
+    - schedules
   script:
     - npm run build
 
 lint:
   extends: .npm
   stage: test
+  except:
+    - schedules
   script:
     - npm run lint
 
