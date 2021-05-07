@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "showdown": "^1.9.1",
-    "xss": "^1.0.6"
+    "xss": "^1.0.9"
   },
   "devDependencies": {
     "@types/showdown": "^1.9.3",
