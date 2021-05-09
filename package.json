@@ -34,7 +34,7 @@
   "devDependencies": {
     "@types/showdown": "^1.9.3",
     "@types/webfontloader": "^1.6.29",
-    "@typescript-eslint/eslint-plugin": "^4.21.0",
+    "@typescript-eslint/eslint-plugin": "^4.22.1",
     "@typescript-eslint/parser": "^4.21.0",
     "eslint": "^7.26.0",
     "eslint-config-prettier": "^8.3.0",
