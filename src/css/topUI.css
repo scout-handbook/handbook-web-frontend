@@ -1,11 +1,11 @@
-.topButton {
+.top-button {
   color: #67767a;
   cursor: pointer;
   transition: color ease 0.15s;
   user-select: none;
 }
 
-.topButton:hover {
+.top-button:hover {
   color: var(--accent-color);
 }
 
