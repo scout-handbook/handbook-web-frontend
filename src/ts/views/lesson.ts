@@ -26,7 +26,7 @@ function renderLessonView(
     return lesson.competences.indexOf(id) >= 0;
   }).iterate(function (competenceId, competence) {
     html +=
-      '<span class="competenceBubble"><span class="competenceBubbleNumber"><p>' +
+      '<span class="competenceBubble"><span class="competence-bubble-number"><p>' +
       competence.number.toString() +
       '</p></span><span class="competence-bubble-text">' +
       competence.name +

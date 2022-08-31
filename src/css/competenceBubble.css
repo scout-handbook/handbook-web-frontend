@@ -21,7 +21,7 @@
   border-color: var(--accent-color);
 }
 
-.competenceBubbleNumber {
+.competence-bubble-number {
   float: left;
   font-weight: bold;
   height: 2.9em;
@@ -31,7 +31,7 @@
   width: 3em;
 }
 
-.competenceBubbleNumber:hover {
+.competence-bubble-number:hover {
   color: var(--accent-color);
 }
 
