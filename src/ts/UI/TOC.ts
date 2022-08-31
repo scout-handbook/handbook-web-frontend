@@ -42,7 +42,7 @@ function renderTOC(): void {
     for (let i = 0; i < field.lessons.length; i++) {
       const lesson = LESSONS.get(field.lessons[i])!;
       html +=
-        '<a class="secondLevel" title="' +
+        '<a class="second-level" title="' +
         lesson.name +
         '" href="enableJS.html" data-id="' +
         field.lessons[i] +

@@ -5,7 +5,7 @@ function renderCompetenceList(): string {
   let html = "";
   COMPETENCES.iterate(function (id, competence) {
     html +=
-      '<h3 class="mainPage"><a title="' +
+      '<h3 class="main-page"><a title="' +
       competence.number.toString() +
       ": " +
       competence.name +
@@ -16,7 +16,7 @@ function renderCompetenceList(): string {
       ": " +
       competence.name +
       "</a></h3>";
-    html += '<span class="mainPage">' + competence.description;
+    html += '<span class="main-page">' + competence.description;
   });
   return html;
 }
@@ -35,7 +35,7 @@ function renderCompetenceListView(noHistory: boolean): void {
   if (!noHistory) {
     history.pushState({}, "title", "/competence");
   }
-  document.getElementById("offlineSwitch")!.style.display = "none";
+  document.getElementById("offline-switch")!.style.display = "none";
 }
 
 function showCompetenceListView(noHistory: boolean): void {

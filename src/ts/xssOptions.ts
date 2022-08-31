@@ -12,7 +12,7 @@ function xssOptions(): XSS.IFilterXSSOptions {
         if (tag === "a" && name === "rel" && value === "noopener noreferrer") {
           return name + '="' + value + '"';
         }
-        if (tag === "div" && name === "class" && value === "tableContainer") {
+        if (tag === "div" && name === "class" && value === "table-container") {
           return name + '="' + value + '"';
         }
         if (
