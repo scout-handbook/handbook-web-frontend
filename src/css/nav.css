@@ -22,7 +22,7 @@ nav a:hover {
   height: 80px;
 }
 
-#userAvatar {
+#user-avatar {
   border: var(--avatar-border);
   border-radius: 50%;
   float: left;
