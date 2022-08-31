@@ -6,7 +6,7 @@ function renderFieldLessonList(field: Field): string {
   for (let i = 0; i < field.lessons.length; i++) {
     const lesson = LESSONS.get(field.lessons[i])!;
     html +=
-      '<h3 class="mainPage"><a title="' +
+      '<h3 class="main-page"><a title="' +
       lesson.name +
       '" href="enableJS.html" data-id="' +
       field.lessons[i] +
@@ -19,7 +19,7 @@ function renderFieldLessonList(field: Field): string {
     }).iterate(function (_, competence) {
       if (first) {
         html +=
-          '<span class="mainPage">Kompetence: ' + competence.number.toString();
+          '<span class="main-page">Kompetence: ' + competence.number.toString();
         first = false;
       } else {
         html += ", " + competence.number.toString();
