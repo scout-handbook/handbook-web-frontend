@@ -35,7 +35,7 @@
   color: var(--accent-color);
 }
 
-.competenceBubbleText {
+.competence-bubble-text {
   display: block;
   font-size: 66%;
   padding: 20px;

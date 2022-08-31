@@ -28,7 +28,7 @@ function renderLessonView(
     html +=
       '<span class="competenceBubble"><span class="competenceBubbleNumber"><p>' +
       competence.number.toString() +
-      '</p></span><span class="competenceBubbleText">' +
+      '</p></span><span class="competence-bubble-text">' +
       competence.name +
       '</span><span class="competence-bubble-lessons"><a title="Detail kompetence" href="enableJS.html" data-id="' +
       competenceId +
