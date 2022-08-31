@@ -30,7 +30,7 @@ function renderLessonView(
       competence.number.toString() +
       '</p></span><span class="competenceBubbleText">' +
       competence.name +
-      '</span><span class="competenceBubbleLessons"><a title="Detail kompetence" href="enableJS.html" data-id="' +
+      '</span><span class="competence-bubble-lessons"><a title="Detail kompetence" href="enableJS.html" data-id="' +
       competenceId +
       '">Detail kompetence</a></span></span>';
   });
@@ -44,7 +44,7 @@ function renderLessonView(
   }
   nodes = document
     .getElementById("content")!
-    .getElementsByClassName("competenceBubbleLessons");
+    .getElementsByClassName("competence-bubble-lessons");
   for (let i = 0; i < nodes.length; i++) {
     (nodes[i].firstChild as HTMLElement).onclick =
       competenceBubbleDetailOnClick;
