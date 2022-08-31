@@ -35,7 +35,7 @@ function renderCompetenceListView(noHistory: boolean): void {
   if (!noHistory) {
     history.pushState({}, "title", "/competence");
   }
-  document.getElementById("offlineSwitch")!.style.display = "none";
+  document.getElementById("offline-switch")!.style.display = "none";
 }
 
 function showCompetenceListView(noHistory: boolean): void {

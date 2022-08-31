@@ -51,7 +51,7 @@ function renderFieldView(id: string, noHistory: boolean): void {
       "/field/" + id + "/" + urlEscape(field.name)
     );
   }
-  document.getElementById("offlineSwitch")!.style.display = "none";
+  document.getElementById("offline-switch")!.style.display = "none";
 }
 
 function showFieldView(id: string, noHistory: boolean): void {

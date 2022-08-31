@@ -75,7 +75,7 @@ function renderLessonView(
           }
         });
     });
-    document.getElementById("offlineSwitch")!.style.display = "block";
+    document.getElementById("offline-switch")!.style.display = "block";
   }
 }
 
