@@ -42,7 +42,7 @@ main .notes {
   display: block;
 }
 
-#embeddedSpinner {
+#embedded-spinner {
   animation: spin 2s linear infinite;
   border: 16px solid var(--border-color);
   border-radius: 50%;

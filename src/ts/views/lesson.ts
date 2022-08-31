@@ -81,7 +81,7 @@ function renderLessonView(
 
 function showLessonView(id: string, noHistory: boolean): void {
   document.getElementById("content")!.innerHTML =
-    '<div id="embeddedSpinner"></div>';
+    '<div id="embedded-spinner"></div>';
   if (screen.width < 700) {
     navigationOpen = false;
     reflowNavigation();
