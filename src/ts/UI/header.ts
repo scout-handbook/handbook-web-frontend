@@ -19,7 +19,7 @@ function headerSetup(): void {
   document.getElementById("font-increase")!.onclick = function (): void {
     fontResize(2);
   };
-  document.getElementById("fontDecrease")!.onclick = function (): void {
+  document.getElementById("font-decrease")!.onclick = function (): void {
     fontResize(-2);
   };
   document.getElementById("cacheOffline")!.onclick = toggleLessonOffline;
