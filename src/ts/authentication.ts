@@ -21,10 +21,10 @@ function renderUserAccount(): void {
   (document.getElementById("log-link")!.firstChild as HTMLElement).onclick =
     logoutRedirect;
   if (Object.prototype.hasOwnProperty.call(LOGINSTATE, "avatar")) {
-    (document.getElementById("userAvatar") as HTMLImageElement).src =
+    (document.getElementById("user-avatar") as HTMLImageElement).src =
       "data:image/png;base64," + LOGINSTATE!.avatar;
   } else {
-    (document.getElementById("userAvatar") as HTMLImageElement).src =
+    (document.getElementById("user-avatar") as HTMLImageElement).src =
       CONFIG["frontend-uri"] +
       "/" +
       CONFIG["frontend-resources-path"] +
@@ -46,7 +46,7 @@ function renderLoginForm(): void {
     '<a href="enableJS.html">Přihlásit</a>';
   (document.getElementById("log-link")!.firstChild as HTMLElement).onclick =
     loginRedirect;
-  (document.getElementById("userAvatar") as HTMLImageElement).src =
+  (document.getElementById("user-avatar") as HTMLImageElement).src =
     CONFIG["frontend-uri"] +
     "/" +
     CONFIG["frontend-resources-path"] +
