@@ -28,11 +28,11 @@
     "lint": "run-p -c --aggregate-output lint:*"
   },
   "dependencies": {
-    "showdown": "^1.9.1",
+    "showdown": "^2.1.0",
     "xss": "^1.0.9"
   },
   "devDependencies": {
-    "@types/showdown": "^1.9.3",
+    "@types/showdown": "^2.0.0",
     "@types/webfontloader": "^1.6.29",
     "@typescript-eslint/eslint-plugin": "^4.22.1",
     "@typescript-eslint/parser": "^4.21.0",
