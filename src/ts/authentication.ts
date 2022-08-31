@@ -13,7 +13,7 @@ function renderUserAccount(): void {
     LOGINSTATE!.role === "superuser"
   ) {
     document.getElementById("logLink")!.innerHTML =
-      '<a href="enableJS.html">Odhlásit</a><a href="/admin" id="adminLink">Administrace</a>';
+      '<a href="enableJS.html">Odhlásit</a><a href="/admin" id="admin-link">Administrace</a>';
   } else {
     document.getElementById("logLink")!.innerHTML =
       '<a href="enableJS.html">Odhlásit</a>';
