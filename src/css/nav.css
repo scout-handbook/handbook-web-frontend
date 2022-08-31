@@ -17,7 +17,7 @@ nav a:hover {
   text-decoration: underline;
 }
 
-#userAccount {
+#user-account {
   border-bottom: 1px solid var(--border-color);
   height: 80px;
 }
