@@ -46,8 +46,8 @@ function renderLessonView(
     .getElementById("content")!
     .getElementsByClassName("competenceBubbleLessons");
   for (let i = 0; i < nodes.length; i++) {
-    (nodes[i]
-      .firstChild as HTMLElement).onclick = competenceBubbleDetailOnClick;
+    (nodes[i].firstChild as HTMLElement).onclick =
+      competenceBubbleDetailOnClick;
   }
   document.getElementsByTagName("main")[0].scrollTop = 0;
   if (!second) {
@@ -65,13 +65,13 @@ function renderLessonView(
         .match(CONFIG["api-uri"] + "/v1.0/lesson/" + id)
         .then(function (response): void {
           if (response === undefined) {
-            (document.getElementById(
-              "cacheOffline"
-            ) as HTMLInputElement).checked = false;
+            (
+              document.getElementById("cacheOffline") as HTMLInputElement
+            ).checked = false;
           } else {
-            (document.getElementById(
-              "cacheOffline"
-            ) as HTMLInputElement).checked = true;
+            (
+              document.getElementById("cacheOffline") as HTMLInputElement
+            ).checked = true;
           }
         });
     });

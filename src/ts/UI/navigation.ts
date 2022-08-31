@@ -36,11 +36,10 @@ function navigationSetup(): void {
     showFieldListView(false);
     return false;
   };
-  document.getElementById(
-    "competenceOverview"
-  )!.onclick = function (): boolean {
-    showCompetenceListView(false);
-    return false;
-  };
+  document.getElementById("competenceOverview")!.onclick =
+    function (): boolean {
+      showCompetenceListView(false);
+      return false;
+    };
   reflowNavigation();
 }

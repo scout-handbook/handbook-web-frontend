@@ -18,8 +18,8 @@ function renderUserAccount(): void {
     document.getElementById("logLink")!.innerHTML =
       '<a href="enableJS.html">Odhlásit</a>';
   }
-  (document.getElementById("logLink")!
-    .firstChild as HTMLElement).onclick = logoutRedirect;
+  (document.getElementById("logLink")!.firstChild as HTMLElement).onclick =
+    logoutRedirect;
   if (Object.prototype.hasOwnProperty.call(LOGINSTATE, "avatar")) {
     (document.getElementById("userAvatar") as HTMLImageElement).src =
       "data:image/png;base64," + LOGINSTATE!.avatar;
@@ -44,8 +44,8 @@ function renderLoginForm(): void {
   document.getElementById("userName")!.innerHTML = "Uživatel nepřihlášen";
   document.getElementById("logLink")!.innerHTML =
     '<a href="enableJS.html">Přihlásit</a>';
-  (document.getElementById("logLink")!
-    .firstChild as HTMLElement).onclick = loginRedirect;
+  (document.getElementById("logLink")!.firstChild as HTMLElement).onclick =
+    loginRedirect;
   (document.getElementById("userAvatar") as HTMLImageElement).src =
     CONFIG["frontend-uri"] +
     "/" +
