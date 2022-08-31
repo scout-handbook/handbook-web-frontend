@@ -9,7 +9,7 @@
   color: var(--accent-color);
 }
 
-#fontDecrease {
+#font-decrease {
   float: right;
   font-size: small;
   margin-right: 20px;
