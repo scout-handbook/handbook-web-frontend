@@ -17,7 +17,7 @@ main {
   transition: margin-left 0.3s ease, padding-left 0.1s ease;
 }
 
-#mainContainer {
+#main-container {
   padding: 20px;
   padding-left: 0;
 }
