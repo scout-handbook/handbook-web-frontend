@@ -17,12 +17,12 @@ nav a:hover {
   text-decoration: underline;
 }
 
-#userAccount {
+#user-account {
   border-bottom: 1px solid var(--border-color);
   height: 80px;
 }
 
-#userAvatar {
+#user-avatar {
   border: var(--avatar-border);
   border-radius: 50%;
   float: left;
@@ -32,46 +32,46 @@ nav a:hover {
   width: 60px;
 }
 
-#userName {
+#user-name {
   padding-top: 12px;
 }
 
-#logLink {
+#log-link {
   margin-top: 5px;
 }
 
-#adminLink {
+#admin-link {
   float: right;
   margin-right: 20px;
 }
 
-#navContainer {
+#nav-container {
   padding-bottom: 20px;
   padding-top: 20px;
 }
 
-#navContainer h1 {
+#nav-container h1 {
   color: var(--non-accented-link-color);
   font-size: large;
   margin-left: 20px;
   margin-right: 20px;
 }
 
-#navContainer a {
+#nav-container a {
   display: inline-block;
-  margin: 10px 20px 10px 20px;
+  margin: 10px 20px;
 }
 
-#navContainer h1 a {
+#nav-container h1 a {
   color: var(--non-accented-link-color);
   margin: 0;
 }
 
-#navContainer .secondLevel {
+#nav-container .second-level {
   margin-left: 40px;
 }
 
-#navCloseButton {
+#nav-close-button {
   float: right;
   margin-right: 20px;
 }

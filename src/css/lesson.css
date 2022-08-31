@@ -15,7 +15,7 @@ main img {
   max-width: 100%;
 }
 
-main .tableContainer {
+main .table-container {
   overflow-x: auto;
 }
 
@@ -42,7 +42,7 @@ main .notes {
   display: block;
 }
 
-#embeddedSpinner {
+#embedded-spinner {
   animation: spin 2s linear infinite;
   border: 16px solid var(--border-color);
   border-radius: 50%;
@@ -59,6 +59,7 @@ main .notes {
   0% {
     transform: translate(-50%, -50%) rotate(0deg);
   }
+
   100% {
     transform: translate(-50%, -50%) rotate(360deg);
   }

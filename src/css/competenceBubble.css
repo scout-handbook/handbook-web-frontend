@@ -1,4 +1,4 @@
-.competenceBubble {
+.competence-bubble {
   background-color: var(--background-darker);
   border: 1px solid var(--border-color);
   border-radius: 1.5em;
@@ -16,12 +16,12 @@
   width: 3em;
 }
 
-.competenceBubble:hover {
+.competence-bubble:hover {
   background-color: #f5f5f5;
   border-color: var(--accent-color);
 }
 
-.competenceBubbleNumber {
+.competence-bubble-number {
   float: left;
   font-weight: bold;
   height: 2.9em;
@@ -31,18 +31,18 @@
   width: 3em;
 }
 
-.competenceBubbleNumber:hover {
+.competence-bubble-number:hover {
   color: var(--accent-color);
 }
 
-.competenceBubbleText {
+.competence-bubble-text {
   display: block;
   font-size: 66%;
   padding: 20px;
   width: 360px;
 }
 
-.competenceBubbleLessons {
+.competence-bubble-lessons {
   display: block;
   font-size: 66%;
   margin-top: -15px;

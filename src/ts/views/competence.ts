@@ -5,7 +5,7 @@ function renderCompetenceLessonList(lessonList: IDList<Lesson>): string {
   let html = "";
   lessonList.iterate(function (id, lesson) {
     html +=
-      '<h3 class="mainPage"><a title="' +
+      '<h3 class="main-page"><a title="' +
       lesson.name +
       '" href="enableJS.html" data-id="' +
       id +
@@ -18,7 +18,7 @@ function renderCompetenceLessonList(lessonList: IDList<Lesson>): string {
     }).iterate(function (_, competence) {
       if (first) {
         html +=
-          '<span class="mainPage">Kompetence: ' + competence.number.toString();
+          '<span class="main-page">Kompetence: ' + competence.number.toString();
         first = false;
       } else {
         html += ", " + competence.number.toString();
@@ -56,7 +56,7 @@ function renderCompetenceView(id: string, noHistory: boolean): void {
         urlEscape(competence.number.toString() + "-" + competence.name)
     );
   }
-  document.getElementById("offlineSwitch")!.style.display = "none";
+  document.getElementById("offline-switch")!.style.display = "none";
 }
 
 function showCompetenceView(id: string, noHistory: boolean): void {

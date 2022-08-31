@@ -51,7 +51,7 @@ function renderFieldListView(noHistory: boolean): void {
   if (!noHistory) {
     history.pushState({}, "title", "/");
   }
-  document.getElementById("offlineSwitch")!.style.display = "none";
+  document.getElementById("offline-switch")!.style.display = "none";
 }
 
 function showFieldListView(noHistory: boolean): void {

@@ -30,17 +30,16 @@ function toggleNavigation(): void {
 
 function navigationSetup(): void {
   window.addEventListener("resize", reflowNavigation);
-  document.getElementById("navCloseButton")!.onclick = toggleNavigation;
+  document.getElementById("nav-close-button")!.onclick = toggleNavigation;
   document.getElementById("overlay")!.onclick = toggleNavigation;
   document.getElementById("lessonOverview")!.onclick = function (): boolean {
     showFieldListView(false);
     return false;
   };
-  document.getElementById(
-    "competenceOverview"
-  )!.onclick = function (): boolean {
-    showCompetenceListView(false);
-    return false;
-  };
+  document.getElementById("competenceOverview")!.onclick =
+    function (): boolean {
+      showCompetenceListView(false);
+      return false;
+    };
   reflowNavigation();
 }

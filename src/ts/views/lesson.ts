@@ -26,11 +26,11 @@ function renderLessonView(
     return lesson.competences.indexOf(id) >= 0;
   }).iterate(function (competenceId, competence) {
     html +=
-      '<span class="competenceBubble"><span class="competenceBubbleNumber"><p>' +
+      '<span class="competence-bubble"><span class="competence-bubble-number"><p>' +
       competence.number.toString() +
-      '</p></span><span class="competenceBubbleText">' +
+      '</p></span><span class="competence-bubble-text">' +
       competence.name +
-      '</span><span class="competenceBubbleLessons"><a title="Detail kompetence" href="enableJS.html" data-id="' +
+      '</span><span class="competence-bubble-lessons"><a title="Detail kompetence" href="enableJS.html" data-id="' +
       competenceId +
       '">Detail kompetence</a></span></span>';
   });
@@ -38,16 +38,16 @@ function renderLessonView(
   document.getElementById("content")!.innerHTML = html;
   let nodes = document
     .getElementById("content")!
-    .getElementsByClassName("competenceBubble");
+    .getElementsByClassName("competence-bubble");
   for (let i = 0; i < nodes.length; i++) {
     (nodes[i] as HTMLElement).onclick = toggleCompetenceBubble;
   }
   nodes = document
     .getElementById("content")!
-    .getElementsByClassName("competenceBubbleLessons");
+    .getElementsByClassName("competence-bubble-lessons");
   for (let i = 0; i < nodes.length; i++) {
-    (nodes[i]
-      .firstChild as HTMLElement).onclick = competenceBubbleDetailOnClick;
+    (nodes[i].firstChild as HTMLElement).onclick =
+      competenceBubbleDetailOnClick;
   }
   document.getElementsByTagName("main")[0].scrollTop = 0;
   if (!second) {
@@ -65,23 +65,23 @@ function renderLessonView(
         .match(CONFIG["api-uri"] + "/v1.0/lesson/" + id)
         .then(function (response): void {
           if (response === undefined) {
-            (document.getElementById(
-              "cacheOffline"
-            ) as HTMLInputElement).checked = false;
+            (
+              document.getElementById("cacheOffline") as HTMLInputElement
+            ).checked = false;
           } else {
-            (document.getElementById(
-              "cacheOffline"
-            ) as HTMLInputElement).checked = true;
+            (
+              document.getElementById("cacheOffline") as HTMLInputElement
+            ).checked = true;
           }
         });
     });
-    document.getElementById("offlineSwitch")!.style.display = "block";
+    document.getElementById("offline-switch")!.style.display = "block";
   }
 }
 
 function showLessonView(id: string, noHistory: boolean): void {
   document.getElementById("content")!.innerHTML =
-    '<div id="embeddedSpinner"></div>';
+    '<div id="embedded-spinner"></div>';
   if (screen.width < 700) {
     navigationOpen = false;
     reflowNavigation();

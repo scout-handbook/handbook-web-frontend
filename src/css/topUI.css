@@ -1,21 +1,21 @@
-.topButton {
+.top-button {
   color: #67767a;
   cursor: pointer;
   transition: color ease 0.15s;
   user-select: none;
 }
 
-.topButton:hover {
+.top-button:hover {
   color: var(--accent-color);
 }
 
-#fontDecrease {
+#font-decrease {
   float: right;
   font-size: small;
   margin-right: 20px;
 }
 
-#fontIncrease {
+#font-increase {
   float: right;
   font-size: x-large;
   margin-right: 20px;
