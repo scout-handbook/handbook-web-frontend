@@ -12,13 +12,13 @@ function renderUserAccount(): void {
     LOGINSTATE!.role === "administrator" ||
     LOGINSTATE!.role === "superuser"
   ) {
-    document.getElementById("logLink")!.innerHTML =
+    document.getElementById("log-link")!.innerHTML =
       '<a href="enableJS.html">Odhlásit</a><a href="/admin" id="admin-link">Administrace</a>';
   } else {
-    document.getElementById("logLink")!.innerHTML =
+    document.getElementById("log-link")!.innerHTML =
       '<a href="enableJS.html">Odhlásit</a>';
   }
-  (document.getElementById("logLink")!.firstChild as HTMLElement).onclick =
+  (document.getElementById("log-link")!.firstChild as HTMLElement).onclick =
     logoutRedirect;
   if (Object.prototype.hasOwnProperty.call(LOGINSTATE, "avatar")) {
     (document.getElementById("userAvatar") as HTMLImageElement).src =
@@ -42,9 +42,9 @@ function loginRedirect(): boolean {
 
 function renderLoginForm(): void {
   document.getElementById("userName")!.innerHTML = "Uživatel nepřihlášen";
-  document.getElementById("logLink")!.innerHTML =
+  document.getElementById("log-link")!.innerHTML =
     '<a href="enableJS.html">Přihlásit</a>';
-  (document.getElementById("logLink")!.firstChild as HTMLElement).onclick =
+  (document.getElementById("log-link")!.firstChild as HTMLElement).onclick =
     loginRedirect;
   (document.getElementById("userAvatar") as HTMLImageElement).src =
     CONFIG["frontend-uri"] +
