@@ -6,7 +6,7 @@ function logoutRedirect(): boolean {
 }
 
 function renderUserAccount(): void {
-  document.getElementById("userName")!.innerHTML = LOGINSTATE!.name;
+  document.getElementById("user-name")!.innerHTML = LOGINSTATE!.name;
   if (
     LOGINSTATE!.role === "editor" ||
     LOGINSTATE!.role === "administrator" ||
@@ -41,7 +41,7 @@ function loginRedirect(): boolean {
 }
 
 function renderLoginForm(): void {
-  document.getElementById("userName")!.innerHTML = "Uživatel nepřihlášen";
+  document.getElementById("user-name")!.innerHTML = "Uživatel nepřihlášen";
   document.getElementById("log-link")!.innerHTML =
     '<a href="enableJS.html">Přihlásit</a>';
   (document.getElementById("log-link")!.firstChild as HTMLElement).onclick =
