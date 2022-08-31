@@ -52,7 +52,7 @@ function reflowCompetenceBubbles(): void {
 function toggleCompetenceBubble(event: MouseEvent): void {
   let element = event.target as HTMLElement;
   while (
-    !element.classList.contains("competenceBubble") &&
+    !element.classList.contains("competence-bubble") &&
     (element = element.parentElement!)
   ) {
     /* Empty */
@@ -68,7 +68,7 @@ function toggleCompetenceBubble(event: MouseEvent): void {
   } else {
     const nodes = document
       .getElementById("content")!
-      .getElementsByClassName("competenceBubble");
+      .getElementsByClassName("competence-bubble");
     for (let i = 0; i < nodes.length; i++) {
       (nodes[i].childNodes[1] as HTMLElement).style.width = "";
       (nodes[i] as HTMLElement).style.width = "";
