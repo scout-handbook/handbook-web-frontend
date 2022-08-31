@@ -15,7 +15,7 @@ main img {
   max-width: 100%;
 }
 
-main .tableContainer {
+main .table-container {
   overflow-x: auto;
 }
 

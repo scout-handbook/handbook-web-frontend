@@ -86,7 +86,7 @@ const HandbookMarkdown = function (): Array<showdown.ShowdownExtension> {
   const responsiveTablesBegin = {
     type: "output",
     regex: "<table>",
-    replace: '<div class="tableContainer"><table>',
+    replace: '<div class="table-container"><table>',
   };
   const responsiveTablesEnd = {
     type: "output",
