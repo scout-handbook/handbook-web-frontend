@@ -2,9 +2,6 @@
   "extends": "../tsconfig.json",
   "files": [
     "../src/d.ts/frontend.d.ts", // TODO
-    "../src/d.ts/frontend-pushed.d.ts", // TODO
-    "../src/d.ts/AfterLoadEvent.d.ts", // TODO
-    "../src/d.ts/IDList.d.ts", // TODO
     "../src/ts/interfaces/APIResponse.ts",
     "../src/ts/interfaces/Arguments.ts",
     "../src/ts/interfaces/Competence.ts",
