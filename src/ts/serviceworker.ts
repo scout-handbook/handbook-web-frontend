@@ -8,8 +8,6 @@ const cacheBlocking = [
   "frontend-handheld.min.css",
   "frontend.min.css",
   "frontend.min.js",
-  "frontend-pushed.min.css",
-  "frontend-pushed.min.js",
   "index.html",
 ];
 const cacheNonBlocking = [
