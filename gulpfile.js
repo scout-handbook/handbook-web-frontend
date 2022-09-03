@@ -62,19 +62,17 @@ gulp.task("build:css", function () {
     );
   }
   return merge(
-    bundle("frontend-pushed", [
+    bundle("frontend-computer", ["src/css/computer.css"]),
+    bundle("frontend-handheld", ["src/css/handheld.css"]),
+    bundle("frontend", [
+      "src/css/competenceBubble.css",
       "src/css/fontello.css",
       "src/css/lesson.css",
       "src/css/main.css",
       "src/css/mainPage.css",
       "src/css/nav.css",
-      "src/css/topUI.css",
-    ]),
-    bundle("frontend-computer", ["src/css/computer.css"]),
-    bundle("frontend-handheld", ["src/css/handheld.css"]),
-    bundle("frontend", [
-      "src/css/competenceBubble.css",
       "src/css/offlineSwitch.css",
+      "src/css/topUI.css",
     ]),
     bundle("error", ["src/css/error.css"])
   );
@@ -188,11 +186,7 @@ gulp.task("build:js", function () {
         .pipe(gulp.dest("dist/"))
     );
   }
-  return merge(
-    bundle("serviceworker"),
-    bundle("frontend-pushed", true),
-    bundle("frontend")
-  );
+  return merge(bundle("frontend", true), bundle("serviceworker"));
 });
 
 gulp.task("build:json", function () {
