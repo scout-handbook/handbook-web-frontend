@@ -23,7 +23,7 @@ const cacheUpdating = [
 ];
 
 function startsWith(haystack: string, needle: string): boolean {
-  return haystack.substr(0, needle.length) === needle;
+  return haystack.substring(0, needle.length) === needle;
 }
 
 self.addEventListener("install", function (event: Event): void {
