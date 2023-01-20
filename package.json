@@ -61,7 +61,7 @@
     "stylelint": "^14.11.0",
     "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-standard": "^29.0.0",
-    "stylelint-no-unsupported-browser-features": "^5.0.3",
+    "stylelint-no-unsupported-browser-features": "^6.0.1",
     "stylelint-prettier": "^2.0.0",
     "typescript": "^4.2.4",
     "uglify-js": "^3.13.5",
