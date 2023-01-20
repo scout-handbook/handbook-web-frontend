@@ -4,7 +4,7 @@
 function toggleLessonOffline(): void {
   const checked = (document.getElementById("cacheOffline") as HTMLInputElement)
     .checked;
-  if (window.location.pathname.startsWith("/lesson/")) {
+  if (window.location.pathname.substring(0, 8) === "/lesson/") {
     const id = window.location.pathname.substring(8).split("/")[0];
     void caches.open(CONFIG.cache).then(function (cache): void {
       if (checked) {
