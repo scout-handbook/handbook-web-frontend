@@ -64,6 +64,7 @@ function toggleCompetenceBubble(event: MouseEvent): void {
     const nodes = document
       .getElementById("content")!
       .getElementsByClassName("competence-bubble");
+    // eslint-disable-next-line @typescript-eslint/prefer-for-of
     for (let i = 0; i < nodes.length; i++) {
       (nodes[i].childNodes[1] as HTMLElement).style.width = "";
       (nodes[i] as HTMLElement).style.width = "";

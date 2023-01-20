@@ -40,13 +40,13 @@ function renderTOC(): void {
       '">' +
       field.name +
       "</a></h1>";
-    for (let i = 0; i < field.lessons.length; i++) {
-      const lesson = LESSONS.get(field.lessons[i])!;
+    for (const fieldLesson of field.lessons) {
+      const lesson = LESSONS.get(fieldLesson)!;
       html +=
         '<a class="second-level" title="' +
         lesson.name +
         '" href="enableJS.html" data-id="' +
-        field.lessons[i] +
+        fieldLesson +
         '">' +
         lesson.name +
         "</a><br>";
@@ -56,6 +56,7 @@ function renderTOC(): void {
   const nodes = document
     .getElementById("navigation")!
     .getElementsByTagName("a");
+  // eslint-disable-next-line @typescript-eslint/prefer-for-of
   for (let i = 0; i < nodes.length; i++) {
     if (nodes[i].parentElement!.tagName === "H1") {
       nodes[i].onclick = TOCFieldOnClick;
