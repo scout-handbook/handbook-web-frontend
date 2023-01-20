@@ -23,26 +23,30 @@ const cacheUpdating = [
 ];
 
 function startsWith(haystack: string, needle: string): boolean {
-  return haystack.substring(0, needle.length) === needle;
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-return
+  return haystack.startsWith(needle);
 }
 
 self.addEventListener("install", function (event: Event): void {
   (event as ExtendableEvent).waitUntil(
-    caches.open(CACHE).then(function (cache): Promise<void> {
+    caches.open(CACHE).then(async function (cache): Promise<void> {
       void cache.addAll(cacheNonBlocking);
       return cache.addAll(cacheBlocking);
     })
   );
 });
 
-function cacheClone(request: Request, response: Response): Promise<Response> {
+async function cacheClone(
+  request: Request,
+  response: Response
+): Promise<Response> {
   return caches.open(CACHE).then(function (cache): Response {
     void cache.put(request, response.clone());
     return response;
   });
 }
 
-function cacheUpdatingResponse(request: Request): Promise<Response> {
+async function cacheUpdatingResponse(request: Request): Promise<Response> {
   if (request.headers.get("Accept") === "x-cache/only") {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-call
     return new Promise(function (resolve): void {
@@ -61,20 +65,20 @@ function cacheUpdatingResponse(request: Request): Promise<Response> {
       });
     });
   } else {
-    return fetch(request).then(function (response): Promise<Response> {
+    return fetch(request).then(async function (response): Promise<Response> {
       return cacheClone(request, response);
     });
   }
 }
 
-function cacheOnDemandResponse(request: Request): Promise<Response> {
+async function cacheOnDemandResponse(request: Request): Promise<Response> {
   if (request.headers.get("Accept") === "x-cache/only") {
-    return caches.open(CACHE).then(function (cache): Promise<Response> {
+    return caches.open(CACHE).then(async function (cache): Promise<Response> {
       return cache.match(request) as Promise<Response>;
     });
   } else {
-    return fetch(request).then(function (response): Promise<Response> {
-      return caches.open(CACHE).then(function (cache): Promise<Response> {
+    return fetch(request).then(async function (response): Promise<Response> {
+      return caches.open(CACHE).then(async function (cache): Promise<Response> {
         return cache
           .match(request)
           .then(function (cachedResponse): Promise<Response> | Response {
@@ -88,8 +92,8 @@ function cacheOnDemandResponse(request: Request): Promise<Response> {
   }
 }
 
-function genericResponse(request: Request): Promise<Response> {
-  return caches.open(CACHE).then(function (cache): Promise<Response> {
+async function genericResponse(request: Request): Promise<Response> {
+  return caches.open(CACHE).then(async function (cache): Promise<Response> {
     return cache
       .match(request)
       .then(function (response): Promise<Response> | Response {

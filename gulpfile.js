@@ -29,7 +29,7 @@ function getConfig() {
     { cache: "handbook-" + pkg.version }
   );
   const overrideLocation = yargs.string("config").argv.config;
-  if (overrideLocation) {
+  if (overrideLocation !== undefined) {
     config = nestedObjectAssign(
       config,
       JSON.parse(fs.readFileSync(overrideLocation, "utf8"))

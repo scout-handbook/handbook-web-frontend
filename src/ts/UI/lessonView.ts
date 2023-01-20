@@ -25,13 +25,11 @@ function reflowCompetenceBubbles(): void {
     const fontSize = parseFloat(
       window.getComputedStyle(activeCompetence).getPropertyValue("font-size")
     );
-    const parent = activeCompetence.parentElement as HTMLElement;
+    const parent = activeCompetence.parentElement!;
     (activeCompetence.childNodes[1] as HTMLElement).style.width =
       Math.min(
         403 - 1.3 * fontSize,
-        (activeCompetence.parentElement as HTMLElement).clientWidth -
-          1.3 * fontSize +
-          3
+        activeCompetence.parentElement!.clientWidth - 1.3 * fontSize + 3
       ).toString() + "px";
     (activeCompetence.childNodes[2] as HTMLElement).style.width =
       Math.min(
@@ -51,11 +49,8 @@ function reflowCompetenceBubbles(): void {
 
 function toggleCompetenceBubble(event: MouseEvent): void {
   let element = event.target as HTMLElement;
-  while (
-    !element.classList.contains("competence-bubble") &&
-    (element = element.parentElement!)
-  ) {
-    /* Empty */
+  while (!element.classList.contains("competence-bubble")) {
+    element = element.parentElement!;
   }
   if (element.style.width !== "") {
     activeCompetence = null;
@@ -69,6 +64,7 @@ function toggleCompetenceBubble(event: MouseEvent): void {
     const nodes = document
       .getElementById("content")!
       .getElementsByClassName("competence-bubble");
+    // eslint-disable-next-line @typescript-eslint/prefer-for-of
     for (let i = 0; i < nodes.length; i++) {
       (nodes[i].childNodes[1] as HTMLElement).style.width = "";
       (nodes[i] as HTMLElement).style.width = "";
