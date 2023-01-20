@@ -17,7 +17,7 @@ function request(
       }
     }
   };
-  if (query !== undefined && query !== "") {
+  if (query !== "") {
     url += "?" + query;
   }
   xhttp.open("GET", url, true);

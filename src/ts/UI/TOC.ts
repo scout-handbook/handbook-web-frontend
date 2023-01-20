@@ -19,6 +19,7 @@ function renderTOC(): void {
         inField = true;
       }
     });
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (!inField) {
       html +=
         '<a title="' +

@@ -49,11 +49,8 @@ function reflowCompetenceBubbles(): void {
 
 function toggleCompetenceBubble(event: MouseEvent): void {
   let element = event.target as HTMLElement;
-  while (
-    !element.classList.contains("competence-bubble") &&
-    (element = element.parentElement!)
-  ) {
-    /* Empty */
+  while (!element.classList.contains("competence-bubble")) {
+    element = element.parentElement!;
   }
   if (element.style.width !== "") {
     activeCompetence = null;
