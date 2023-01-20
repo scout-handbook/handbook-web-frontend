@@ -1,7 +1,7 @@
 /* exported historySetup */
 
 function historyPopback(): void {
-  if (history.state) {
+  if (history.state !== undefined) {
     const state = history.state as HistoryState;
     if (window.location.pathname === "/competence") {
       showCompetenceListView(true);
