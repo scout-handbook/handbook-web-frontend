@@ -1,7 +1,7 @@
 /* exported headerSetup */
 
 function fontResize(delta: number): void {
-  const content = document.getElementById("content") as HTMLElement;
+  const content = document.getElementById("content")!;
   const current = parseInt(
     window
       .getComputedStyle(content, null)

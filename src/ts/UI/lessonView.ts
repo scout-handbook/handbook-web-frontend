@@ -4,7 +4,7 @@
 function toggleLessonOffline(): void {
   const checked = (document.getElementById("cacheOffline") as HTMLInputElement)
     .checked;
-  if (window.location.pathname.substring(0, 8) === "/lesson/") {
+  if (window.location.pathname.startsWith("/lesson/")) {
     const id = window.location.pathname.substring(8).split("/")[0];
     void caches.open(CONFIG.cache).then(function (cache): void {
       if (checked) {
@@ -25,13 +25,11 @@ function reflowCompetenceBubbles(): void {
     const fontSize = parseFloat(
       window.getComputedStyle(activeCompetence).getPropertyValue("font-size")
     );
-    const parent = activeCompetence.parentElement as HTMLElement;
+    const parent = activeCompetence.parentElement!;
     (activeCompetence.childNodes[1] as HTMLElement).style.width =
       Math.min(
         403 - 1.3 * fontSize,
-        (activeCompetence.parentElement as HTMLElement).clientWidth -
-          1.3 * fontSize +
-          3
+        activeCompetence.parentElement!.clientWidth - 1.3 * fontSize + 3
       ).toString() + "px";
     (activeCompetence.childNodes[2] as HTMLElement).style.width =
       Math.min(
