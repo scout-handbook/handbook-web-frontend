@@ -23,7 +23,8 @@ const cacheUpdating = [
 ];
 
 function startsWith(haystack: string, needle: string): boolean {
-  return haystack.startsWith(needle) as boolean;
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-return
+  return haystack.startsWith(needle);
 }
 
 self.addEventListener("install", function (event: Event): void {
