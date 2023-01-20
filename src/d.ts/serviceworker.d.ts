@@ -1,5 +1,5 @@
 interface ExtendableEvent extends Event {
-  waitUntil(fn: Promise<void | Response>): void;
+  waitUntil(fn: Promise<Response | void>): void;
 }
 
 interface FetchEvent extends Event {
