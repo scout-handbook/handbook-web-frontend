@@ -3,13 +3,13 @@
 
 function renderFieldLessonList(field: Field): string {
   let html = "";
-  for (let i = 0; i < field.lessons.length; i++) {
-    const lesson = LESSONS.get(field.lessons[i])!;
+  for (const fieldLesson of field.lessons) {
+    const lesson = LESSONS.get(fieldLesson)!;
     html +=
       '<h3 class="main-page"><a title="' +
       lesson.name +
       '" href="enableJS.html" data-id="' +
-      field.lessons[i] +
+      fieldLesson +
       '">' +
       lesson.name +
       "</a></h3>";
@@ -38,13 +38,13 @@ function renderFieldView(id: string, noHistory: boolean): void {
   document.getElementById("content")!.innerHTML = html;
 
   const nodes = document.getElementById("content")!.getElementsByTagName("h3");
+  // eslint-disable-next-line @typescript-eslint/prefer-for-of
   for (let i = 0; i < nodes.length; i++) {
     (nodes[i].firstChild as HTMLElement).onclick = TOCLessonOnClick;
   }
 
   document.getElementsByTagName("main")[0].scrollTop = 0;
-  if (!noHistory) 0;
-  {
+  if (!noHistory) {
     history.pushState(
       { id: id },
       "title",

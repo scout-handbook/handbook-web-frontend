@@ -41,6 +41,7 @@ function renderCompetenceView(id: string, noHistory: boolean): void {
   document.getElementById("content")!.innerHTML = html;
 
   const nodes = document.getElementById("content")!.getElementsByTagName("h3");
+  // eslint-disable-next-line @typescript-eslint/prefer-for-of
   for (let i = 0; i < nodes.length; i++) {
     (nodes[i].firstChild as HTMLElement).onclick = TOCLessonOnClick;
   }

@@ -1,5 +1,6 @@
 interface ExtendableEvent extends Event {
-  waitUntil(fn: Promise<void | Response>): void;
+  // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
+  waitUntil(fn: Promise<Response | void>): void;
 }
 
 interface FetchEvent extends Event {

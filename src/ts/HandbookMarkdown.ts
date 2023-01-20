@@ -31,14 +31,13 @@ function getArgumentString(
 
 function parseArgumentString(
   argumentString: string
-): Record<string, string | boolean> {
-  const output: Record<string, string | boolean> = {};
-  const list: Array<string> = argumentString.split(",");
-  for (let i = 0; i < list.length; ++i) {
-    if (list[i] === "") {
+): Record<string, boolean | string> {
+  const output: Record<string, boolean | string> = {};
+  for (const argument of argumentString.split(",")) {
+    if (argument === "") {
       continue;
     }
-    const tuple: Array<string> = list[i].split("=");
+    const tuple: Array<string> = argument.split("=");
     if (tuple.length !== 2) {
       output[tuple[0]] = true;
     } else {
@@ -52,7 +51,7 @@ function parseArgumentString(
 function filterCommand(
   text: string,
   commandName: string,
-  command: (args: Record<string, string | boolean>) => string
+  command: (args: Record<string, boolean | string>) => string
 ): string {
   const lines = text.split("\n");
   let ret = "";
