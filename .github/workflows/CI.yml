@@ -33,6 +33,7 @@ jobs:
       - name: "Build"
         run: |
           npm run build
+
   lint:
     name: "Lint"
     runs-on: ubuntu-latest
