@@ -9,15 +9,15 @@
     "scout",
     "skaut"
   ],
-  "homepage": "https://gitlab.com/skaut-handbook/handbook-web-frontend",
+  "homepage": "https://github.com/scout-handbook/handbook-web-frontend",
   "bugs": {
-    "url": "https://gitlab.com/skaut-handbook/handbook-web-frontend/issues"
+    "url": "https://github.com/scout-handbook/handbook-web-frontend/issues"
   },
   "license": "MIT",
-  "author": "GenaBitu",
+  "author": "Marek Dědič",
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/skaut-handbook/handbook-web-frontend.git"
+    "url": "git+https://github.com/scout-handbook/handbook-web-frontend.git"
   },
   "scripts": {
     "build": "gulp build",
