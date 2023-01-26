@@ -14,6 +14,7 @@ const cleanCSS = require("gulp-clean-css");
 const postcss = require("gulp-postcss");
 const postcssCalc = require("postcss-calc");
 const postcssCustomProperties = require("postcss-custom-properties");
+const postcssJitProps = require("postcss-jit-props");
 const autoprefixer = require("autoprefixer");
 const inject = require("gulp-inject-string");
 const htmlmin = require("gulp-htmlmin");
@@ -45,10 +46,10 @@ gulp.task("build:css", function () {
         .src(sources)
         .pipe(sourcemaps.init())
         .pipe(concat(name + ".min.css"))
+        .pipe(postcss([postcssJitProps(getConfig()["custom-properties"])]))
         .pipe(
           postcss([
             postcssCustomProperties({
-              importFrom: getConfig(),
               preserve: false,
             }),
             postcssCalc({ warnWhenCannotResolve: true }),
