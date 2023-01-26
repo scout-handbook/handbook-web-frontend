@@ -57,6 +57,7 @@
     "postcss": "^8.2.14",
     "postcss-calc": "^8.0.0",
     "postcss-custom-properties": "^12.1.8",
+    "postcss-jit-props": "^1.0.9",
     "prettier": "^2.2.1",
     "stylelint": "^14.11.0",
     "stylelint-config-prettier": "^9.0.3",
