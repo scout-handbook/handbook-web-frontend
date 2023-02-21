@@ -35,7 +35,7 @@
     "@types/showdown": "^2.0.0",
     "@types/webfontloader": "^1.6.29",
     "@typescript-eslint/eslint-plugin": "^5.52.0",
-    "@typescript-eslint/parser": "^5.52.0",
+    "@typescript-eslint/parser": "^5.53.0",
     "autoprefixer": "^10.4.8",
     "eslint": "^8.34.0",
     "eslint-config-prettier": "^8.0.0",
