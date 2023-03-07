@@ -30,9 +30,13 @@ jobs:
         run: |
           npm ci
 
+      - name: "Create dummy config"
+        run: |
+          echo "{}" > config.json
+
       - name: "Build"
         run: |
-          npm run build
+          npm run build -- --config config.json
 
   lint:
     name: "Lint"
