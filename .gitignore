@@ -103,6 +103,6 @@ tags
 
 # End of https://www.gitignore.io/api/vim,node
 
-client-config.json
+config.json
 
 dist/*
