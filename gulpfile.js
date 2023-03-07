@@ -2,7 +2,6 @@
 
 const yargs = require("yargs");
 const fs = require("fs");
-const nestedObjectAssign = require("nested-object-assign");
 
 const gulp = require("gulp");
 const uglify = require("uglify-js");
@@ -14,7 +13,7 @@ const cleanCSS = require("gulp-clean-css");
 const postcss = require("gulp-postcss");
 const postcssCalc = require("postcss-calc");
 const postcssCustomProperties = require("postcss-custom-properties");
-const postcssJitProps = require("postcss-jit-props");
+const postcssGlobalData = require("@csstools/postcss-global-data");
 const autoprefixer = require("autoprefixer");
 const inject = require("gulp-inject-string");
 const htmlmin = require("gulp-htmlmin");
@@ -25,18 +24,23 @@ const pkg = require("./package.json");
 const minify = composer(uglify, console);
 
 function getConfig() {
-  let config = nestedObjectAssign(
-    JSON.parse(fs.readFileSync("src/json/config.json", "utf8")),
-    { cache: "handbook-" + pkg.version }
-  );
-  const overrideLocation = yargs.string("config").argv.config;
-  if (overrideLocation !== undefined) {
-    config = nestedObjectAssign(
-      config,
-      JSON.parse(fs.readFileSync(overrideLocation, "utf8"))
-    );
+  const location = yargs.string("config").argv.config;
+  if (location === undefined) {
+    throw new Error("No config specified");
   }
-  return config;
+  return {
+    ...JSON.parse(fs.readFileSync(location, "utf8")),
+    cache: "handbook-" + pkg.version,
+  };
+}
+
+function getThemeFiles() {
+  const themeFiles = ["src/css/default-theme.css"];
+  const argTheme = yargs.string("theme").argv.theme;
+  if (argTheme !== undefined) {
+    themeFiles.push(argTheme);
+  }
+  return themeFiles;
 }
 
 gulp.task("build:css", function () {
@@ -46,9 +50,9 @@ gulp.task("build:css", function () {
         .src(sources)
         .pipe(sourcemaps.init())
         .pipe(concat(name + ".min.css"))
-        .pipe(postcss([postcssJitProps(getConfig()["custom-properties"])]))
         .pipe(
           postcss([
+            postcssGlobalData({ files: getThemeFiles() }),
             postcssCustomProperties({
               preserve: false,
             }),
@@ -141,12 +145,6 @@ gulp.task("build:icon", function () {
     ]),
     gulp
       .src(["src/icon/browserconfig.xml"])
-      .pipe(
-        inject.replace(
-          "<!--ACCENT-COLOR-->",
-          getConfig()["custom-properties"]["--accent-color"]
-        )
-      )
       .pipe(
         inject.replace(
           "<!--FRONTEND-RESOURCES-PATH-->",
