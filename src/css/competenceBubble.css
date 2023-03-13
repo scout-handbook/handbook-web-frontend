@@ -21,6 +21,11 @@
   border-color: var(--accent-color);
 }
 
+.competence-bubble.active {
+  background-color: #f5f5f5;
+  border-color: var(--accent-color);
+}
+
 .competence-bubble-number {
   float: left;
   font-weight: bold;
@@ -32,6 +37,10 @@
 }
 
 .competence-bubble-number:hover {
+  color: var(--accent-color);
+}
+
+.competence-bubble.active .competence-bubble-number {
   color: var(--accent-color);
 }
 
