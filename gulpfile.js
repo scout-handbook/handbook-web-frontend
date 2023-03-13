@@ -59,7 +59,13 @@ gulp.task("build:css", function () {
           autoprefixer(),
         ])
       )
-      .pipe(cleanCSS())
+      .pipe(
+        cleanCSS({
+          compatibility: {
+            properties: { colors: false },
+          },
+        })
+      )
       .pipe(sourcemaps.write("./"))
       .pipe(gulp.dest("dist/"));
   }
