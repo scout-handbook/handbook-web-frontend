@@ -45,26 +45,23 @@ function getThemeFiles() {
 
 gulp.task("build:css", function () {
   function bundle(name, sources) {
-    return (
-      gulp
-        .src(sources)
-        .pipe(sourcemaps.init())
-        .pipe(concat(name + ".min.css"))
-        .pipe(
-          postcss([
-            postcssGlobalData({ files: getThemeFiles() }),
-            postcssCustomProperties({
-              preserve: false,
-            }),
-            postcssCalc({ warnWhenCannotResolve: true }),
-            autoprefixer(),
-          ])
-        )
-        //.pipe(gulp.dest('dist/'));
-        .pipe(cleanCSS())
-        .pipe(sourcemaps.write("./"))
-        .pipe(gulp.dest("dist/"))
-    );
+    return gulp
+      .src(sources)
+      .pipe(sourcemaps.init())
+      .pipe(concat(name + ".min.css"))
+      .pipe(
+        postcss([
+          postcssGlobalData({ files: getThemeFiles() }),
+          postcssCustomProperties({
+            preserve: false,
+          }),
+          postcssCalc({ warnWhenCannotResolve: true }),
+          autoprefixer(),
+        ])
+      )
+      .pipe(cleanCSS())
+      .pipe(sourcemaps.write("./"))
+      .pipe(gulp.dest("dist/"));
   }
   return merge(
     bundle("frontend-computer", ["src/css/computer.css"]),
@@ -106,29 +103,26 @@ gulp.task("build:font", function () {
 });
 
 gulp.task("build:html", function () {
-  return (
-    gulp
-      .src([
-        "src/html/403.html",
-        "src/html/404.html",
-        "src/html/500.html",
-        "src/html/enableJS.html",
-        "src/html/index.html",
-      ])
-      .pipe(inject.replace("<!--FRONTEND-URI-->", getConfig()["frontend-uri"]))
-      .pipe(
-        inject.replace(
-          "<!--FRONTEND-RESOURCES-PATH-->",
-          getConfig()["frontend-resources-path"]
-        )
+  return gulp
+    .src([
+      "src/html/403.html",
+      "src/html/404.html",
+      "src/html/500.html",
+      "src/html/enableJS.html",
+      "src/html/index.html",
+    ])
+    .pipe(inject.replace("<!--FRONTEND-URI-->", getConfig()["frontend-uri"]))
+    .pipe(
+      inject.replace(
+        "<!--FRONTEND-RESOURCES-PATH-->",
+        getConfig()["frontend-resources-path"]
       )
-      .pipe(sourcemaps.init())
-      .pipe(inject.replace("<!--SITE-NAME-->", getConfig()["site-name"]))
-      //.pipe(gulp.dest('dist/'));
-      .pipe(htmlmin({ collapseWhitespace: true }))
-      .pipe(sourcemaps.write("./"))
-      .pipe(gulp.dest("dist/"))
-  );
+    )
+    .pipe(sourcemaps.init())
+    .pipe(inject.replace("<!--SITE-NAME-->", getConfig()["site-name"]))
+    .pipe(htmlmin({ collapseWhitespace: true }))
+    .pipe(sourcemaps.write("./"))
+    .pipe(gulp.dest("dist/"));
 });
 
 gulp.task("build:icon", function () {
@@ -177,13 +171,10 @@ gulp.task("build:js", function () {
         )
       );
     }
-    return (
-      ret
-        //.pipe(gulp.dest('dist/'));
-        .pipe(minify())
-        .pipe(sourcemaps.write("./"))
-        .pipe(gulp.dest("dist/"))
-    );
+    return ret
+      //.pipe(minify())
+      .pipe(sourcemaps.write("./"))
+      .pipe(gulp.dest("dist/"));
   }
   return merge(bundle("frontend", true), bundle("serviceworker"));
 });
