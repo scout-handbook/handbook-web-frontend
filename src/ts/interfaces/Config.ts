@@ -6,5 +6,4 @@ interface Config {
   "site-name": string;
   "frontend-uri": string;
   "frontend-resources-path": string;
-  "custom-properties": CustomProperties;
 }
