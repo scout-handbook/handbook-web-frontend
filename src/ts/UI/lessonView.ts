@@ -21,30 +21,31 @@ function toggleLessonOffline(): void {
 }
 
 function reflowCompetenceBubbles(): void {
-  if (activeCompetence) {
-    const fontSize = parseFloat(
-      window.getComputedStyle(activeCompetence).getPropertyValue("font-size")
-    );
-    const parent = activeCompetence.parentElement!;
-    (activeCompetence.childNodes[1] as HTMLElement).style.width =
-      Math.min(
-        403 - 1.3 * fontSize,
-        activeCompetence.parentElement!.clientWidth - 1.3 * fontSize + 3
-      ).toString() + "px";
-    (activeCompetence.childNodes[2] as HTMLElement).style.width =
-      Math.min(
-        403 - 1.3 * fontSize,
-        parent.clientWidth - 1.3 * fontSize + 3
-      ).toString() + "px";
-    activeCompetence.style.width =
-      Math.min(400, parent.clientWidth).toString() + "px";
-    activeCompetence.style.height =
-      (
-        (activeCompetence.childNodes[1] as HTMLElement).offsetHeight +
-        1.4 * fontSize -
-        6
-      ).toString() + "px";
+  if (!activeCompetence) {
+    return;
   }
+  const fontSize = parseFloat(
+    window.getComputedStyle(activeCompetence).getPropertyValue("font-size")
+  );
+  const parent = activeCompetence.parentElement!;
+  activeCompetence.style.width =
+    Math.min(400, parent.clientWidth).toString() + "px";
+  activeCompetence.style.height =
+    (
+      (activeCompetence.childNodes[1] as HTMLElement).offsetHeight +
+      1.4 * fontSize -
+      6
+    ).toString() + "px";
+  (activeCompetence.childNodes[1] as HTMLElement).style.width =
+    Math.min(
+      403 - 1.3 * fontSize,
+      activeCompetence.parentElement!.clientWidth - 1.3 * fontSize + 3
+    ).toString() + "px";
+  (activeCompetence.childNodes[2] as HTMLElement).style.width =
+    Math.min(
+      403 - 1.3 * fontSize,
+      parent.clientWidth - 1.3 * fontSize + 3
+    ).toString() + "px";
 }
 
 function toggleCompetenceBubble(event: MouseEvent): void {
@@ -54,31 +55,26 @@ function toggleCompetenceBubble(event: MouseEvent): void {
   }
   if (element.style.width !== "") {
     activeCompetence = null;
-    (element.childNodes[1] as HTMLElement).style.width = "";
+    element.className = "competence-bubble";
     element.style.width = "";
     element.style.height = "";
-    (element.firstChild as HTMLElement).style.color = "";
-    element.style.borderColor = "";
-    element.style.backgroundColor = "";
+    (element.childNodes[1] as HTMLElement).style.width = "";
+    (element.childNodes[2] as HTMLElement).style.width = "";
   } else {
     const nodes = document
       .getElementById("content")!
       .getElementsByClassName("competence-bubble");
     // eslint-disable-next-line @typescript-eslint/prefer-for-of
     for (let i = 0; i < nodes.length; i++) {
-      (nodes[i].childNodes[1] as HTMLElement).style.width = "";
+      nodes[i].className = "competence-bubble";
       (nodes[i] as HTMLElement).style.width = "";
       (nodes[i] as HTMLElement).style.height = "";
-      (nodes[i].firstChild as HTMLElement).style.color = "";
-      (nodes[i] as HTMLElement).style.borderColor = "";
-      (nodes[i] as HTMLElement).style.backgroundColor = "";
+      (nodes[i].childNodes[1] as HTMLElement).style.width = "";
+      (nodes[i].childNodes[2] as HTMLElement).style.width = "";
     }
     activeCompetence = element;
     reflowCompetenceBubbles();
-    (element.firstChild as HTMLElement).style.color =
-      CONFIG["custom-properties"]["--accent-color"];
-    element.style.borderColor = CONFIG["custom-properties"]["--accent-color"];
-    element.style.backgroundColor = "#f5f5f5";
+    element.className = "competence-bubble active";
   }
 }
 
