@@ -17,6 +17,14 @@ nav a:hover {
   text-decoration: underline;
 }
 
+nav.nav-closed {
+  margin-left: calc(var(--nav-width) * -1);
+}
+
+main.nav-closed {
+  margin-left: 0;
+}
+
 #user-account {
   border-bottom: 1px solid var(--border-color);
   height: 80px;

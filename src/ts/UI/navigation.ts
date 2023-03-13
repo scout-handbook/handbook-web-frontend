@@ -4,21 +4,20 @@
 let navigationOpen = true;
 
 function reflowNavigation(): void {
-  const main = document.getElementsByTagName("main")[0].style;
-  const navBar = document.getElementsByTagName("nav")[0].style;
+  const main = document.getElementsByTagName("main")[0];
+  const navBar = document.getElementsByTagName("nav")[0];
   const overlay = document.getElementById("overlay")!.style;
   if (navigationOpen) {
-    navBar.marginLeft = "0px";
+    navBar.className = "";
     if (screen.width > 700) {
-      main.marginLeft = CONFIG["custom-properties"]["--nav-width"];
+      main.className = "";
       overlay.display = "none";
     } else {
-      main.marginLeft = "0px";
       overlay.display = "inline";
     }
   } else {
-    navBar.marginLeft = "-" + CONFIG["custom-properties"]["--nav-width"];
-    main.marginLeft = "0px";
+    main.className = "nav-closed";
+    navBar.className = "nav-closed";
     overlay.display = "none";
   }
 }
