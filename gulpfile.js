@@ -178,7 +178,7 @@ gulp.task("build:js", function () {
       );
     }
     return ret
-      //.pipe(minify())
+      .pipe(minify())
       .pipe(sourcemaps.write("./"))
       .pipe(gulp.dest("dist/"));
   }
