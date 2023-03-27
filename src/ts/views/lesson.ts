@@ -89,9 +89,12 @@ function showLessonView(id: string, noHistory: boolean): void {
     reflowNavigation();
   }
   if (!LESSONS.get(id)) {
-    const emptyFieldsCache = FIELDS.empty();
+    //const emptyFieldsCache = FIELDS.empty();
     loginstateEvent.addCallback(function (): void {
-      if (LOGINSTATE) {
+      if (!LOGINSTATE) {
+        loginRedirect();
+      } else {
+        /*
         if (!emptyFieldsCache) {
           window.location.href =
             CONFIG["frontend-uri"] +
@@ -99,8 +102,7 @@ function showLessonView(id: string, noHistory: boolean): void {
             CONFIG["frontend-resources-path"] +
             "/404.html";
         }
-      } else {
-        loginRedirect();
+        */
       }
     });
   } else {
