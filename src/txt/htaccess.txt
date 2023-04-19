@@ -1,9 +1,9 @@
 Options -Indexes
 
 # Pretty error pages
-ErrorDocument 403 403.html
-ErrorDocument 404 404.html
-ErrorDocument 500 500.html
+ErrorDocument 403 /frontend/403.html
+ErrorDocument 404 /frontend/404.html
+ErrorDocument 500 /frontend/500.html
 
 RewriteEngine On
 
@@ -11,15 +11,15 @@ RewriteEngine On
 RewriteCond %{HTTPS} off
 RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,QSA,L]
 
-# Competences, fields and lessons rewrite
-RewriteCond %{REQUEST_URI} ^/(competence|field|lesson)/?
-RewriteRule (.*) / [QSA]
+# Frontend in a subdir
+RewriteRule ^($|competence|field|lesson) /frontend/index.html [QSA]
+RewriteRule ^enableJS.html$ /frontend/enableJS.html [QSA]
 
 # Login & logout redirect uri
 RewriteRule ^log(in|out)$ /API/v1.0/log$1
 
 # Sitemap rewrite
-RewriteRule ^sitemap$ sitemap.php
+RewriteRule ^sitemap$ frontend/sitemap.php
 
 # Security headers
 Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
@@ -27,9 +27,8 @@ Header always set X-Frame-Options "DENY"
 Header always set X-Content-Type-Options "nosniff"
 Header always set X-Xss-Protection "1; mode=block"
 Header always set Referrer-Policy "same-origin"
-Header always set Content-Security-Policy "upgrade-insecure-requests; default-src 'self'; script-src 'self' https://ajax.googleapis.com/ajax/libs/webfont/; connect-src 'self' https://fonts.gstatic.com/ https://ajax.googleapis.com/ajax/libs/webfont/ https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data:"
-Header always set Feature-Policy "geolocation 'none'; midi 'none'; sync-xhr 'none'; microphone 'none'; camera 'none'; magnetometer 'none'; gyroscope 'none'; speaker 'none'; fullscreen 'self'; accelerometer 'none'; ambient-light-sensor 'none'; encrypted-media 'none'; payment 'none'; usb 'none'; vr 'none'"
-Header always set Expect-CT "enforce; max-age=31536000"
+Header always set Content-Security-Policy "upgrade-insecure-requests; default-src 'self'; script-src 'self' https://ajax.googleapis.com/ajax/libs/webfont/; connect-src 'self' https://fonts.gstatic.com/ https://ajax.googleapis.com/ajax/libs/webfont/ https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data:; object-src 'none'"
+Header always set Permissions-Policy "camera=(), display-capture=(), fullscreen=(self), geolocation=(), microphone=(), web-share=()"
 
 # Compression
 AddOutputFilterByType DEFLATE text/plain
