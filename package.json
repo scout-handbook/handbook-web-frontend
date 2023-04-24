@@ -58,7 +58,7 @@
     "postcss-calc": "^8.0.0",
     "postcss-custom-properties": "^13.1.5",
     "prettier": "^2.8.7",
-    "stylelint": "^15.5.0",
+    "stylelint": "^15.6.0",
     "stylelint-config-standard": "^33.0.0",
     "stylelint-no-unsupported-browser-features": "^6.1.0",
     "stylelint-prettier": "^3.0.0",
