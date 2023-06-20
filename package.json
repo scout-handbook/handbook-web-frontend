@@ -20,6 +20,8 @@
     "url": "git+https://github.com/scout-handbook/handbook-web-frontend.git"
   },
   "scripts": {
+    "clean": "rimraf dist/*",
+    "prebuild": "npm run clean",
     "build": "gulp build",
     "lint:css:stylelint": "stylelint --color 'src/**/*.css' '!src/css/fontello.css'",
     "lint:css": "run-p -c --aggregate-output lint:css:*",
@@ -58,6 +60,7 @@
     "postcss-calc": "^9.0.1",
     "postcss-custom-properties": "^13.2.0",
     "prettier": "^2.8.8",
+    "rimraf": "^5.0.1",
     "stylelint": "^15.8.0",
     "stylelint-config-standard": "^33.0.0",
     "stylelint-no-unsupported-browser-features": "^6.1.0",
