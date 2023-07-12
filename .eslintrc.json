@@ -31,7 +31,7 @@
     "@typescript-eslint/explicit-module-boundary-types": "error",
     "@typescript-eslint/member-ordering": "error",
     "@typescript-eslint/method-signature-style": ["error", "method"],
-    "@typescript-eslint/no-dynamic-delete": "off",
+    "@typescript-eslint/no-dynamic-delete": "error",
     "@typescript-eslint/no-import-type-side-effects": "error",
     "@typescript-eslint/no-require-imports": "error",
     "@typescript-eslint/no-unnecessary-qualifier": "error",
