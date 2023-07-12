@@ -41,7 +41,7 @@
     "@typescript-eslint/prefer-readonly": "error",
     "@typescript-eslint/prefer-readonly-parameter-types": "off",
     "@typescript-eslint/prefer-regexp-exec": "error",
-    "@typescript-eslint/prefer-string-starts-ends-with": "off", // TODO
+    "@typescript-eslint/prefer-string-starts-ends-with": "off",
     "@typescript-eslint/promise-function-async": "error",
     "@typescript-eslint/require-array-sort-compare": "error",
     "@typescript-eslint/sort-type-constituents": "error",
