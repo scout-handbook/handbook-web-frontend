@@ -11,7 +11,7 @@ function toggleLessonOffline(): void {
         void cache.add(
           new Request(CONFIG["api-uri"] + "/v1.0/lesson/" + id, {
             credentials: "same-origin",
-          })
+          }),
         );
       } else {
         void cache.delete(CONFIG["api-uri"] + "/v1.0/lesson/" + id);
@@ -25,7 +25,7 @@ function reflowCompetenceBubbles(): void {
     return;
   }
   const fontSize = parseFloat(
-    window.getComputedStyle(activeCompetence).getPropertyValue("font-size")
+    window.getComputedStyle(activeCompetence).getPropertyValue("font-size"),
   );
   const parent = activeCompetence.parentElement!;
   activeCompetence.style.width =
@@ -39,12 +39,12 @@ function reflowCompetenceBubbles(): void {
   (activeCompetence.childNodes[1] as HTMLElement).style.width =
     Math.min(
       403 - 1.3 * fontSize,
-      activeCompetence.parentElement!.clientWidth - 1.3 * fontSize + 3
+      activeCompetence.parentElement!.clientWidth - 1.3 * fontSize + 3,
     ).toString() + "px";
   (activeCompetence.childNodes[2] as HTMLElement).style.width =
     Math.min(
       403 - 1.3 * fontSize,
-      parent.clientWidth - 1.3 * fontSize + 3
+      parent.clientWidth - 1.3 * fontSize + 3,
     ).toString() + "px";
 }
 

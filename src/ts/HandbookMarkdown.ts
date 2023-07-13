@@ -1,7 +1,7 @@
 function getArgumentString(
   lines: Array<string>,
   current: number,
-  commandName: string
+  commandName: string,
 ): [string, number] {
   const line = lines[current].trim();
   let next = current;
@@ -30,7 +30,7 @@ function getArgumentString(
 }
 
 function parseArgumentString(
-  argumentString: string
+  argumentString: string,
 ): Record<string, boolean | string> {
   const output: Record<string, boolean | string> = {};
   for (const argument of argumentString.split(",")) {
@@ -51,7 +51,7 @@ function parseArgumentString(
 function filterCommand(
   text: string,
   commandName: string,
-  command: (args: Record<string, boolean | string>) => string
+  command: (args: Record<string, boolean | string>) => string,
 ): string {
   const lines = text.split("\n");
   let ret = "";

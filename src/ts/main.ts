@@ -18,7 +18,7 @@ function main(): void {
       CONFIG["frontend-uri"] +
         "/" +
         CONFIG["frontend-resources-path"] +
-        "/serviceworker.min.js"
+        "/serviceworker.min.js",
     );
   }
   WebFont.load({

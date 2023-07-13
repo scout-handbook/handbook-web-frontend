@@ -20,7 +20,7 @@ function lessonComparator(first: Lesson, second: Lesson): number {
   }
   return competenceComparator(
     COMPETENCES.get(first.competences[0])!,
-    COMPETENCES.get(second.competences[0])!
+    COMPETENCES.get(second.competences[0])!,
   );
 }
 
@@ -36,7 +36,7 @@ function fieldComparator(first: Field, second: Field): number {
   }
   return lessonComparator(
     LESSONS.get(first.lessons[0])!,
-    LESSONS.get(second.lessons[0])!
+    LESSONS.get(second.lessons[0])!,
   );
 }
 
@@ -48,7 +48,7 @@ function metadataSetup(): void {
       value.competences.sort(function (first: string, second: string): number {
         return competenceComparator(
           COMPETENCES.get(first)!,
-          COMPETENCES.get(second)!
+          COMPETENCES.get(second)!,
         );
       });
       return value;
@@ -73,7 +73,7 @@ function metadataSetup(): void {
       } else {
         metadataSortEvent.trigger();
       }
-    }
+    },
   );
   cacheThenNetworkRequest(
     CONFIG["api-uri"] + "/v1.0/lesson",
@@ -85,21 +85,21 @@ function metadataSetup(): void {
       } else {
         metadataSortEvent.trigger();
       }
-    }
+    },
   );
   cacheThenNetworkRequest(
     CONFIG["api-uri"] + "/v1.0/competence",
     "",
     function (response, second): void {
       COMPETENCES = new IDList<Competence>(
-        response as Record<string, Competence>
+        response as Record<string, Competence>,
       );
       if (second) {
         metadataSortEvent.retrigger();
       } else {
         metadataSortEvent.trigger();
       }
-    }
+    },
   );
   const xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function (): void {
