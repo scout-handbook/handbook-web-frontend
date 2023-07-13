@@ -14,7 +14,7 @@ class AfterLoadEvent {
   }
 
   public addCallback(
-    callback: (...args: Array<RequestResponse>) => void
+    callback: (...args: Array<RequestResponse>) => void,
   ): void {
     this.callbacks.push(callback);
     if (this.triggered) {

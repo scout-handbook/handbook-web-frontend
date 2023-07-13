@@ -3,7 +3,7 @@
 function cacheThenNetworkRequest(
   url: string,
   query: string,
-  callback: (response: RequestResponse, cacheDataReceived: boolean) => void
+  callback: (response: RequestResponse, cacheDataReceived: boolean) => void,
 ): void {
   query = typeof query !== "undefined" ? query : "";
   let networkDataReceived = false;
@@ -12,12 +12,12 @@ function cacheThenNetworkRequest(
     networkDataReceived = true;
     callback(response, cacheDataReceived);
   });
-  request(url, query, { Accept: "x-cache/only" }).addCallback(function (
-    response
-  ): void {
-    if (!networkDataReceived) {
-      cacheDataReceived = true;
-      callback(response, false);
-    }
-  });
+  request(url, query, { Accept: "x-cache/only" }).addCallback(
+    function (response): void {
+      if (!networkDataReceived) {
+        cacheDataReceived = true;
+        callback(response, false);
+      }
+    },
+  );
 }
