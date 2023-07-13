@@ -48,7 +48,7 @@ function renderFieldView(id: string, noHistory: boolean): void {
     history.pushState(
       { id: id },
       "title",
-      "/field/" + id + "/" + urlEscape(field.name)
+      "/field/" + id + "/" + urlEscape(field.name),
     );
   }
   document.getElementById("offline-switch")!.style.display = "none";

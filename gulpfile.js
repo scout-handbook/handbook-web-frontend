@@ -57,14 +57,14 @@ gulp.task("build:css", function () {
           }),
           postcssCalc({ warnWhenCannotResolve: true }),
           autoprefixer(),
-        ])
+        ]),
       )
       .pipe(
         cleanCSS({
           compatibility: {
             properties: { colors: false },
           },
-        })
+        }),
       )
       .pipe(sourcemaps.write("./"))
       .pipe(gulp.dest("dist/"));
@@ -82,7 +82,7 @@ gulp.task("build:css", function () {
       "src/css/offlineSwitch.css",
       "src/css/topUI.css",
     ]),
-    bundle("error", ["src/css/error.css"])
+    bundle("error", ["src/css/error.css"]),
   );
 });
 
@@ -121,8 +121,8 @@ gulp.task("build:html", function () {
     .pipe(
       inject.replace(
         "<!--FRONTEND-RESOURCES-PATH-->",
-        getConfig()["frontend-resources-path"]
-      )
+        getConfig()["frontend-resources-path"],
+      ),
     )
     .pipe(sourcemaps.init())
     .pipe(inject.replace("<!--SITE-NAME-->", getConfig()["site-name"]))
@@ -148,9 +148,9 @@ gulp.task("build:icon", function () {
       .pipe(
         inject.replace(
           "<!--FRONTEND-RESOURCES-PATH-->",
-          getConfig()["frontend-resources-path"]
-        )
-      )
+          getConfig()["frontend-resources-path"],
+        ),
+      ),
   ).pipe(gulp.dest("dist/"));
 });
 
@@ -162,8 +162,8 @@ gulp.task("build:js", function () {
       .pipe(
         inject.replace(
           '\\"\\"\\/\\*INJECTED\\-VERSION\\*\\/',
-          '"' + pkg.version + '"'
-        )
+          '"' + pkg.version + '"',
+        ),
       )
       .pipe(sourcemaps.init())
       .pipe(tsProject())
@@ -173,8 +173,8 @@ gulp.task("build:js", function () {
         inject.prepend(
           '"use strict";\nvar CONFIG = JSON.parse(\'' +
             JSON.stringify(getConfig()) +
-            "');\n"
-        )
+            "');\n",
+        ),
       );
     }
     return ret
@@ -192,8 +192,8 @@ gulp.task("build:json", function () {
     .pipe(
       inject.replace(
         "FRONTEND-RESOURCES-PATH",
-        getConfig()["frontend-resources-path"]
-      )
+        getConfig()["frontend-resources-path"],
+      ),
     )
     .pipe(gulp.dest("dist/"));
 });
@@ -222,6 +222,6 @@ gulp.task(
     "build:json",
     "build:php",
     "build:png",
-    "build:txt"
-  )
+    "build:txt",
+  ),
 );

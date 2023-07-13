@@ -17,7 +17,7 @@ function renderLessonView(
   id: string,
   markdown: string,
   noHistory: boolean,
-  second: boolean
+  second: boolean,
 ): void {
   const lesson = LESSONS.get(id)!;
   let html = "<h1>" + lesson.name + "</h1>";
@@ -57,7 +57,7 @@ function renderLessonView(
       history.pushState(
         { id: id },
         "title",
-        "/lesson/" + id + "/" + urlEscape(lesson.name)
+        "/lesson/" + id + "/" + urlEscape(lesson.name),
       );
     }
   }
@@ -113,7 +113,7 @@ function showLessonView(id: string, noHistory: boolean): void {
         metadataEvent.addCallback(function (): void {
           renderLessonView(id, response as string, noHistory, second);
         });
-      }
+      },
     );
   }
   refreshLogin();
