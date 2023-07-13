@@ -10,7 +10,10 @@
   margin-right: 20px;
   min-height: 3em;
   overflow: hidden;
-  transition: width ease 0.15s, height ease 0.15s, border-color ease 0.15s,
+  transition:
+    width ease 0.15s,
+    height ease 0.15s,
+    border-color ease 0.15s,
     background-color ease 0.15s;
   vertical-align: top;
   width: 3em;
