@@ -32,13 +32,13 @@ self.addEventListener("install", function (event: Event): void {
     caches.open(CACHE).then(async function (cache): Promise<void> {
       void cache.addAll(cacheNonBlocking);
       return cache.addAll(cacheBlocking);
-    })
+    }),
   );
 });
 
 async function cacheClone(
   request: Request,
-  response: Response
+  response: Response,
 ): Promise<Response> {
   return caches.open(CACHE).then(function (cache): Response {
     void cache.put(request, response.clone());
@@ -59,7 +59,7 @@ async function cacheUpdatingResponse(request: Request): Promise<Response> {
             new Response(new Blob(['{"status": 404}']), {
               status: 404,
               statusText: "Not Found",
-            })
+            }),
           );
         }
       });
@@ -79,14 +79,14 @@ async function cacheOnDemandResponse(request: Request): Promise<Response> {
   } else {
     return fetch(request).then(async function (response): Promise<Response> {
       return caches.open(CACHE).then(async function (cache): Promise<Response> {
-        return cache
-          .match(request)
-          .then(function (cachedResponse): Promise<Response> | Response {
-            if (cachedResponse === undefined) {
-              return response;
-            }
-            return cacheClone(request, response);
-          });
+        return cache.match(request).then(function (cachedResponse):
+          | Promise<Response>
+          | Response {
+          if (cachedResponse === undefined) {
+            return response;
+          }
+          return cacheClone(request, response);
+        });
       });
     });
   }
@@ -94,14 +94,14 @@ async function cacheOnDemandResponse(request: Request): Promise<Response> {
 
 async function genericResponse(request: Request): Promise<Response> {
   return caches.open(CACHE).then(async function (cache): Promise<Response> {
-    return cache
-      .match(request)
-      .then(function (response): Promise<Response> | Response {
-        if (response) {
-          return response;
-        }
-        return fetch(request); // eslint-disable-line compat/compat
-      });
+    return cache.match(request).then(function (response):
+      | Promise<Response>
+      | Response {
+      if (response) {
+        return response;
+      }
+      return fetch(request); // eslint-disable-line compat/compat
+    });
   });
 }
 
@@ -109,15 +109,15 @@ self.addEventListener("fetch", function (event: Event): void {
   const url = new URL((event as FetchEvent).request.url); // eslint-disable-line compat/compat
   if (cacheUpdating.indexOf(url.pathname) !== -1) {
     void (event as FetchEvent).respondWith(
-      cacheUpdatingResponse((event as FetchEvent).request)
+      cacheUpdatingResponse((event as FetchEvent).request),
     );
   } else if (startsWith(url.pathname, APIPATH + "/lesson")) {
     void (event as FetchEvent).respondWith(
-      cacheOnDemandResponse((event as FetchEvent).request)
+      cacheOnDemandResponse((event as FetchEvent).request),
     );
   } else {
     void (event as FetchEvent).respondWith(
-      genericResponse((event as FetchEvent).request)
+      genericResponse((event as FetchEvent).request),
     );
   }
 });
