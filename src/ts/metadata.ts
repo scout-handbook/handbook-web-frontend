@@ -42,22 +42,19 @@ function fieldComparator(first: Field, second: Field): number {
 
 function metadataSetup(): void {
   const metadataSortEvent = new AfterLoadEvent(3);
-  metadataSortEvent.addCallback(function (): void {
+  metadataSortEvent.addCallback((): void => {
     COMPETENCES.sort(competenceComparator);
-    LESSONS.map(function (value: Lesson): Lesson {
-      value.competences.sort(function (first: string, second: string): number {
-        return competenceComparator(
-          COMPETENCES.get(first)!,
-          COMPETENCES.get(second)!,
-        );
-      });
+    LESSONS.map((value: Lesson): Lesson => {
+      value.competences.sort((first: string, second: string): number =>
+        competenceComparator(COMPETENCES.get(first)!, COMPETENCES.get(second)!),
+      );
       return value;
     });
     LESSONS.sort(lessonComparator);
-    FIELDS.map(function (value: Field): Field {
-      value.lessons.sort(function (first: string, second: string): number {
-        return lessonComparator(LESSONS.get(first)!, LESSONS.get(second)!);
-      });
+    FIELDS.map((value: Field): Field => {
+      value.lessons.sort((first: string, second: string): number =>
+        lessonComparator(LESSONS.get(first)!, LESSONS.get(second)!),
+      );
       return value;
     });
     FIELDS.sort(fieldComparator);
@@ -66,7 +63,7 @@ function metadataSetup(): void {
   cacheThenNetworkRequest(
     CONFIG["api-uri"] + "/v1.0/field",
     "",
-    function (response, second): void {
+    (response, second): void => {
       FIELDS = new IDList<Field>(response as Record<string, Field>);
       if (second) {
         metadataSortEvent.retrigger();
@@ -78,7 +75,7 @@ function metadataSetup(): void {
   cacheThenNetworkRequest(
     CONFIG["api-uri"] + "/v1.0/lesson",
     "",
-    function (response, second): void {
+    (response, second): void => {
       LESSONS = new IDList<Lesson>(response as Record<string, Lesson>);
       if (second) {
         metadataSortEvent.retrigger();
@@ -90,7 +87,7 @@ function metadataSetup(): void {
   cacheThenNetworkRequest(
     CONFIG["api-uri"] + "/v1.0/competence",
     "",
-    function (response, second): void {
+    (response, second): void => {
       COMPETENCES = new IDList<Competence>(
         response as Record<string, Competence>,
       );

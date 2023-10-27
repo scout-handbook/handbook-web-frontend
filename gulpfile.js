@@ -43,7 +43,7 @@ function getThemeFiles() {
   return themeFiles;
 }
 
-gulp.task("build:css", function () {
+gulp.task("build:css", () => {
   function bundle(name, sources) {
     return gulp
       .src(sources)
@@ -86,18 +86,18 @@ gulp.task("build:css", function () {
   );
 });
 
-gulp.task("build:deps", function () {
-  return gulp
+gulp.task("build:deps", () =>
+  gulp
     .src([
       "node_modules/showdown/dist/showdown.min.js",
       "node_modules/showdown/dist/showdown.min.js.map",
       "node_modules/xss/dist/xss.min.js",
     ])
-    .pipe(gulp.dest("dist/"));
-});
+    .pipe(gulp.dest("dist/")),
+);
 
-gulp.task("build:font", function () {
-  return gulp
+gulp.task("build:font", () =>
+  gulp
     .src([
       "src/font/fontello.eot",
       "src/font/fontello.svg",
@@ -105,11 +105,11 @@ gulp.task("build:font", function () {
       "src/font/fontello.woff",
       "src/font/fontello.woff2",
     ])
-    .pipe(gulp.dest("dist/font/"));
-});
+    .pipe(gulp.dest("dist/font/")),
+);
 
-gulp.task("build:html", function () {
-  return gulp
+gulp.task("build:html", () =>
+  gulp
     .src([
       "src/html/403.html",
       "src/html/404.html",
@@ -128,11 +128,11 @@ gulp.task("build:html", function () {
     .pipe(inject.replace("<!--SITE-NAME-->", getConfig()["site-name"]))
     .pipe(htmlmin({ collapseWhitespace: true }))
     .pipe(sourcemaps.write("./"))
-    .pipe(gulp.dest("dist/"));
-});
+    .pipe(gulp.dest("dist/")),
+);
 
-gulp.task("build:icon", function () {
-  return merge(
+gulp.task("build:icon", () =>
+  merge(
     gulp.src([
       "src/icon/android-chrome-192x192.png",
       "src/icon/android-chrome-512x512.png",
@@ -151,10 +151,10 @@ gulp.task("build:icon", function () {
           getConfig()["frontend-resources-path"],
         ),
       ),
-  ).pipe(gulp.dest("dist/"));
-});
+  ).pipe(gulp.dest("dist/")),
+);
 
-gulp.task("build:js", function () {
+gulp.task("build:js", () => {
   function bundle(name, addConfig = false) {
     const tsProject = ts.createProject("tsconfig/" + name + ".json");
     let ret = tsProject
@@ -185,8 +185,8 @@ gulp.task("build:js", function () {
   return merge(bundle("frontend", true), bundle("serviceworker"));
 });
 
-gulp.task("build:json", function () {
-  return gulp
+gulp.task("build:json", () =>
+  gulp
     .src(["src/json/manifest.json"])
     .pipe(inject.replace("SITE-NAME", getConfig()["site-name"]))
     .pipe(
@@ -195,20 +195,20 @@ gulp.task("build:json", function () {
         getConfig()["frontend-resources-path"],
       ),
     )
-    .pipe(gulp.dest("dist/"));
-});
+    .pipe(gulp.dest("dist/")),
+);
 
-gulp.task("build:php", function () {
-  return gulp.src(["src/php/sitemap.php"]).pipe(gulp.dest("dist/"));
-});
+gulp.task("build:php", () =>
+  gulp.src(["src/php/sitemap.php"]).pipe(gulp.dest("dist/")),
+);
 
-gulp.task("build:png", function () {
-  return gulp.src(["src/png/avatar.png"]).pipe(gulp.dest("dist/"));
-});
+gulp.task("build:png", () =>
+  gulp.src(["src/png/avatar.png"]).pipe(gulp.dest("dist/")),
+);
 
-gulp.task("build:txt", function () {
-  return gulp.src(["src/txt/htaccess.txt"]).pipe(gulp.dest("dist/"));
-});
+gulp.task("build:txt", () =>
+  gulp.src(["src/txt/htaccess.txt"]).pipe(gulp.dest("dist/")),
+);
 
 gulp.task(
   "build",

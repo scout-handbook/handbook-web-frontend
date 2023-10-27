@@ -3,7 +3,7 @@
 
 function renderCompetenceList(): string {
   let html = "";
-  COMPETENCES.iterate(function (id, competence) {
+  COMPETENCES.iterate((id, competence) => {
     html +=
       '<h3 class="main-page"><a title="' +
       competence.number.toString() +
@@ -44,7 +44,7 @@ function showCompetenceListView(noHistory: boolean): void {
     navigationOpen = false;
     reflowNavigation();
   }
-  metadataEvent.addCallback(function (): void {
+  metadataEvent.addCallback((): void => {
     renderCompetenceListView(noHistory);
   });
   refreshLogin();
