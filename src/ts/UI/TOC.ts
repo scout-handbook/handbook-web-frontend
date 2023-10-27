@@ -12,9 +12,9 @@ function TOCLessonOnClick(event: MouseEvent): boolean {
 
 function renderTOC(): void {
   let html = "";
-  LESSONS.iterate(function (id, lesson) {
+  LESSONS.iterate((id, lesson) => {
     let inField = false;
-    FIELDS.iterate(function (_, field) {
+    FIELDS.iterate((_, field) => {
       if (field.lessons.indexOf(id) >= 0) {
         inField = true;
       }
@@ -31,7 +31,7 @@ function renderTOC(): void {
         "</a><br>";
     }
   });
-  FIELDS.iterate(function (id, field) {
+  FIELDS.iterate((id, field) => {
     html +=
       '<h1><a title="' +
       field.name +

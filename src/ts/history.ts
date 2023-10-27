@@ -29,7 +29,7 @@ function historySetup(): void {
     showFieldView(fieldId, false);
   } else if (window.location.pathname.substring(0, 8) === "/lesson/") {
     const lessonId = window.location.pathname.substring(8).split("/")[0];
-    metadataEvent.addCallback(function (): void {
+    metadataEvent.addCallback((): void => {
       showLessonView(lessonId, false);
     });
   } else {

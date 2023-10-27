@@ -22,18 +22,18 @@ function renderLessonView(
   const lesson = LESSONS.get(id)!;
   let html = "<h1>" + lesson.name + "</h1>";
   activeCompetence = null;
-  COMPETENCES.filter(function (id) {
-    return lesson.competences.indexOf(id) >= 0;
-  }).iterate(function (competenceId, competence) {
-    html +=
-      '<span class="competence-bubble"><span class="competence-bubble-number"><p>' +
-      competence.number.toString() +
-      '</p></span><span class="competence-bubble-text">' +
-      competence.name +
-      '</span><span class="competence-bubble-lessons"><a title="Detail kompetence" href="enableJS.html" data-id="' +
-      competenceId +
-      '">Detail kompetence</a></span></span>';
-  });
+  COMPETENCES.filter((id) => lesson.competences.indexOf(id) >= 0).iterate(
+    (competenceId, competence) => {
+      html +=
+        '<span class="competence-bubble"><span class="competence-bubble-number"><p>' +
+        competence.number.toString() +
+        '</p></span><span class="competence-bubble-text">' +
+        competence.name +
+        '</span><span class="competence-bubble-lessons"><a title="Detail kompetence" href="enableJS.html" data-id="' +
+        competenceId +
+        '">Detail kompetence</a></span></span>';
+    },
+  );
   html += filterXSS(converter.makeHtml(markdown), xssOptions());
   document.getElementById("content")!.innerHTML = html;
   let nodes = document
@@ -62,10 +62,10 @@ function renderLessonView(
     }
   }
   if ("serviceWorker" in navigator) {
-    void caches.open(CONFIG.cache).then(function (cache): void {
+    void caches.open(CONFIG.cache).then((cache): void => {
       void cache
         .match(CONFIG["api-uri"] + "/v1.0/lesson/" + id)
-        .then(function (response): void {
+        .then((response): void => {
           if (response === undefined) {
             (
               document.getElementById("cacheOffline") as HTMLInputElement
@@ -90,7 +90,7 @@ function showLessonView(id: string, noHistory: boolean): void {
   }
   if (!LESSONS.get(id)) {
     //const emptyFieldsCache = FIELDS.empty();
-    loginstateEvent.addCallback(function (): void {
+    loginstateEvent.addCallback((): void => {
       if (!LOGINSTATE) {
         loginRedirect();
       } else {
@@ -109,8 +109,8 @@ function showLessonView(id: string, noHistory: boolean): void {
     cacheThenNetworkRequest(
       CONFIG["api-uri"] + "/v1.0/lesson/" + id,
       "",
-      function (response, second: boolean): void {
-        metadataEvent.addCallback(function (): void {
+      (response, second: boolean): void => {
+        metadataEvent.addCallback((): void => {
           renderLessonView(id, response as string, noHistory, second);
         });
       },

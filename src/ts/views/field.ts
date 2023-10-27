@@ -14,17 +14,18 @@ function renderFieldLessonList(field: Field): string {
       lesson.name +
       "</a></h3>";
     let first = true;
-    COMPETENCES.filter(function (id) {
-      return lesson.competences.indexOf(id) >= 0;
-    }).iterate(function (_, competence) {
-      if (first) {
-        html +=
-          '<span class="main-page">Kompetence: ' + competence.number.toString();
-        first = false;
-      } else {
-        html += ", " + competence.number.toString();
-      }
-    });
+    COMPETENCES.filter((id) => lesson.competences.indexOf(id) >= 0).iterate(
+      (_, competence) => {
+        if (first) {
+          html +=
+            '<span class="main-page">Kompetence: ' +
+            competence.number.toString();
+          first = false;
+        } else {
+          html += ", " + competence.number.toString();
+        }
+      },
+    );
     html += "</span>";
   }
   return html;
@@ -59,7 +60,7 @@ function showFieldView(id: string, noHistory: boolean): void {
     navigationOpen = false;
     reflowNavigation();
   }
-  metadataEvent.addCallback(function (): void {
+  metadataEvent.addCallback((): void => {
     renderFieldView(id, noHistory);
   });
   refreshLogin();
