@@ -2,12 +2,12 @@
 
 function xssOptions(): XSS.IFilterXSSOptions {
   return {
-    onIgnoreTagAttr: function (
+    onIgnoreTagAttr: (
       tag: string,
       name: string,
       value: string,
       isWhiteAttr: boolean,
-    ): string {
+    ): string => {
       if (!isWhiteAttr) {
         if (tag === "a" && name === "rel" && value === "noopener noreferrer") {
           return name + '="' + value + '"';

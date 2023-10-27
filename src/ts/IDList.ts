@@ -25,14 +25,12 @@ class IDList<T> {
   }
 
   public sort(comparator: (first: T, second: T) => number): void {
-    this.list.sort(function (first, second): number {
-      return comparator(first.v, second.v);
-    });
+    this.list.sort((first, second): number => comparator(first.v, second.v));
   }
 
   public filter(filter: (key: string, value: T) => boolean): IDList<T> {
     const ret = new IDList<T>();
-    this.iterate(function (key, value) {
+    this.iterate((key, value) => {
       if (filter(key, value)) {
         ret.push(key, value);
       }
@@ -42,7 +40,7 @@ class IDList<T> {
 
   public empty(): boolean {
     let ret = true;
-    this.iterate(function () {
+    this.iterate(() => {
       ret = false;
     });
     return ret;
