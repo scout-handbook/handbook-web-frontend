@@ -81,7 +81,7 @@ function pagebreakCommand(): string {
 }
 
 // Showdown extensions definitions
-const HandbookMarkdown = function (): Array<showdown.ShowdownExtension> {
+const HandbookMarkdown = (): Array<showdown.ShowdownExtension> => {
   const responsiveTablesBegin = {
     type: "output",
     regex: "<table>",
@@ -104,15 +104,13 @@ const HandbookMarkdown = function (): Array<showdown.ShowdownExtension> {
   };
   const notes = {
     type: "lang",
-    filter: function (text: string): string {
-      return filterCommand(text, "linky", notesCommand);
-    },
+    filter: (text: string): string =>
+      filterCommand(text, "linky", notesCommand),
   };
   const pagebreak = {
     type: "lang",
-    filter: function (text: string): string {
-      return filterCommand(text, "novastrana", pagebreakCommand);
-    },
+    filter: (text: string): string =>
+      filterCommand(text, "novastrana", pagebreakCommand),
   };
   return [
     responsiveTablesBegin,

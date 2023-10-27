@@ -54,7 +54,7 @@ function renderLoginForm(): void {
 }
 
 function showAccountInfo(): void {
-  loginstateEvent.addCallback(function (): void {
+  loginstateEvent.addCallback((): void => {
     if (LOGINSTATE) {
       renderUserAccount();
     } else {

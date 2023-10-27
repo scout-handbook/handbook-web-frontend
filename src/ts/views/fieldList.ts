@@ -4,7 +4,7 @@
 function renderFieldList(): string {
   let html =
     '<div class="field-list-container"><div id="field-list-col1" class="field-list-col">';
-  FIELDS.iterate(function (id, field) {
+  FIELDS.iterate((id, field) => {
     html += '<div class="field-card" data-id="' + id + '">';
     html +=
       '<img src="' + CONFIG["api-uri"] + "/v1.0/image/" + field.image + '">';
@@ -59,7 +59,7 @@ function showFieldListView(noHistory: boolean): void {
     navigationOpen = false;
     reflowNavigation();
   }
-  metadataEvent.addCallback(function () {
+  metadataEvent.addCallback(() => {
     renderFieldListView(noHistory);
   });
   refreshLogin();

@@ -3,7 +3,7 @@
 
 function renderCompetenceLessonList(lessonList: IDList<Lesson>): string {
   let html = "";
-  lessonList.iterate(function (id, lesson) {
+  lessonList.iterate((id, lesson) => {
     html +=
       '<h3 class="main-page"><a title="' +
       lesson.name +
@@ -13,17 +13,18 @@ function renderCompetenceLessonList(lessonList: IDList<Lesson>): string {
       lesson.name +
       "</a></h3>";
     let first = true;
-    COMPETENCES.filter(function (id) {
-      return lesson.competences.indexOf(id) >= 0;
-    }).iterate(function (_, competence) {
-      if (first) {
-        html +=
-          '<span class="main-page">Kompetence: ' + competence.number.toString();
-        first = false;
-      } else {
-        html += ", " + competence.number.toString();
-      }
-    });
+    COMPETENCES.filter((id) => lesson.competences.indexOf(id) >= 0).iterate(
+      (_, competence) => {
+        if (first) {
+          html +=
+            '<span class="main-page">Kompetence: ' +
+            competence.number.toString();
+          first = false;
+        } else {
+          html += ", " + competence.number.toString();
+        }
+      },
+    );
     html += "</span>";
   });
   return html;
@@ -34,9 +35,9 @@ function renderCompetenceView(id: string, noHistory: boolean): void {
   let html =
     "<h1>" + competence.number.toString() + ": " + competence.name + "</h1>";
   html += competence.description;
-  const lessonList = LESSONS.filter(function (_, lesson) {
-    return lesson.competences.indexOf(id) >= 0;
-  });
+  const lessonList = LESSONS.filter(
+    (_, lesson) => lesson.competences.indexOf(id) >= 0,
+  );
   html += renderCompetenceLessonList(lessonList);
   document.getElementById("content")!.innerHTML = html;
 
@@ -65,7 +66,7 @@ function showCompetenceView(id: string, noHistory: boolean): void {
     navigationOpen = false;
     reflowNavigation();
   }
-  metadataEvent.addCallback(function (): void {
+  metadataEvent.addCallback((): void => {
     renderCompetenceView(id, noHistory);
   });
   refreshLogin();

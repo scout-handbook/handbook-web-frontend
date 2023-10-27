@@ -16,10 +16,10 @@ function fontResize(delta: number): void {
 
 function headerSetup(): void {
   document.getElementById("lessonsButton")!.onclick = toggleNavigation;
-  document.getElementById("font-increase")!.onclick = function (): void {
+  document.getElementById("font-increase")!.onclick = (): void => {
     fontResize(2);
   };
-  document.getElementById("font-decrease")!.onclick = function (): void {
+  document.getElementById("font-decrease")!.onclick = (): void => {
     fontResize(-2);
   };
   document.getElementById("cacheOffline")!.onclick = toggleLessonOffline;
