@@ -65,7 +65,7 @@
     "stylelint": "^16.1.0",
     "stylelint-config-standard": "^36.0.0",
     "stylelint-no-unsupported-browser-features": "^8.0.0",
-    "stylelint-prettier": "^4.1.0",
+    "stylelint-prettier": "^5.0.0",
     "typescript": "^5.3.3",
     "uglify-js": "^3.13.5",
     "yargs": "^17.7.2"
