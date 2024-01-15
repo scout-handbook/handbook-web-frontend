@@ -60,7 +60,7 @@
     "postcss": "^8.4.33",
     "postcss-calc": "^9.0.1",
     "postcss-custom-properties": "^13.3.4",
-    "prettier": "^3.1.1",
+    "prettier": "^3.2.2",
     "rimraf": "^5.0.5",
     "stylelint": "^16.1.0",
     "stylelint-config-standard": "^36.0.0",
