@@ -18,8 +18,7 @@ function renderFieldLessonList(field: Field): string {
       (_, competence) => {
         if (first) {
           html +=
-            '<span class="main-page">Kompetence: ' +
-            competence.number.toString();
+            '<span class="main-page">Body: ' + competence.number.toString();
           first = false;
         } else {
           html += ", " + competence.number.toString();

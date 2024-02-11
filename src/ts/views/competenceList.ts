@@ -22,7 +22,7 @@ function renderCompetenceList(): string {
 }
 
 function renderCompetenceListView(noHistory: boolean): void {
-  let html = "<h1>Přehled kompetencí</h1>";
+  let html = "<h1>Přehled bodů</h1>";
   html += renderCompetenceList();
   document.getElementById("content")!.innerHTML = html;
 
