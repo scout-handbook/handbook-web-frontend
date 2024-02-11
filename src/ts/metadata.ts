@@ -51,6 +51,7 @@ function metadataSetup(): void {
       return value;
     });
     LESSONS.sort(lessonComparator);
+    FIELDS = FIELDS.filter((_, field) => field.lessons.length > 0);
     FIELDS.map((value: Field): Field => {
       value.lessons.sort((first: string, second: string): number =>
         lessonComparator(LESSONS.get(first)!, LESSONS.get(second)!),
