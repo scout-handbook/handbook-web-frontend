@@ -29,9 +29,9 @@ function renderLessonView(
         competence.number.toString() +
         '</p></span><span class="competence-bubble-text">' +
         competence.name +
-        '</span><span class="competence-bubble-lessons"><a title="Detail kompetence" href="enableJS.html" data-id="' +
+        '</span><span class="competence-bubble-lessons"><a title="Detail bodu" href="enableJS.html" data-id="' +
         competenceId +
-        '">Detail kompetence</a></span></span>';
+        '">Detail bodu</a></span></span>';
     },
   );
   html += filterXSS(converter.makeHtml(markdown), xssOptions());
