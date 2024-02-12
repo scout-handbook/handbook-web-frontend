@@ -5,7 +5,11 @@ const metadataEvent = new AfterLoadEvent(1);
 const loginstateEvent = new AfterLoadEvent(1);
 
 function competenceComparator(first: Competence, second: Competence): number {
-  return parseInt(first.number, 10) - parseInt(second.number, 10);
+  const numberComparison =
+    parseInt(first.number, 10) - parseInt(second.number, 10);
+  return numberComparison !== 0
+    ? numberComparison
+    : first.number.localeCompare(second.number);
 }
 
 function lessonComparator(first: Lesson, second: Lesson): number {
