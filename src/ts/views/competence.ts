@@ -3,27 +3,26 @@
 
 function renderCompetenceLessonList(lessonList: IDList<Lesson>): string {
   let html = "";
-  lessonList.iterate((id, lesson) => {
+  lessonList.iterate((lessonId, lesson) => {
     html +=
       '<h3 class="main-page"><a title="' +
       lesson.name +
       '" href="enableJS.html" data-id="' +
-      id +
+      lessonId +
       '">' +
       lesson.name +
       "</a></h3>";
     let first = true;
-    COMPETENCES.filter((id) => lesson.competences.indexOf(id) >= 0).iterate(
-      (_, competence) => {
-        if (first) {
-          html +=
-            '<span class="main-page">Body: ' + competence.number.toString();
-          first = false;
-        } else {
-          html += ", " + competence.number.toString();
-        }
-      },
-    );
+    COMPETENCES.filter(
+      (competenceId) => lesson.competences.indexOf(competenceId) >= 0,
+    ).iterate((_, competence) => {
+      if (first) {
+        html += '<span class="main-page">Body: ' + competence.number.toString();
+        first = false;
+      } else {
+        html += ", " + competence.number.toString();
+      }
+    });
     html += "</span>";
   });
   return html;
