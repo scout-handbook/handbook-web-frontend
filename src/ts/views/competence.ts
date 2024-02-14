@@ -42,7 +42,7 @@ function renderCompetenceView(id: string, noHistory: boolean): void {
   const nodes = document.getElementById("content")!.getElementsByTagName("h3");
   // eslint-disable-next-line @typescript-eslint/prefer-for-of
   for (let i = 0; i < nodes.length; i++) {
-    (nodes[i].firstChild as HTMLElement).onclick = TOCLessonOnClick;
+    (nodes[i].firstChild as HTMLElement).onclick = lessonOnClick;
   }
 
   document.getElementsByTagName("main")[0].scrollTop = 0;

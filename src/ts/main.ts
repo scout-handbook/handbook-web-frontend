@@ -14,7 +14,7 @@ function main(): void {
   authenticationSetup();
   metadataSetup();
   lessonViewSetup();
-  TOCSetup();
+  setupTOC();
   if ("serviceWorker" in navigator) {
     void navigator.serviceWorker.register(
       CONFIG["frontend-uri"] +
