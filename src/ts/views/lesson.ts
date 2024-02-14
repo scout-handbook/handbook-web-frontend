@@ -1,7 +1,7 @@
 /* global activeCompetence:true, navigationOpen:true */
 /* exported activeCompetence, lessonViewSetup, navigationOpen, showLessonView */
 
-let converter: showdown.Converter;
+let converter: showdown.Converter | null = null;
 let activeCompetence: HTMLElement | null = null;
 
 function lessonViewSetup(): void {
@@ -14,27 +14,27 @@ function lessonViewSetup(): void {
 }
 
 function renderLessonView(
-  id: string,
+  lessonId: string,
   markdown: string,
   noHistory: boolean,
   second: boolean,
 ): void {
-  const lesson = LESSONS.get(id)!;
+  const lesson = LESSONS.get(lessonId)!;
   let html = "<h1>" + lesson.name + "</h1>";
   activeCompetence = null;
-  COMPETENCES.filter((id) => lesson.competences.indexOf(id) >= 0).iterate(
-    (competenceId, competence) => {
-      html +=
-        '<span class="competence-bubble"><span class="competence-bubble-number"><p>' +
-        competence.number.toString() +
-        '</p></span><span class="competence-bubble-text">' +
-        competence.name +
-        '</span><span class="competence-bubble-lessons"><a title="Detail bodu" href="enableJS.html" data-id="' +
-        competenceId +
-        '">Detail bodu</a></span></span>';
-    },
-  );
-  html += filterXSS(converter.makeHtml(markdown), xssOptions());
+  COMPETENCES.filter(
+    (competenceId) => lesson.competences.indexOf(competenceId) >= 0,
+  ).iterate((competenceId, competence) => {
+    html +=
+      '<span class="competence-bubble"><span class="competence-bubble-number"><p>' +
+      competence.number.toString() +
+      '</p></span><span class="competence-bubble-text">' +
+      competence.name +
+      '</span><span class="competence-bubble-lessons"><a title="Detail bodu" href="enableJS.html" data-id="' +
+      competenceId +
+      '">Detail bodu</a></span></span>';
+  });
+  html += filterXSS(converter!.makeHtml(markdown), xssOptions());
   document.getElementById("content")!.innerHTML = html;
   let nodes = document
     .getElementById("content")!
@@ -55,16 +55,16 @@ function renderLessonView(
   if (!second) {
     if (!noHistory) {
       history.pushState(
-        { id: id },
+        { id: lessonId },
         "title",
-        "/lesson/" + id + "/" + urlEscape(lesson.name),
+        "/lesson/" + lessonId + "/" + urlEscape(lesson.name),
       );
     }
   }
   if ("serviceWorker" in navigator) {
     void caches.open(CONFIG.cache).then((cache): void => {
       void cache
-        .match(CONFIG["api-uri"] + "/v1.0/lesson/" + id)
+        .match(CONFIG["api-uri"] + "/v1.0/lesson/" + lessonId)
         .then((response): void => {
           if (response === undefined) {
             (

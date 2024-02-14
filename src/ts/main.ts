@@ -1,9 +1,11 @@
 /* exported COMPETENCES, FIELDS, LESSONS, LOGINSTATE */
 
+/* eslint-disable @typescript-eslint/init-declarations -- Probably should be fixed when moving to modules */
 let COMPETENCES: IDList<Competence>;
 let FIELDS: IDList<Field>;
 let LESSONS: IDList<Lesson>;
 let LOGINSTATE: Loginstate | null;
+/* eslint-enable */
 
 function main(): void {
   navigationSetup();
@@ -12,7 +14,7 @@ function main(): void {
   authenticationSetup();
   metadataSetup();
   lessonViewSetup();
-  TOCSetup();
+  setupTOC();
   if ("serviceWorker" in navigator) {
     void navigator.serviceWorker.register(
       CONFIG["frontend-uri"] +
