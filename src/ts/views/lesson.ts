@@ -1,7 +1,7 @@
 /* global activeCompetence:true, navigationOpen:true */
 /* exported activeCompetence, lessonViewSetup, navigationOpen, showLessonView */
 
-let converter: showdown.Converter;
+let converter: showdown.Converter | null = null;
 let activeCompetence: HTMLElement | null = null;
 
 function lessonViewSetup(): void {
@@ -34,7 +34,7 @@ function renderLessonView(
       competenceId +
       '">Detail bodu</a></span></span>';
   });
-  html += filterXSS(converter.makeHtml(markdown), xssOptions());
+  html += filterXSS(converter!.makeHtml(markdown), xssOptions());
   document.getElementById("content")!.innerHTML = html;
   let nodes = document
     .getElementById("content")!
