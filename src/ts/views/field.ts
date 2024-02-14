@@ -1,6 +1,22 @@
 /* global navigationOpen:true */
 /* exported navigationOpen, showFieldView */
 
+function renderFieldLessonCompetences(lesson: Lesson): string {
+  let first = true;
+  let html = "";
+  COMPETENCES.filter((id) => lesson.competences.indexOf(id) >= 0).iterate(
+    (_, competence) => {
+      if (first) {
+        html += '<span class="main-page">Body: ' + competence.number.toString();
+        first = false;
+      } else {
+        html += ", " + competence.number.toString();
+      }
+    },
+  );
+  return html;
+}
+
 function renderFieldLessonList(field: Field): string {
   let html = "";
   for (const fieldLesson of field.lessons) {
@@ -13,18 +29,7 @@ function renderFieldLessonList(field: Field): string {
       '">' +
       lesson.name +
       "</a></h3>";
-    let first = true;
-    COMPETENCES.filter((id) => lesson.competences.indexOf(id) >= 0).iterate(
-      (_, competence) => {
-        if (first) {
-          html +=
-            '<span class="main-page">Body: ' + competence.number.toString();
-          first = false;
-        } else {
-          html += ", " + competence.number.toString();
-        }
-      },
-    );
+    html += renderFieldLessonCompetences(lesson);
     html += "</span>";
   }
   return html;
