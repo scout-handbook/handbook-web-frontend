@@ -1,11 +1,11 @@
-/* exported TOCSetup */
+/* exported setupTOC */
 
-function TOCFieldOnClick(event: MouseEvent): boolean {
+function fieldOnClick(event: MouseEvent): boolean {
   showFieldView((event.target as HTMLElement).dataset.id!, false);
   return false;
 }
 
-function TOCLessonOnClick(event: MouseEvent): boolean {
+function lessonOnClick(event: MouseEvent): boolean {
   showLessonView((event.target as HTMLElement).dataset.id!, false);
   return false;
 }
@@ -59,15 +59,15 @@ function renderTOC(): void {
   // eslint-disable-next-line @typescript-eslint/prefer-for-of
   for (let i = 0; i < nodes.length; i++) {
     if (nodes[i].parentElement!.tagName === "H1") {
-      nodes[i].onclick = TOCFieldOnClick;
+      nodes[i].onclick = fieldOnClick;
     } else {
-      nodes[i].onclick = TOCLessonOnClick;
+      nodes[i].onclick = lessonOnClick;
     }
   }
   document.getElementsByTagName("nav")[0].style.transition =
     "margin-left 0.3s ease";
 }
 
-function TOCSetup(): void {
+function setupTOC(): void {
   metadataEvent.addCallback(renderTOC);
 }
