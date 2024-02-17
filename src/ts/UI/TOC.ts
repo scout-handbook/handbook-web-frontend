@@ -19,7 +19,7 @@ function renderTOC(): void {
         inField = true;
       }
     });
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- TypeScript doesn't infer the changing value in a loop
     if (!inField) {
       html +=
         '<a title="' +
@@ -56,7 +56,7 @@ function renderTOC(): void {
   const nodes = document
     .getElementById("navigation")!
     .getElementsByTagName("a");
-  // eslint-disable-next-line @typescript-eslint/prefer-for-of
+  // eslint-disable-next-line @typescript-eslint/prefer-for-of -- HTMLCollectionOf is not iterable in old browsers
   for (let i = 0; i < nodes.length; i++) {
     if (nodes[i].parentElement!.tagName === "H1") {
       nodes[i].onclick = fieldOnClick;

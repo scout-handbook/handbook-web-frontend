@@ -39,14 +39,14 @@ function renderLessonView(
   let nodes = document
     .getElementById("content")!
     .getElementsByClassName("competence-bubble");
-  // eslint-disable-next-line @typescript-eslint/prefer-for-of
+  // eslint-disable-next-line @typescript-eslint/prefer-for-of -- HTMLCollectionOf is not iterable in old browsers
   for (let i = 0; i < nodes.length; i++) {
     (nodes[i] as HTMLElement).onclick = toggleCompetenceBubble;
   }
   nodes = document
     .getElementById("content")!
     .getElementsByClassName("competence-bubble-lessons");
-  // eslint-disable-next-line @typescript-eslint/prefer-for-of
+  // eslint-disable-next-line @typescript-eslint/prefer-for-of -- HTMLCollectionOf is not iterable in old browsers
   for (let i = 0; i < nodes.length; i++) {
     (nodes[i].firstChild as HTMLElement).onclick =
       competenceBubbleDetailOnClick;

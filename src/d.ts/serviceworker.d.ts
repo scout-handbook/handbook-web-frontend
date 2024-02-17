@@ -1,5 +1,5 @@
 interface ExtendableEvent extends Event {
-  // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
+  // eslint-disable-next-line @typescript-eslint/no-invalid-void-type -- Polyfill
   waitUntil(fn: Promise<Response | void>): void;
 }
 
