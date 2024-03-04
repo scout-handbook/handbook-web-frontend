@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "showdown": "^2.1.0",
-    "xss": "^1.0.9"
+    "xss": "^1.0.15"
   },
   "devDependencies": {
     "@csstools/postcss-global-data": "^2.1.1",
