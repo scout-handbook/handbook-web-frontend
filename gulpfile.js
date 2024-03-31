@@ -1,33 +1,33 @@
 /* eslint-env node */
 
-const yargs = require("yargs");
-const fs = require("fs");
-
-const gulp = require("gulp");
-const uglify = require("uglify-js");
-const composer = require("gulp-uglify/composer");
-const merge = require("merge-stream");
-const sourcemaps = require("gulp-sourcemaps");
-const concat = require("gulp-concat");
-const cleanCSS = require("gulp-clean-css");
-const postcss = require("gulp-postcss");
-const postcssCalc = require("postcss-calc");
-const postcssCustomProperties = require("postcss-custom-properties");
-const postcssGlobalData = require("@csstools/postcss-global-data");
-const autoprefixer = require("autoprefixer");
-const inject = require("gulp-inject-string");
-const htmlmin = require("gulp-htmlmin");
-const ts = require("gulp-typescript");
-
-const pkg = require("./package.json");
+import postcssGlobalData from "@csstools/postcss-global-data";
+import autoprefixer from "autoprefixer";
+import fs from "fs";
+import gulp from "gulp";
+import cleanCSS from "gulp-clean-css";
+import concat from "gulp-concat";
+import htmlmin from "gulp-htmlmin";
+import inject from "gulp-inject-string";
+import postcss from "gulp-postcss";
+import sourcemaps from "gulp-sourcemaps";
+import ts from "gulp-typescript";
+import composer from "gulp-uglify/composer.js";
+import merge from "merge-stream";
+import postcssCalc from "postcss-calc";
+import postcssCustomProperties from "postcss-custom-properties";
+import uglify from "uglify-js";
+import yargs from "yargs";
+import { hideBin } from "yargs/helpers";
 
 const minify = composer(uglify, console);
 
 function getConfig() {
-  const location = yargs.string("config").argv.config;
+  const location = yargs(hideBin(process.argv)).string("config").argv.config;
+
   if (location === undefined) {
     throw new Error("No config specified");
   }
+  const pkg = JSON.parse(fs.readFileSync("./package.json", "utf8"));
   return {
     ...JSON.parse(fs.readFileSync(location, "utf8")),
     cache: "handbook-" + pkg.version,
@@ -36,7 +36,7 @@ function getConfig() {
 
 function getThemeFiles() {
   const themeFiles = ["src/css/default-theme.css"];
-  const argTheme = yargs.string("theme").argv.theme;
+  const argTheme = yargs(hideBin(process.argv)).string("theme").argv.theme;
   if (argTheme !== undefined) {
     themeFiles.push(argTheme);
   }
@@ -157,6 +157,7 @@ gulp.task("build:icon", () =>
 gulp.task("build:js", () => {
   function bundle(name, addConfig = false) {
     const tsProject = ts.createProject("tsconfig/" + name + ".json");
+    const pkg = JSON.parse(fs.readFileSync("./package.json", "utf8"));
     let ret = tsProject
       .src()
       .pipe(
