@@ -1,5 +1,7 @@
 /* eslint-env node */
 
+import { Transform } from "node:stream";
+
 import postcssGlobalData from "@csstools/postcss-global-data";
 import autoprefixer from "autoprefixer";
 import fs from "fs";
@@ -12,7 +14,7 @@ import postcss from "gulp-postcss";
 import sourcemaps from "gulp-sourcemaps";
 import ts from "gulp-typescript";
 import composer from "gulp-uglify/composer.js";
-import merge from "merge-stream";
+import ordered from "ordered-read-streams";
 import postcssCalc from "postcss-calc";
 import postcssCustomProperties from "postcss-custom-properties";
 import uglify from "uglify-js";
@@ -69,7 +71,7 @@ gulp.task("build:css", () => {
       .pipe(sourcemaps.write("./"))
       .pipe(gulp.dest("dist/"));
   }
-  return merge(
+  return ordered([
     bundle("frontend-computer", ["src/css/computer.css"]),
     bundle("frontend-handheld", ["src/css/handheld.css"]),
     bundle("frontend", [
@@ -83,7 +85,7 @@ gulp.task("build:css", () => {
       "src/css/topUI.css",
     ]),
     bundle("error", ["src/css/error.css"]),
-  );
+  ]);
 });
 
 gulp.task("build:deps", () =>
@@ -132,7 +134,7 @@ gulp.task("build:html", () =>
 );
 
 gulp.task("build:icon", () =>
-  merge(
+  ordered([
     gulp.src([
       "src/icon/android-chrome-192x192.png",
       "src/icon/android-chrome-512x512.png",
@@ -143,15 +145,21 @@ gulp.task("build:icon", () =>
       "src/icon/mstile-150x150.png",
       "src/icon/safari-pinned-tab.svg",
     ]),
-    gulp
-      .src(["src/icon/browserconfig.xml"])
-      .pipe(
-        inject.replace(
-          "<!--FRONTEND-RESOURCES-PATH-->",
-          getConfig()["frontend-resources-path"],
-        ),
-      ),
-  ).pipe(gulp.dest("dist/")),
+    gulp.src(["src/icon/browserconfig.xml"]).pipe(
+      new Transform({
+        objectMode: true,
+        transform: (chunk, encoding, callback) => {
+          let contents = String(chunk.contents);
+          contents = contents.replace(
+            "<!--FRONTEND-RESOURCES-PATH-->",
+            getConfig()["frontend-resources-path"],
+          );
+          chunk.contents = Buffer.from(contents, encoding);
+          callback(null, chunk);
+        },
+      }),
+    ),
+  ]).pipe(gulp.dest("dist/")),
 );
 
 gulp.task("build:js", () => {
@@ -183,7 +191,7 @@ gulp.task("build:js", () => {
       .pipe(sourcemaps.write("./"))
       .pipe(gulp.dest("dist/"));
   }
-  return merge(bundle("frontend", true), bundle("serviceworker"));
+  return ordered([bundle("frontend", true), bundle("serviceworker")]);
 });
 
 gulp.task("build:json", () =>
