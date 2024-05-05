@@ -1,5 +1,7 @@
 /* eslint-env node */
 
+import { Transform } from "node:stream";
+
 import postcssGlobalData from "@csstools/postcss-global-data";
 import autoprefixer from "autoprefixer";
 import fs from "fs";
@@ -143,14 +145,20 @@ gulp.task("build:icon", () =>
       "src/icon/mstile-150x150.png",
       "src/icon/safari-pinned-tab.svg",
     ]),
-    gulp
-      .src(["src/icon/browserconfig.xml"])
-      .pipe(
-        inject.replace(
-          "<!--FRONTEND-RESOURCES-PATH-->",
-          getConfig()["frontend-resources-path"],
-        ),
-      ),
+    gulp.src(["src/icon/browserconfig.xml"]).pipe(
+      new Transform({
+        objectMode: true,
+        transform: (chunk, encoding, callback) => {
+          let contents = String(chunk.contents);
+          contents = contents.replace(
+            "<!--FRONTEND-RESOURCES-PATH-->",
+            getConfig()["frontend-resources-path"],
+          );
+          chunk.contents = Buffer.from(contents, encoding);
+          callback(null, chunk);
+        },
+      }),
+    ),
   ]).pipe(gulp.dest("dist/")),
 );
 
