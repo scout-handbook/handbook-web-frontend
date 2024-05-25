@@ -6,6 +6,10 @@ $competenceList = json_decode(file_get_contents($CONFIG->{'api-uri'} . '/v1.0/co
 $fieldList = json_decode(file_get_contents($CONFIG->{'api-uri'} . '/v1.0/field'), true)['response'];
 $lessonList = json_decode(file_get_contents($CONFIG->{'api-uri'} . '/v1.0/lesson'), true)['response'];
 
+$fieldList = array_filter($fieldList, static function($field) {
+	return count($field['lessons']) > 0;
+});
+
 header('content-type:text/plain; charset=utf-8');
 
 function urlEscape(string $str) : string
