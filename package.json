@@ -65,7 +65,7 @@
     "postcss-custom-properties": "^13.3.10",
     "prettier": "^3.2.5",
     "rimraf": "^5.0.7",
-    "stylelint": "^16.6.0",
+    "stylelint": "^16.6.1",
     "stylelint-config-standard": "^36.0.0",
     "stylelint-no-unsupported-browser-features": "^8.0.1",
     "stylelint-prettier": "^5.0.0",
