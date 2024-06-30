@@ -100,13 +100,16 @@ gulp.task("build:deps", () =>
 
 gulp.task("build:font", () =>
   gulp
-    .src([
-      "src/font/fontello.eot",
-      "src/font/fontello.svg",
-      "src/font/fontello.ttf",
-      "src/font/fontello.woff",
-      "src/font/fontello.woff2",
-    ])
+    .src(
+      [
+        "src/font/fontello.eot",
+        "src/font/fontello.svg",
+        "src/font/fontello.ttf",
+        "src/font/fontello.woff",
+        "src/font/fontello.woff2",
+      ],
+      { encoding: false },
+    )
     .pipe(gulp.dest("dist/font/")),
 );
 
@@ -135,16 +138,19 @@ gulp.task("build:html", () =>
 
 gulp.task("build:icon", () =>
   ordered([
-    gulp.src([
-      "src/icon/android-chrome-192x192.png",
-      "src/icon/android-chrome-512x512.png",
-      "src/icon/apple-touch-icon.png",
-      "src/icon/favicon-16x16.png",
-      "src/icon/favicon-32x32.png",
-      "src/icon/favicon.ico",
-      "src/icon/mstile-150x150.png",
-      "src/icon/safari-pinned-tab.svg",
-    ]),
+    gulp.src(
+      [
+        "src/icon/android-chrome-192x192.png",
+        "src/icon/android-chrome-512x512.png",
+        "src/icon/apple-touch-icon.png",
+        "src/icon/favicon-16x16.png",
+        "src/icon/favicon-32x32.png",
+        "src/icon/favicon.ico",
+        "src/icon/mstile-150x150.png",
+        "src/icon/safari-pinned-tab.svg",
+      ],
+      { encoding: false },
+    ),
     gulp.src(["src/icon/browserconfig.xml"]).pipe(
       new Transform({
         objectMode: true,
@@ -212,7 +218,9 @@ gulp.task("build:php", () =>
 );
 
 gulp.task("build:png", () =>
-  gulp.src(["src/png/avatar.png"]).pipe(gulp.dest("dist/")),
+  gulp
+    .src(["src/png/avatar.png"], { encoding: false })
+    .pipe(gulp.dest("dist/")),
 );
 
 gulp.task("build:txt", () =>
