@@ -1,4 +1,3 @@
-/* eslint-env serviceworker */
 /* eslint-disable compat/compat -- Service worker isn't used in older browsers */
 
 const CACHE = "handbook-" + ""; /*INJECTED-VERSION*/

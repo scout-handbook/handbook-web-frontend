@@ -1,5 +1,3 @@
-/* eslint-env node */
-
 import { Transform } from "node:stream";
 
 import postcssGlobalData from "@csstools/postcss-global-data";
