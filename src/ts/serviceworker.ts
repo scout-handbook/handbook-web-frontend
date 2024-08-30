@@ -60,11 +60,10 @@ async function cacheUpdatingResponse(request: Request): Promise<Response> {
         );
       });
     });
-  } else {
-    return fetch(request).then(
-      async (response): Promise<Response> => cacheClone(request, response),
-    );
   }
+  return fetch(request).then(
+    async (response): Promise<Response> => cacheClone(request, response),
+  );
 }
 
 async function cacheOnDemandResponse(request: Request): Promise<Response> {
@@ -75,23 +74,22 @@ async function cacheOnDemandResponse(request: Request): Promise<Response> {
         async (cache): Promise<Response> =>
           cache.match(request) as Promise<Response>,
       );
-  } else {
-    return fetch(request).then(
-      async (response): Promise<Response> =>
-        caches
-          .open(CACHE)
-          .then(
-            async (cache): Promise<Response> =>
-              cache
-                .match(request)
-                .then((cachedResponse): Promise<Response> | Response =>
-                  cachedResponse === undefined
-                    ? response
-                    : cacheClone(request, response),
-                ),
-          ),
-    );
   }
+  return fetch(request).then(
+    async (response): Promise<Response> =>
+      caches
+        .open(CACHE)
+        .then(
+          async (cache): Promise<Response> =>
+            cache
+              .match(request)
+              .then((cachedResponse): Promise<Response> | Response =>
+                cachedResponse === undefined
+                  ? response
+                  : cacheClone(request, response),
+              ),
+        ),
+  );
 }
 
 async function genericResponse(request: Request): Promise<Response> {
