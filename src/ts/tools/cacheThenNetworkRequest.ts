@@ -5,7 +5,6 @@ function cacheThenNetworkRequest(
   query: string,
   callback: (response: RequestResponse, cacheDataReceived: boolean) => void,
 ): void {
-  query = typeof query !== "undefined" ? query : "";
   let networkDataReceived = false;
   let cacheDataReceived = false;
   request(url, query, {}).addCallback((response): void => {
