@@ -1,6 +1,6 @@
 /* eslint-disable compat/compat -- Service worker isn't used in older browsers */
 
-const CACHE = "handbook-" + ""; /*INJECTED-VERSION*/
+const CACHE = "handbook-INJECTED-VERSION";
 const APIPATH = "/API/v1.0";
 const cacheBlocking = [
   "/",
