@@ -51,7 +51,7 @@ function renderFieldView(id: string, noHistory: boolean): void {
   document.getElementsByTagName("main")[0].scrollTop = 0;
   if (!noHistory) {
     history.pushState(
-      { id: id },
+      { id },
       "title",
       "/field/" + id + "/" + urlEscape(field.name),
     );
