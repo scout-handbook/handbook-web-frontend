@@ -2,10 +2,10 @@
 
 /* eslint-disable @typescript-eslint/naming-convention -- External config format */
 interface Config {
-  cache: string;
   "api-uri": string;
-  "site-name": string;
-  "frontend-uri": string;
+  cache: string;
   "frontend-resources-path": string;
+  "frontend-uri": string;
+  "site-name": string;
 }
 /* eslint-enable */
