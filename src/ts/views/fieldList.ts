@@ -1,5 +1,4 @@
-/* global navigationOpen:true */
-/* exported navigationOpen showFieldListView */
+/* exported navigationOpen, showFieldListView */
 
 function renderFieldList(): string {
   let html =
