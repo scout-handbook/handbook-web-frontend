@@ -172,12 +172,7 @@ gulp.task("build:js", () => {
     const pkg = JSON.parse(fs.readFileSync("./package.json", "utf8"));
     let ret = tsProject
       .src()
-      .pipe(
-        inject.replace(
-          '\\"\\"\\/\\*INJECTED\\-VERSION\\*\\/',
-          '"' + pkg.version + '"',
-        ),
-      )
+      .pipe(inject.replace("INJECTED\\-VERSION", pkg.version))
       .pipe(sourcemaps.init())
       .pipe(tsProject())
       .pipe(concat(name + ".min.js"));
