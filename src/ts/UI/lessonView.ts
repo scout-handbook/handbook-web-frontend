@@ -9,12 +9,12 @@ function toggleLessonOffline(): void {
     void caches.open(CONFIG.cache).then((cache): void => {
       if (checked) {
         void cache.add(
-          new Request(CONFIG["api-uri"] + "/v1.0/lesson/" + id, {
+          new Request(`${CONFIG["api-uri"]}/v1.0/lesson/${id}`, {
             credentials: "same-origin",
           }),
         );
       } else {
-        void cache.delete(CONFIG["api-uri"] + "/v1.0/lesson/" + id);
+        void cache.delete(`${CONFIG["api-uri"]}/v1.0/lesson/${id}`);
       }
     });
   }
@@ -28,24 +28,20 @@ function reflowCompetenceBubbles(): void {
     window.getComputedStyle(activeCompetence).getPropertyValue("font-size"),
   );
   const parent = activeCompetence.parentElement!;
-  activeCompetence.style.width =
-    Math.min(400, parent.clientWidth).toString() + "px";
-  activeCompetence.style.height =
-    (
-      (activeCompetence.childNodes[1] as HTMLElement).offsetHeight +
-      1.4 * fontSize -
-      6
-    ).toString() + "px";
-  (activeCompetence.childNodes[1] as HTMLElement).style.width =
-    Math.min(
-      403 - 1.3 * fontSize,
-      activeCompetence.parentElement!.clientWidth - 1.3 * fontSize + 3,
-    ).toString() + "px";
-  (activeCompetence.childNodes[2] as HTMLElement).style.width =
-    Math.min(
-      403 - 1.3 * fontSize,
-      parent.clientWidth - 1.3 * fontSize + 3,
-    ).toString() + "px";
+  activeCompetence.style.width = `${Math.min(400, parent.clientWidth).toString()}px`;
+  activeCompetence.style.height = `${(
+    (activeCompetence.childNodes[1] as HTMLElement).offsetHeight +
+    1.4 * fontSize -
+    6
+  ).toString()}px`;
+  (activeCompetence.childNodes[1] as HTMLElement).style.width = `${Math.min(
+    403 - 1.3 * fontSize,
+    activeCompetence.parentElement!.clientWidth - 1.3 * fontSize + 3,
+  ).toString()}px`;
+  (activeCompetence.childNodes[2] as HTMLElement).style.width = `${Math.min(
+    403 - 1.3 * fontSize,
+    parent.clientWidth - 1.3 * fontSize + 3,
+  ).toString()}px`;
 }
 
 function toggleCompetenceBubble(event: MouseEvent): void {

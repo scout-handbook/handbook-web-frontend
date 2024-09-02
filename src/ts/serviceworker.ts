@@ -17,9 +17,9 @@ const cacheNonBlocking = [
 ];
 
 const cacheUpdating = [
-  APIPATH + "/field",
-  APIPATH + "/lesson",
-  APIPATH + "/competence",
+  `${APIPATH}/field`,
+  `${APIPATH}/lesson`,
+  `${APIPATH}/competence`,
 ];
 
 function startsWith(haystack: string, needle: string): boolean {
@@ -112,7 +112,7 @@ self.addEventListener("fetch", (event: Event): void => {
     void (event as FetchEvent).respondWith(
       cacheUpdatingResponse((event as FetchEvent).request),
     );
-  } else if (startsWith(url.pathname, APIPATH + "/lesson")) {
+  } else if (startsWith(url.pathname, `${APIPATH}/lesson`)) {
     void (event as FetchEvent).respondWith(
       cacheOnDemandResponse((event as FetchEvent).request),
     );

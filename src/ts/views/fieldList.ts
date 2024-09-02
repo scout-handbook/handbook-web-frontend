@@ -4,9 +4,8 @@ function renderFieldList(): string {
   let html =
     '<div class="field-list-container"><div id="field-list-col1" class="field-list-col">';
   FIELDS.iterate((id, field) => {
-    html += '<div class="field-card" data-id="' + id + '">';
-    html +=
-      '<img src="' + CONFIG["api-uri"] + "/v1.0/image/" + field.image + '">';
+    html += `<div class="field-card" data-id="${id}">`;
+    html += `<img src="${CONFIG["api-uri"]}/v1.0/image/${field.image}">`;
     html += '<h2 class="field-card-heading">';
     html += field.name;
     html += '</h2><div class="field-card-lesson-count">';
@@ -32,7 +31,7 @@ function fieldListOnClick(event: MouseEvent): boolean {
 }
 
 function renderFieldListView(noHistory: boolean): void {
-  let html = "<h1>" + CONFIG["site-name"] + "</h1>";
+  let html = `<h1>${CONFIG["site-name"]}</h1>`;
   html += renderFieldList();
   document.getElementById("content")!.innerHTML = html;
   const nodes = document
