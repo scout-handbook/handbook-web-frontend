@@ -7,6 +7,7 @@ function request(
 ): AfterLoadEvent {
   const ret = new AfterLoadEvent(1);
   const xhttp = new XMLHttpRequest();
+  let fullUrl = url;
   xhttp.onreadystatechange = function (): void {
     if (this.readyState === 4) {
       const body = JSON.parse(this.responseText) as APIResponse;
@@ -18,9 +19,9 @@ function request(
     }
   };
   if (query !== "") {
-    url += "?" + query;
+    fullUrl += `?${query}`;
   }
-  xhttp.open("GET", url, true);
+  xhttp.open("GET", fullUrl, true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   for (const key in headers) {
     if (Object.prototype.hasOwnProperty.call(headers, key)) {

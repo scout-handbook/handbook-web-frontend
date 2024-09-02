@@ -12,20 +12,12 @@ class IDList<T> {
     }
   }
 
-  public iterate(iterator: (key: string, value: T) => void): void {
-    for (const item of this.list) {
-      iterator(item.k, item.v);
-    }
-  }
-
-  public map(transform: (value: T) => T): void {
-    for (const item of this.list) {
-      item.v = transform(item.v);
-    }
-  }
-
-  public sort(comparator: (first: T, second: T) => number): void {
-    this.list.sort((first, second): number => comparator(first.v, second.v));
+  public empty(): boolean {
+    let ret = true;
+    this.iterate(() => {
+      ret = false;
+    });
+    return ret;
   }
 
   public filter(filter: (key: string, value: T) => boolean): IDList<T> {
@@ -34,14 +26,6 @@ class IDList<T> {
       if (filter(key, value)) {
         ret.push(key, value);
       }
-    });
-    return ret;
-  }
-
-  public empty(): boolean {
-    let ret = true;
-    this.iterate(() => {
-      ret = false;
     });
     return ret;
   }
@@ -55,7 +39,23 @@ class IDList<T> {
     return undefined;
   }
 
+  public iterate(iterator: (key: string, value: T) => void): void {
+    for (const item of this.list) {
+      iterator(item.k, item.v);
+    }
+  }
+
+  public map(transform: (value: T) => T): void {
+    for (const item of this.list) {
+      item.v = transform(item.v);
+    }
+  }
+
   public push(key: string, value: T): void {
     this.list.push({ k: key, v: value });
+  }
+
+  public sort(comparator: (first: T, second: T) => number): void {
+    this.list.sort((first, second): number => comparator(first.v, second.v));
   }
 }

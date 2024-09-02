@@ -1,7 +1,6 @@
-/* eslint-env serviceworker */
 /* eslint-disable compat/compat -- Service worker isn't used in older browsers */
 
-const CACHE = "handbook-" + ""; /*INJECTED-VERSION*/
+const CACHE = "handbook-INJECTED-VERSION";
 const APIPATH = "/API/v1.0";
 const cacheBlocking = [
   "/",
@@ -18,9 +17,9 @@ const cacheNonBlocking = [
 ];
 
 const cacheUpdating = [
-  APIPATH + "/field",
-  APIPATH + "/lesson",
-  APIPATH + "/competence",
+  `${APIPATH}/field`,
+  `${APIPATH}/lesson`,
+  `${APIPATH}/competence`,
 ];
 
 function startsWith(haystack: string, needle: string): boolean {
@@ -61,11 +60,10 @@ async function cacheUpdatingResponse(request: Request): Promise<Response> {
         );
       });
     });
-  } else {
-    return fetch(request).then(
-      async (response): Promise<Response> => cacheClone(request, response),
-    );
   }
+  return fetch(request).then(
+    async (response): Promise<Response> => cacheClone(request, response),
+  );
 }
 
 async function cacheOnDemandResponse(request: Request): Promise<Response> {
@@ -76,23 +74,22 @@ async function cacheOnDemandResponse(request: Request): Promise<Response> {
         async (cache): Promise<Response> =>
           cache.match(request) as Promise<Response>,
       );
-  } else {
-    return fetch(request).then(
-      async (response): Promise<Response> =>
-        caches
-          .open(CACHE)
-          .then(
-            async (cache): Promise<Response> =>
-              cache
-                .match(request)
-                .then((cachedResponse): Promise<Response> | Response =>
-                  cachedResponse === undefined
-                    ? response
-                    : cacheClone(request, response),
-                ),
-          ),
-    );
   }
+  return fetch(request).then(
+    async (response): Promise<Response> =>
+      caches
+        .open(CACHE)
+        .then(
+          async (cache): Promise<Response> =>
+            cache
+              .match(request)
+              .then((cachedResponse): Promise<Response> | Response =>
+                cachedResponse === undefined
+                  ? response
+                  : cacheClone(request, response),
+              ),
+        ),
+  );
 }
 
 async function genericResponse(request: Request): Promise<Response> {
@@ -115,7 +112,7 @@ self.addEventListener("fetch", (event: Event): void => {
     void (event as FetchEvent).respondWith(
       cacheUpdatingResponse((event as FetchEvent).request),
     );
-  } else if (startsWith(url.pathname, APIPATH + "/lesson")) {
+  } else if (startsWith(url.pathname, `${APIPATH}/lesson`)) {
     void (event as FetchEvent).respondWith(
       cacheOnDemandResponse((event as FetchEvent).request),
     );
