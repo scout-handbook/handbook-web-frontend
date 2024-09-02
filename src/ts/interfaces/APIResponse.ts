@@ -1,9 +1,9 @@
 /* exported APIResponse */
 
 interface APIResponse {
-  status: number;
-  response?: RequestResponse;
-  type?: string;
-  message?: string;
   holder?: string;
+  message?: string;
+  response?: RequestResponse;
+  status: number;
+  type?: string;
 }

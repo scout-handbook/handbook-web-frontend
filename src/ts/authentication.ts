@@ -1,7 +1,7 @@
 /* exported authenticationSetup, refreshLogin */
 
 function logoutRedirect(): boolean {
-  window.location.href = CONFIG["api-uri"] + "/v1.0/logout";
+  window.location.href = `${CONFIG["api-uri"]}/v1.0/logout`;
   return false;
 }
 
@@ -22,21 +22,18 @@ function renderUserAccount(): void {
     logoutRedirect;
   if (Object.prototype.hasOwnProperty.call(LOGINSTATE, "avatar")) {
     (document.getElementById("user-avatar") as HTMLImageElement).src =
-      "data:image/png;base64," + LOGINSTATE!.avatar;
+      `data:image/png;base64,${LOGINSTATE!.avatar}`;
   } else {
-    (document.getElementById("user-avatar") as HTMLImageElement).src =
-      CONFIG["frontend-uri"] +
-      "/" +
-      CONFIG["frontend-resources-path"] +
-      "/avatar.png";
+    (document.getElementById("user-avatar") as HTMLImageElement).src = `${
+      CONFIG["frontend-uri"]
+    }/${CONFIG["frontend-resources-path"]}/avatar.png`;
   }
 }
 
 function loginRedirect(): boolean {
-  window.location.href =
-    CONFIG["api-uri"] +
-    "/v1.0/login?return-uri=" +
-    encodeURIComponent(window.location.href);
+  window.location.href = `${
+    CONFIG["api-uri"]
+  }/v1.0/login?return-uri=${encodeURIComponent(window.location.href)}`;
   return false;
 }
 
@@ -46,11 +43,9 @@ function renderLoginForm(): void {
     '<a href="enableJS.html">Přihlásit</a>';
   (document.getElementById("log-link")!.firstChild as HTMLElement).onclick =
     loginRedirect;
-  (document.getElementById("user-avatar") as HTMLImageElement).src =
-    CONFIG["frontend-uri"] +
-    "/" +
-    CONFIG["frontend-resources-path"] +
-    "/avatar.png";
+  (document.getElementById("user-avatar") as HTMLImageElement).src = `${
+    CONFIG["frontend-uri"]
+  }/${CONFIG["frontend-resources-path"]}/avatar.png`;
 }
 
 function showAccountInfo(): void {
@@ -69,12 +64,12 @@ function authenticationSetup(): void {
 
 function refreshLogin(): void {
   if (LOGINSTATE) {
-    const allCookies = "; " + document.cookie;
+    const allCookies = `; ${document.cookie}`;
     const parts = allCookies.split("; skautis_timeout=");
     if (parts.length === 2) {
-      const timeout = parseInt(parts.pop()!.split(";").shift()!);
+      const timeout = parseInt(parts.pop()!.split(";").shift()!, 10);
       if (timeout - Math.round(new Date().getTime() / 1000) < 1500) {
-        request(CONFIG["api-uri"] + "/v1.0/refresh", "", {});
+        request(`${CONFIG["api-uri"]}/v1.0/refresh`, "", {});
       }
     }
   }

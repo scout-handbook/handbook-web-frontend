@@ -57,14 +57,13 @@ function filterCommand(
   let ret = "";
   for (let i = 0; i < lines.length; i++) {
     if (
-      lines[i].trim().substring(0, commandName.length + 1) ===
-      "!" + commandName
+      lines[i].trim().substring(0, commandName.length + 1) === `!${commandName}`
     ) {
       const arr = getArgumentString(lines, i, commandName);
       i = arr[1];
-      ret += command(parseArgumentString(arr[0])) + "\n";
+      ret += `${command(parseArgumentString(arr[0]))}\n`;
     } else {
-      ret += lines[i] + "\n";
+      ret += `${lines[i]}\n`;
     }
   }
   return ret;
@@ -84,34 +83,34 @@ function pagebreakCommand(): string {
 // eslint-disable-next-line @typescript-eslint/naming-convention -- A plugin can be PascalCase
 const HandbookMarkdown = (): Array<showdown.ShowdownExtension> => {
   const responsiveTablesBegin = {
-    type: "output",
     regex: "<table>",
     replace: '<div class="table-container"><table>',
+    type: "output",
   };
   const responsiveTablesEnd = {
-    type: "output",
     regex: "</table>",
     replace: "</table></div>",
+    type: "output",
   };
   const fullLinks = {
-    type: "output",
     regex: '<a href="(?!http://|https://)',
     replace: '<a href="http://',
+    type: "output",
   };
   const blankLinks = {
-    type: "output",
     regex: "<a href",
     replace: '<a target="_blank" rel="noopener noreferrer" href',
+    type: "output",
   };
   const notes = {
-    type: "lang",
     filter: (text: string): string =>
       filterCommand(text, "linky", notesCommand),
+    type: "lang",
   };
   const pagebreak = {
-    type: "lang",
     filter: (text: string): string =>
       filterCommand(text, "novastrana", pagebreakCommand),
+    type: "lang",
   };
   return [
     responsiveTablesBegin,

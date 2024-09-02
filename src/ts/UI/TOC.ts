@@ -21,35 +21,20 @@ function renderTOC(): void {
     });
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- TypeScript doesn't infer the changing value in a loop
     if (!inField) {
-      html +=
-        '<a title="' +
-        lesson.name +
-        '" href="enableJS.html" data-id="' +
-        id +
-        '">' +
-        lesson.name +
-        "</a><br>";
+      html += `<a title="${lesson.name}" href="enableJS.html" data-id="${id}">${
+        lesson.name
+      }</a><br>`;
     }
   });
   FIELDS.iterate((id, field) => {
-    html +=
-      '<h1><a title="' +
-      field.name +
-      '" href="enableJS.html" data-id="' +
-      id +
-      '">' +
-      field.name +
-      "</a></h1>";
+    html += `<h1><a title="${field.name}" href="enableJS.html" data-id="${
+      id
+    }">${field.name}</a></h1>`;
     for (const fieldLesson of field.lessons) {
       const lesson = LESSONS.get(fieldLesson)!;
-      html +=
-        '<a class="second-level" title="' +
-        lesson.name +
-        '" href="enableJS.html" data-id="' +
-        fieldLesson +
-        '">' +
-        lesson.name +
-        "</a><br>";
+      html += `<a class="second-level" title="${
+        lesson.name
+      }" href="enableJS.html" data-id="${fieldLesson}">${lesson.name}</a><br>`;
     }
   });
   document.getElementById("navigation")!.innerHTML = html;
