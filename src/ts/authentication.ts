@@ -72,7 +72,7 @@ function refreshLogin(): void {
     const allCookies = "; " + document.cookie;
     const parts = allCookies.split("; skautis_timeout=");
     if (parts.length === 2) {
-      const timeout = parseInt(parts.pop()!.split(";").shift()!);
+      const timeout = parseInt(parts.pop()!.split(";").shift()!, 10);
       if (timeout - Math.round(new Date().getTime() / 1000) < 1500) {
         request(CONFIG["api-uri"] + "/v1.0/refresh", "", {});
       }
