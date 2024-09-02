@@ -19,7 +19,7 @@ function request(
     }
   };
   if (query !== "") {
-    fullUrl += "?" + query;
+    fullUrl += `?${query}`;
   }
   xhttp.open("GET", fullUrl, true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");

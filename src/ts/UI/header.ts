@@ -9,7 +9,7 @@ function fontResize(delta: number): void {
       .replace("px", ""),
     10,
   );
-  content.style.fontSize = (current + delta).toString() + "px";
+  content.style.fontSize = `${(current + delta).toString()}px`;
   content.style.lineHeight = "160%";
   reflowCompetenceBubbles();
 }

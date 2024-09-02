@@ -29,7 +29,7 @@ function getConfig() {
   const pkg = JSON.parse(fs.readFileSync("./package.json", "utf8"));
   return {
     ...JSON.parse(fs.readFileSync(location, "utf8")),
-    cache: "handbook-" + pkg.version,
+    cache: `handbook-${pkg.version}`,
   };
 }
 
@@ -47,7 +47,7 @@ gulp.task("build:css", () => {
     return gulp
       .src(sources)
       .pipe(sourcemaps.init())
-      .pipe(concat(name + ".min.css"))
+      .pipe(concat(`${name}.min.css`))
       .pipe(
         postcss([
           postcssGlobalData({ files: getThemeFiles() }),
@@ -167,20 +167,20 @@ gulp.task("build:icon", () =>
 
 gulp.task("build:js", () => {
   function bundle(name, addConfig = false) {
-    const tsProject = ts.createProject("tsconfig/" + name + ".json");
+    const tsProject = ts.createProject(`tsconfig/${name}.json`);
     const pkg = JSON.parse(fs.readFileSync("./package.json", "utf8"));
     let ret = tsProject
       .src()
       .pipe(inject.replace("INJECTED\\-VERSION", pkg.version))
       .pipe(sourcemaps.init())
       .pipe(tsProject())
-      .pipe(concat(name + ".min.js"));
+      .pipe(concat(`${name}.min.js`));
     if (addConfig) {
       ret = ret.pipe(
         inject.prepend(
-          '"use strict";\nvar CONFIG = JSON.parse(\'' +
-            JSON.stringify(getConfig()) +
-            "');\n",
+          `"use strict";\nvar CONFIG = JSON.parse('${JSON.stringify(
+            getConfig(),
+          )}');\n`,
         ),
       );
     }

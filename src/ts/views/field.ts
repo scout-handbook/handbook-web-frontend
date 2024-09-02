@@ -7,10 +7,10 @@ function renderFieldLessonCompetences(lesson: Lesson): string {
   COMPETENCES.filter((id) => lesson.competences.indexOf(id) >= 0).iterate(
     (_, competence) => {
       if (first) {
-        html += '<span class="main-page">Body: ' + competence.number.toString();
+        html += `<span class="main-page">Body: ${competence.number.toString()}`;
         first = false;
       } else {
-        html += ", " + competence.number.toString();
+        html += `, ${competence.number.toString()}`;
       }
     },
   );
@@ -21,14 +21,9 @@ function renderFieldLessonList(field: Field): string {
   let html = "";
   for (const fieldLesson of field.lessons) {
     const lesson = LESSONS.get(fieldLesson)!;
-    html +=
-      '<h3 class="main-page"><a title="' +
-      lesson.name +
-      '" href="enableJS.html" data-id="' +
-      fieldLesson +
-      '">' +
-      lesson.name +
-      "</a></h3>";
+    html += `<h3 class="main-page"><a title="${
+      lesson.name
+    }" href="enableJS.html" data-id="${fieldLesson}">${lesson.name}</a></h3>`;
     html += renderFieldLessonCompetences(lesson);
     html += "</span>";
   }
@@ -37,7 +32,7 @@ function renderFieldLessonList(field: Field): string {
 
 function renderFieldView(id: string, noHistory: boolean): void {
   const field = FIELDS.get(id)!;
-  let html = "<h1>" + field.name + "</h1>";
+  let html = `<h1>${field.name}</h1>`;
   html += field.description;
   html += renderFieldLessonList(field);
   document.getElementById("content")!.innerHTML = html;
@@ -50,11 +45,7 @@ function renderFieldView(id: string, noHistory: boolean): void {
 
   document.getElementsByTagName("main")[0].scrollTop = 0;
   if (!noHistory) {
-    history.pushState(
-      { id },
-      "title",
-      "/field/" + id + "/" + urlEscape(field.name),
-    );
+    history.pushState({ id }, "title", `/field/${id}/${urlEscape(field.name)}`);
   }
   document.getElementById("offline-switch")!.style.display = "none";
 }

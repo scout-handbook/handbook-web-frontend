@@ -4,19 +4,12 @@
 function renderCompetenceList(): string {
   let html = "";
   COMPETENCES.iterate((id, competence) => {
-    html +=
-      '<h3 class="main-page"><a title="' +
-      competence.number.toString() +
-      ": " +
-      competence.name +
-      '" href="enableJS.html" data-id="' +
-      id +
-      '">' +
-      competence.number.toString() +
-      ": " +
-      competence.name +
-      "</a></h3>";
-    html += '<span class="main-page">' + competence.description;
+    html += `<h3 class="main-page">
+  <a title="${competence.number.toString()}: ${competence.name}" href="enableJS.html" data-id="${id}">
+    ${competence.number.toString()}: ${competence.name}
+  </a>
+</h3>
+<span class="main-page">${competence.description}`;
   });
   return html;
 }

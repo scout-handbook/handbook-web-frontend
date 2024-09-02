@@ -17,10 +17,9 @@ function main(): void {
   setupTOC();
   if ("serviceWorker" in navigator) {
     void navigator.serviceWorker.register(
-      CONFIG["frontend-uri"] +
-        "/" +
-        CONFIG["frontend-resources-path"] +
-        "/serviceworker.min.js",
+      `${CONFIG["frontend-uri"]}/${
+        CONFIG["frontend-resources-path"]
+      }/serviceworker.min.js`,
     );
   }
   WebFont.load({

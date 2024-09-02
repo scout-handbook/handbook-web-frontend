@@ -66,7 +66,7 @@ function metadataSetup(): void {
     metadataEvent.trigger();
   });
   cacheThenNetworkRequest(
-    CONFIG["api-uri"] + "/v1.0/field",
+    `${CONFIG["api-uri"]}/v1.0/field`,
     "",
     (response, second): void => {
       FIELDS = new IDList<Field>(response as Record<string, Field>);
@@ -78,7 +78,7 @@ function metadataSetup(): void {
     },
   );
   cacheThenNetworkRequest(
-    CONFIG["api-uri"] + "/v1.0/lesson",
+    `${CONFIG["api-uri"]}/v1.0/lesson`,
     "",
     (response, second): void => {
       LESSONS = new IDList<Lesson>(response as Record<string, Lesson>);
@@ -90,7 +90,7 @@ function metadataSetup(): void {
     },
   );
   cacheThenNetworkRequest(
-    CONFIG["api-uri"] + "/v1.0/competence",
+    `${CONFIG["api-uri"]}/v1.0/competence`,
     "",
     (response, second): void => {
       COMPETENCES = new IDList<Competence>(
@@ -119,6 +119,6 @@ function metadataSetup(): void {
       }
     }
   };
-  xhttp.open("GET", CONFIG["api-uri"] + "/v1.0/account", true);
+  xhttp.open("GET", `${CONFIG["api-uri"]}/v1.0/account`, true);
   xhttp.send();
 }
