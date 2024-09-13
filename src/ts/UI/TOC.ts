@@ -1,12 +1,12 @@
 /* exported setupTOC */
 
 function fieldOnClick(event: MouseEvent): boolean {
-  showFieldView((event.target as HTMLElement).dataset.id!, false);
+  showFieldView((event.target as HTMLElement).dataset["id"]!, false);
   return false;
 }
 
 function lessonOnClick(event: MouseEvent): boolean {
-  showLessonView((event.target as HTMLElement).dataset.id!, false);
+  showLessonView((event.target as HTMLElement).dataset["id"]!, false);
   return false;
 }
 

@@ -26,7 +26,7 @@ function fieldListOnClick(event: MouseEvent): boolean {
   while (!Object.prototype.hasOwnProperty.call(el.dataset, "id")) {
     el = el.parentElement!;
   }
-  showFieldView(el.dataset.id!, false);
+  showFieldView(el.dataset["id"]!, false);
   return false;
 }
 
