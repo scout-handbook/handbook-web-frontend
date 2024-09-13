@@ -75,6 +75,6 @@ function toggleCompetenceBubble(event: MouseEvent): void {
 }
 
 function competenceBubbleDetailOnClick(event: MouseEvent): boolean {
-  showCompetenceView((event.target as HTMLElement).dataset.id!, false);
+  showCompetenceView((event.target as HTMLElement).dataset["id"]!, false);
   return false;
 }
