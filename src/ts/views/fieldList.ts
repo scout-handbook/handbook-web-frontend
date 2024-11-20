@@ -1,5 +1,14 @@
 /* exported navigationOpen, showFieldListView */
 
+function fieldListOnClick(event: MouseEvent): boolean {
+  let el = event.target as HTMLElement;
+  while (!Object.prototype.hasOwnProperty.call(el.dataset, "id")) {
+    el = el.parentElement!;
+  }
+  showFieldView(el.dataset["id"]!, false);
+  return false;
+}
+
 function renderFieldList(): string {
   let html =
     '<div class="field-list-container"><div id="field-list-col1" class="field-list-col">';
@@ -19,15 +28,6 @@ function renderFieldList(): string {
   });
   html += '</div><div id="field-list-col2" class="field-list-col"></div></div>';
   return html;
-}
-
-function fieldListOnClick(event: MouseEvent): boolean {
-  let el = event.target as HTMLElement;
-  while (!Object.prototype.hasOwnProperty.call(el.dataset, "id")) {
-    el = el.parentElement!;
-  }
-  showFieldView(el.dataset["id"]!, false);
-  return false;
 }
 
 function renderFieldListView(noHistory: boolean): void {

@@ -1,23 +1,9 @@
 /* global activeCompetence:true */
 /* exported toggleLessonOffline, toggleCompetenceBubble, competenceBubbleDetailOnClick */
 
-function toggleLessonOffline(): void {
-  const checked = (document.getElementById("cacheOffline") as HTMLInputElement)
-    .checked;
-  if (window.location.pathname.substring(0, 8) === "/lesson/") {
-    const id = window.location.pathname.substring(8).split("/")[0];
-    void caches.open(CONFIG.cache).then((cache): void => {
-      if (checked) {
-        void cache.add(
-          new Request(`${CONFIG["api-uri"]}/v1.0/lesson/${id}`, {
-            credentials: "same-origin",
-          }),
-        );
-      } else {
-        void cache.delete(`${CONFIG["api-uri"]}/v1.0/lesson/${id}`);
-      }
-    });
-  }
+function competenceBubbleDetailOnClick(event: MouseEvent): boolean {
+  showCompetenceView((event.target as HTMLElement).dataset["id"]!, false);
+  return false;
 }
 
 function reflowCompetenceBubbles(): void {
@@ -74,7 +60,21 @@ function toggleCompetenceBubble(event: MouseEvent): void {
   }
 }
 
-function competenceBubbleDetailOnClick(event: MouseEvent): boolean {
-  showCompetenceView((event.target as HTMLElement).dataset["id"]!, false);
-  return false;
+function toggleLessonOffline(): void {
+  const checked = (document.getElementById("cacheOffline") as HTMLInputElement)
+    .checked;
+  if (window.location.pathname.substring(0, 8) === "/lesson/") {
+    const id = window.location.pathname.substring(8).split("/")[0];
+    void caches.open(CONFIG.cache).then((cache): void => {
+      if (checked) {
+        void cache.add(
+          new Request(`${CONFIG["api-uri"]}/v1.0/lesson/${id}`, {
+            credentials: "same-origin",
+          }),
+        );
+      } else {
+        void cache.delete(`${CONFIG["api-uri"]}/v1.0/lesson/${id}`);
+      }
+    });
+  }
 }
