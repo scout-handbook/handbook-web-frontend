@@ -12,22 +12,6 @@ function competenceComparator(first: Competence, second: Competence): number {
     : first.number.localeCompare(second.number);
 }
 
-function lessonComparator(first: Lesson, second: Lesson): number {
-  if (first.competences.length === 0) {
-    if (second.competences.length === 0) {
-      return 0;
-    }
-    return 1;
-  }
-  if (second.competences.length === 0) {
-    return -1;
-  }
-  return competenceComparator(
-    COMPETENCES.get(first.competences[0])!,
-    COMPETENCES.get(second.competences[0])!,
-  );
-}
-
 function fieldComparator(first: Field, second: Field): number {
   if (first.lessons.length === 0) {
     if (second.lessons.length === 0) {
@@ -41,6 +25,22 @@ function fieldComparator(first: Field, second: Field): number {
   return lessonComparator(
     LESSONS.get(first.lessons[0])!,
     LESSONS.get(second.lessons[0])!,
+  );
+}
+
+function lessonComparator(first: Lesson, second: Lesson): number {
+  if (first.competences.length === 0) {
+    if (second.competences.length === 0) {
+      return 0;
+    }
+    return 1;
+  }
+  if (second.competences.length === 0) {
+    return -1;
+  }
+  return competenceComparator(
+    COMPETENCES.get(first.competences[0])!,
+    COMPETENCES.get(second.competences[0])!,
   );
 }
 
