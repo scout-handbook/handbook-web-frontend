@@ -46,26 +46,6 @@ async function cacheClone(
   });
 }
 
-async function cacheUpdatingResponse(request: Request): Promise<Response> {
-  if (request.headers.get("Accept") === "x-cache/only") {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-return -- Promise isn't defined in older targets, but is safe to use here since a Service worker won't get executed in old browsers
-    return new Promise((resolve: (response: Response) => void): void => {
-      void caches.match(request).then((response): void => {
-        resolve(
-          response ??
-            new Response(new Blob(['{"status": 404}']), {
-              status: 404,
-              statusText: "Not Found",
-            }),
-        );
-      });
-    });
-  }
-  return fetch(request).then(
-    async (response): Promise<Response> => cacheClone(request, response),
-  );
-}
-
 async function cacheOnDemandResponse(request: Request): Promise<Response> {
   if (request.headers.get("Accept") === "x-cache/only") {
     return caches
@@ -89,6 +69,26 @@ async function cacheOnDemandResponse(request: Request): Promise<Response> {
                   : cacheClone(request, response),
               ),
         ),
+  );
+}
+
+async function cacheUpdatingResponse(request: Request): Promise<Response> {
+  if (request.headers.get("Accept") === "x-cache/only") {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-return -- Promise isn't defined in older targets, but is safe to use here since a Service worker won't get executed in old browsers
+    return new Promise((resolve: (response: Response) => void): void => {
+      void caches.match(request).then((response): void => {
+        resolve(
+          response ??
+            new Response(new Blob(['{"status": 404}']), {
+              status: 404,
+              statusText: "Not Found",
+            }),
+        );
+      });
+    });
+  }
+  return fetch(request).then(
+    async (response): Promise<Response> => cacheClone(request, response),
   );
 }
 

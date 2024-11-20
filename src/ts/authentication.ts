@@ -1,8 +1,43 @@
 /* exported authenticationSetup, refreshLogin */
 
+function authenticationSetup(): void {
+  showAccountInfo();
+}
+
+function loginRedirect(): boolean {
+  window.location.href = `${
+    CONFIG["api-uri"]
+  }/v1.0/login?return-uri=${encodeURIComponent(window.location.href)}`;
+  return false;
+}
+
 function logoutRedirect(): boolean {
   window.location.href = `${CONFIG["api-uri"]}/v1.0/logout`;
   return false;
+}
+
+function refreshLogin(): void {
+  if (LOGINSTATE) {
+    const allCookies = `; ${document.cookie}`;
+    const parts = allCookies.split("; skautis_timeout=");
+    if (parts.length === 2) {
+      const timeout = parseInt(parts.pop()!.split(";").shift()!, 10);
+      if (timeout - Math.round(new Date().getTime() / 1000) < 1500) {
+        request(`${CONFIG["api-uri"]}/v1.0/refresh`, "", {});
+      }
+    }
+  }
+}
+
+function renderLoginForm(): void {
+  document.getElementById("user-name")!.innerHTML = "Uživatel nepřihlášen";
+  document.getElementById("log-link")!.innerHTML =
+    '<a href="enableJS.html">Přihlásit</a>';
+  (document.getElementById("log-link")!.firstChild as HTMLElement).onclick =
+    loginRedirect;
+  (document.getElementById("user-avatar") as HTMLImageElement).src = `${
+    CONFIG["frontend-uri"]
+  }/${CONFIG["frontend-resources-path"]}/avatar.png`;
 }
 
 function renderUserAccount(): void {
@@ -30,24 +65,6 @@ function renderUserAccount(): void {
   }
 }
 
-function loginRedirect(): boolean {
-  window.location.href = `${
-    CONFIG["api-uri"]
-  }/v1.0/login?return-uri=${encodeURIComponent(window.location.href)}`;
-  return false;
-}
-
-function renderLoginForm(): void {
-  document.getElementById("user-name")!.innerHTML = "Uživatel nepřihlášen";
-  document.getElementById("log-link")!.innerHTML =
-    '<a href="enableJS.html">Přihlásit</a>';
-  (document.getElementById("log-link")!.firstChild as HTMLElement).onclick =
-    loginRedirect;
-  (document.getElementById("user-avatar") as HTMLImageElement).src = `${
-    CONFIG["frontend-uri"]
-  }/${CONFIG["frontend-resources-path"]}/avatar.png`;
-}
-
 function showAccountInfo(): void {
   loginstateEvent.addCallback((): void => {
     if (LOGINSTATE) {
@@ -56,21 +73,4 @@ function showAccountInfo(): void {
       renderLoginForm();
     }
   });
-}
-
-function authenticationSetup(): void {
-  showAccountInfo();
-}
-
-function refreshLogin(): void {
-  if (LOGINSTATE) {
-    const allCookies = `; ${document.cookie}`;
-    const parts = allCookies.split("; skautis_timeout=");
-    if (parts.length === 2) {
-      const timeout = parseInt(parts.pop()!.split(";").shift()!, 10);
-      if (timeout - Math.round(new Date().getTime() / 1000) < 1500) {
-        request(`${CONFIG["api-uri"]}/v1.0/refresh`, "", {});
-      }
-    }
-  }
 }

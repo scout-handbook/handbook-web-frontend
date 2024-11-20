@@ -3,6 +3,21 @@
 
 let navigationOpen = true;
 
+function navigationSetup(): void {
+  window.addEventListener("resize", reflowNavigation);
+  document.getElementById("nav-close-button")!.onclick = toggleNavigation;
+  document.getElementById("overlay")!.onclick = toggleNavigation;
+  document.getElementById("lessonOverview")!.onclick = (): boolean => {
+    showFieldListView(false);
+    return false;
+  };
+  document.getElementById("competenceOverview")!.onclick = (): boolean => {
+    showCompetenceListView(false);
+    return false;
+  };
+  reflowNavigation();
+}
+
 function reflowNavigation(): void {
   const main = document.getElementsByTagName("main")[0];
   const navBar = document.getElementsByTagName("nav")[0];
@@ -24,20 +39,5 @@ function reflowNavigation(): void {
 
 function toggleNavigation(): void {
   navigationOpen = !navigationOpen;
-  reflowNavigation();
-}
-
-function navigationSetup(): void {
-  window.addEventListener("resize", reflowNavigation);
-  document.getElementById("nav-close-button")!.onclick = toggleNavigation;
-  document.getElementById("overlay")!.onclick = toggleNavigation;
-  document.getElementById("lessonOverview")!.onclick = (): boolean => {
-    showFieldListView(false);
-    return false;
-  };
-  document.getElementById("competenceOverview")!.onclick = (): boolean => {
-    showCompetenceListView(false);
-    return false;
-  };
   reflowNavigation();
 }
