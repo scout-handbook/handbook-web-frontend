@@ -80,7 +80,6 @@ function parseArgumentString(
 }
 
 // Showdown extensions definitions
-// eslint-disable-next-line @typescript-eslint/naming-convention -- A plugin can be PascalCase
 const HandbookMarkdown = (): Array<showdown.ShowdownExtension> => {
   const responsiveTablesBegin = {
     regex: "<table>",

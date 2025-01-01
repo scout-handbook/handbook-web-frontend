@@ -11,7 +11,6 @@ function cacheThenNetworkRequest(
     networkDataReceived = true;
     callback(response, cacheDataReceived);
   });
-  // eslint-disable-next-line @typescript-eslint/naming-convention -- A HTTP header should start with a capital letter
   request(url, query, { Accept: "x-cache/only" }).addCallback(
     (response): void => {
       if (!networkDataReceived) {
