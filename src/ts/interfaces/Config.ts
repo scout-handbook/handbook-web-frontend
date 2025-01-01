@@ -1,6 +1,5 @@
 /* exported Config */
 
-/* eslint-disable @typescript-eslint/naming-convention -- External config format */
 interface Config {
   "api-uri": string;
   cache: string;
@@ -8,4 +7,3 @@ interface Config {
   "frontend-uri": string;
   "site-name": string;
 }
-/* eslint-enable */
