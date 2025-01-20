@@ -46,7 +46,7 @@
     "eslint-plugin-compat": "^6.0.2",
     "eslint-plugin-perfectionist": "^4.6.0",
     "eslint-plugin-prefer-arrow-functions": "^3.6.2",
-    "eslint-plugin-prettier": "^5.2.2",
+    "eslint-plugin-prettier": "^5.2.3",
     "globals": "^15.14.0",
     "gulp": "^5.0.0",
     "gulp-clean-css": "^4.2.0",
