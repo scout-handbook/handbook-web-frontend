@@ -7,7 +7,7 @@
   --field-card-width: 344px;
   --nav-width: 300px;
   --non-accented-link-color: #364149;
-  --overlay-color: rgba(0, 0, 0, 40%);
+  --overlay-color: rgb(0, 0, 0, 40%);
   --overlay-fallback-color: #999;
   --table-border: #ddd;
   --table-odd-row-background: #f9f9f9;
