@@ -61,7 +61,7 @@
     "ordered-read-streams": "^2.0.0",
     "postcss": "^8.5.4",
     "postcss-calc": "^10.1.1",
-    "postcss-custom-properties": "^14.0.5",
+    "postcss-custom-properties": "^14.0.6",
     "prettier": "^3.5.3",
     "rimraf": "^6.0.1",
     "stylelint": "^16.20.0",
