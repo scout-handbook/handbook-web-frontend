@@ -2,6 +2,7 @@ import eslintComments from "@eslint-community/eslint-plugin-eslint-comments";
 import commentsConfig from "@eslint-community/eslint-plugin-eslint-comments/configs";
 import css from "@eslint/css";
 import js from "@eslint/js";
+import json from "@eslint/json";
 import compat from "eslint-plugin-compat";
 import perfectionist from "eslint-plugin-perfectionist";
 import preferArrowFunctions from "eslint-plugin-prefer-arrow-functions";
@@ -11,7 +12,7 @@ import globals from "globals";
 import tseslint from "typescript-eslint";
 
 export default tseslint.config(
-  globalIgnores(["dist/"]),
+  globalIgnores(["dist/", "package-lock.json"]),
   {
     extends: [css.configs.recommended],
     files: ["**/*.css"],
@@ -19,6 +20,11 @@ export default tseslint.config(
     rules: {
       "css/no-invalid-properties": "off", // Doesn't support CSS variables
     },
+  },
+  {
+    extends: [json.configs.recommended],
+    files: ["**/*.json"],
+    language: "json/json",
   },
   {
     extends: [
