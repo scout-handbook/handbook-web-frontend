@@ -26,8 +26,7 @@
     "build": "gulp build",
     "lint:css:stylelint": "stylelint --color 'src/**/*.css' '!src/css/fontello.css'",
     "lint:css": "run-p -c --aggregate-output lint:css:*",
-    "lint:ts:eslint": "eslint --color 'src/**/*.ts' 'gulpfile.js' '*.config.{js,ts}'",
-    "lint:ts": "run-p -c --aggregate-output lint:ts:*",
+    "lint:eslint": "eslint --color",
     "lint": "run-p -c --aggregate-output lint:*"
   },
   "dependencies": {

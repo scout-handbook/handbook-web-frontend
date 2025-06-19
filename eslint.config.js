@@ -5,10 +5,12 @@ import compat from "eslint-plugin-compat";
 import perfectionist from "eslint-plugin-perfectionist";
 import preferArrowFunctions from "eslint-plugin-prefer-arrow-functions";
 import prettierRecommended from "eslint-plugin-prettier/recommended";
+import { globalIgnores } from "eslint/config";
 import globals from "globals";
 import tseslint from "typescript-eslint";
 
 export default tseslint.config(
+  globalIgnores(["dist/"]),
   {
     extends: [
       js.configs.recommended,
