@@ -13,22 +13,26 @@
   "bugs": {
     "url": "https://github.com/scout-handbook/handbook-web-frontend/issues"
   },
-  "license": "MIT",
-  "author": "Marek Dědič",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/scout-handbook/handbook-web-frontend.git"
   },
+  "license": "MIT",
+  "author": "Marek Dědič",
   "type": "module",
   "scripts": {
-    "clean": "rimraf dist/*",
     "prebuild": "npm run clean",
     "build": "gulp build",
-    "lint:css:stylelint": "stylelint --color 'src/**/*.css' '!src/css/fontello.css'",
+    "clean": "rimraf dist/*",
+    "lint": "run-p -c --aggregate-output lint:*",
     "lint:css": "run-p -c --aggregate-output lint:css:*",
-    "lint:eslint": "eslint --color",
-    "lint": "run-p -c --aggregate-output lint:*"
+    "lint:css:stylelint": "stylelint --color 'src/**/*.css' '!src/css/fontello.css'",
+    "lint:eslint": "eslint --color"
   },
+  "browserslist": [
+    "cover 95%",
+    "cover 95% in CZ"
+  ],
   "dependencies": {
     "showdown": "^2.1.0",
     "xss": "^1.0.15"
@@ -75,9 +79,5 @@
     "typescript-eslint": "^8.34.1",
     "uglify-js": "^3.19.3",
     "yargs": "^18.0.0"
-  },
-  "browserslist": [
-    "cover 95%",
-    "cover 95% in CZ"
-  ]
+  }
 }
