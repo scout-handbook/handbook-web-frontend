@@ -2,6 +2,8 @@
   color: #67767a;
   cursor: pointer;
   transition: color ease 0.15s;
+
+  /* eslint-disable-next-line css/use-baseline */
   user-select: none;
 }
 
