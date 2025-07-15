@@ -14,7 +14,7 @@ import globals from "globals";
 import tseslint from "typescript-eslint";
 
 export default tseslint.config(
-  globalIgnores(["dist/", "package-lock.json"]),
+  globalIgnores(["dist/", "package-lock.json", "src/css/fontello.css"]),
   packageJson.configs.recommended,
   {
     extends: [css.configs.recommended],
