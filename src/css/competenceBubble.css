@@ -35,6 +35,8 @@
   height: 2.9em;
   text-align: center;
   transition: color ease 0.15s;
+
+  /* eslint-disable-next-line css/use-baseline */
   user-select: none;
   width: 3em;
 }
