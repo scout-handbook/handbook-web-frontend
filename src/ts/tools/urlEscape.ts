@@ -260,7 +260,7 @@ function urlEscape(str: string): string {
     },
   ];
 
-  let ret = str.toString().trim().toLowerCase();
+  let ret = str.trim().toLowerCase();
   for (const replacement of lookupTable) {
     ret = ret.replace(replacement.letters, replacement.base);
   }
