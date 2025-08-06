@@ -53,7 +53,7 @@
     "eslint-plugin-package-json": "^0.48.0",
     "eslint-plugin-perfectionist": "^4.15.0",
     "eslint-plugin-prefer-arrow-functions": "^3.6.2",
-    "eslint-plugin-prettier": "^5.5.3",
+    "eslint-plugin-prettier": "^5.5.4",
     "globals": "^16.3.0",
     "gulp": "^5.0.1",
     "gulp-clean-css": "^4.2.0",
