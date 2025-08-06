@@ -27,7 +27,7 @@ function renderLessonView(
   ).iterate((competenceId, competence) => {
     html += `<span class="competence-bubble">
   <span class="competence-bubble-number">
-    <p>${competence.number.toString()}</p>
+    <p>${competence.number}</p>
   </span>
   <span class="competence-bubble-text">${competence.name}</span>
   <span class="competence-bubble-lessons">

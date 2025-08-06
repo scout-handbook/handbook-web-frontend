@@ -7,10 +7,10 @@ function renderFieldLessonCompetences(lesson: Lesson): string {
   COMPETENCES.filter((id) => lesson.competences.indexOf(id) >= 0).iterate(
     (_, competence) => {
       if (first) {
-        html += `<span class="main-page">Body: ${competence.number.toString()}`;
+        html += `<span class="main-page">Body: ${competence.number}`;
         first = false;
       } else {
-        html += `, ${competence.number.toString()}`;
+        html += `, ${competence.number}`;
       }
     },
   );
