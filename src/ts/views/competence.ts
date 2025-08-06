@@ -12,10 +12,10 @@ function renderCompetenceLessonList(lessonList: IDList<Lesson>): string {
       (competenceId) => lesson.competences.indexOf(competenceId) >= 0,
     ).iterate((_, competence) => {
       if (first) {
-        html += `<span class="main-page">Body: ${competence.number.toString()}`;
+        html += `<span class="main-page">Body: ${competence.number}`;
         first = false;
       } else {
-        html += `, ${competence.number.toString()}`;
+        html += `, ${competence.number}`;
       }
     });
     html += "</span>";
@@ -25,7 +25,7 @@ function renderCompetenceLessonList(lessonList: IDList<Lesson>): string {
 
 function renderCompetenceView(id: string, noHistory: boolean): void {
   const competence = COMPETENCES.get(id)!;
-  let html = `<h1>${competence.number.toString()}: ${competence.name}</h1>`;
+  let html = `<h1>${competence.number}: ${competence.name}</h1>`;
   html += competence.description;
   const lessonList = LESSONS.filter(
     (_, lesson) => lesson.competences.indexOf(id) >= 0,
@@ -45,7 +45,7 @@ function renderCompetenceView(id: string, noHistory: boolean): void {
       { id },
       "title",
       `/competence/${id}/${urlEscape(
-        `${competence.number.toString()}-${competence.name}`,
+        `${competence.number}-${competence.name}`,
       )}`,
     );
   }
