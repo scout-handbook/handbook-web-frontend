@@ -5,8 +5,8 @@ function renderCompetenceList(): string {
   let html = "";
   COMPETENCES.iterate((id, competence) => {
     html += `<h3 class="main-page">
-  <a title="${competence.number.toString()}: ${competence.name}" href="enableJS.html" data-id="${id}">
-    ${competence.number.toString()}: ${competence.name}
+  <a title="${competence.number}: ${competence.name}" href="enableJS.html" data-id="${id}">
+    ${competence.number}: ${competence.name}
   </a>
 </h3>
 <span class="main-page">${competence.description}`;
