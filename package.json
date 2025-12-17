@@ -30,8 +30,8 @@
     "lint:eslint": "eslint --color"
   },
   "browserslist": [
-    "cover 95%",
-    "cover 95% in CZ"
+    "defaults",
+    "not OperaMini all"
   ],
   "dependencies": {
     "showdown": "^2.1.0",
@@ -46,7 +46,7 @@
     "@eslint/markdown": "^7.5.1",
     "@types/showdown": "^2.0.6",
     "@types/webfontloader": "^1.6.38",
-    "autoprefixer": "^10.4.22",
+    "autoprefixer": "^10.4.23",
     "eslint": "^9.39.2",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-compat": "^6.0.2",
