@@ -30,8 +30,8 @@
     "lint:eslint": "eslint --color"
   },
   "browserslist": [
-    "cover 95%",
-    "cover 95% in CZ"
+    "defaults",
+    "not OperaMini all"
   ],
   "dependencies": {
     "showdown": "^2.1.0",
