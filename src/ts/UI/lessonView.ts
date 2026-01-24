@@ -16,15 +16,27 @@ function reflowCompetenceBubbles(): void {
   const parent = activeCompetence.parentElement!;
   activeCompetence.style.width = `${Math.min(400, parent.clientWidth).toString()}px`;
   activeCompetence.style.height = `${(
-    (activeCompetence.childNodes[1] as HTMLElement).offsetHeight +
+    (
+      activeCompetence.getElementsByClassName(
+        "competence-bubble-text",
+      )[0] as HTMLElement
+    ).offsetHeight +
     1.4 * fontSize -
     6
   ).toString()}px`;
-  (activeCompetence.childNodes[1] as HTMLElement).style.width = `${Math.min(
+  (
+    activeCompetence.getElementsByClassName(
+      "competence-bubble-text",
+    )[0] as HTMLElement
+  ).style.width = `${Math.min(
     403 - 1.3 * fontSize,
     activeCompetence.parentElement!.clientWidth - 1.3 * fontSize + 3,
   ).toString()}px`;
-  (activeCompetence.childNodes[2] as HTMLElement).style.width = `${Math.min(
+  (
+    activeCompetence.getElementsByClassName(
+      "competence-bubble-lessons",
+    )[0] as HTMLElement
+  ).style.width = `${Math.min(
     403 - 1.3 * fontSize,
     parent.clientWidth - 1.3 * fontSize + 3,
   ).toString()}px`;
@@ -40,8 +52,14 @@ function toggleCompetenceBubble(event: MouseEvent): void {
     element.className = "competence-bubble";
     element.style.width = "";
     element.style.height = "";
-    (element.childNodes[1] as HTMLElement).style.width = "";
-    (element.childNodes[2] as HTMLElement).style.width = "";
+    (
+      element.getElementsByClassName("competence-bubble-text")[0] as HTMLElement
+    ).style.width = "";
+    (
+      element.getElementsByClassName(
+        "competence-bubble-lessons",
+      )[0] as HTMLElement
+    ).style.width = "";
   } else {
     const nodes = document
       .getElementById("content")!
@@ -51,8 +69,16 @@ function toggleCompetenceBubble(event: MouseEvent): void {
       nodes[i].className = "competence-bubble";
       (nodes[i] as HTMLElement).style.width = "";
       (nodes[i] as HTMLElement).style.height = "";
-      (nodes[i].childNodes[1] as HTMLElement).style.width = "";
-      (nodes[i].childNodes[2] as HTMLElement).style.width = "";
+      (
+        nodes[i].getElementsByClassName(
+          "competence-bubble-text",
+        )[0] as HTMLElement
+      ).style.width = "";
+      (
+        nodes[i].getElementsByClassName(
+          "competence-bubble-lessons",
+        )[0] as HTMLElement
+      ).style.width = "";
     }
     activeCompetence = element;
     reflowCompetenceBubbles();
