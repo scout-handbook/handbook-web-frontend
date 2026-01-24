@@ -49,7 +49,7 @@ function renderLessonView(
     .getElementsByClassName("competence-bubble-lessons");
   // eslint-disable-next-line @typescript-eslint/prefer-for-of -- HTMLCollectionOf is not iterable in old browsers
   for (let i = 0; i < nodes.length; i++) {
-    (nodes[i].firstChild as HTMLElement).onclick =
+    (nodes[i].getElementsByTagName("a")[0] as HTMLElement).onclick =
       competenceBubbleDetailOnClick;
   }
   document.getElementsByTagName("main")[0].scrollTop = 0;
