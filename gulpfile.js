@@ -113,10 +113,10 @@ gulp.task("build:font", () =>
 gulp.task("build:html", () =>
   gulp
     .src([
-      "src/html/403.html",
-      "src/html/404.html",
-      "src/html/500.html",
-      "src/html/enableJS.html",
+      "src/html/403.php",
+      "src/html/404.php",
+      "src/html/500.php",
+      "src/html/enableJS.php",
       "src/html/index.html",
     ])
     .pipe(inject.replace("<!--FRONTEND-URI-->", getConfig()["frontend-uri"]))
