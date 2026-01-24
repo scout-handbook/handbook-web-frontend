@@ -32,15 +32,6 @@ function getConfig() {
   };
 }
 
-function getThemeFiles() {
-  const themeFiles = ["src/css/default-theme.css"];
-  const argTheme = yargs(hideBin(process.argv)).string("theme").argv.theme;
-  if (argTheme !== undefined) {
-    themeFiles.push(argTheme);
-  }
-  return themeFiles;
-}
-
 gulp.task("build:css", () => {
   function bundle(name, sources) {
     return gulp
@@ -49,7 +40,7 @@ gulp.task("build:css", () => {
       .pipe(concat(`${name}.min.css`))
       .pipe(
         postcss([
-          postcssGlobalData({ files: getThemeFiles() }),
+          postcssGlobalData({ files: ["src/css/default-theme.css"] }),
           postcssCustomProperties({
             preserve: false,
           }),
