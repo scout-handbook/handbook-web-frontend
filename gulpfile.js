@@ -10,7 +10,6 @@ import postcss from "gulp-postcss";
 import sourcemaps from "gulp-sourcemaps";
 import ts from "gulp-typescript";
 import composer from "gulp-uglify/composer.js";
-import { Transform } from "node:stream";
 import ordered from "ordered-read-streams";
 import postcssCalc from "postcss-calc";
 import postcssCustomProperties from "postcss-custom-properties";
@@ -134,8 +133,8 @@ gulp.task("build:html", () =>
 );
 
 gulp.task("build:icon", () =>
-  ordered([
-    gulp.src(
+  gulp
+    .src(
       [
         "src/icon/android-chrome-192x192.png",
         "src/icon/android-chrome-512x512.png",
@@ -147,22 +146,8 @@ gulp.task("build:icon", () =>
         "src/icon/safari-pinned-tab.svg",
       ],
       { encoding: false },
-    ),
-    gulp.src(["src/icon/browserconfig.xml"]).pipe(
-      new Transform({
-        objectMode: true,
-        transform: (chunk, encoding, callback) => {
-          let contents = String(chunk.contents);
-          contents = contents.replace(
-            "<!--FRONTEND-RESOURCES-PATH-->",
-            getConfig()["frontend-resources-path"],
-          );
-          chunk.contents = Buffer.from(contents, encoding);
-          callback(null, chunk);
-        },
-      }),
-    ),
-  ]).pipe(gulp.dest("dist/")),
+    )
+    .pipe(gulp.dest("dist/")),
 );
 
 gulp.task("build:js", () => {
