@@ -116,7 +116,7 @@ gulp.task("build:html", () =>
       "src/html/404.php",
       "src/html/500.php",
       "src/html/enableJS.php",
-      "src/html/index.html",
+      "src/html/index.php",
     ])
     .pipe(inject.replace("<!--FRONTEND-URI-->", getConfig()["frontend-uri"]))
     .pipe(
