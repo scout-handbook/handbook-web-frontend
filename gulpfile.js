@@ -160,19 +160,6 @@ gulp.task("build:js", () => {
   return ordered([bundle("frontend", true), bundle("serviceworker")]);
 });
 
-gulp.task("build:json", () =>
-  gulp
-    .src(["src/json/manifest.json"])
-    .pipe(inject.replace("SITE-NAME", getConfig()["site-name"]))
-    .pipe(
-      inject.replace(
-        "FRONTEND-RESOURCES-PATH",
-        getConfig()["frontend-resources-path"],
-      ),
-    )
-    .pipe(gulp.dest("dist/")),
-);
-
 gulp.task("build:php", () =>
   gulp.src(["src/php/sitemap.php"]).pipe(gulp.dest("dist/")),
 );
@@ -196,7 +183,6 @@ gulp.task(
     "build:html",
     "build:icon",
     "build:js",
-    "build:json",
     "build:php",
     "build:png",
     "build:txt",
