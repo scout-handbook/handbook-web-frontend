@@ -118,15 +118,7 @@ gulp.task("build:html", () =>
       "src/html/enableJS.php",
       "src/html/index.php",
     ])
-    .pipe(inject.replace("<!--FRONTEND-URI-->", getConfig()["frontend-uri"]))
-    .pipe(
-      inject.replace(
-        "<!--FRONTEND-RESOURCES-PATH-->",
-        getConfig()["frontend-resources-path"],
-      ),
-    )
     .pipe(sourcemaps.init())
-    .pipe(inject.replace("<!--SITE-NAME-->", getConfig()["site-name"]))
     .pipe(htmlmin({ collapseWhitespace: true }))
     .pipe(sourcemaps.write("./"))
     .pipe(gulp.dest("dist/")),
