@@ -28,7 +28,7 @@ jobs:
 
       - name: "Build"
         run: |
-          npm run build -- --config client-config.json.sample
+          npm run build
 
   lint:
     name: "Lint"
