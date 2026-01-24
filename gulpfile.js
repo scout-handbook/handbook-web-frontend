@@ -14,23 +14,8 @@ import ordered from "ordered-read-streams";
 import postcssCalc from "postcss-calc";
 import postcssCustomProperties from "postcss-custom-properties";
 import uglify from "uglify-js";
-import yargs from "yargs";
-import { hideBin } from "yargs/helpers";
 
 const minify = composer(uglify, console);
-
-function getConfig() {
-  const location = yargs(hideBin(process.argv)).string("config").argv.config;
-
-  if (location === undefined) {
-    throw new Error("No config specified");
-  }
-  const pkg = JSON.parse(fs.readFileSync("./package.json", "utf8"));
-  return {
-    ...JSON.parse(fs.readFileSync(location, "utf8")),
-    cache: `handbook-${pkg.version}`,
-  };
-}
 
 gulp.task("build:css", () => {
   function bundle(name, sources) {
@@ -134,30 +119,20 @@ gulp.task("build:icon", () =>
 );
 
 gulp.task("build:js", () => {
-  function bundle(name, addConfig = false) {
+  function bundle(name) {
     const tsProject = ts.createProject(`tsconfig/${name}.json`);
     const pkg = JSON.parse(fs.readFileSync("./package.json", "utf8"));
-    let ret = tsProject
+    return tsProject
       .src()
       .pipe(inject.replace("INJECTED\\-VERSION", pkg.version))
       .pipe(sourcemaps.init())
       .pipe(tsProject())
-      .pipe(concat(`${name}.min.js`));
-    if (addConfig) {
-      ret = ret.pipe(
-        inject.prepend(
-          `"use strict";\nvar CONFIG = JSON.parse('${JSON.stringify(
-            getConfig(),
-          )}');\n`,
-        ),
-      );
-    }
-    return ret
+      .pipe(concat(`${name}.min.js`))
       .pipe(minify())
       .pipe(sourcemaps.write("./"))
       .pipe(gulp.dest("dist/"));
   }
-  return ordered([bundle("frontend", true), bundle("serviceworker")]);
+  return ordered([bundle("frontend"), bundle("serviceworker")]);
 });
 
 gulp.task("build:php", () =>
