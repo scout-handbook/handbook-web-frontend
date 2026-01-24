@@ -1,8 +1,18 @@
 <?php
-	$config = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/client-config.json'), true);
+	$raw_config = file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/client-config.json');
+	$config = json_decode($raw_config, true);
+	$json_config = mb_ereg_replace(
+		"\s+",
+		" ",
+		mb_ereg_replace(
+			"\n",
+			"",
+			htmlspecialchars($raw_config)
+		)
+	)
 ?>
 <!DOCTYPE html>
-<html lang="cs">
+<html data-config="<?= $json_config ?>">
 	<head>
 		<meta charset="utf-8">
 		<meta name="author" content="Mlha">
