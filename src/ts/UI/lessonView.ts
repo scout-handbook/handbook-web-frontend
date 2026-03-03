@@ -47,20 +47,7 @@ function toggleCompetenceBubble(event: MouseEvent): void {
   while (!element.classList.contains("competence-bubble")) {
     element = element.parentElement!;
   }
-  if (element.style.width !== "") {
-    activeCompetence = null;
-    element.className = "competence-bubble";
-    element.style.width = "";
-    element.style.height = "";
-    (
-      element.getElementsByClassName("competence-bubble-text")[0] as HTMLElement
-    ).style.width = "";
-    (
-      element.getElementsByClassName(
-        "competence-bubble-lessons",
-      )[0] as HTMLElement
-    ).style.width = "";
-  } else {
+  if (element.style.width === "") {
     const nodes = document
       .getElementById("content")!
       .getElementsByClassName("competence-bubble");
@@ -83,6 +70,19 @@ function toggleCompetenceBubble(event: MouseEvent): void {
     activeCompetence = element;
     reflowCompetenceBubbles();
     element.className = "competence-bubble active";
+  } else {
+    activeCompetence = null;
+    element.className = "competence-bubble";
+    element.style.width = "";
+    element.style.height = "";
+    (
+      element.getElementsByClassName("competence-bubble-text")[0] as HTMLElement
+    ).style.width = "";
+    (
+      element.getElementsByClassName(
+        "competence-bubble-lessons",
+      )[0] as HTMLElement
+    ).style.width = "";
   }
 }
 
