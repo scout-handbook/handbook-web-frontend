@@ -20,6 +20,13 @@
   "license": "MIT",
   "author": "Marek Dědič",
   "type": "module",
+  "exports": {
+    ".": null
+  },
+  "sideEffects": true,
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "prebuild": "npm run clean",
     "build": "gulp build",
