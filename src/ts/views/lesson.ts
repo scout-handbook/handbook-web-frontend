@@ -89,24 +89,7 @@ function showLessonView(id: string, noHistory: boolean): void {
     navigationOpen = false;
     reflowNavigation();
   }
-  if (!LESSONS.get(id)) {
-    //const emptyFieldsCache = FIELDS.empty();
-    loginstateEvent.addCallback((): void => {
-      if (!LOGINSTATE) {
-        loginRedirect();
-      } else {
-        /*
-        if (!emptyFieldsCache) {
-          window.location.href =
-            CONFIG["frontend-uri"] +
-            "/" +
-            CONFIG["frontend-resources-path"] +
-            "/404.html";
-        }
-        */
-      }
-    });
-  } else {
+  if (LESSONS.get(id)) {
     cacheThenNetworkRequest(
       `${CONFIG["api-uri"]}/v1.0/lesson/${id}`,
       "",
@@ -116,6 +99,12 @@ function showLessonView(id: string, noHistory: boolean): void {
         });
       },
     );
+  } else {
+    loginstateEvent.addCallback((): void => {
+      if (!LOGINSTATE) {
+        loginRedirect();
+      }
+    });
   }
   refreshLogin();
 }

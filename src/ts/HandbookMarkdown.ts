@@ -31,20 +31,20 @@ function getArgumentString(
   const start = line.indexOf("[", commandName.length + 1);
   if (start !== -1) {
     let stop = line.indexOf("]", start + 1);
-    if (stop !== -1) {
-      argumentString = line.substring(start + 1, stop);
-    } else {
+    if (stop === -1) {
       argumentString = line.substring(start + 1);
       for (let i = current + 1; i < lines.length; i++) {
         stop = lines[i].indexOf("]");
-        if (stop !== -1) {
+        if (stop === -1) {
+          argumentString += lines[i];
+        } else {
           argumentString += lines[i].substring(0, stop);
           next = i;
           break;
-        } else {
-          argumentString += lines[i];
         }
       }
+    } else {
+      argumentString = line.substring(start + 1, stop);
     }
   }
   argumentString = argumentString.replace(/ /g, "");
@@ -53,7 +53,6 @@ function getArgumentString(
 
 // Specific commands
 function notesCommand(): string {
-  //return "<textarea class=\"notes\" placeholder=\"Tvoje poznámky\"></textarea>";
   return "";
 }
 
@@ -70,10 +69,10 @@ function parseArgumentString(
       continue;
     }
     const tuple: Array<string> = argument.split("=");
-    if (tuple.length !== 2) {
-      output[tuple[0]] = true;
-    } else {
+    if (tuple.length === 2) {
       output[tuple[0]] = tuple[1];
+    } else {
+      output[tuple[0]] = true;
     }
   }
   return output;
