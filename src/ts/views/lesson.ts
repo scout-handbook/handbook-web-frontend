@@ -90,20 +90,9 @@ function showLessonView(id: string, noHistory: boolean): void {
     reflowNavigation();
   }
   if (!LESSONS.get(id)) {
-    //const emptyFieldsCache = FIELDS.empty();
     loginstateEvent.addCallback((): void => {
       if (!LOGINSTATE) {
         loginRedirect();
-      } else {
-        /*
-        if (!emptyFieldsCache) {
-          window.location.href =
-            CONFIG["frontend-uri"] +
-            "/" +
-            CONFIG["frontend-resources-path"] +
-            "/404.html";
-        }
-        */
       }
     });
   } else {

@@ -53,7 +53,6 @@ function getArgumentString(
 
 // Specific commands
 function notesCommand(): string {
-  //return "<textarea class=\"notes\" placeholder=\"Tvoje poznámky\"></textarea>";
   return "";
 }
 
