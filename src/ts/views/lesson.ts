@@ -89,13 +89,7 @@ function showLessonView(id: string, noHistory: boolean): void {
     navigationOpen = false;
     reflowNavigation();
   }
-  if (!LESSONS.get(id)) {
-    loginstateEvent.addCallback((): void => {
-      if (!LOGINSTATE) {
-        loginRedirect();
-      }
-    });
-  } else {
+  if (LESSONS.get(id)) {
     cacheThenNetworkRequest(
       `${CONFIG["api-uri"]}/v1.0/lesson/${id}`,
       "",
@@ -105,6 +99,12 @@ function showLessonView(id: string, noHistory: boolean): void {
         });
       },
     );
+  } else {
+    loginstateEvent.addCallback((): void => {
+      if (!LOGINSTATE) {
+        loginRedirect();
+      }
+    });
   }
   refreshLogin();
 }
