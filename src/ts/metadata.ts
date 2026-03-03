@@ -7,9 +7,9 @@ const loginstateEvent = new AfterLoadEvent(1);
 function competenceComparator(first: Competence, second: Competence): number {
   const numberComparison =
     parseInt(first.number, 10) - parseInt(second.number, 10);
-  return numberComparison !== 0
-    ? numberComparison
-    : first.number.localeCompare(second.number);
+  return numberComparison === 0
+    ? first.number.localeCompare(second.number)
+    : numberComparison;
 }
 
 function fieldComparator(first: Field, second: Field): number {
