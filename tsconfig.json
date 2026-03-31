@@ -1,7 +1,9 @@
 {
   "compilerOptions": {
     "forceConsistentCasingInFileNames": true,
+    "ignoreDeprecations": "6.0",
     "target": "ES5",
+    "types": ["showdown", "webfontloader"],
 
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
@@ -11,7 +13,6 @@
     "noImplicitReturns": true,
     "noPropertyAccessFromIndexSignature": true,
     "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "strict": true
+    "noUnusedParameters": true
   }
 }
