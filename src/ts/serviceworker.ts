@@ -21,7 +21,6 @@ const cacheUpdating = [
 ];
 
 function startsWith(haystack: string, needle: string): boolean {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-return -- String.startsWith isn't defined in older targets, but is safe to use here since a Service worker won't get executed in old browsers
   return haystack.startsWith(needle);
 }
 
@@ -53,26 +52,23 @@ async function cacheOnDemandResponse(request: Request): Promise<Response> {
           cache.match(request) as Promise<Response>,
       );
   }
-  return fetch(request).then(
-    async (response): Promise<Response> =>
-      caches
-        .open(CACHE)
-        .then(
-          async (cache): Promise<Response> =>
-            cache
-              .match(request)
-              .then((cachedResponse): Promise<Response> | Response =>
-                cachedResponse === undefined
-                  ? response
-                  : cacheClone(request, response),
-              ),
-        ),
+  return fetch(request).then(async (response): Promise<Response> =>
+    caches
+      .open(CACHE)
+      .then(async (cache): Promise<Response> =>
+        cache
+          .match(request)
+          .then((cachedResponse): Promise<Response> | Response =>
+            cachedResponse === undefined
+              ? response
+              : cacheClone(request, response),
+          ),
+      ),
   );
 }
 
 async function cacheUpdatingResponse(request: Request): Promise<Response> {
   if (request.headers.get("Accept") === "x-cache/only") {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-return -- Promise isn't defined in older targets, but is safe to use here since a Service worker won't get executed in old browsers
     return new Promise((resolve: (response: Response) => void): void => {
       void caches.match(request).then((response): void => {
         resolve(
@@ -85,22 +81,21 @@ async function cacheUpdatingResponse(request: Request): Promise<Response> {
       });
     });
   }
-  return fetch(request).then(
-    async (response): Promise<Response> => cacheClone(request, response),
+  return fetch(request).then(async (response): Promise<Response> =>
+    cacheClone(request, response),
   );
 }
 
 async function genericResponse(request: Request): Promise<Response> {
   return caches
     .open(CACHE)
-    .then(
-      async (cache): Promise<Response> =>
-        cache
-          .match(request)
-          .then(
-            (response): Promise<Response> | Response =>
-              response ?? fetch(request),
-          ),
+    .then(async (cache): Promise<Response> =>
+      cache
+        .match(request)
+        .then(
+          (response): Promise<Response> | Response =>
+            response ?? fetch(request),
+        ),
     );
 }
 

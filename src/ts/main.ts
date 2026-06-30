@@ -1,11 +1,9 @@
 /* exported COMPETENCES, CONFIG, FIELDS, LESSONS, LOGINSTATE */
 
-/* eslint-disable @typescript-eslint/init-declarations -- Probably should be fixed when moving to modules */
 let COMPETENCES: IDList<Competence>;
 let FIELDS: IDList<Field>;
 let LESSONS: IDList<Lesson>;
 let LOGINSTATE: Loginstate | null;
-/* eslint-enable */
 
 const CONFIG = JSON.parse(
   document.documentElement.dataset["config"] ?? "{}",
