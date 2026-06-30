@@ -53,20 +53,18 @@ async function cacheOnDemandResponse(request: Request): Promise<Response> {
           cache.match(request) as Promise<Response>,
       );
   }
-  return fetch(request).then(
-    async (response): Promise<Response> =>
-      caches
-        .open(CACHE)
-        .then(
-          async (cache): Promise<Response> =>
-            cache
-              .match(request)
-              .then((cachedResponse): Promise<Response> | Response =>
-                cachedResponse === undefined
-                  ? response
-                  : cacheClone(request, response),
-              ),
-        ),
+  return fetch(request).then(async (response): Promise<Response> =>
+    caches
+      .open(CACHE)
+      .then(async (cache): Promise<Response> =>
+        cache
+          .match(request)
+          .then((cachedResponse): Promise<Response> | Response =>
+            cachedResponse === undefined
+              ? response
+              : cacheClone(request, response),
+          ),
+      ),
   );
 }
 
@@ -85,22 +83,21 @@ async function cacheUpdatingResponse(request: Request): Promise<Response> {
       });
     });
   }
-  return fetch(request).then(
-    async (response): Promise<Response> => cacheClone(request, response),
+  return fetch(request).then(async (response): Promise<Response> =>
+    cacheClone(request, response),
   );
 }
 
 async function genericResponse(request: Request): Promise<Response> {
   return caches
     .open(CACHE)
-    .then(
-      async (cache): Promise<Response> =>
-        cache
-          .match(request)
-          .then(
-            (response): Promise<Response> | Response =>
-              response ?? fetch(request),
-          ),
+    .then(async (cache): Promise<Response> =>
+      cache
+        .match(request)
+        .then(
+          (response): Promise<Response> | Response =>
+            response ?? fetch(request),
+        ),
     );
 }
 
