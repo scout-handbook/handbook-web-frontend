@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "forceConsistentCasingInFileNames": true,
     "ignoreDeprecations": "6.0",
     "target": "ES5",
     "types": ["showdown", "webfontloader"],
