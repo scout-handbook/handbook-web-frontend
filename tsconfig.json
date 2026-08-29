@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "module": "esnext",
+    "moduleResolution": "bundler",
     "target": "es2015",
     "types": ["showdown", "webfontloader"],
 
