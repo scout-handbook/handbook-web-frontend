@@ -102,15 +102,15 @@ async function genericResponse(request: Request): Promise<Response> {
 self.addEventListener("fetch", (event: Event): void => {
   const url = new URL((event as FetchEvent).request.url);
   if (cacheUpdating.indexOf(url.pathname) !== -1) {
-    void (event as FetchEvent).respondWith(
+    (event as FetchEvent).respondWith(
       cacheUpdatingResponse((event as FetchEvent).request),
     );
   } else if (startsWith(url.pathname, `${APIPATH}/lesson`)) {
-    void (event as FetchEvent).respondWith(
+    (event as FetchEvent).respondWith(
       cacheOnDemandResponse((event as FetchEvent).request),
     );
   } else {
-    void (event as FetchEvent).respondWith(
+    (event as FetchEvent).respondWith(
       genericResponse((event as FetchEvent).request),
     );
   }
