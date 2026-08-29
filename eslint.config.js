@@ -198,6 +198,16 @@ export default tseslint.config(
     },
   },
   {
+    files: ["src/ts/serviceworker.ts"],
+    languageOptions: {
+      parserOptions: {
+        project: "tsconfig/serviceworker.json",
+        projectService: false,
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
+  },
+  {
     files: ["*.config.js", "*.config.ts", "gulpfile.js"],
     languageOptions: {
       globals: {
