@@ -1,10 +1,10 @@
 {
-  "extends": "../tsconfig.json",
+  "extends": "./tsconfig.json",
   "compilerOptions": {
     "lib": ["ES2015", "WebWorker"],
     "types": []
   },
   "files": [
-    "../src/ts/serviceworker.ts"
+    "./src/ts/serviceworker.ts"
   ]
 }
