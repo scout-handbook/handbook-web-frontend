@@ -201,7 +201,7 @@ export default tseslint.config(
     files: ["src/ts/serviceworker.ts"],
     languageOptions: {
       parserOptions: {
-        project: "tsconfig/serviceworker.json",
+        project: "serviceworker.tsconfig.json",
         projectService: false,
         tsconfigRootDir: import.meta.dirname,
       },

@@ -120,7 +120,7 @@ gulp.task("build:icon", () =>
 
 gulp.task("build:js", () => {
   function bundle(name) {
-    const tsProject = ts.createProject(`tsconfig/${name}.json`);
+    const tsProject = ts.createProject(`${name}.tsconfig.json`);
     const pkg = JSON.parse(fs.readFileSync("./package.json", "utf8"));
     return tsProject
       .src()
