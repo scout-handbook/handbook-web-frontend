@@ -15,7 +15,7 @@ function renderTOC(): void {
   LESSONS.iterate((id, lesson) => {
     let inField = false;
     FIELDS.iterate((_, field) => {
-      if (field.lessons.indexOf(id) >= 0) {
+      if (field.lessons.includes(id)) {
         inField = true;
       }
     });
