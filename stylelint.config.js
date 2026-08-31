@@ -4,10 +4,18 @@ export default {
   plugins: ["stylelint-no-unsupported-browser-features"],
   rules: {
     "color-function-notation": "legacy",
+    // The `inset` shorthand is above our floor (Chrome 87 / Safari 14.1).
+    "declaration-block-no-redundant-longhand-properties": [
+      true,
+      {
+        ignoreShorthands: ["inset"],
+      },
+    ],
     "plugin/no-unsupported-browser-features": [
       true,
       {
-        severity: "warning",
+        // Caniuse's partial flag covers `overflow: clip`, not `overflow`.
+        ignore: ["css-overflow"],
       },
     ],
   },

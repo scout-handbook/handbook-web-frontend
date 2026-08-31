@@ -33,7 +33,7 @@
     "clean": "rimraf dist/*",
     "lint": "run-p -c --aggregate-output lint:*",
     "lint:css": "run-p -c --aggregate-output lint:css:*",
-    "lint:css:stylelint": "stylelint --color 'src/**/*.css' '!src/css/fontello.css'",
+    "lint:css:stylelint": "stylelint --color --report-needless-disables 'src/**/*.css' '!src/css/fontello.css'",
     "lint:eslint": "eslint --color",
     "lint:typecheck": "run-p -c --aggregate-output lint:typecheck:*",
     "lint:typecheck:frontend": "tsc --noEmit -p frontend.tsconfig.json",
