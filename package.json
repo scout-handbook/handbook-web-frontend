@@ -40,8 +40,8 @@
     "lint:typecheck:serviceworker": "tsc --noEmit -p serviceworker.tsconfig.json"
   },
   "browserslist": [
-    "defaults",
-    "not OperaMini all"
+    "baseline 2019",
+    "not edge 18"
   ],
   "dependencies": {
     "showdown": "^2.1.0",
