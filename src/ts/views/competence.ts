@@ -8,8 +8,8 @@ function renderCompetenceLessonList(lessonList: IDList<Lesson>): string {
       lesson.name
     }" href="enableJS.html" data-id="${lessonId}">${lesson.name}</a></h3>`;
     let first = true;
-    COMPETENCES.filter(
-      (competenceId) => lesson.competences.indexOf(competenceId) >= 0,
+    COMPETENCES.filter((competenceId) =>
+      lesson.competences.includes(competenceId),
     ).iterate((_, competence) => {
       if (first) {
         html += `<span class="main-page">Body: ${competence.number}`;
@@ -27,8 +27,8 @@ function renderCompetenceView(id: string, noHistory: boolean): void {
   const competence = COMPETENCES.get(id)!;
   let html = `<h1>${competence.number}: ${competence.name}</h1>`;
   html += competence.description;
-  const lessonList = LESSONS.filter(
-    (_, lesson) => lesson.competences.indexOf(id) >= 0,
+  const lessonList = LESSONS.filter((_, lesson) =>
+    lesson.competences.includes(id),
   );
   html += renderCompetenceLessonList(lessonList);
   document.getElementById("content")!.innerHTML = html;

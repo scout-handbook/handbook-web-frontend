@@ -101,7 +101,7 @@ async function genericResponse(request: Request): Promise<Response> {
 
 self.addEventListener("fetch", (event: Event): void => {
   const url = new URL((event as FetchEvent).request.url);
-  if (cacheUpdating.indexOf(url.pathname) !== -1) {
+  if (cacheUpdating.includes(url.pathname)) {
     (event as FetchEvent).respondWith(
       cacheUpdatingResponse((event as FetchEvent).request),
     );

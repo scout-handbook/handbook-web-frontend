@@ -16,13 +16,13 @@ function xssOptions(): XSS.IFilterXSSOptions {
           return `${name}="${value}"`;
         }
         if (
-          ["td", "th"].indexOf(tag) >= 0 &&
+          ["td", "th"].includes(tag) &&
           name === "style" &&
           [
-            "text-align:left;",
             "text-align:center;",
+            "text-align:left;",
             "text-align:right;",
-          ].indexOf(value) >= 0
+          ].includes(value)
         ) {
           return `${name}="${value}"`;
         }

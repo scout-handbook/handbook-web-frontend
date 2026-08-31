@@ -22,8 +22,8 @@ function renderLessonView(
   const lesson = LESSONS.get(lessonId)!;
   let html = `<h1>${lesson.name}</h1>`;
   activeCompetence = null;
-  COMPETENCES.filter(
-    (competenceId) => lesson.competences.indexOf(competenceId) >= 0,
+  COMPETENCES.filter((competenceId) =>
+    lesson.competences.includes(competenceId),
   ).iterate((competenceId, competence) => {
     html += `<span class="competence-bubble">
   <span class="competence-bubble-number">

@@ -4,7 +4,7 @@
 function renderFieldLessonCompetences(lesson: Lesson): string {
   let first = true;
   let html = "";
-  COMPETENCES.filter((id) => lesson.competences.indexOf(id) >= 0).iterate(
+  COMPETENCES.filter((id) => lesson.competences.includes(id)).iterate(
     (_, competence) => {
       if (first) {
         html += `<span class="main-page">Body: ${competence.number}`;
