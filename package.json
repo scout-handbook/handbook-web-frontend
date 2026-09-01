@@ -36,8 +36,8 @@
     "clean": "rimraf dist/*",
     "lint": "FORCE_COLOR=1 run-p -c --aggregate-output lint:*",
     "lint:css": "FORCE_COLOR=1 run-p -c --aggregate-output lint:css:*",
-    "lint:css:stylelint": "stylelint --color --report-needless-disables 'src/**/*.css' '!src/css/fontello.css'",
-    "lint:eslint": "eslint --color",
+    "lint:css:stylelint": "stylelint --report-needless-disables 'src/**/*.css' '!src/css/fontello.css'",
+    "lint:eslint": "eslint",
     "lint:typecheck": "FORCE_COLOR=1 run-p -c --aggregate-output lint:typecheck:*",
     "lint:typecheck:frontend": "tsc --noEmit -p frontend.tsconfig.json",
     "lint:typecheck:serviceworker": "tsc --noEmit -p serviceworker.tsconfig.json"
