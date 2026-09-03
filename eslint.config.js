@@ -46,6 +46,9 @@ export default tseslint.config(
       perfectionist.configs["recommended-natural"],
     ],
     files: ["**/*.js", "**/*.ts"],
+    languageOptions: {
+      sourceType: "script",
+    },
     plugins: {
       "eslint-comments": eslintComments,
       "prefer-arrow-functions": preferArrowFunctions,
@@ -160,7 +163,6 @@ export default tseslint.config(
     languageOptions: {
       parserOptions: {
         projectService: true,
-        sourceType: "script",
       },
     },
     rules: {
