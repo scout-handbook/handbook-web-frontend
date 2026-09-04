@@ -107,7 +107,6 @@ export default tseslint.config(
       "no-useless-concat": "error",
       "no-useless-rename": "error",
       "no-useless-return": "error",
-      "no-var": "error",
       "no-void": ["error", { allowAsStatement: true }],
       "no-warning-comments": "warn",
       "object-shorthand": "error",
@@ -142,8 +141,6 @@ export default tseslint.config(
       "prefer-exponentiation-operator": "error",
       "prefer-object-spread": "error",
       "prefer-regex-literals": "error",
-      "prefer-rest-params": "error",
-      "prefer-spread": "error",
       "prefer-template": "error",
       radix: "error",
       "require-atomic-updates": "error",
@@ -180,7 +177,6 @@ export default tseslint.config(
       "@typescript-eslint/no-unnecessary-parameter-property-assignment":
         "error",
       "@typescript-eslint/no-unnecessary-qualifier": "error",
-      "@typescript-eslint/no-unused-vars": "error",
       "@typescript-eslint/no-use-before-define": [
         "error",
         { functions: false },
