@@ -21,7 +21,7 @@ export default tseslint.config(
     files: ["**/*.css"],
     language: "css/css",
     rules: {
-      "css/no-invalid-properties": "off", // Doesn't support CSS variables
+      "css/no-invalid-properties": ["error", { allowUnknownVariables: true }],
     },
   },
   {
