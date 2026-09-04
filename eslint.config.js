@@ -55,7 +55,11 @@ export default tseslint.config(
       "arrow-body-style": ["error", "as-needed"],
       "block-scoped-var": "error",
       camelcase: "error",
-      "capitalized-comments": "error",
+      "capitalized-comments": [
+        "error",
+        "always",
+        { ignoreConsecutiveComments: true },
+      ],
       "consistent-return": "error",
       "consistent-this": "error",
       "default-case": "error",
