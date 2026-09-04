@@ -17,6 +17,12 @@ export default tseslint.config(
   globalIgnores(["dist/", "package-lock.json", "src/css/fontello.css"]),
   packageJson.configs.recommended,
   {
+    linterOptions: {
+      reportUnusedDisableDirectives: "error",
+      reportUnusedInlineConfigs: "error",
+    },
+  },
+  {
     extends: [css.configs.recommended],
     files: ["**/*.css"],
     language: "css/css",
@@ -65,7 +71,6 @@ export default tseslint.config(
       "default-case": "error",
       "default-case-last": "error",
       eqeqeq: "error",
-      "eslint-comments/no-unused-disable": "error",
       "eslint-comments/require-description": [
         "error",
         {
