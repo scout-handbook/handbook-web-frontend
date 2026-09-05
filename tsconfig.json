@@ -3,7 +3,7 @@
     "module": "esnext",
     "moduleResolution": "bundler",
     "target": "es2017",
-    "types": ["showdown", "webfontloader"],
+    "types": ["node", "showdown", "webfontloader"],
 
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
