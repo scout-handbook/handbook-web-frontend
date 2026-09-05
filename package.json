@@ -82,7 +82,7 @@
     "npm-run-all2": "^9.0.3",
     "ordered-read-streams": "^2.0.0",
     "postcss": "^8.5.26",
-    "postcss-calc": "^11.0.1",
+    "postcss-calc": "^11.0.3",
     "postcss-custom-properties": "^15.0.1",
     "prettier": "^3.9.6",
     "rimraf": "^6.1.3",
