@@ -83,7 +83,7 @@
     "jiti": "^2.7.0",
     "npm-run-all2": "^9.0.3",
     "ordered-read-streams": "^2.0.0",
-    "postcss": "^8.5.26",
+    "postcss": "^8.5.29",
     "postcss-calc": "^11.2.1",
     "postcss-custom-properties": "^15.0.2",
     "prettier": "^3.9.9",
