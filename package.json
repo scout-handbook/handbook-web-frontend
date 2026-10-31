@@ -60,7 +60,7 @@
     "@types/node": "^26.6.5",
     "@types/showdown": "^2.0.6",
     "@types/webfontloader": "^1.6.38",
-    "autoprefixer": "^10.6.1",
+    "autoprefixer": "^10.6.2",
     "doiuse": "^6.0.6",
     "es-check": "^9.8.1",
     "eslint": "^10.13.0",
