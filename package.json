@@ -86,7 +86,7 @@
     "postcss": "^8.5.32",
     "postcss-calc": "^11.2.3",
     "postcss-custom-properties": "^15.0.4",
-    "prettier": "^3.9.10",
+    "prettier": "^3.10.0",
     "rimraf": "^6.1.4",
     "stylelint": "^17.16.0",
     "stylelint-config-standard": "^40.0.0",
